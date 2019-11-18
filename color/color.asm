@@ -269,7 +269,7 @@ SetPal_TownMap:
 ; Status screen
 SetPal_StatusScreen:
 	ld a, [wcf91]
-	cp VICTREEBEL + 1
+	cp NUM_POKEMON + 1 ;cp VICTREEBEL + 1
 	jr c, .pokemon
 	ld a, $1 ; not pokemon
 .pokemon
@@ -287,12 +287,12 @@ SetPal_StatusScreen:
 	ld d,a
 	ld e,1
 	callba LoadSGBPalette
-	
+
 IF GEN_2_GRAPHICS
 	ld d, PAL_EXP
-	ld e,4	
+	ld e,4
 	callba LoadSGBPalette
-ENDC	
+ENDC
 
 	; Load pokemon palette
 	pop af
@@ -333,7 +333,7 @@ ENDC
 	add hl,de
 	dec b
 	jr nz,.drawRow
-	
+
 IF GEN_2_GRAPHICS
 	; Player exp bar
 	ld hl, W2_TilesetPaletteMap + 11 + 5 * SCREEN_WIDTH

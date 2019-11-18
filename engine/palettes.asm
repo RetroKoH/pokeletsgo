@@ -62,13 +62,6 @@ SetPalFunctions:
 ; Also skips the "transform" check, caller does that instead
 DeterminePaletteID:
 	ld [wd11e], a
-	and a
-
-	push bc
-	predef IndexToPokedex ; turn Pokemon ID number into Pokedex number
-	pop bc
-
-	ld a, [wd11e]
 	ld hl, MonsterPalettes
 	and a
 	jr nz,.skipDexNumConversion ; Check if trainer?
@@ -101,17 +94,9 @@ ENDC
 	add hl, de
 	ld a, [hl]
 	ret
-	
 
 DetermineBackSpritePaletteID:
 	ld [wd11e], a
-	and a
-
-	push bc
-	predef IndexToPokedex ; turn Pokemon ID number into Pokedex number
-	pop bc
-
-	ld a, [wd11e]
 	ld hl, MonsterPalettes
 	and a
 	jr nz,.getPaletteID ; Check if trainer?

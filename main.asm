@@ -10,6 +10,7 @@ PICS_2 EQU $A
 PICS_3 EQU $B
 PICS_4 EQU $C
 PICS_5 EQU $D
+PICS_6 EQU $2D
 
 INCLUDE "home.asm"
 
@@ -2029,6 +2030,8 @@ INCLUDE "engine/overworld/elevator.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
 
+;SECTION "Pics 6", ROMX, BANK[PICS_6]
+
 INCLUDE "color/animations.asm"
 
 ; Inserted pokemon images go here
@@ -2281,13 +2284,13 @@ WartortlePicFront:   INCBIN "pic/gsmon/wartortle.pic"
 WartortlePicBack:    INCBIN "pic/gsmonback/wartortleb.pic"
 CharizardPicFront:   INCBIN "pic/gsmon/charizard.pic"
 CharizardPicBack:    INCBIN "pic/gsmonback/charizardb.pic"
-FossilKabutopsPic:   INCBIN "pic/bmon/fossilkabutops.pic"
-FossilAerodactylPic: INCBIN "pic/bmon/fossilaerodactyl.pic"
-GhostPic:            INCBIN "pic/other/ghost.pic"
 OddishPicFront:      INCBIN "pic/gsmon/oddish.pic"
 OddishPicBack:       INCBIN "pic/gsmonback/oddishb.pic"
 GloomPicFront:       INCBIN "pic/gsmon/gloom.pic"
 GloomPicBack:        INCBIN "pic/gsmonback/gloomb.pic"
+FossilKabutopsPic:   INCBIN "pic/bmon/fossilkabutops.pic"
+FossilAerodactylPic: INCBIN "pic/bmon/fossilaerodactyl.pic"
+GhostPic:            INCBIN "pic/other/ghost.pic"
 
 
 SECTION "bank37",ROMX

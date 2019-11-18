@@ -332,23 +332,13 @@ LoadFlippedFrontSpriteByMonIndex::
 	ld [wSpriteFlipped], a
 
 LoadFrontSpriteByMonIndex::
-	push hl
-	ld a, [wd11e]
-	push af
 	ld a, [wcf91]
-	ld [wd11e], a
-	predef IndexToPokedex
-	ld hl, wd11e
-	ld a, [hl]
-	pop bc
-	ld [hl], b
 	and a
-	pop hl
 	jr z, .invalidDexNumber ; dex #0 invalid
 	cp NUM_POKEMON + 1
 	jr c, .validDexNumber   ; dex >#151 invalid
 .invalidDexNumber
-	ld a, RHYDON ; $1
+	ld a, DITTO ; Placeholder akin to Pokemon Go
 	ld [wcf91], a
 	ret
 .validDexNumber
@@ -641,7 +631,6 @@ GetMonHeader::
 	jr z, .specialID
 	cp MEW
 	jr z, .mew
-	predef IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
 	ld a, [wd11e]
 	dec a
 	ld bc, MonBaseStatsEnd - MonBaseStats
@@ -789,18 +778,16 @@ UncompressMonSprite::
 	; HAX: code from Danny-E33's hack
 	; Each pokemon's picture bank is defined with an unused byte in its stats.
 	ld a, [wcf91] ; get Pokémon ID
-	ld b, BANK(FossilKabutopsPic)
 	cp FOSSIL_KABUTOPS
-	jr z, .RecallBank
+	jr z, .GhostOrFossil
 	cp FOSSIL_AERODACTYL
-	jr z, .RecallBank
+	jr z, .GhostOrFossil
 	cp MON_GHOST
-	jr z, .RecallBank
-
+	jr z, .GhostOrFossil
 	ld a, [wMonHPicBank] ; Get bank from base stats
 	jr .GotBank
-.RecallBank
-	ld a, b
+.GhostOrFossil
+	ld a, BANK(FossilKabutopsPic)
 .GotBank
 	jp UncompressSpriteData
 
