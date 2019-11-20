@@ -531,26 +531,17 @@ TypeColorTable: ; Used for a select few sprites to be colorized based on attack 
 	db 7 ; POISON EQU $03
 	db 3 ; GROUND EQU $04
 	db 3 ; ROCK EQU $05
-	db 0
-	db 5 ; BUG EQU $07
-	db 7 ; GHOST EQU $08
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 0
-	db 2 ; FIRE EQU $14
-	db 1 ; WATER EQU $15
-	db 5 ; GRASS EQU $16
-	db 4 ; ELECTRIC EQU $17
-	db 7 ; PSYCHIC EQU $18
-	db 6 ; ICE EQU $19
-	db 1 ; DRAGON EQU $1A
+	db 5 ; BUG EQU $06
+	db 7 ; GHOST EQU $07
+	db 6 ; STEEL EQU $08
+	db 2 ; FIRE EQU $09
+	db 1 ; WATER EQU $0A
+	db 5 ; GRASS EQU $0B
+	db 4 ; ELECTRIC EQU $0C
+	db 7 ; PSYCHIC EQU $0D
+	db 6 ; ICE EQU $0E
+	db 1 ; DRAGON EQU $0F
+	db 5 ; DARK EQU $10
+	db 7 ; FAIRY EQU $11
 
 INCLUDE "color/data/spritepalettes.asm"

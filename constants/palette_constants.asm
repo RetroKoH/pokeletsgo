@@ -22,6 +22,10 @@ SET_PAL_TRAINER_CARD         EQU $0D
 SET_PAL_OAK_INTRO            EQU $0E
 SET_PAL_NAMING_SCREEN        EQU $0F
 SET_PAL_BATTLE_AFTER_BLACK   EQU $10
+SET_PAL_WHOLE_SCREEN         EQU $11
+SET_PAL_TRAINER_WHOLE_SCREEN EQU $12
+SET_PAL_VERSION_SCREEN       EQU $13
+SET_PAL_GENDER_SELECT        EQU $14
 UPDATE_PARTY_MENU_BLK_PACKET EQU $FC
 
 ; super game boy palettes
@@ -65,202 +69,209 @@ const_value = 0
 	const PAL_CAVE      ; $23
 	const PAL_GAMEFREAK ; $24
 
-	const PAL_BULBASAUR  ; $25
-	const PAL_IVYSAUR    ; $26
-	const PAL_VENUSAUR   ; $27
-	const PAL_CHARMANDER ; $28
-	const PAL_CHARMELEON ; $29
-	const PAL_CHARIZARD  ; $2A
-	const PAL_SQUIRTLE   ; $2B
-	const PAL_WARTORTLE  ; $2C
-	const PAL_BLASTOISE  ; $2D
-	const PAL_CATERPIE   ; $2E
-	const PAL_METAPOD    ; $2F
-	const PAL_BUTTERFREE ; $30
-	const PAL_WEEDLE     ; $31
-	const PAL_KAKUNA     ; $32
-	const PAL_BEEDRILL   ; $33
-	const PAL_PIDGEY     ; $34
-	const PAL_PIDGEOTTO  ; $35
-	const PAL_PIDGEOT    ; $36
-	const PAL_RATTATA    ; $37
-	const PAL_RATICATE   ; $38
-	const PAL_SPEAROW    ; $39
-	const PAL_FEAROW     ; $3A
-	const PAL_EKANS      ; $3B
-	const PAL_ARBOK      ; $3C
-	const PAL_PIKACHU    ; $3D
-	const PAL_RAICHU     ; $3E
-	const PAL_SANDSHREW  ; $3F
-	const PAL_SANDSLASH  ; $40
-	const PAL_NIDORAN_F  ; $41
-	const PAL_NIDORINA   ; $42
-	const PAL_NIDOQUEEN  ; $43
-	const PAL_NIDORAN_M  ; $44
-	const PAL_NIDORINO   ; $45
-	const PAL_NIDOKING   ; $46
-	const PAL_CLEFAIRY   ; $47
-	const PAL_CLEFABLE   ; $48
-	const PAL_VULPIX     ; $49
-	const PAL_NINETALES  ; $4A
-	const PAL_JIGGLYPUFF ; $4B
-	const PAL_WIGGLYTUFF ; $4C
-	const PAL_ZUBAT      ; $4D
-	const PAL_GOLBAT     ; $4E
-	const PAL_ODDISH     ; $4F
-	const PAL_GLOOM      ; $50
-	const PAL_VILEPLUME  ; $51
-	const PAL_PARAS      ; $52
-	const PAL_PARASECT   ; $53
-	const PAL_VENONAT    ; $54
-	const PAL_VENOMOTH   ; $55
-	const PAL_DIGLETT    ; $56
-	const PAL_DUGTRIO    ; $57
-	const PAL_MEOWTH     ; $58
-	const PAL_PERSIAN    ; $59
-	const PAL_PSYDUCK    ; $5A
-	const PAL_GOLDUCK    ; $5B
-	const PAL_MANKEY     ; $5C
-	const PAL_PRIMEAPE   ; $5D
-	const PAL_GROWLITHE  ; $5E
-	const PAL_ARCANINE   ; $5F
-	const PAL_POLIWAG    ; $60
-	const PAL_POLIWHIRL  ; $61
-	const PAL_POLIWRATH  ; $62
-	const PAL_ABRA       ; $63
-	const PAL_KADABRA    ; $64
-	const PAL_ALAKAZAM   ; $65
-	const PAL_MACHOP     ; $66
-	const PAL_MACHOKE    ; $67
-	const PAL_MACHAMP    ; $68
-	const PAL_BELLSPROUT ; $69
-	const PAL_WEEPINBELL ; $6A
-	const PAL_VICTREEBEL ; $6B
-	const PAL_TENTACOOL  ; $6C
-	const PAL_TENTACRUEL ; $6D
-	const PAL_GEODUDE    ; $6E
-	const PAL_GRAVELER   ; $6F
-	const PAL_GOLEM      ; $70
-	const PAL_PONYTA     ; $71
-	const PAL_RAPIDASH   ; $72
-	const PAL_SLOWPOKE   ; $73
-	const PAL_SLOWBRO    ; $74
-	const PAL_MAGNEMITE  ; $75
-	const PAL_MAGNETON   ; $76
-	const PAL_FARFETCH_D ; $77
-	const PAL_DODUO      ; $78
-	const PAL_DODRIO     ; $79
-	const PAL_SEEL       ; $7A
-	const PAL_DEWGONG    ; $7B
-	const PAL_GRIMER     ; $7C
-	const PAL_MUK        ; $7D
-	const PAL_SHELLDER   ; $7E
-	const PAL_CLOYSTER   ; $7F
-	const PAL_GASTLY     ; $80
-	const PAL_HAUNTER    ; $81
-	const PAL_GENGAR     ; $82
-	const PAL_ONIX       ; $83
-	const PAL_DROWZEE    ; $84
-	const PAL_HYPNO      ; $85
-	const PAL_KRABBY     ; $86
-	const PAL_KINGLER    ; $87
-	const PAL_VOLTORB    ; $88
-	const PAL_ELECTRODE  ; $89
-	const PAL_EXEGGCUTE  ; $8A
-	const PAL_EXEGGUTOR  ; $8B
-	const PAL_CUBONE     ; $8C
-	const PAL_MAROWAK    ; $8D
-	const PAL_HITMONLEE  ; $8E
-	const PAL_HITMONCHAN ; $8F
-	const PAL_LICKITUNG  ; $90
-	const PAL_KOFFING    ; $91
-	const PAL_WEEZING    ; $92
-	const PAL_RHYHORN    ; $93
-	const PAL_RHYDON     ; $94
-	const PAL_CHANSEY    ; $95
-	const PAL_TANGELA    ; $96
-	const PAL_KANGASKHAN ; $97
-	const PAL_HORSEA     ; $98
-	const PAL_SEADRA     ; $99
-	const PAL_GOLDEEN    ; $9A
-	const PAL_SEAKING    ; $9B
-	const PAL_STARYU     ; $9C
-	const PAL_STARMIE    ; $9D
-	const PAL_MR_MIME    ; $9E
-	const PAL_SCYTHER    ; $9F
-	const PAL_JYNX       ; $A0
-	const PAL_ELECTABUZZ ; $A1
-	const PAL_MAGMAR     ; $A2
-	const PAL_PINSIR     ; $A3
-	const PAL_TAUROS     ; $A4
-	const PAL_MAGIKARP   ; $A5
-	const PAL_GYARADOS   ; $A6
-	const PAL_LAPRAS     ; $A7
-	const PAL_DITTO      ; $A8
-	const PAL_EEVEE      ; $A9
-	const PAL_VAPOREON   ; $AA
-	const PAL_JOLTEON    ; $AB
-	const PAL_FLAREON    ; $AC
-	const PAL_PORYGON    ; $AD
-	const PAL_OMANYTE    ; $AE
-	const PAL_OMASTAR    ; $AF
-	const PAL_KABUTO     ; $B0
-	const PAL_KABUTOPS   ; $B1
-	const PAL_AERODACTYL ; $B2
-	const PAL_SNORLAX    ; $B3
-	const PAL_ARTICUNO   ; $B4
-	const PAL_ZAPDOS     ; $B5
-	const PAL_MOLTRES    ; $B6
-	const PAL_DRATINI    ; $B7
-	const PAL_DRAGONAIR  ; $B8
-	const PAL_DRAGONITE  ; $B9
-	const PAL_MEWTWO     ; $BA
-	const PAL_MEW        ; $BB
-	const PAL_YOUNGSTER     ; $BC
-	const PAL_BUGCATCHER    ; $BD
-	const PAL_LASS          ; $BE
-	const PAL_SAILOR        ; $BF
-	const PAL_JR_TRAINER_M  ; $C0
-	const PAL_JR_TRAINER_F  ; $C1
-	const PAL_POKEMANIAC    ; $C2
-	const PAL_SUPERNERD     ; $C3
-	const PAL_HIKER         ; $C4
-	const PAL_BIKER         ; $C5
-	const PAL_BURGLAR       ; $C6
-	const PAL_ENGINEER      ; $C7
-	const PAL_JUGGLER       ; $C8
-	const PAL_FISHERMAN     ; $C9
-	const PAL_SWIMMER       ; $CA
-	const PAL_CUEBALL       ; $CB
-	const PAL_GAMBLER       ; $CC
-	const PAL_BEAUTY        ; $CD
-	const PAL_PSYCHIC       ; $CE
-	const PAL_ROCKER        ; $CF
-	const PAL_JUGGLER2      ; $D0
-	const PAL_TAMER         ; $D1
-	const PAL_BIRDKEEPER    ; $D2
-	const PAL_BLACKBELT     ; $D3
-	const PAL_GARY1         ; $D4
-	const PAL_OAK           ; $D5
-	const PAL_CHIEF         ; $D6
-	const PAL_SCIENTIST     ; $D7
-	const PAL_GIOVANNI      ; $D8
-	const PAL_ROCKET        ; $D9
-	const PAL_COOLTRAINER_M ; $DA
-	const PAL_COOLTRAINER_F ; $DB
-	const PAL_BRUNO         ; $DC
-	const PAL_BROCK         ; $DD
-	const PAL_MISTY         ; $DE
-	const PAL_LT_SURGE      ; $DF
-	const PAL_ERIKA         ; $E0
-	const PAL_KOGA          ; $E1
-	const PAL_BLAINE        ; $E2
-	const PAL_SABRINA       ; $E3
-	const PAL_GENTLEMAN     ; $E4
-	const PAL_GARY2         ; $E5
-	const PAL_GARY3         ; $E6
-	const PAL_LORELEI       ; $E7
-	const PAL_CHANNELER     ; $E8
-	const PAL_AGATHA        ; $E9
-	const PAL_LANCE         ; $EA
-	const PAL_HERO          ; $EB
+; pokemon palettes
+const_value = 0
+
+	const PAL_BULBASAUR
+	const PAL_IVYSAUR
+	const PAL_VENUSAUR
+	const PAL_CHARMANDER
+	const PAL_CHARMELEON
+	const PAL_CHARIZARD
+	const PAL_SQUIRTLE
+	const PAL_WARTORTLE
+	const PAL_BLASTOISE
+	const PAL_CATERPIE
+	const PAL_METAPOD
+	const PAL_BUTTERFREE
+	const PAL_WEEDLE
+	const PAL_KAKUNA
+	const PAL_BEEDRILL
+	const PAL_PIDGEY
+	const PAL_PIDGEOTTO
+	const PAL_PIDGEOT
+	const PAL_RATTATA
+	const PAL_RATICATE
+	const PAL_SPEAROW
+	const PAL_FEAROW
+	const PAL_EKANS
+	const PAL_ARBOK
+	const PAL_PIKACHU
+	const PAL_RAICHU
+	const PAL_SANDSHREW
+	const PAL_SANDSLASH
+	const PAL_NIDORAN_F
+	const PAL_NIDORINA
+	const PAL_NIDOQUEEN
+	const PAL_NIDORAN_M
+	const PAL_NIDORINO
+	const PAL_NIDOKING
+	const PAL_CLEFAIRY
+	const PAL_CLEFABLE
+	const PAL_VULPIX
+	const PAL_NINETALES
+	const PAL_JIGGLYPUFF
+	const PAL_WIGGLYTUFF
+	const PAL_ZUBAT
+	const PAL_GOLBAT
+	const PAL_ODDISH
+	const PAL_GLOOM
+	const PAL_VILEPLUME
+	const PAL_PARAS
+	const PAL_PARASECT
+	const PAL_VENONAT
+	const PAL_VENOMOTH
+	const PAL_DIGLETT
+	const PAL_DUGTRIO
+	const PAL_MEOWTH
+	const PAL_PERSIAN
+	const PAL_PSYDUCK
+	const PAL_GOLDUCK
+	const PAL_MANKEY
+	const PAL_PRIMEAPE
+	const PAL_GROWLITHE
+	const PAL_ARCANINE
+	const PAL_POLIWAG
+	const PAL_POLIWHIRL
+	const PAL_POLIWRATH
+	const PAL_ABRA
+	const PAL_KADABRA
+	const PAL_ALAKAZAM
+	const PAL_MACHOP
+	const PAL_MACHOKE
+	const PAL_MACHAMP
+	const PAL_BELLSPROUT
+	const PAL_WEEPINBELL
+	const PAL_VICTREEBEL
+	const PAL_TENTACOOL
+	const PAL_TENTACRUEL
+	const PAL_GEODUDE
+	const PAL_GRAVELER
+	const PAL_GOLEM
+	const PAL_PONYTA
+	const PAL_RAPIDASH
+	const PAL_SLOWPOKE
+	const PAL_SLOWBRO
+	const PAL_MAGNEMITE
+	const PAL_MAGNETON
+	const PAL_FARFETCH_D
+	const PAL_DODUO
+	const PAL_DODRIO
+	const PAL_SEEL
+	const PAL_DEWGONG
+	const PAL_GRIMER
+	const PAL_MUK
+	const PAL_SHELLDER
+	const PAL_CLOYSTER
+	const PAL_GASTLY
+	const PAL_HAUNTER
+	const PAL_GENGAR
+	const PAL_ONIX
+	const PAL_DROWZEE
+	const PAL_HYPNO
+	const PAL_KRABBY
+	const PAL_KINGLER
+	const PAL_VOLTORB
+	const PAL_ELECTRODE
+	const PAL_EXEGGCUTE
+	const PAL_EXEGGUTOR
+	const PAL_CUBONE
+	const PAL_MAROWAK
+	const PAL_HITMONLEE
+	const PAL_HITMONCHAN
+	const PAL_LICKITUNG
+	const PAL_KOFFING
+	const PAL_WEEZING
+	const PAL_RHYHORN
+	const PAL_RHYDON
+	const PAL_CHANSEY
+	const PAL_TANGELA
+	const PAL_KANGASKHAN
+	const PAL_HORSEA
+	const PAL_SEADRA
+	const PAL_GOLDEEN
+	const PAL_SEAKING
+	const PAL_STARYU
+	const PAL_STARMIE
+	const PAL_MR_MIME
+	const PAL_SCYTHER
+	const PAL_JYNX
+	const PAL_ELECTABUZZ
+	const PAL_MAGMAR
+	const PAL_PINSIR
+	const PAL_TAUROS
+	const PAL_MAGIKARP
+	const PAL_GYARADOS
+	const PAL_LAPRAS
+	const PAL_DITTO
+	const PAL_EEVEE
+	const PAL_VAPOREON
+	const PAL_JOLTEON
+	const PAL_FLAREON
+	const PAL_PORYGON
+	const PAL_OMANYTE
+	const PAL_OMASTAR
+	const PAL_KABUTO
+	const PAL_KABUTOPS
+	const PAL_AERODACTYL
+	const PAL_SNORLAX
+	const PAL_ARTICUNO
+	const PAL_ZAPDOS
+	const PAL_MOLTRES
+	const PAL_DRATINI
+	const PAL_DRAGONAIR
+	const PAL_DRAGONITE
+	const PAL_MEWTWO
+	const PAL_MEW
+
+; trainer palettes
+const_value = 0
+
+	const PAL_YOUNGSTER
+	const PAL_BUGCATCHER
+	const PAL_LASS
+	const PAL_SAILOR
+	const PAL_JR_TRAINER_M
+	const PAL_JR_TRAINER_F
+	const PAL_POKEMANIAC
+	const PAL_SUPERNERD
+	const PAL_HIKER
+	const PAL_BIKER
+	const PAL_BURGLAR
+	const PAL_ENGINEER
+	const PAL_JUGGLER   ; Replace with Couple
+	const PAL_FISHERMAN
+	const PAL_SWIMMER
+	const PAL_CUEBALL
+	const PAL_GAMBLER
+	const PAL_BEAUTY
+	const PAL_PSYCHIC
+	const PAL_ROCKER
+	const PAL_JUGGLER2  ; Make main Juggler palette
+	const PAL_TAMER
+	const PAL_BIRDKEEPER
+	const PAL_BLACKBELT
+	const PAL_GARY1
+	const PAL_OAK
+	const PAL_CHIEF     ; maybe unused?
+	const PAL_SCIENTIST
+	const PAL_GIOVANNI
+	const PAL_ROCKET
+	const PAL_COOLTRAINER_M
+	const PAL_COOLTRAINER_F
+	const PAL_BRUNO
+	const PAL_BROCK
+	const PAL_MISTY
+	const PAL_LT_SURGE
+	const PAL_ERIKA
+	const PAL_KOGA
+	const PAL_BLAINE
+	const PAL_SABRINA
+	const PAL_GENTLEMAN
+	const PAL_GARY2
+	const PAL_GARY3
+	const PAL_LORELEI
+	const PAL_CHANNELER
+	const PAL_AGATHA
+	const PAL_LANCE
+	const PAL_HERO

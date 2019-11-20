@@ -56,7 +56,7 @@ OakSpeech:
 
 	ld a, PAL_OAK
 
-	call GotPalID ; HAX
+	call GotIntroTrainerPalID ; HAX
 	nop
 	nop
 	nop

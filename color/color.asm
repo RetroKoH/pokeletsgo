@@ -101,26 +101,48 @@ SetPal_Battle_Common:
 	call DeterminePaletteID
 	ld c, a
 
+	; Save both IDs
+	ld a, [wBattleMonSpecies]
+	ld d, a                   ; d = Player's species
+	ld a, [wEnemyMonSpecies2]
+	ld e, a                   ; e = Enemy's species
+
 	ld a,$02
 	ld [rSVBK],a
 
 	; Save the player mon's palette in case it transforms later
 	ld a,b
 	ld [W2_BattleMonPalette],a
+	ld a, e
+	push af ; push to stack for when we load the enemy party
+	ld a, d
 
 	; Player palette
 	push bc
 	ld d,b
 	ld e,0
-	callba LoadSGBPalette
+	and a
+	jr z, .loadTrainerPal     ; Trainer palettes instead of mon palettes
+	callba LoadPokemonPalette ; Replaces LoadSGBPalette (for mons)
+	jr .loadEnemyPal
+.loadTrainerPal
+	callba LoadTrainerPalette
 
 	; Enemy palette
+.loadEnemyPal
 	pop bc
+	pop af ; stored in stack earlier
 	ld d,c
 	ld e,1
-	callba LoadSGBPalette
+	and a                    ; Same as above (Replaces call to LoadSGBPalette)
+	jr z, .loadTrainerPal2
+	callba LoadPokemonPalette
+	jr .loadLifebarPal
+.loadTrainerPal2
+	callba LoadTrainerPalette
 
 	; Player lifebar
+.loadLifebarPal
 	ld a, [wPlayerHPBarColor]
 	add PAL_GREENBAR
 	ld d,a
@@ -281,7 +303,7 @@ SetPal_StatusScreen:
 	pop af
 	ld d,a
 	ld e,0
-	callba LoadSGBPalette
+	callba LoadPokemonPalette ; LoadSGBPalette
 
 
 	; Set palette map
@@ -340,20 +362,17 @@ SetPal_Pokedex:
 	ld a,2
 	ld [rSVBK],a
 
-	callba LoadSGBPalette
+	callba LoadPokemonPalette ; Load palette based on Pokemon
 
-; POKEDEX COLOR OUTLINE
-IF DEF(_BLUE)
-	ld d,PAL_BLUEMON
-ELSE
-	ld d,PAL_REDMON
-ENDC
+; POKEDEX COLOR OUTLINE ; Need to change this to load a color based on the pokemon
+	ld d,PAL_MEWMON
 	ld e,1
 	callba LoadSGBPalette
 
 	ld bc,20*18
 	ld hl,W2_TilesetPaletteMap
 	ld d,1
+
 .palLoop
 	ld [hl],d
 	inc hl
@@ -447,7 +466,7 @@ SetPal_TitleScreen:
 	ld a,2
 	ld [rSVBK],a
 
-	callba LoadSGBPalette
+	callba LoadPokemonPalette
 
 	ld d,PAL_LOGO2	; Title logo
 	ld e,1
@@ -463,7 +482,7 @@ SetPal_TitleScreen:
 
 	ld d, PAL_HERO
 	ld e,0
-	callba LoadSGBPalette_Sprite
+	callba LoadTrainerPalette_Sprite ;LoadSGBPalette_Sprite
 
 	; Start drawing the palette map
 
@@ -535,7 +554,7 @@ SetPal_NidorinoIntro:
 
 	ld d, PAL_NIDORINO
 	ld e,0
-	callba LoadSGBPalette_Sprite
+	callba LoadPokemonPalette_Sprite
 
 	ld d, PAL_PURPLEMON
 	ld e,0
@@ -706,7 +725,7 @@ SetPal_PokemonWholeScreen:
 	ld [rSVBK],a
 
 	ld e,0
-	callba LoadSGBPalette
+	callba LoadPokemonPalette
 
 	ld d, PAL_MEWMON
 	ld e, 1
@@ -824,7 +843,7 @@ SetPal_TrainerCard:
 	; Red's palette
 	ld d, PAL_HERO
 	ld e,4
-	callba LoadSGBPalette
+	callba LoadTrainerPalette
 
 	; Palette for border tiles
 IF DEF(_BLUE)
@@ -897,6 +916,8 @@ SetPal_NameEntry:
 	xor a
 	ld [rSVBK],a
 	ret
+
+; Insert new functions here
 
 
 ; Code for the pokemon in the titlescreen.

@@ -228,6 +228,8 @@ SuperPalettes:
 ; The following are only available with gen 2 graphics patch: individual palettes for
 ; pokemon, trainers, etc.
 
+PokemonPaletteTable:
+
 ; 0x25: PAL_BULBASAUR
 	RGB 31, 31, 31
 	RGB 12, 31, 11
@@ -1133,6 +1135,8 @@ SuperPalettes:
 	RGB 31, 15, 31
 	RGB 07, 11, 26
 	RGB 00, 00, 00
+
+TrainerPaletteTable:
 
 ; 0xBC: PAL_YOUNGSTER
 	RGB 31, 31, 31
