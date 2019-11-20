@@ -8,6 +8,7 @@ LoadHPBarAndEXPBar:
 	ld de,EXPBarGraphics
 	ld hl,vChars1 + $400
 	ld bc,(BANK(EXPBarGraphics) << 8 | $9)
+
 GoodCopyVideoData:
 	ld a,[rLCDC]
 	bit 7,a ; is the LCD enabled?

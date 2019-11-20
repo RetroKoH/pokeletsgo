@@ -17,11 +17,8 @@ LoadPartyPokeballGfx_orig: ; Name changed so color hack can hijack this
 	jp CopyVideoData
 
 SetupOwnPartyPokeballs:
-IF GEN_2_GRAPHICS
 	call PlayerHUDHAX
-ELSE
-	call PlacePlayerHUDTiles
-ENDC
+
 	ld hl, wPartyMon1
 	ld de, wPartyCount
 	call SetupPokeballs
@@ -142,11 +139,8 @@ PlaceEnemyHUDTiles:
 	ld bc, $3
 	call CopyData
 	coord hl, 1, 2
-IF GEN_2_GRAPHICS
 	jp EnemyHUDHAX
-ELSE
-	ld de, $1
-ENDC
+
 	jr PlaceHUDTiles
 
 EnemyBattleHUDGraphicsTiles:

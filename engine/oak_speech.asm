@@ -53,11 +53,9 @@ OakSpeech:
 	call SpecialWarpIn
 	xor a
 	ld [hTilesetType], a
-IF GEN_2_GRAPHICS
+
 	ld a, PAL_OAK
-ELSE
-	ld a, PAL_BROWNMON
-ENDC
+
 	call GotPalID ; HAX
 	nop
 	nop

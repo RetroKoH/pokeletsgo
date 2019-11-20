@@ -24,13 +24,10 @@ LoadPartyPokeballGfx:
 
 	jp LoadPartyPokeballGfx_orig
 
-
-IF GEN_2_GRAPHICS
-
 PlayerHUDHAX:
 	ld hl, PlayerHUDTileMap
 	jp PlayerHUDUpdateDone
-	
+
 PlayerHUDTileMap:
 	db $73, $75, $6F
 
@@ -57,5 +54,3 @@ EnemyHUDHAX:
 .notWildBattle
 	ld de, $0001
 	jp EnemyHUDUpdateDone
-
-ENDC

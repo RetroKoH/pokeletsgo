@@ -105,13 +105,10 @@ StatusScreen:
 	push af
 	xor a
 	ld [hTilesetType], a
-IF GEN_2_GRAPHICS
+
 	coord hl, 19, 3
 	lb bc, 2, 8
-ELSE
-	coord hl, 19, 1
-	lb bc, 6, 10
-ENDC
+
 	call DrawLineBox ; Draws the box around name, HP and status
 	coord hl, 2, 7
 	nop
@@ -315,14 +312,11 @@ StatusScreen2:
 	coord hl, 9, 2
 	lb bc, 5, 10
 	call ClearScreenArea ; Clear under name
-IF GEN_2_GRAPHICS
+
 	call StatusScreen2Hook
 	nop
 	nop
-ELSE
-	coord hl, 19, 3
-	ld [hl], $78
-ENDC
+
 	coord hl, 0, 8
 	ld b, 8
 	ld c, 18

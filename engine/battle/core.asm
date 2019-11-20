@@ -1918,13 +1918,10 @@ DrawPlayerHUDAndHPBar:
 	ld [hl], $73
 	ld de, wBattleMonNick
 	coord hl, 10, 7
-IF GEN_2_GRAPHICS
+
 	call PlaceString ; Note: "CenterMonName" not called to be consistent with gen 2
 	call PrintEXPBarAt1711
-ELSE
-	call CenterMonName
-	call PlaceString
-ENDC
+
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies
@@ -1984,11 +1981,9 @@ DrawEnemyHUDAndHPBar:
 	coord hl, 1, 0
 	call CenterMonName
 	call PlaceString
-IF GEN_2_GRAPHICS
+
 	coord hl, 6, 1
-ELSE
-	coord hl, 4, 1
-ENDC
+
 	push hl
 	inc hl
 	ld de, wEnemyMonStatus
@@ -6431,14 +6426,9 @@ LoadPlayerBackPic:
 	ld a, BANK(RedPicBack)
 	call UncompressSpriteFromDE
 
-IF GEN_2_GRAPHICS
 	call LoadMonBackSpriteHook ; No pixelated backsprites
 	nop
 	nop
-ELSE
-	; This is unchanged
-	predef ScaleSpriteByTwo
-ENDC
 
 	ld hl, wOAMBuffer
 	xor a
@@ -6471,15 +6461,11 @@ ENDC
 	ld e, a
 	dec b
 	jr nz, .loop
-IF GEN_2_GRAPHICS
+
 	REPT 6
 	nop
 	ENDR
-ELSE
-	; unchanged
-	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers
-ENDC
+
 	ld a, $a
 	ld [$0], a
 	xor a
@@ -7140,19 +7126,13 @@ LoadMonBackPic:
 	call UncompressMonSprite
 	predef_id ScaleSpriteByTwo
 
-	IF GEN_2_GRAPHICS
-		call LoadMonBackSpriteHook
-		nop
-		nop
-		nop
-		nop
-		nop
-		nop
-	ELSE
-		call Predef ; ScaleSpriteByTwo
-		ld de, vBackPic
-		call InterlaceMergeSpriteBuffers ; combine the two buffers to a single 2bpp sprite
-	ENDC
+        call LoadMonBackSpriteHook
+        nop
+        nop
+        nop
+        nop
+        nop
+        nop
 
 	ld hl, vSprites
 	ld de, vBackPic
@@ -8765,8 +8745,6 @@ PlayBattleAnimationGotID:
 ; HAX: Following are hooks for pokered_color. This is the end of the bank so it won't
 ; cause data shifting.
 
-IF GEN_2_GRAPHICS
-
 LoadMonBackSpriteHook:
 	ld a,$66
 	ld de,vBackPic
@@ -8828,7 +8806,7 @@ CalcEXPBarPixelLength:
 	jr z, .skip
 	ld hl, wPartyMon1
 	call BattleMonPartyAttr
-	
+
 .skip
 	ld a, [hl]
 	ld [wd0b5], a
@@ -8859,10 +8837,10 @@ CalcEXPBarPixelLength:
 	jr z, .isBattleScreen2
 	ld hl, wLoadedMonExp
 	jr .skip2
-.isBattleScreen2	
+.isBattleScreen2
 	ld hl, wPartyMon1Exp
 	call BattleMonPartyAttr
-	
+
 .skip2
 	; current exp - base exp
 	ld b, h
@@ -8970,4 +8948,3 @@ BattleMonPartyAttr:
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
 	jp AddNTimes
-ENDC

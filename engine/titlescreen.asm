@@ -117,13 +117,7 @@ DisplayTitleScreen:
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
-IF DEF(_RED)
-	ld a, CHARMANDER ; which Pokemon to show first on the title screen
-ENDC
-IF DEF(_BLUE)
-	ld a, SQUIRTLE ; which Pokemon to show first on the title screen
-ENDC
-
+	ld a, PIKACHU ; which Pokemon to show first on the title screen
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite
 	ld a, (vBGMap0 + $300) / $100
@@ -217,17 +211,10 @@ ENDC
 	xor a
 	ld [wUnusedCC5B], a
 
-; Keep scrolling in new mons indefinitely until the user performs input.
+; This was where new mons scrolled in and out until the user performed input.
 .awaitUserInterruptionLoop
-	ld c, 200
 	call CheckForUserInterruption
 	jr c, .finishedWaiting
-	call TitleScreenScrollInMon
-	ld c, 1
-	call CheckForUserInterruption
-	jr c, .finishedWaiting
-	callba TitleScreenAnimateBallIfStarterOut
-	call TitleScreenPickNewMon
 	jr .awaitUserInterruptionLoop
 
 .finishedWaiting
@@ -256,42 +243,6 @@ ENDC
 
 .doClearSaveDialogue
 	jpba DoClearSaveDialogue
-
-TitleScreenPickNewMon:
-	ld a, vBGMap0 / $100
-	call TitleScreenCopyTileMapToVRAM
-
-.loop
-; Keep looping until a mon different from the current one is picked.
-	call Random
-	and $f
-	ld c, a
-	ld b, 0
-	ld hl, TitleMons
-	add hl, bc
-	ld a, [hl]
-	ld hl, wTitleMonSpecies
-
-; Can't be the same as before.
-	cp [hl]
-	jr z, .loop
-
-	ld [hl], a
-	call LoadTitleMonSprite
-
-	ld a, $90
-	ld [hWY], a
-	ld d, 1 ; scroll out
-	; HAX; palette must be refreshed
-	callba LoadTitleMonTilesAndPalettes
-	ret
-
-TitleScreenScrollInMon:
-	ld d, 0 ; scroll in
-	callba TitleScroll
-	xor a
-	ld [hWY], a
-	ret
 
 ScrollTitleScreenGameVersion:
 .wait
@@ -383,22 +334,15 @@ CopyrightTextString:
 	next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©'95.'96.'98 GAME FREAK inc.
 	db   "@"
 
-INCLUDE "data/title_mons.asm"
-
-; prints version text (red, blue)
+; prints version text (LG Yellow)
 PrintGameVersionOnTitleScreen:
-	coord hl, 7, 8
+	coord hl, 6, 8
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
-ENDC
-IF DEF(_BLUE)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
-ENDC
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Let's Go Yellow"
 
 NintenText: db "NINTEN@"
 SonyText:   db "SONY@"

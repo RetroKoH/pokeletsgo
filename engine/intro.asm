@@ -450,23 +450,11 @@ FightIntroBackMon:
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
-
-IF DEF(_RED)
-	INCBIN "gfx/red/intro_nido_1.2bpp"
+	INCBIN "gfx/intro_nido_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/red/intro_nido_2.2bpp"
+	INCBIN "gfx/intro_nido_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/red/intro_nido_3.2bpp"
-ENDC
-
-IF DEF(_BLUE)
-	INCBIN "gfx/blue/intro_purin_1.2bpp"
-FightIntroFrontMon2:
-	INCBIN "gfx/blue/intro_purin_2.2bpp"
-FightIntroFrontMon3:
-	INCBIN "gfx/blue/intro_purin_3.2bpp"
-ENDC
-
+	INCBIN "gfx/intro_nido_3.2bpp"
 FightIntroFrontMonEnd:
 
 	ds $10 ; blank tile

@@ -134,13 +134,9 @@ SetPal_Battle_Common:
 	ld e,3
 	callba LoadSGBPalette
 
-IF GEN_2_GRAPHICS
 	; Player exp bar
 	ld d, PAL_EXP
-ELSE
-	; Black palette
-	ld d, PAL_BLACK
-ENDC
+
 	ld e,4
 	callba LoadSGBPalette
 
@@ -154,7 +150,6 @@ ENDC
 	ld c,11
 	call FillBox
 
-IF GEN_2_GRAPHICS
 	; Bottom half; player lifebar
 	ld hl,W2_TilesetPaletteMap+7*20+9
 	ld a,2
@@ -168,16 +163,6 @@ IF GEN_2_GRAPHICS
 	ld b, 1
 	ld c, 11
 	call FillBox
-ENDC
-
-IF !GEN_2_GRAPHICS
-	; Bottom half; player lifebar
-	ld hl,W2_TilesetPaletteMap+7*20+9
-	ld a,2
-	ld b,5
-	ld c,11
-	call FillBox
-ENDC
 
 	; Player pokemon
 	ld hl,W2_TilesetPaletteMap+4*20
@@ -288,11 +273,9 @@ SetPal_StatusScreen:
 	ld e,1
 	callba LoadSGBPalette
 
-IF GEN_2_GRAPHICS
 	ld d, PAL_EXP
 	ld e,4
 	callba LoadSGBPalette
-ENDC
 
 	; Load pokemon palette
 	pop af
@@ -334,7 +317,6 @@ ENDC
 	dec b
 	jr nz,.drawRow
 
-IF GEN_2_GRAPHICS
 	; Player exp bar
 	ld hl, W2_TilesetPaletteMap + 11 + 5 * SCREEN_WIDTH
 	ld b, 8
@@ -343,7 +325,6 @@ IF GEN_2_GRAPHICS
 	ld [hli], a
 	dec b
 	jr nz, .expLoop
-ENDC
 
 	xor a
 	ld [rSVBK],a
@@ -361,6 +342,7 @@ SetPal_Pokedex:
 
 	callba LoadSGBPalette
 
+; POKEDEX COLOR OUTLINE
 IF DEF(_BLUE)
 	ld d,PAL_BLUEMON
 ELSE
@@ -479,11 +461,7 @@ SetPal_TitleScreen:
 	ld e,3
 	callba LoadSGBPalette
 
-IF GEN_2_GRAPHICS
 	ld d, PAL_HERO
-ELSE
-	ld d, PAL_REDMON
-ENDC
 	ld e,0
 	callba LoadSGBPalette_Sprite
 
@@ -555,11 +533,7 @@ SetPal_NidorinoIntro:
 	ld a,2
 	ld [rSVBK],a
 
-IF GEN_2_GRAPHICS
 	ld d, PAL_NIDORINO
-ELSE
-	ld d, PAL_PURPLEMON
-ENDC
 	ld e,0
 	callba LoadSGBPalette_Sprite
 
@@ -848,11 +822,7 @@ SetPal_TrainerCard:
 	callba LoadSGBPalette
 
 	; Red's palette
-IF GEN_2_GRAPHICS
 	ld d, PAL_HERO
-ELSE
-	ld d, PAL_REDMON
-ENDC
 	ld e,4
 	callba LoadSGBPalette
 

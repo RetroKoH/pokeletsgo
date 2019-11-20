@@ -64,7 +64,7 @@ const_value = 0
 	const PAL_BADGE     ; $22
 	const PAL_CAVE      ; $23
 	const PAL_GAMEFREAK ; $24
-IF GEN_2_GRAPHICS
+
 	const PAL_BULBASAUR  ; $25
 	const PAL_IVYSAUR    ; $26
 	const PAL_VENUSAUR   ; $27
@@ -264,4 +264,3 @@ IF GEN_2_GRAPHICS
 	const PAL_AGATHA        ; $E9
 	const PAL_LANCE         ; $EA
 	const PAL_HERO          ; $EB
-ENDC

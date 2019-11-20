@@ -83,14 +83,8 @@ SuperPalettes:
 ; 0x0d: PAL_LOGO1
 	RGB 31,31,31
 	RGB 30,30,17
-IF DEF(_RED)
-	RGB 17,23,10
-	RGB 21,0,4
-ENDC
-IF DEF(_BLUE)
-	RGB 21,0,4
-	RGB 14,19,29
-ENDC
+	RGB 29,26,05
+	RGB 26,20,01
 
 ; 0x0e: PAL_LOGO2
 	RGB 31,31,31
@@ -233,8 +227,6 @@ ENDC
 
 ; The following are only available with gen 2 graphics patch: individual palettes for
 ; pokemon, trainers, etc.
-
-IF GEN_2_GRAPHICS
 
 ; 0x25: PAL_BULBASAUR
 	RGB 31, 31, 31
@@ -1429,5 +1421,3 @@ IF GEN_2_GRAPHICS
 	RGB 28, 18, 17
 	RGB 22, 07, 08
 	RGB 00, 00, 00
-
-ENDC

@@ -1,5 +1,3 @@
-GEN_2_GRAPHICS	EQU 1
-
 INCLUDE "macros.asm"
 INCLUDE "charmap.asm"
 

@@ -3194,15 +3194,12 @@ wBoxMonNicksEnd:: ; dee2
 
 wBoxDataEnd::
 
-IF GEN_2_GRAPHICS
 wEXPBarPixelLength::  ds 1
 wEXPBarBaseEXP::      ds 3
 wEXPBarCurEXP::       ds 3
 wEXPBarNeededEXP::    ds 3
 wEXPBarKeepFullFlag:: ds 1
-
 ; deed
-ENDC
 
 
 SECTION "Stack", WRAM0
