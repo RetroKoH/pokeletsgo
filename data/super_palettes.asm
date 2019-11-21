@@ -326,6 +326,10 @@ PokemonPaletteTable:
 	RGB 18, 08, 19
 	RGB 22, 04, 09
 
+; PAL_PICHU
+	RGB 29, 26, 05
+	RGB 26, 06, 00
+
 ; PAL_PIKACHU
 	RGB 29, 26, 05
 	RGB 26, 06, 00

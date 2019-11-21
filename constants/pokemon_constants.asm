@@ -24,6 +24,7 @@ const_value = 1
 	const FEAROW     ; 22
 	const EKANS      ; 23
 	const ARBOK      ; 24
+	const PICHU
 	const PIKACHU    ; 25
 	const RAICHU     ; 26
 	const SANDSHREW  ; 27
@@ -155,4 +156,4 @@ const_value = 1
 	const FOSSIL_AERODACTYL ; 153
 	const MON_GHOST         ; 154
 
-NUM_POKEMON EQU 151
+NUM_POKEMON EQU MEW ; 151, at least until we add more

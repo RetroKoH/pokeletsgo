@@ -23,6 +23,7 @@ MonsterNames:
 	db "FEAROW@@@@"
 	db "EKANS@@@@@"
 	db "ARBOK@@@@@"
+	db "PICHU@@@@@"
 	db "PIKACHU@@@"
 	db "RAICHU@@@@"
 	db "SANDSHREW@"

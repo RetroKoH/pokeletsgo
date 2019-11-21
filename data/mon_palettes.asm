@@ -24,6 +24,7 @@ MonsterPalettes:
 	db PAL_FEAROW
 	db PAL_EKANS
 	db PAL_ARBOK
+	db PAL_PICHU
 	db PAL_PIKACHU
 	db PAL_RAICHU
 	db PAL_SANDSHREW

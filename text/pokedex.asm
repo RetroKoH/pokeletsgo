@@ -8,6 +8,16 @@ _RhydonDexEntry::
 	next "degrees"
 	dex
 
+_PichuDexEntry::
+	text "Despite its small"
+	next "size, it can zap"
+	next "even adult humans."
+
+	page "However, if it"
+	next "does so, it also"
+	next "surprises itself"
+	dex
+
 _KangaskhanDexEntry::
 	text "The infant rarely"
 	next "ventures out of"

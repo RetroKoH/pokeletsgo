@@ -96,6 +96,7 @@ const_value = 0
 	const PAL_FEAROW
 	const PAL_EKANS
 	const PAL_ARBOK
+	const PAL_PICHU
 	const PAL_PIKACHU
 	const PAL_RAICHU
 	const PAL_SANDSHREW

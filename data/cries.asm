@@ -24,6 +24,7 @@ CryData:
 	db $18, $40, $A0; Fearow
 	db $17, $12, $40; Ekans
 	db $17, $E0, $10; Arbok
+	db $0F, $00, $C0; Pichu
 	db $0F, $EE, $01; Pikachu
 	db $09, $EE, $08; Raichu
 	db $00, $20, $40; Sandshrew
