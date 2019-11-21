@@ -34,17 +34,21 @@ PokedexEntryPointers:
 	dw NidoranMDexEntry
 	dw NidorinoDexEntry
 	dw NidokingDexEntry
+	dw CleffaDexEntry
 	dw ClefairyDexEntry
 	dw ClefableDexEntry
 	dw VulpixDexEntry
 	dw NinetalesDexEntry
+	dw IgglybuffDexEntry
 	dw JigglypuffDexEntry
 	dw WigglytuffDexEntry
 	dw ZubatDexEntry
 	dw GolbatDexEntry
+	dw CrobatDexEntry
 	dw OddishDexEntry
 	dw GloomDexEntry
 	dw VileplumeDexEntry
+	dw BellossomDexEntry
 	dw ParasDexEntry
 	dw ParasectDexEntry
 	dw VenonatDexEntry
@@ -402,6 +406,13 @@ NidokingDexEntry:
 	TX_FAR _NidokingDexEntry
 	db "@"
 
+CleffaDexEntry:
+	db "STAR SHAPE@"
+	db 1,0
+	dw 66
+	TX_FAR _CleffaDexEntry
+	db "@"
+
 ClefairyDexEntry:
 	db "FAIRY@"
 	db 2,0
@@ -428,6 +439,13 @@ NinetalesDexEntry:
 	db 3,7
 	dw 439
 	TX_FAR _NinetalesDexEntry
+	db "@"
+
+IgglybuffDexEntry:
+	db "BALLOON@"
+	db 1,0
+	dw 22
+	TX_FAR _IgglybuffDexEntry
 	db "@"
 
 JigglypuffDexEntry:
@@ -458,6 +476,13 @@ GolbatDexEntry:
 	TX_FAR _GolbatDexEntry
 	db "@"
 
+CrobatDexEntry:
+	db "BAT@"
+	db 5,11
+	dw 1653
+	TX_FAR _CrobatDexEntry
+	db "@"
+
 OddishDexEntry:
 	db "WEED@"
 	db 1,8
@@ -477,6 +502,13 @@ VileplumeDexEntry:
 	db 3,11
 	dw 410
 	TX_FAR _VileplumeDexEntry
+	db "@"
+
+BellossomDexEntry:
+	db "FLOWER@"
+	db 1,4
+	dw 128
+	TX_FAR _BellossomDexEntry
 	db "@"
 
 ParasDexEntry:
@@ -1221,7 +1253,7 @@ MewDexEntry:
 	TX_FAR _MewDexEntry
 	db "@"
 
-MissingNoDexEntry:
+MissingNoDexEntry: ; NULL
 	db "???@"
 	db 10 ; 1.0 m
 	db 100 ; 10.0 kg

@@ -24,7 +24,7 @@ CryData:
 	db $18, $40, $A0; Fearow
 	db $17, $12, $40; Ekans
 	db $17, $E0, $10; Arbok
-	db $0F, $00, $C0; Pichu
+	db $0E, $00, $04; Pichu
 	db $0F, $EE, $01; Pikachu
 	db $09, $EE, $08; Raichu
 	db $00, $20, $40; Sandshrew
@@ -35,17 +35,21 @@ CryData:
 	db $00, $00, $80; Nidoran-M
 	db $00, $2C, $C0; Nidorino
 	db $09, $00, $80; Nidoking
+	db $19, $CC, $01; Cleffa
 	db $19, $CC, $01; Clefairy
 	db $19, $AA, $20; Clefable
 	db $24, $4F, $10; Vulpix
 	db $24, $88, $60; Ninetales
+	db $0E, $FF, $35; Igglybuff
 	db $0E, $FF, $35; Jigglypuff
 	db $0E, $68, $60; Wigglytuff
 	db $1D, $E0, $80; Zubat
 	db $1D, $FA, $80; Golbat
+	db $1D, $FA, $80; Crobat
 	db $08, $DD, $01; Oddish
 	db $08, $AA, $40; Gloom
 	db $23, $22, $FF; Vileplume
+	db $23, $22, $FF; Bellossom
 	db $1E, $20, $E0; Paras
 	db $1E, $42, $FF; Parasect
 	db $1A, $44, $40; Venonat

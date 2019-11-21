@@ -35,17 +35,21 @@ const_value = 1
 	const NIDORAN_M  ; 32
 	const NIDORINO   ; 33
 	const NIDOKING   ; 34
+	const CLEFFA
 	const CLEFAIRY   ; 35
 	const CLEFABLE   ; 36
 	const VULPIX     ; 37
 	const NINETALES  ; 38
+	const IGGLYBUFF
 	const JIGGLYPUFF ; 39
 	const WIGGLYTUFF ; 40
 	const ZUBAT      ; 41
 	const GOLBAT     ; 42
+	const CROBAT
 	const ODDISH     ; 43
 	const GLOOM      ; 44
 	const VILEPLUME  ; 45
+	const BELLOSSOM
 	const PARAS      ; 46
 	const PARASECT   ; 47
 	const VENONAT    ; 48

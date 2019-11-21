@@ -370,6 +370,10 @@ PokemonPaletteTable:
 	RGB 24, 10, 19
 	RGB 13, 03, 15
 
+; PAL_CLEFFA
+	RGB 31, 13, 25
+	RGB 13, 07, 00
+
 ; PAL_CLEFAIRY
 	RGB 31, 14, 18
 	RGB 13, 07, 00
@@ -385,6 +389,10 @@ PokemonPaletteTable:
 ; PAL_NINETALES
 	RGB 31, 25, 09
 	RGB 18, 15, 00
+
+; PAL_IGGLYPUFF
+	RGB 31, 16, 31
+	RGB 06, 16, 31
 
 ; PAL_JIGGLYPUFF
 	RGB 31, 16, 31
@@ -402,6 +410,10 @@ PokemonPaletteTable:
 	RGB 12, 15, 19
 	RGB 05, 08, 17
 
+; PAL_CROBAT
+	RGB 12, 15, 19
+	RGB 05, 08, 17
+
 ; PAL_ODDISH
 	RGB 11, 23, 03
 	RGB 06, 09, 09
@@ -411,6 +423,10 @@ PokemonPaletteTable:
 	RGB 08, 09, 13
 
 ; PAL_VILEPLUME
+	RGB 31, 06, 03
+	RGB 08, 09, 13
+
+; PAL_BELLOSSOM
 	RGB 31, 06, 03
 	RGB 08, 09, 13
 

@@ -107,17 +107,21 @@ const_value = 0
 	const PAL_NIDORAN_M
 	const PAL_NIDORINO
 	const PAL_NIDOKING
+	const PAL_CLEFFA
 	const PAL_CLEFAIRY
 	const PAL_CLEFABLE
 	const PAL_VULPIX
 	const PAL_NINETALES
+	const PAL_IGGLYBUFF
 	const PAL_JIGGLYPUFF
 	const PAL_WIGGLYTUFF
 	const PAL_ZUBAT
 	const PAL_GOLBAT
+	const PAL_CROBAT
 	const PAL_ODDISH
 	const PAL_GLOOM
 	const PAL_VILEPLUME
+	const PAL_BELLOSSOM
 	const PAL_PARAS
 	const PAL_PARASECT
 	const PAL_VENONAT

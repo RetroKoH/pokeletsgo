@@ -3203,3 +3203,7 @@ INCLUDE "text/pokedex.asm"
 SECTION "Move Names", ROMX ; BANK $2c
 
 INCLUDE "text/move_names.asm"
+
+SECTION "Pokedex Text 2", ROMX ; BANK $2b
+
+INCLUDE "text/pokedex2.asm"
