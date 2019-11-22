@@ -58,6 +58,7 @@ const_value = 1
 	const DUGTRIO    ; 51
 	const MEOWTH     ; 52
 	const PERSIAN    ; 53
+	;const PERRSERKER
 	const PSYDUCK    ; 54
 	const GOLDUCK    ; 55
 	const MANKEY     ; 56
@@ -67,6 +68,7 @@ const_value = 1
 	const POLIWAG    ; 60
 	const POLIWHIRL  ; 61
 	const POLIWRATH  ; 62
+	const POLITOED
 	const ABRA       ; 63
 	const KADABRA    ; 64
 	const ALAKAZAM   ; 65
@@ -85,9 +87,12 @@ const_value = 1
 	const RAPIDASH   ; 78
 	const SLOWPOKE   ; 79
 	const SLOWBRO    ; 80
+	const SLOWKING
 	const MAGNEMITE  ; 81
 	const MAGNETON   ; 82
+	const MAGNEZONE
 	const FARFETCHD  ; 83
+	;const SIRFETCHD
 	const DODUO      ; 84
 	const DODRIO     ; 85
 	const SEEL       ; 86
@@ -100,6 +105,7 @@ const_value = 1
 	const HAUNTER    ; 93
 	const GENGAR     ; 94
 	const ONIX       ; 95
+	const STEELIX
 	const DROWZEE    ; 96
 	const HYPNO      ; 97
 	const KRABBY     ; 98
@@ -110,29 +116,46 @@ const_value = 1
 	const EXEGGUTOR  ; 103
 	const CUBONE     ; 104
 	const MAROWAK    ; 105
+	const TYROGUE
 	const HITMONLEE  ; 106
 	const HITMONCHAN ; 107
+	const HITMONTOP
 	const LICKITUNG  ; 108
+	const LICKILICKY
 	const KOFFING    ; 109
 	const WEEZING    ; 110
 	const RHYHORN    ; 111
 	const RHYDON     ; 112
+	const RHYPERIOR
+	const HAPPINY
 	const CHANSEY    ; 113
+	const BLISSEY
 	const TANGELA    ; 114
+	const TANGROWTH
 	const KANGASKHAN ; 115
 	const HORSEA     ; 116
 	const SEADRA     ; 117
+	const KINGDRA
 	const GOLDEEN    ; 118
 	const SEAKING    ; 119
 	const STARYU     ; 120
 	const STARMIE    ; 121
+	const MIME_JR
 	const MR_MIME    ; 122
+	;const MR_RIME
 	const SCYTHER    ; 123
+	const SCIZOR
+	const SMOOCHUM
 	const JYNX       ; 124
+	const ELEKID
 	const ELECTABUZZ ; 125
+	const ELECTIVIRE
+	const MAGBY
 	const MAGMAR     ; 126
+	const MAGMORTAR
 	const PINSIR     ; 127
 	const TAUROS     ; 128
+	const MILTANK
 	const MAGIKARP   ; 129
 	const GYARADOS   ; 130
 	const LAPRAS     ; 131
@@ -141,12 +164,20 @@ const_value = 1
 	const VAPOREON   ; 134
 	const JOLTEON    ; 135
 	const FLAREON    ; 136
+	const ESPEON
+	const UMBREON
+	const LEAFEON
+	const GLACEON
+	const SYLVEON
 	const PORYGON    ; 137
+	const PORYGON2
+	const PORYGONZ
 	const OMANYTE    ; 138
 	const OMASTAR    ; 139
 	const KABUTO     ; 140
 	const KABUTOPS   ; 141
 	const AERODACTYL ; 142
+	const MUNCHLAX
 	const SNORLAX    ; 143
 	const ARTICUNO   ; 144
 	const ZAPDOS     ; 145
@@ -156,8 +187,11 @@ const_value = 1
 	const DRAGONITE  ; 149
 	const MEWTWO     ; 150
 	const MEW        ; 151
+	const MELTAN
+	const MELMETAL
+
 	const FOSSIL_KABUTOPS   ; 152
 	const FOSSIL_AERODACTYL ; 153
 	const MON_GHOST         ; 154
 
-NUM_POKEMON EQU MEW ; 151, at least until we add more
+NUM_POKEMON EQU MELMETAL ; 151, at least until we add more

@@ -130,6 +130,7 @@ const_value = 0
 	const PAL_DUGTRIO
 	const PAL_MEOWTH
 	const PAL_PERSIAN
+	;const PAL_PERRSERKER
 	const PAL_PSYDUCK
 	const PAL_GOLDUCK
 	const PAL_MANKEY
@@ -139,6 +140,7 @@ const_value = 0
 	const PAL_POLIWAG
 	const PAL_POLIWHIRL
 	const PAL_POLIWRATH
+	const PAL_POLITOED
 	const PAL_ABRA
 	const PAL_KADABRA
 	const PAL_ALAKAZAM
@@ -157,9 +159,12 @@ const_value = 0
 	const PAL_RAPIDASH
 	const PAL_SLOWPOKE
 	const PAL_SLOWBRO
+	const PAL_SLOWKING
 	const PAL_MAGNEMITE
 	const PAL_MAGNETON
+	const PAL_MAGNEZONE
 	const PAL_FARFETCH_D
+	;const PAL_SIRFETCH_D
 	const PAL_DODUO
 	const PAL_DODRIO
 	const PAL_SEEL
@@ -172,6 +177,7 @@ const_value = 0
 	const PAL_HAUNTER
 	const PAL_GENGAR
 	const PAL_ONIX
+	const PAL_STEELIX
 	const PAL_DROWZEE
 	const PAL_HYPNO
 	const PAL_KRABBY
@@ -182,29 +188,46 @@ const_value = 0
 	const PAL_EXEGGUTOR
 	const PAL_CUBONE
 	const PAL_MAROWAK
+	const PAL_TYROGUE
 	const PAL_HITMONLEE
 	const PAL_HITMONCHAN
+	const PAL_HITMONTOP
 	const PAL_LICKITUNG
+	const PAL_LICKILICKY
 	const PAL_KOFFING
 	const PAL_WEEZING
 	const PAL_RHYHORN
 	const PAL_RHYDON
+	const PAL_RHYPERIOR
+	const PAL_HAPPINY
 	const PAL_CHANSEY
+	const PAL_BLISSEY
 	const PAL_TANGELA
+	const PAL_TANGROWTH
 	const PAL_KANGASKHAN
 	const PAL_HORSEA
 	const PAL_SEADRA
+	const PAL_KINGDRA
 	const PAL_GOLDEEN
 	const PAL_SEAKING
 	const PAL_STARYU
 	const PAL_STARMIE
+	const PAL_MIME_JR
 	const PAL_MR_MIME
+	;const PAL_MR_RIME
 	const PAL_SCYTHER
+	const PAL_SCIZOR
+	const PAL_SMOOCHUM
 	const PAL_JYNX
+	const PAL_ELEKID
 	const PAL_ELECTABUZZ
+	const PAL_ELECTIVIRE
+	const PAL_MAGBY
 	const PAL_MAGMAR
+	const PAL_MAGMORTAR
 	const PAL_PINSIR
 	const PAL_TAUROS
+	const PAL_MILTANK
 	const PAL_MAGIKARP
 	const PAL_GYARADOS
 	const PAL_LAPRAS
@@ -213,12 +236,20 @@ const_value = 0
 	const PAL_VAPOREON
 	const PAL_JOLTEON
 	const PAL_FLAREON
+	const PAL_ESPEON
+	const PAL_UMBREON
+	const PAL_LEAFEON
+	const PAL_GLACEON
+	const PAL_SYLVEON
 	const PAL_PORYGON
+	const PAL_PORYGON2
+	const PAL_PORYGONZ
 	const PAL_OMANYTE
 	const PAL_OMASTAR
 	const PAL_KABUTO
 	const PAL_KABUTOPS
 	const PAL_AERODACTYL
+	const PAL_MUNCHLAX
 	const PAL_SNORLAX
 	const PAL_ARTICUNO
 	const PAL_ZAPDOS
@@ -228,6 +259,8 @@ const_value = 0
 	const PAL_DRAGONITE
 	const PAL_MEWTWO
 	const PAL_MEW
+	const PAL_MELTAN
+	const PAL_MELMETAL
 
 ; trainer palettes
 const_value = 0

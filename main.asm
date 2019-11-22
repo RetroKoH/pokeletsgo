@@ -24,8 +24,6 @@ INCLUDE "engine/black_out.asm"
 ; Mew sprites removed from here
 SECTION "Mew Base Stats",ROMX
 
-INCLUDE "data/baseStats/mew.asm"
-
 INCLUDE "engine/battle/safari_zone.asm"
 
 INCLUDE "engine/titlescreen.asm"
@@ -665,7 +663,7 @@ BaseStats: INCLUDE "data/base_stats.asm"
 INCLUDE "data/cries.asm"
 INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
-INCLUDE "engine/battle/trainer_ai.asm"
+;INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 
 TradingAnimationGraphics:
@@ -1885,7 +1883,11 @@ INCLUDE "color/animations.asm"
 
 ; Inserted pokemon images go here
 
-SECTION "bank32",ROMX
+SECTION "bank30", ROMX
+
+INCLUDE "engine/battle/trainer_ai.asm" ; moved from bank $0E
+
+SECTION "bank32", ROMX
 
 GrowlithePicFront:   INCBIN "pic/mon/growlithe.pic"
 GrowlithePicBack:    INCBIN "pic/monback/growlitheb.pic"
@@ -2167,3 +2169,67 @@ CrobatPicFront:      INCBIN "pic/mon/crobat.pic"
 CrobatPicBack:       INCBIN "pic/monback/crobatb.pic"
 BellossomPicFront:   INCBIN "pic/mon/bellossom.pic"
 BellossomPicBack:    INCBIN "pic/monback/bellossomb.pic"
+PolitoedPicFront:    INCBIN "pic/mon/politoed.pic"
+PolitoedPicBack:     INCBIN "pic/monback/politoedb.pic"
+
+SlowkingPicFront::    INCBIN "pic/mon/slowking.pic"
+SlowkingPicBack::     INCBIN "pic/monback/slowkingb.pic"
+MagnezonePicFront::   INCBIN "pic/mon/magnezone.pic"
+MagnezonePicBack::    INCBIN "pic/monback/magnezoneb.pic"
+SteelixPicFront::     INCBIN "pic/mon/steelix.pic"
+SteelixPicBack::      INCBIN "pic/monback/steelixb.pic"
+TyroguePicFront::     INCBIN "pic/mon/tyrogue.pic"
+TyroguePicBack::      INCBIN "pic/monback/tyrogueb.pic"
+HitmontopPicFront::   INCBIN "pic/mon/hitmontop.pic"
+HitmontopPicBack::    INCBIN "pic/monback/hitmontopb.pic"
+LickilickyPicFront::  INCBIN "pic/mon/lickilicky.pic"
+LickilickyPicBack::   INCBIN "pic/monback/lickilickyb.pic"
+RhyperiorPicFront::   INCBIN "pic/mon/rhyperior.pic"
+RhyperiorPicBack::    INCBIN "pic/monback/rhyperiorb.pic"
+HappinyPicFront::     INCBIN "pic/mon/happiny.pic"
+HappinyPicBack::      INCBIN "pic/monback/happinyb.pic"
+BlisseyPicFront::     INCBIN "pic/mon/blissey.pic"
+BlisseyPicBack::      INCBIN "pic/monback/blisseyb.pic"
+
+SECTION "bank42", ROMX
+
+EspeonPicFront::      INCBIN "pic/mon/espeon.pic"
+EspeonPicBack::       INCBIN "pic/monback/espeonb.pic"
+UmbreonPicFront::     INCBIN "pic/mon/umbreon.pic"
+UmbreonPicBack::      INCBIN "pic/monback/umbreonb.pic"
+LeafeonPicFront::     INCBIN "pic/mon/leafeon.pic"
+LeafeonPicBack::      INCBIN "pic/monback/leafeonb.pic"
+GlaceonPicFront::     INCBIN "pic/mon/glaceon.pic"
+GlaceonPicBack::      INCBIN "pic/monback/glaceonb.pic"
+SylveonPicFront::     INCBIN "pic/mon/sylveon.pic"
+SylveonPicBack::      INCBIN "pic/monback/sylveonb.pic"
+TangrowthPicFront::   INCBIN "pic/mon/tangrowth.pic"
+TangrowthPicBack::    INCBIN "pic/monback/tangrowthb.pic"
+KingdraPicFront::     INCBIN "pic/mon/kingdra.pic"
+KingdraPicBack::      INCBIN "pic/monback/kingdrab.pic"
+MimeJrPicFront::      INCBIN "pic/mon/mimejr.pic"
+MimeJrPicBack::       INCBIN "pic/monback/mimejrb.pic"
+ScizorPicFront::      INCBIN "pic/mon/scizor.pic"
+ScizorPicBack::       INCBIN "pic/monback/scizorb.pic"
+SmoochumPicFront::    INCBIN "pic/mon/smoochum.pic"
+SmoochumPicBack::     INCBIN "pic/monback/smoochumb.pic"
+ElekidPicFront::      INCBIN "pic/mon/elekid.pic"
+ElekidPicBack::       INCBIN "pic/monback/elekidb.pic"
+ElectivirePicFront::  INCBIN "pic/mon/electivire.pic"
+ElectivirePicBack::   INCBIN "pic/monback/electivireb.pic"
+MagbyPicFront::       INCBIN "pic/mon/magby.pic"
+MagbyPicBack::        INCBIN "pic/monback/magbyb.pic"
+MagmortarPicFront::   INCBIN "pic/mon/magmortar.pic"
+MagmortarPicBack::    INCBIN "pic/monback/magmortarb.pic"
+MiltankPicFront::     INCBIN "pic/mon/miltank.pic"
+MiltankPicBack::      INCBIN "pic/monback/miltankb.pic"
+Porygon2PicFront::    INCBIN "pic/mon/porygon2.pic"
+Porygon2PicBack::     INCBIN "pic/monback/porygon2b.pic"
+PorygonZPicFront::    INCBIN "pic/mon/porygon-z.pic"
+PorygonZPicBack::     INCBIN "pic/monback/porygon-zb.pic"
+MunchlaxPicFront::    INCBIN "pic/mon/munchlax.pic"
+MunchlaxPicBack::     INCBIN "pic/monback/munchlaxb.pic"
+MeltanPicFront::      INCBIN "pic/mon/meltan.pic"
+MeltanPicBack::       INCBIN "pic/monback/meltanb.pic"
+MelmetalPicFront::    INCBIN "pic/mon/melmetal.pic"
+MelmetalPicBack::     INCBIN "pic/monback/melmetalb.pic"

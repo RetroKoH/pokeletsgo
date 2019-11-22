@@ -57,6 +57,7 @@ PokedexEntryPointers:
 	dw DugtrioDexEntry
 	dw MeowthDexEntry
 	dw PersianDexEntry
+	;dw PerrserkerDexEntry
 	dw PsyduckDexEntry
 	dw GolduckDexEntry
 	dw MankeyDexEntry
@@ -66,6 +67,7 @@ PokedexEntryPointers:
 	dw PoliwagDexEntry
 	dw PoliwhirlDexEntry
 	dw PoliwrathDexEntry
+	dw PolitoedDexEntry
 	dw AbraDexEntry
 	dw KadabraDexEntry
 	dw AlakazamDexEntry
@@ -84,9 +86,12 @@ PokedexEntryPointers:
 	dw RapidashDexEntry
 	dw SlowpokeDexEntry
 	dw SlowbroDexEntry
+	dw SlowkingDexEntry
 	dw MagnemiteDexEntry
 	dw MagnetonDexEntry
+	dw MagnezoneDexEntry
 	dw FarfetchdDexEntry
+	;dw SirfetchdDexEntry
 	dw DoduoDexEntry
 	dw DodrioDexEntry
 	dw SeelDexEntry
@@ -99,6 +104,7 @@ PokedexEntryPointers:
 	dw HaunterDexEntry
 	dw GengarDexEntry
 	dw OnixDexEntry
+	dw SteelixDexEntry
 	dw DrowzeeDexEntry
 	dw HypnoDexEntry
 	dw KrabbyDexEntry
@@ -109,29 +115,46 @@ PokedexEntryPointers:
 	dw ExeggutorDexEntry
 	dw CuboneDexEntry
 	dw MarowakDexEntry
+	dw TyrogueDexEntry
 	dw HitmonleeDexEntry
 	dw HitmonchanDexEntry
+	dw HitmontopDexEntry
 	dw LickitungDexEntry
+	dw LickilickyDexEntry
 	dw KoffingDexEntry
 	dw WeezingDexEntry
 	dw RhyhornDexEntry
 	dw RhydonDexEntry
+	dw RhyperiorDexEntry
+	dw HappinyDexEntry
 	dw ChanseyDexEntry
+	dw BlisseyDexEntry
 	dw TangelaDexEntry
+	dw TangrowthDexEntry
 	dw KangaskhanDexEntry
 	dw HorseaDexEntry
 	dw SeadraDexEntry
+	dw KingdraDexEntry
 	dw GoldeenDexEntry
 	dw SeakingDexEntry
 	dw StaryuDexEntry
 	dw StarmieDexEntry
+	dw MimeJrDexEntry
 	dw MrMimeDexEntry
+	;dw MrRimeDexEntry
 	dw ScytherDexEntry
+	dw ScizorDexEntry
+	dw SmoochumDexEntry
 	dw JynxDexEntry
+	dw ElekidDexEntry
 	dw ElectabuzzDexEntry
+	dw ElectivireDexEntry
+	dw MagbyDexEntry
 	dw MagmarDexEntry
+	dw MagmortarDexEntry
 	dw PinsirDexEntry
 	dw TaurosDexEntry
+	dw MiltankDexEntry
 	dw MagikarpDexEntry
 	dw GyaradosDexEntry
 	dw LaprasDexEntry
@@ -140,12 +163,20 @@ PokedexEntryPointers:
 	dw VaporeonDexEntry
 	dw JolteonDexEntry
 	dw FlareonDexEntry
+	dw EspeonDexEntry
+	dw UmbreonDexEntry
+	dw LeafeonDexEntry
+	dw GlaceonDexEntry
+	dw SylveonDexEntry
 	dw PorygonDexEntry
+	dw Porygon2DexEntry
+	dw PorygonZDexEntry
 	dw OmanyteDexEntry
 	dw OmastarDexEntry
 	dw KabutoDexEntry
 	dw KabutopsDexEntry
 	dw AerodactylDexEntry
+	dw MunchlaxDexEntry
 	dw SnorlaxDexEntry
 	dw ArticunoDexEntry
 	dw ZapdosDexEntry
@@ -155,6 +186,8 @@ PokedexEntryPointers:
 	dw DragoniteDexEntry
 	dw MewtwoDexEntry
 	dw MewDexEntry
+	dw MeltanDexEntry
+	dw MelmetalDexEntry
 
 ; string: species name
 ; height in feet, inches
@@ -630,6 +663,13 @@ PoliwrathDexEntry:
 	TX_FAR _PoliwrathDexEntry
 	db "@"
 
+PolitoedDexEntry:
+	db "FROG@"
+	db 3,7
+	dw 447
+	TX_FAR _PolitoedDexEntry
+	db "@"
+
 AbraDexEntry:
 	db "PSI@"
 	db 2,11
@@ -756,6 +796,13 @@ SlowbroDexEntry:
 	TX_FAR _SlowbroDexEntry
 	db "@"
 
+SlowkingDexEntry:
+	db "ROYAL@"
+	db 6,7
+	dw 1753
+	TX_FAR _SlowkingDexEntry
+	db "@"
+
 MagnemiteDexEntry:
 	db "MAGNET@"
 	db 1,0
@@ -768,6 +815,13 @@ MagnetonDexEntry:
 	db 3,3
 	dw 1320
 	TX_FAR _MagnetonDexEntry
+	db "@"
+
+MagnezoneDexEntry:
+	db "MAGNETAREA@"
+	db 3,11
+	dw 3968
+	TX_FAR _MagnezoneDexEntry
 	db "@"
 
 FarfetchdDexEntry:
@@ -861,6 +915,13 @@ OnixDexEntry:
 	TX_FAR _OnixDexEntry
 	db "@"
 
+SteelixDexEntry:
+	db "IRON SNAKE@"
+	db 30,2
+	dw 8818
+	TX_FAR _SteelixDexEntry
+	db "@"
+
 DrowzeeDexEntry:
 	db "HYPNOSIS@"
 	db 3,3
@@ -931,6 +992,13 @@ MarowakDexEntry:
 	TX_FAR _MarowakDexEntry
 	db "@"
 
+TyrogueDexEntry:
+	db "SCUFFLE@"
+	db 2,4
+	dw 463
+	TX_FAR _TyrogueDexEntry
+	db "@"
+
 HitmonleeDexEntry:
 	db "KICKING@"
 	db 4,11
@@ -945,11 +1013,25 @@ HitmonchanDexEntry:
 	TX_FAR _HitmonchanDexEntry
 	db "@"
 
+HitmontopDexEntry:
+	db "HANDSTAND@"
+	db 4,7
+	dw 1058
+	TX_FAR _HitmontopDexEntry
+	db "@"
+
 LickitungDexEntry:
 	db "LICKING@"
 	db 3,11
 	dw 1440
 	TX_FAR _LickitungDexEntry
+	db "@"
+
+LickilickyDexEntry:
+	db "LICKING@"
+	db 5,7
+	dw 3086
+	TX_FAR _LickilickyDexEntry
 	db "@"
 
 KoffingDexEntry:
@@ -980,6 +1062,20 @@ RhydonDexEntry:
 	TX_FAR _RhydonDexEntry
 	db "@"
 
+RhyperiorDexEntry:
+	db "DRILL@"
+	db 7,10
+	dw 6235
+	TX_FAR _RhyperiorDexEntry
+	db "@"
+
+HappinyDexEntry:
+	db "PLAYHOUSE@"
+	db 2,0
+	dw 538
+	TX_FAR _HappinyDexEntry
+	db "@"
+
 ChanseyDexEntry:
 	db "EGG@"
 	db 3,7
@@ -987,11 +1083,25 @@ ChanseyDexEntry:
 	TX_FAR _ChanseyDexEntry
 	db "@"
 
+BlisseyDexEntry:
+	db "HAPPINESS@"
+	db 4,11
+	dw 1032
+	TX_FAR _BlisseyDexEntry
+	db "@"
+
 TangelaDexEntry:
 	db "VINE@"
 	db 3,3
 	dw 770
 	TX_FAR _TangelaDexEntry
+	db "@"
+
+TangrowthDexEntry:
+	db "VINE@"
+	db 6,7
+	dw 2835
+	TX_FAR _TangrowthDexEntry
 	db "@"
 
 KangaskhanDexEntry:
@@ -1013,6 +1123,13 @@ SeadraDexEntry:
 	db 3,11
 	dw 550
 	TX_FAR _SeadraDexEntry
+	db "@"
+
+KingdraDexEntry:
+	db "DRAGON@"
+	db 5,11
+	dw 3351
+	TX_FAR _KingdraDexEntry
 	db "@"
 
 GoldeenDexEntry:
@@ -1043,6 +1160,13 @@ StarmieDexEntry:
 	TX_FAR _StarmieDexEntry
 	db "@"
 
+MimeJrDexEntry:
+	db "MIME@"
+	db 2,0
+	dw 287
+	TX_FAR _MimeJrDexEntry
+	db "@"
+
 MrMimeDexEntry:
 	db "BARRIER@"
 	db 4,3
@@ -1057,11 +1181,32 @@ ScytherDexEntry:
 	TX_FAR _ScytherDexEntry
 	db "@"
 
+ScizorDexEntry:
+	db "PINCER@"
+	db 5,11
+	dw 2601
+	TX_FAR _ScizorDexEntry
+	db "@"
+
+SmoochumDexEntry:
+	db "KISS@"
+	db 1,4
+	dw 132
+	TX_FAR _SmoochumDexEntry
+	db "@"
+
 JynxDexEntry:
 	db "HUMANSHAPE@"
 	db 4,7
 	dw 900
 	TX_FAR _JynxDexEntry
+	db "@"
+
+ElekidDexEntry:
+	db "ELECTRIC@"
+	db 2,0
+	dw 518
+	TX_FAR _ElectabuzzDexEntry
 	db "@"
 
 ElectabuzzDexEntry:
@@ -1071,11 +1216,32 @@ ElectabuzzDexEntry:
 	TX_FAR _ElectabuzzDexEntry
 	db "@"
 
+ElectivireDexEntry:
+	db "THUNDER@"
+	db 5,11
+	dw 3056
+	TX_FAR _ElectivireDexEntry
+	db "@"
+
+MagbyDexEntry:
+	db "LIVE COAL@"
+	db 2,4
+	dw 472
+	TX_FAR _MagbyDexEntry
+	db "@"
+
 MagmarDexEntry:
 	db "SPITFIRE@"
 	db 4,3
 	dw 980
 	TX_FAR _MagmarDexEntry
+	db "@"
+
+MagmortarDexEntry:
+	db "BLAST@"
+	db 5,3
+	dw 1499
+	TX_FAR  _MagmortarDexEntry
 	db "@"
 
 PinsirDexEntry:
@@ -1090,6 +1256,13 @@ TaurosDexEntry:
 	db 4,7
 	dw 1950
 	TX_FAR _TaurosDexEntry
+	db "@"
+
+MiltankDexEntry:
+	db "MILK COW@"
+	db 3,11
+	dw 1664
+	TX_FAR _MiltankDexEntry
 	db "@"
 
 MagikarpDexEntry:
@@ -1148,11 +1321,60 @@ FlareonDexEntry:
 	TX_FAR _FlareonDexEntry
 	db "@"
 
+EspeonDexEntry:
+	db "SUN@"
+	db 2,11
+	dw 584
+	TX_FAR _EspeonDexEntry
+	db "@"
+
+UmbreonDexEntry:
+	db "MOONLIGHT@"
+	db 3,3
+	dw 595
+	TX_FAR _UmbreonDexEntry
+	db "@"
+
+LeafeonDexEntry:
+	db "VERDANT@"
+	db 3,3
+	dw 562
+	TX_FAR _LeafeonDexEntry
+	db "@"
+
+GlaceonDexEntry:
+	db "FRESH SNOW@"
+	db 2,7
+	dw 571
+	TX_FAR _GlaceonDexEntry
+	db "@"
+
+SylveonDexEntry:
+	db "INTERTWINE@"
+	db 3,3
+	dw 518
+	TX_FAR _SylveonDexEntry
+	db "@"
+
 PorygonDexEntry:
 	db "VIRTUAL@"
 	db 2,7
 	dw 800
 	TX_FAR _PorygonDexEntry
+	db "@"
+
+Porygon2DexEntry:
+	db "VIRTUAL@"
+	db 2,0
+	dw 716
+	TX_FAR _Porygon2DexEntry
+	db "@"
+
+PorygonZDexEntry:
+	db "VIRTUAL@"
+	db 2,11
+	dw 750
+	TX_FAR _PorygonZDexEntry
 	db "@"
 
 OmanyteDexEntry:
@@ -1188,6 +1410,13 @@ AerodactylDexEntry:
 	db 5,11
 	dw 1300
 	TX_FAR _AerodactylDexEntry
+	db "@"
+
+MunchlaxDexEntry:
+	db "BIG EATER@"
+	db 2,0
+	dw 2315
+	TX_FAR _MunchlaxDexEntry
 	db "@"
 
 SnorlaxDexEntry:
@@ -1251,6 +1480,20 @@ MewDexEntry:
 	db 1,4
 	dw 90
 	TX_FAR _MewDexEntry
+	db "@"
+
+MeltanDexEntry:
+	db "HEX NUT@"
+	db 0,8
+	dw 176
+	TX_FAR _MeltanDexEntry
+	db "@"
+
+MelmetalDexEntry:
+	db "HEX NUT@"
+	db 8,2
+	dw 17637
+	TX_FAR _MelmetalDexEntry
 	db "@"
 
 MissingNoDexEntry: ; NULL

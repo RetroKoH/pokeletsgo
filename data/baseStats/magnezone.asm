@@ -1,16 +1,16 @@
-db MAGNETON ; pokedex id
-db 50 ; base hp
-db 60 ; base attack
-db 95 ; base defense
-db 70 ; base speed
-db 120 ; base special
+db MAGNEZONE ; pokedex id
+db 70 ; base hp
+db 70 ; base attack
+db 115 ; base defense
+db 60 ; base speed
+db 130 ; base special
 db ELECTRIC ; species type 1
 db STEEL ; species type 2
 db 60 ; catch rate
 db 161 ; base exp yield
-INCBIN "pic/mon/magneton.pic",0,1 ; 66, sprite dimensions
-dw MagnetonPicFront
-dw MagnetonPicBack
+INCBIN "pic/mon/magnezone.pic",0,1 ; 66, sprite dimensions
+dw MagnezonePicFront
+dw MagnezonePicBack
 ; attacks known at lvl 0
 db TACKLE
 db SONICBOOM
@@ -25,4 +25,4 @@ db 0 ; growth rate
 	tmlearn 33,34,39
 	tmlearn 44,45
 	tmlearn 50,55
-db BANK(MagnetonPicFront)
+db BANK(MagnezonePicFront)

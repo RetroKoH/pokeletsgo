@@ -67,6 +67,7 @@ CryData:
 	db $0E, $FF, $FF; Poliwag
 	db $0E, $77, $60; Poliwhirl
 	db $0E, $00, $FF; Poliwrath
+        db $0E, $00, $FF; Politoed
 	db $1C, $C0, $01; Abra
 	db $1C, $A8, $C0; Kadabra
 	db $1C, $98, $FF; Alakazam
@@ -85,8 +86,10 @@ CryData:
 	db $25, $20, $C0; Rapidash
 	db $02, $00, $80; Slowpoke
 	db $1F, $00, $80; Slowbro
+        db $1F, $00, $80; Slowking
 	db $1C, $80, $60; Magnemite
 	db $1C, $20, $C0; Magneton
+	db $1C, $20, $C0; Magnezone
 	db $10, $DD, $01; Farfetch'd
 	db $0B, $BB, $01; Doduo
 	db $0B, $99, $20; Dodrio
@@ -100,6 +103,7 @@ CryData:
 	db $1C, $30, $40; Haunter
 	db $07, $00, $FF; Gengar
 	db $17, $FF, $C0; Onix
+	db $17, $FF, $C0; Steelix
 	db $0D, $88, $20; Drowzee
 	db $0D, $EE, $40; Hypno
 	db $20, $20, $E0; Krabby
@@ -110,29 +114,45 @@ CryData:
 	db $0D, $00, $80; Exeggutor
 	db $19, $00, $80; Cubone
 	db $08, $4F, $60; Marowak
+        db $12, $80, $C0; Tyrogue
 	db $12, $80, $C0; Hitmonlee
 	db $0C, $EE, $C0; Hitmonchan
+	db $0C, $EE, $C0; Hitmonchan
 	db $0C, $00, $80; Lickitung
+	db $0C, $00, $80; Lickilicky
 	db $12, $E6, $DD; Koffing
 	db $12, $FF, $FF; Weezing
 	db $04, $00, $80; Rhyhorn
 	db $11, $00, $80; Rhydon
+	db $11, $00, $80; Rhyperior
+	db $14, $0A, $C0; Happiny
 	db $14, $0A, $C0; Chansey
+	db $14, $0A, $C0; Blissey
 	db $12, $00, $80; Tangela
+	db $12, $00, $80; Tangrowth
 	db $03, $00, $80; Kangaskhan
 	db $19, $99, $10; Horsea
 	db $19, $3C, $01; Seadra
+	db $19, $3C, $01; Kingdra
 	db $16, $80, $40; Goldeen
 	db $16, $10, $FF; Seaking
 	db $1E, $02, $20; Staryu
 	db $1E, $00, $80; Starmie
+	db $20, $08, $40; Mime Jr.
 	db $20, $08, $40; Mr.Mime
 	db $16, $00, $80; Scyther
+	db $16, $00, $80; Scizor
+        db $0D, $FF, $FF; Smoochum
 	db $0D, $FF, $FF; Jynx
+	db $06, $8F, $FF; Elekid
 	db $06, $8F, $FF; Electabuzz
+	db $06, $8F, $FF; Electivire
+	db $04, $FF, $30; Magby
 	db $04, $FF, $30; Magmar
+	db $04, $FF, $30; Magmortar
 	db $14, $00, $80; Pinsir
 	db $1D, $11, $40; Tauros
+	db $1D, $11, $40; Miltank
 	db $17, $80, $00; Magikarp
 	db $17, $00, $80; Gyarados
 	db $1B, $00, $80; Lapras
@@ -141,12 +161,20 @@ CryData:
 	db $1A, $AA, $FF; Vaporeon
 	db $1A, $3D, $80; Jolteon
 	db $1A, $10, $20; Flareon
+	db $1A, $10, $20; Espeon
+	db $1A, $10, $20; Umbreon
+	db $1A, $10, $20; Leafeon
+	db $1A, $10, $20; Glaceon
+	db $1A, $10, $20; Sylveon
 	db $25, $AA, $FF; Porygon
+	db $25, $AA, $FF; Porygon2
+	db $25, $AA, $FF; PorygonZ
 	db $1F, $F0, $01; Omanyte
 	db $1F, $FF, $40; Omastar
 	db $16, $BB, $40; Kabuto
 	db $18, $EE, $01; Kabutops
 	db $23, $20, $F0; Aerodactyl
+	db $05, $55, $01; Munchlax
 	db $05, $55, $01; Snorlax
 	db $09, $80, $40; Articuno
 	db $18, $FF, $80; Zapdos
@@ -156,3 +184,5 @@ CryData:
 	db $0F, $3C, $C0; Dragonite
 	db $1E, $99, $FF; Mewtwo
 	db $1E, $EE, $FF; Mew
+	db $1E, $99, $FF; Meltan
+	db $1E, $99, $FF; Melmetal
