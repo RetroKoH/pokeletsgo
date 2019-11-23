@@ -145,6 +145,7 @@ MonsterPalettes:
 	;db PAL_MR_RIME
 	db PAL_SCYTHER
 	db PAL_SCIZOR
+	db PAL_SMOOCHUM
 	db PAL_JYNX
 	db PAL_ELEKID
 	db PAL_ELECTABUZZ
