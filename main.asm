@@ -160,12 +160,12 @@ BallSprite:            INCBIN "gfx/sprites/ball.2bpp"
 OmanyteSprite:         INCBIN "gfx/sprites/omanyte.2bpp"
 BoulderSprite:         INCBIN "gfx/sprites/boulder.2bpp"
 PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
-BookMapDexSprite:      INCBIN "gfx/sprites/book_map_dex.2bpp"
+BookMapSprite:         INCBIN "gfx/sprites/book_map.2bpp"
 ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
-
+PokedexSprite:         INCBIN "gfx/sprites/pokedex.2bpp"
 
 SECTION "Graphics (BANK 4)", ROMX
 

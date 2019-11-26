@@ -17,3 +17,8 @@ ICE      EQU $0E
 DRAGON   EQU $0F
 DARK     EQU $10
 FAIRY    equ $11
+
+; These are for the Physical Special split
+PHYSICAL  EQU $00
+SPECIAL   EQU $01
+STATUS_M  EQU $02

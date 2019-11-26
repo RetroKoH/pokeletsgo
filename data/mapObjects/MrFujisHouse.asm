@@ -13,7 +13,7 @@ MrFujisHouse_Object:
 	object SPRITE_SLOWBRO, 6, 4, STAY, UP, 3 ; person
 	object SPRITE_SLOWBRO, 1, 3, STAY, NONE, 4 ; person
 	object SPRITE_MR_FUJI, 3, 1, STAY, NONE, 5 ; person
-	object SPRITE_BOOK_MAP_DEX, 3, 3, STAY, NONE, 6 ; person
+	object SPRITE_BOOK_MAP, 3, 3, STAY, NONE, 6 ; person
 
 	; warp-to
 	warp_to 2, 7, MR_FUJIS_HOUSE_WIDTH

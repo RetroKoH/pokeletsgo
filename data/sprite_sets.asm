@@ -510,10 +510,10 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(PaperSheetSprite)
 
-	; SPRITE_BOOK_MAP_DEX
-	dw BookMapDexSprite
+	; SPRITE_BOOK_MAP
+	dw BookMapSprite
 	db $40 ; byte count
-	db BANK(BookMapDexSprite)
+	db BANK(BookMapSprite)
 
 	; SPRITE_CLIPBOARD
 	dw ClipboardSprite
@@ -535,10 +535,10 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(OldAmberSprite)
 
-	; SPRITE_LYING_OLD_MAN_UNUSED_1
-	dw LyingOldManSprite
+	; SPRITE_POKEDEX
+	dw PokedexSprite
 	db $40 ; byte count
-	db BANK(LyingOldManSprite)
+	db BANK(PokedexSprite)
 
 	; SPRITE_LYING_OLD_MAN_UNUSED_2
 	dw LyingOldManSprite

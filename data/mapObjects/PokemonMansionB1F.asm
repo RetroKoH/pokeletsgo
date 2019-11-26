@@ -13,7 +13,7 @@ PokemonMansionB1F_Object:
 	object SPRITE_BALL, 1, 22, STAY, NONE, 4, FULL_RESTORE
 	object SPRITE_BALL, 19, 25, STAY, NONE, 5, TM_14
 	object SPRITE_BALL, 5, 4, STAY, NONE, 6, TM_22
-	object SPRITE_BOOK_MAP_DEX, 16, 20, STAY, NONE, 7 ; person
+	object SPRITE_BOOK_MAP, 16, 20, STAY, NONE, 7 ; person
 	object SPRITE_BALL, 5, 13, STAY, NONE, 8, SECRET_KEY
 
 	; warp-to

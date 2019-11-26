@@ -1,9 +1,9 @@
 UseItem_:
 	ld a, 1
 	ld [wActionResultOrTookBattleTurn], a ; initialise to success value
-	ld a, [wcf91] ;contains item_ID
-	cp HM_01
-	jp nc, ItemUseTMHM
+	ld a, [wcf91]                         ; a contains item_ID
+	cp HM_01                              ; is this item a TM/HM?
+	jp nc, ItemUseTMHM                    ; if yes, branch
 	ld hl, ItemUsePtrTable
 	dec a
 	add a
@@ -2196,22 +2196,22 @@ UnusableItem:
 	jp ItemUseNotTime
 
 ItemUseTMHM:
-	ld a, [wIsInBattle]
-	and a
-	jp nz, ItemUseNotTime
+	ld a, [wIsInBattle]    ; are we in battle?
+	and a                  ; if value is not ZERO (0), we are in battle.
+	jp nz, ItemUseNotTime  ; item can't be used in battle. Branch away
 	ld a, [wcf91]
 	sub TM_01
 	push af
 	jr nc, .skipAdding
-	add 55 ; if item is an HM, add 55
+	add 55                 ; if item is an HM, add 55
 .skipAdding
 	inc a
 	ld [wd11e], a
-	predef TMToMove ; get move ID from TM/HM ID
+	predef TMToMove        ; get move ID from TM/HM ID
 	ld a, [wd11e]
 	ld [wMoveNum], a
 	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call CopyStringToCF4B  ; copy name to wcf4b
 	pop af
 	ld hl, BootedUpTMText
 	jr nc, .printBootedUpMachineText
