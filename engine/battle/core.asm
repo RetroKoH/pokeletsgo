@@ -2943,7 +2943,7 @@ PrintMenuItem:
 	coord hl, 1, 10
 	ld de, DisabledText
 	call PlaceString
-	jr .moveDisabled
+	jp .moveDisabled
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -2971,14 +2971,44 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wcd6d], a
-; print TYPE/<type> and <curPP>/<maxPP>
+; Physical/Special/Status text
+	ld a, [wPlayerSelectedMove]
+
+	;call PhysicalSpecialSplit
+	; load byte from move data instead of jumping to a routine
+	push hl
+	ld hl, Moves
+	ld bc, MoveEnd - Moves
+	call AddNTimes
+	ld a, BANK(Moves)
+	call FarCopyData
+	ld a, [wcd6d + 4] ; Phys/Spec category is byte #5 (4; zero-based) of move data
+	pop hl
+
+	cp a, STATUS_M
+	jp z, .OtherTextShow
+	cp a, SPECIAL
+	jp nz, .PhysicalTextShow
 	coord hl, 1, 9
-	ld de, TypeText
+	ld de,SpecialText
 	call PlaceString
+	jp .ContinueRoutine
+.PhysicalTextShow
+	coord hl, 1,9
+	ld de,PhysicalText
+	call PlaceString
+	jr .ContinueRoutine
+.OtherTextShow
+	coord hl, 1,9
+	ld de,OtherMText
+	call PlaceString
+
+.ContinueRoutine
+; print TYPE/<type> and <curPP>/<maxPP>
 	coord hl, 7, 11
 	ld [hl], "/"
-	coord hl, 5, 9
-	ld [hl], "/"
+	;coord hl, 5, 9
+	;ld [hl], "/"
 	coord hl, 5, 11
 	ld de, wcd6d
 	lb bc, 1, 2
@@ -2996,7 +3026,16 @@ PrintMenuItem:
 	jp Delay3
 
 DisabledText:
-	db "disabled!@"
+	db "DISABLED!@"
+
+OtherMText:
+	db "STATUS@"
+
+PhysicalText: ; Added for PS Split
+	db "PHYSICAL@"
+
+SpecialText: ; added for PS Split
+	db "SPECIAL@"
 
 TypeText:
 	db "TYPE@"
@@ -4252,9 +4291,11 @@ GetDamageVarsForPlayerAttack:
 	and a
 	ld d, a ; d = move power
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wPlayerMoveType]
-	cp FIRE ; types >= FIRE are all special
-	jr nc, .specialAttack
+
+	ld hl, wPlayerMoveCategory
+	ld a, [hl]              ; a = move category
+	cp SPECIAL              ; PHYSICAL/SPECIAL SPLIT: No longer based on type
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
@@ -4365,9 +4406,11 @@ GetDamageVarsForEnemyAttack:
 	ld d, a ; d = move power
 	and a
 	ret z ; return if move power is zero
-	ld a, [hl] ; a = [wEnemyMoveType]
-	cp FIRE ; types >= FIRE are all special
-	jr nc, .specialAttack
+
+	ld hl, wEnemyMoveCategory
+	ld a, [hl]              ; a = move category
+	cp SPECIAL              ; PHYSICAL/SPECIAL SPLIT: No longer based on type
+	jr z, .specialAttack
 .physicalAttack
 	ld hl, wBattleMonDefense
 	ld a, [hli]

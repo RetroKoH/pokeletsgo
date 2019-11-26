@@ -19,7 +19,7 @@ DontAbandonLearning:
 .findEmptyMoveSlotLoop
 	ld a, [hl]
 	and a
-	jr z, .next
+	jr z, .learn
 	inc hl
 	dec b
 	jr nz, .findEmptyMoveSlotLoop
@@ -35,7 +35,7 @@ DontAbandonLearning:
 	call PrintText
 	pop de
 	pop hl
-.next
+.learn
 	ld a, [wMoveNum]
 	ld [hl], a
 	ld bc, wPartyMon1PP - wPartyMon1Moves
@@ -49,7 +49,7 @@ DontAbandonLearning:
 	ld de, wBuffer
 	ld a, BANK(Moves)
 	call FarCopyData
-	ld a, [wBuffer + 5] ; a = move's max PP
+	ld a, [wBuffer + 6] ; PP is byte #7 (6; zero-based) of move data [Physical/Special Split]
 	pop de
 	pop hl
 	ld [hl], a

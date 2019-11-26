@@ -481,7 +481,7 @@ WriteMonMoves:
 	ld de, wBuffer
 	ld a, BANK(Moves)
 	call FarCopyData
-	ld a, [wBuffer + 5]
+	ld a, [wBuffer + 6] ; PP is byte #7 (6; zero-based) of move data [Physical/Special Split]
 	pop hl
 	ld [hl], a
 	pop hl

@@ -16,7 +16,9 @@ PSYCHIC  EQU $0D
 ICE      EQU $0E
 DRAGON   EQU $0F
 DARK     EQU $10
-FAIRY    equ $11
+FAIRY    EQU $11
+CRYSTAL  EQU $12 ; CRYSTAL ONIX ONLY
+TYPE_UNK EQU $13 ; Typeless (Struggle)
 
 ; These are for the Physical Special split
 PHYSICAL  EQU $00

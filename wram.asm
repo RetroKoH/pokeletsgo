@@ -1559,9 +1559,13 @@ wEnemyMovePower:: ; cfce
 	ds 1
 wEnemyMoveType:: ; cfcf
 	ds 1
+wEnemyMoveCategory::
+	ds 1
 wEnemyMoveAccuracy:: ; cfd0
 	ds 1
 wEnemyMoveMaxPP:: ; cfd1
+	ds 1
+wEnemyMoveEffectAcc::
 	ds 1
 wPlayerMoveNum:: ; cfd2
 	ds 1
@@ -1571,11 +1575,15 @@ wPlayerMovePower:: ; cfd4
 	ds 1
 wPlayerMoveType:: ; cfd5
 	ds 1
+wPlayerMoveCategory::
+	ds 1
 wPlayerMoveAccuracy:: ; cfd6
 	ds 1
 wPlayerMoveMaxPP:: ; cfd7
 	ds 1
-
+wPlayerMoveEffectAcc::
+	ds 1
+; RAM SHIFTED WITH ADDITIONS
 
 wEnemyMonSpecies2:: ; cfd8
 	ds 1
@@ -1597,11 +1605,11 @@ wBattleMon:: battle_struct wBattleMon ; d014
 wTrainerClass:: ; d031
 	ds 1
 
-	ds 1
+;	ds 1
 
 wTrainerPicPointer:: ; d033
 	ds 2
-	ds 1
+;	ds 1
 
 wTempMoveNameBuffer:: ; d036
 
@@ -1617,7 +1625,7 @@ wTrainerBaseMoney:: ; d046
 wMissableObjectCounter:: ; d048
 	ds 1
 
-	ds 1
+;	ds 1
 
 wTrainerName:: ; d04a
 ; 13 bytes for the letters of the opposing trainer
@@ -1741,7 +1749,7 @@ wPlayerDisabledMove:: ; d06d
 ; low nibble: disable turns left
 	ds 1
 
-	ds 1
+;	ds 1
 
 wEnemyNumAttacksLeft:: ; d06f
 ; when the enemy is attacking multiple times, the number of attacks left

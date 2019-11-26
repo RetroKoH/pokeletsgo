@@ -18,6 +18,8 @@ TypeNames:
 	dw .Dragon
 	dw .Dark
         dw .Fairy
+        dw .Unk ; Crystal
+        dw .Unk ; UNK
 
 .Normal:   db "NORMAL@"
 .Fighting: db "FIGHTING@"
@@ -37,3 +39,4 @@ TypeNames:
 .Dragon:   db "DRAGON@"
 .Dark:     db "DARK@"
 .Fairy:    db "FAIRY@"
+.Unk:      db "UNKNOWN@"

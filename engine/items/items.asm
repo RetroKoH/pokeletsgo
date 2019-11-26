@@ -2540,7 +2540,7 @@ GetMaxPP:
 	ld de, wcd6d
 	ld a, BANK(Moves)
 	call FarCopyData
-	ld de, wcd6d + 5 ; PP is byte 5 of move data
+	ld de, wcd6d + 6  ; PP is byte #7 (6; zero-based) of move data due to Physical/Special Split
 	ld a, [de]
 	ld b, a ; b = normal max PP
 	pop hl
