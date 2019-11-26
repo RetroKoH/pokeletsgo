@@ -85,7 +85,7 @@ const_value = 1
 	const SPRITE_OLD_AMBER_COPY            ; $44
 	const SPRITE_OLD_AMBER                 ; $45
 	const SPRITE_POKEDEX                   ; $46 Was SPRITE_LYING_OLD_MAN_UNUSED_1
-	const SPRITE_LYING_OLD_MAN_UNUSED_2    ; $47
+	const SPRITE_TOWN_MAP                  ; $47 Was SPRITE_LYING_OLD_MAN_UNUSED_2
 	const SPRITE_LYING_OLD_MAN             ; $48
 
 ; different kinds of people events

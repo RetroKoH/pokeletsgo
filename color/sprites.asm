@@ -500,7 +500,7 @@ SpritePaletteAssignments: ; Characters on the overworld
 	db SPR_PAL_BROWN
 
 	; 0x43: SPRITE_SNORLAX
-	db SPR_PAL_ORANGE
+	db SPR_PAL_BLUE
 
 	; 0x44: SPRITE_OLD_AMBER_COPY
 	db SPR_PAL_ROCK
@@ -508,11 +508,11 @@ SpritePaletteAssignments: ; Characters on the overworld
 	; 0x45: SPRITE_OLD_AMBER
 	db SPR_PAL_ROCK
 
-	; 0x46: SPRITE_LYING_OLD_MAN_UNUSED_1
-	db SPR_PAL_BROWN
+	; 0x46: SPRITE_POKEDEX
+	db SPR_PAL_ORANGE
 
-	; 0x47: SPRITE_LYING_OLD_MAN_UNUSED_2
-	db SPR_PAL_BROWN
+	; 0x47: SPRITE_TOWN_MAP
+	db SPR_PAL_BLUE
 
 	; 0x48: SPRITE_LYING_OLD_MAN
 	db SPR_PAL_BROWN

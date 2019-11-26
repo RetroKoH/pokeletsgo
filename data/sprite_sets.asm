@@ -83,7 +83,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; sprite set $03
 	db SPRITE_LITTLE_GIRL
@@ -96,7 +96,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_GUARD
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; sprite set $04
 	db SPRITE_FOULARD_WOMAN
@@ -109,7 +109,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; sprite set $05
 	db SPRITE_LITTLE_GIRL
@@ -135,7 +135,7 @@ SpriteSets:
 	db SPRITE_GUARD
 	db SPRITE_GAMBLER
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; sprite set $07
 	db SPRITE_ROCKET
@@ -148,7 +148,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_SLOWBRO
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; sprite set $08
 	db SPRITE_BIKER
@@ -540,10 +540,10 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(PokedexSprite)
 
-	; SPRITE_LYING_OLD_MAN_UNUSED_2
-	dw LyingOldManSprite
+	; SPRITE_TOWN_MAP
+	dw TownMapSprite
 	db $40 ; byte count
-	db BANK(LyingOldManSprite)
+	db BANK(TownMapSprite)
 
 	; SPRITE_LYING_OLD_MAN
 	dw LyingOldManSprite

@@ -166,6 +166,7 @@ SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
 PokedexSprite:         INCBIN "gfx/sprites/pokedex.2bpp"
+TownMapSprite:         INCBIN "gfx/sprites/townmap.2bpp"
 
 SECTION "Graphics (BANK 4)", ROMX
 
