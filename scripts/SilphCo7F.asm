@@ -185,20 +185,27 @@ SilphCo7Script3:
 	call SaveEndBattleTextPointers
 	ld a, OPP_SONY2
 	ld [wCurOpponent], a
+
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .asm_51cb6
-	ld a, $7
-	jr .asm_51cc0
-.asm_51cb6
-	cp STARTER3
-	jr nz, .asm_51cbe
-	ld a, $8
-	jr .asm_51cc0
-.asm_51cbe
-	ld a, $9
-.asm_51cc0
+        cp JOLTEON
+        jr nz, .notJolteon
+        ld a, $7
+	jr .done
+.notJolteon
+        cp FLAREON
+        jr nz, .notFlareon
+        ld a, $8
+	jr .done
+.notFlareon
+        cp VAPOREON
+        jr nz, .isPikachu
+        ld a, $9
+	jr .done
+.isPikachu
+	ld a, $A ; Raichu party
+.done
 	ld [wTrainerNo], a
+
 	ld a, $4
 	jp SilphCo7Text_51c10
 

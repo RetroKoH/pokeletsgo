@@ -102,17 +102,12 @@ SSAnne2Script1:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $1
+	cp RAICHU             ; Did Blue pick Pikachu?
+	jr z, .isPikachu      ; if yes, branch
+	ld a, $1 ; Spearow/Eevee party
 	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $2
-	jr .done
-.Charmander
-	ld a, $3
+.isPikachu
+	ld a, $2 ; Pidgeotto/Pikachu party
 .done
 	ld [wTrainerNo], a
 

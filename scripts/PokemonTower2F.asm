@@ -147,17 +147,22 @@ PokemonTower2Text1:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $4
+        cp JOLTEON
+        jr nz, .notJolteon
+        ld a, $3
 	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $5
+.notJolteon
+        cp FLAREON
+        jr nz, .notFlareon
+        ld a, $4
 	jr .done
-.Charmander
-	ld a, $6
+.notFlareon
+        cp VAPOREON
+        jr nz, .isPikachu
+        ld a, $5
+	jr .done
+.isPikachu
+	ld a, $6 ; Raichu party
 .done
 	ld [wTrainerNo], a
 

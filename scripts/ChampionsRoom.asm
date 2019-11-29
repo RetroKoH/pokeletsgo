@@ -69,18 +69,23 @@ GaryScript2:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotStarter2
-	ld a, $1
-	jr .saveTrainerId
-.NotStarter2
-	cp STARTER3
-	jr nz, .NotStarter3
-	ld a, $2
-	jr .saveTrainerId
-.NotStarter3
-	ld a, $3
-.saveTrainerId
+        cp JOLTEON
+        jr nz, .notJolteon
+        ld a, $1
+	jr .done
+.notJolteon
+        cp FLAREON
+        jr nz, .notFlareon
+        ld a, $2
+	jr .done
+.notFlareon
+        cp VAPOREON
+        jr nz, .isPikachu
+        ld a, $3
+	jr .done
+.isPikachu
+	ld a, $4 ; Raichu party
+.done
 	ld [wTrainerNo], a
 
 	xor a

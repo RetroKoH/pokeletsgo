@@ -1,65 +1,69 @@
 PalletTown_Script:
-	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	jr z, .next
+	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK       ; Have you received Pokeballs from Oak?
+	jr z, .next                                   ; if not, branch
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 .next
 	call EnableAutoTextBoxDrawing
 	ld hl, PalletTown_ScriptPointers
-	ld a, [wPalletTownCurScript]
-	jp CallFunctionInTable
+	ld a, [wPalletTownCurScript]                  ; Get current Pallet Town Script index
+	jp CallFunctionInTable                        ; jump to the corresponding code
 
 PalletTown_ScriptPointers:
-	dw PalletTownScript0
-	dw PalletTownScript1
-	dw PalletTownScript2
-	dw PalletTownScript3
-	dw PalletTownScript4
-	dw PalletTownScript5
-	dw PalletTownScript6
+	dw PalletTownScript_StopPlayer
+	dw PalletTownScript_OakAppears
+	dw PalletTownScript_OakWalksToPlayer
+	dw PalletTownScript_OakMeetsPlayer
+	dw PalletTownScript7
+	dw PalletTownScript8
+	dw PalletTownScript9
 
-PalletTownScript0:
-	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
-	ret nz
-	ld a, [wYCoord]
-	cp 1 ; is player near north exit?
-	ret nz
+PalletTownScript_StopPlayer:
+	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB ; Has Professor Oak brought you to his lab for a starter?
+	ret nz                                 ; if yes, branch
+	ld a, [wYCoord]                        ; load current y-coordinate
+	cp 1                                   ; is player at the north exit?
+	ret nz                                 ; if not, branch
+
+;.asm_18e40
 	xor a
 	ld [hJoyHeld], a
-	ld a, PLAYER_DIR_DOWN
-	ld [wPlayerMovingDirection], a
-	ld a, $FF
-	call PlaySound ; stop music
-	ld a, BANK(Music_MeetProfOak)
-	ld c, a
-	ld a, MUSIC_MEET_PROF_OAK ; “oak appears” music
-	call PlayMusic
 	ld a, $FC
 	ld [wJoyIgnore], a
-	SetEvent EVENT_OAK_APPEARED_IN_PALLET
+	ld a, PLAYER_DIR_UP
+	ld [wPlayerMovingDirection], a         ; set player to face up (under normal circumstances, they would be anyway)
+	ld a, $FF
+	call PlaySound                         ; stop music
+	ld a, BANK(Music_MeetProfOak)
+	ld c, a
+	ld a, MUSIC_MEET_PROF_OAK
+	call PlayMusic                         ; play Prof. Oak's music
+	SetEvent EVENT_OAK_APPEARED_IN_PALLET  ; Set flag so that we can leave Pallet after the upcoming Lab cutscene
 
 	; trigger the next script
 	ld a, 1
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript1:
+PalletTownScript_OakAppears:
+	ld a, $FF ^ (A_BUTTON | B_BUTTON)
+	ld [wJoyIgnore], a                      ; Enable A/B to speed up upcoming text box
 	xor a
 	ld [wcf0d], a
 	ld a, 1
 	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	call DisplayTextID                      ; "OAK: Hey! Wait! Don't go out!"
 	ld a, $FF
-	ld [wJoyIgnore], a
+	ld [wJoyIgnore], a                      ; Disable all buttons again
 	ld a, HS_PALLET_TOWN_OAK
 	ld [wMissableObjectIndex], a
-	predef ShowObject
+	predef ShowObject                       ; Spawn Oak object
 
 	; trigger the next script
 	ld a, 2
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript2:
+PalletTownScript_OakWalksToPlayer:
 	ld a, 1
 	ld [H_SPRITEINDEX], a
 	ld a, SPRITE_FACING_UP
@@ -76,23 +80,23 @@ PalletTownScript2:
 	predef CalcPositionOfPlayerRelativeToNPC
 	ld hl, hNPCPlayerYDistance
 	dec [hl]
-	predef FindPathToPlayer ; load Oak’s movement into wNPCMovementDirections2
+	predef FindPathToPlayer        ; load Oak's movement into wNPCMovementDirections2
 	ld de, wNPCMovementDirections2
 	ld a, 1 ; oak
 	ld [H_SPRITEINDEX], a
 	call MoveSprite
-	ld a, $FF
-	ld [wJoyIgnore], a
 
 	; trigger the next script
 	ld a, 3
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript3:
+PalletTownScript_OakMeetsPlayer:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
+	ld a, $FF ^ (A_BUTTON | B_BUTTON)
+	ld [wJoyIgnore], a                      ; Enable A/B to advance upcoming text box
 	xor a ; ld a, SPRITE_FACING_DOWN
 	ld [wSpriteStateData1 + 9], a
 	ld a, 1
@@ -119,7 +123,7 @@ PalletTownScript3:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript4:
+PalletTownScript7:
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a ; is the movement script over?
 	ret nz
@@ -129,7 +133,7 @@ PalletTownScript4:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript5:
+PalletTownScript8:
 	CheckEvent EVENT_DAISY_WALKING
 	jr nz, .next
 	CheckBothEventsSet EVENT_GOT_TOWN_MAP, EVENT_ENTERED_BLUES_HOUSE, 1
@@ -145,7 +149,8 @@ PalletTownScript5:
 	CheckEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	ret z
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
-PalletTownScript6:
+
+PalletTownScript9:
 	ret
 
 PalletTown_TextPointers:

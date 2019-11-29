@@ -138,18 +138,15 @@ CeruleanCityScript1:
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter
+	ld a, OPP_SONY1
+	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotSquirtle
-	ld a, $7
+	cp RAICHU             ; Did Blue pick Pikachu?
+	jr z, .isPikachu      ; if yes, branch
+	ld a, $5 ; Spearow/Eevee party
 	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
-	ld a, $8
-	jr .done
-.Charmander
-	ld a, $9
+.isPikachu
+	ld a, $6 ; Pidgeotto/Pikachu party
 .done
 	ld [wTrainerNo], a
 

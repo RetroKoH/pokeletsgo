@@ -329,14 +329,13 @@ MapHS27:
 	db BLUES_HOUSE,$02,Hide
 	db BLUES_HOUSE,$03,Show
 MapHS28:
-	db OAKS_LAB,$01,Show
-	db OAKS_LAB,$02,Show
-	db OAKS_LAB,$03,Show
-	db OAKS_LAB,$04,Show
-	db OAKS_LAB,$05,Hide
-	db OAKS_LAB,$06,Show
-	db OAKS_LAB,$07,Show
-	db OAKS_LAB,$08,Hide
+	db OAKS_LAB,$01,Show ; Blue
+	db OAKS_LAB,$02,Show ; Pika Ball
+	db OAKS_LAB,$03,Show ; Eevee Ball
+	db OAKS_LAB,$04,Hide ; Oak (main)
+	db OAKS_LAB,$05,Show ; Pokedex
+	db OAKS_LAB,$06,Show ; Pokedex
+	db OAKS_LAB,$07,Hide ; Oak (intro)
 MapHS2D:
 	db VIRIDIAN_GYM,$01,Show
 	db VIRIDIAN_GYM,$0B,Show

@@ -2,45 +2,43 @@ _OaksLabGaryText1::
 	text "<RIVAL>: Yo"
 	line "<PLAYER>! Gramps"
 	cont "isn't around!"
+
+	para "I ran here 'cos"
+	line "he said he had a"
+	cont "#MON for me."
 	done
 
 _OaksLabText40::
-	text "<RIVAL>: Heh, I"
-	line "don't need to be"
-	cont "greedy like you!"
+	text "<RIVAL>: Humph!"
+	line "I'll get a better"
+	cont "#MON than you!"
 
 	para "Go ahead and"
 	line "choose, <PLAYER>!"
 	done
 
 _OaksLabText41::
-	text "<RIVAL>: My"
+	text "<RIVAL>: Heh, my"
 	line "#MON looks a"
 	cont "lot stronger."
 	done
 
 _OaksLabText39::
-	text "Those are #"
-	line "BALLs. They"
-	cont "contain #MON!"
+	text "That's a #"
+	line "BALL. There's a"
+	cont "#MON inside!"
 	done
 
-_OaksLabCharmanderText::
-	text "So! You want the"
-	line "fire #MON,"
-	cont "CHARMANDER?"
+_OaksLabPikachuText::
+	text "So! You want"
+	line "that #MON,"
+	cont "PIKACHU?"
 	done
 
-_OaksLabSquirtleText::
-	text "So! You want the"
-	line "water #MON,"
-	cont "SQUIRTLE?"
-	done
-
-_OaksLabBulbasaurText::
-	text "So! You want the"
-	line "plant #MON,"
-	cont "BULBASAUR?"
+_OaksLabEeveeText::
+	text "So! You want"
+	line "that #MON,"
+	cont "EEVEE?"
 	done
 
 _OaksLabMonEnergeticText::
@@ -53,11 +51,6 @@ _OaksLabReceivedMonText::
 	line "a @"
 	TX_RAM wcd6d
 	text "!@@"
-
-_OaksLabLastMonText::
-	text "That's PROF.OAK's"
-	line "last #MON!"
-	done
 
 _OaksLabText_1d2f0::
 	text "OAK: Now, <PLAYER>,"
@@ -188,31 +181,26 @@ _OaksLabRivalWaitingText::
 	done
 
 _OaksLabChooseMonText::
-	text "OAK: <RIVAL>?"
-	line "Let me think..."
+	text "OAK: Hmm? <RIVAL>?"
+	line "Why are you here"
+	cont "already?"
 
-	para "Oh, that's right,"
-	line "I told you to"
-	cont "come! Just wait!"
+	para "I said for you to"
+	line "come by later..."
 
-	para "Here, <PLAYER>!"
+	para "Ah, whatever!"
+	line "Just wait there."
 
-	para "There are 3"
-	line "#MON here!"
+	para "Look, <PLAYER>! Do"
+	line "you see the balls"
+	cont "on the table?"
 
-	para "Haha!"
+	para "Those are #"
+	line "BALLs. They have"
+	cont "#MON inside."
 
-	para "They are inside"
-	line "the # BALLs."
-
-	para "When I was young,"
-	line "I was a serious"
-	cont "#MON trainer!"
-
-	para "In my old age, I"
-	line "have only 3 left,"
-	cont "but you can have"
-	cont "one! Choose!"
+	para "You may have one!"
+	line "Go on, pick one!"
 	done
 
 _OaksLabRivalInterjectionText::

@@ -21,17 +21,42 @@ Route22Script_50ece:
 Route22Script7:
 	ret
 
-Route22Script_50ed6:
+Route22Script_SetFirstRivalTeam: ; define which team rival uses, and fight it
+	ld a, OPP_SONY1
+	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-	ld b, a
-.asm_50eda
-	ld a, [hli]
-	cp b
-	jr z, .asm_50ee1
-	inc hl
-	jr .asm_50eda
-.asm_50ee1
-	ld a, [hl]
+	cp RAICHU             ; Did Blue pick Pikachu?
+	jr nz, .notPikachu    ; if not, branch
+	ld a, $3 ; Spearow/Eevee party
+	jr .done
+.notPikachu
+	ld a, $4 ; Pidgey/Pikachu party
+.done
+	ld [wTrainerNo], a
+	ret
+
+Route22Script_SetLastRivalTeam: ; define which team rival uses, and fight it
+	ld a, OPP_SONY2
+	ld [wCurOpponent], a
+
+	ld a, [wRivalStarter]
+        cp JOLTEON
+        jr nz, .notJolteon
+        ld a, $B
+	jr .done
+.notJolteon
+        cp FLAREON
+        jr nz, .notFlareon
+        ld a, $C
+	jr .done
+.notFlareon
+        cp VAPOREON
+        jr nz, .isPikachu
+        ld a, $D
+	jr .done
+.isPikachu
+	ld a, $E ; Raichu party
+.done
 	ld [wTrainerNo], a
 	ret
 
@@ -131,24 +156,23 @@ Route22Script1:
 	ld hl, Route22RivalDefeatedText1
 	ld de, Route22Text_511bc
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY1
-	ld [wCurOpponent], a
-	ld hl, StarterMons_50faf
-	call Route22Script_50ed6
+	call Route22Script_SetFirstRivalTeam
 	ld a, $2
 	ld [wRoute22CurScript], a
 	ret
 
-StarterMons_50faf:
-; starter the rival picked, rival trainer number
-	db STARTER2,$04
-	db STARTER3,$05
-	db STARTER1,$06
-
-Route22Script2:
+Route22Script2: ; After the first rival battle is finished
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route22Script_50ece
+	ld a, [wRivalStarter]
+	cp RAICHU                 ; did Blue pick Pikachu?
+	jr z, .asm_50fc9          ; if yes, branch
+	cp FLAREON                ; is Blue set to evolve to Flareon (2)? (You won the first battle)
+	jr nz, .asm_50fc9         ; if not, branch
+	ld a, JOLTEON             ; set to Jolteon since you won this battle (1)
+	ld [wRivalStarter], a
+.asm_50fc9
 	ld a, [wSpriteStateData1 + 9]
 	and a ; cp SPRITE_FACING_DOWN
 	jr nz, .notDown
@@ -290,7 +314,7 @@ Route22Script4:
 	ld a, OPP_SONY2
 	ld [wCurOpponent], a
 	ld hl, StarterMons_510d9
-	call Route22Script_50ed6
+	call Route22Script_SetFirstRivalTeam
 	ld a, $5
 	ld [wRoute22CurScript], a
 	ret

@@ -10,27 +10,27 @@ OaksLab_Script:
 	jp CallFunctionInTable
 
 OaksLab_ScriptPointers:
-	dw OaksLabScript0
-	dw OaksLabScript1
-	dw OaksLabScript2
-	dw OaksLabScript3
-	dw OaksLabScript4
-	dw OaksLabScript5
-	dw OaksLabScript6
-	dw OaksLabScript7
-	dw OaksLabScript8
-	dw OaksLabScript9
-	dw OaksLabScript10
-	dw OaksLabScript11
-	dw OaksLabScript12
-	dw OaksLabScript13
-	dw OaksLabScript14
-	dw OaksLabScript15
-	dw OaksLabScript16
-	dw OaksLabScript17
-	dw OaksLabScript18
+	dw OaksLabScript_EnterLabWithOak
+	dw OaksLabScript_OakWalksIntoTheLab
+	dw OaksLabScript_OakWalksOffScreen
+	dw OaksLabScript_PlayerFollowsOak
+	dw OaksLabScript_PlayerMeetsOakAndBlue
+	dw OaksLabScript_AsksPlayerToChooseStarter
+	dw OaksLabScript_PreventPlayerFromLeavingEarly
+	dw OaksLabScript_ReturnToPreviousScript
+	dw OaksLabScript_PickStarter
+	dw OaksLabScript_RivalStarter
+	dw OaksLabScript_BlueChallengesPlayer
+	dw OaksLabScript_BlueBattle1
+	dw OaksLabScript_AfterBlueBattle1
+	dw OaksLabScript_BlueLeavesLab
+	dw OaksLabScript_BlueHasLeft
+	dw OaksLabScript_BlueReturns
+	dw OaksLabScript_OakGivesPokedex
+	dw OaksLabScript_BlueHasLeftAgain
+	dw OaksLabScript_EventsEnd
 
-OaksLabScript0:
+OaksLabScript_EnterLabWithOak:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
 	ret z
 	ld a, [wNPCMovementScriptFunctionNum]
@@ -46,8 +46,8 @@ OaksLabScript0:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript1:
-	ld a, $8
+OaksLabScript_OakWalksIntoTheLab:
+	ld a, $7
 	ld [H_SPRITEINDEX], a
 	ld de, OakEntryMovement
 	call MoveSprite
@@ -62,7 +62,7 @@ OakEntryMovement:
 	db NPC_MOVEMENT_UP
 	db $FF
 
-OaksLabScript2:
+OaksLabScript_OakWalksOffScreen:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -77,7 +77,7 @@ OaksLabScript2:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript3:
+OaksLabScript_PlayerFollowsOak:
 	call Delay3
 	ld hl, wSimulatedJoypadStatesEnd
 	ld de, PlayerEntryMovementRLE
@@ -104,7 +104,7 @@ PlayerEntryMovementRLE:
 	db D_UP,$8
 	db $ff
 
-OaksLabScript4:
+OaksLabScript_PlayerMeetsOakAndBlue:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -124,9 +124,13 @@ OaksLabScript4:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript5:
+OaksLabScript_AsksPlayerToChooseStarter:
 	ld a, $fc
 	ld [wJoyIgnore], a
+	ld a, $10
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	call Delay3
 	ld a, $11
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -138,10 +142,6 @@ OaksLabScript5:
 	ld a, $13
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	call Delay3
-	ld a, $14
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
 	SetEvent EVENT_OAK_ASKED_TO_CHOOSE_MON
 	xor a
 	ld [wJoyIgnore], a
@@ -150,7 +150,7 @@ OaksLabScript5:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript6:
+OaksLabScript_PreventPlayerFromLeavingEarly:
 	ld a, [wYCoord]
 	cp $6
 	ret nz
@@ -165,7 +165,7 @@ OaksLabScript6:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	call UpdateSprites
-	ld a, $c
+	ld a, $B
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, $1
@@ -180,7 +180,7 @@ OaksLabScript6:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript7:
+OaksLabScript_ReturnToPreviousScript:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -190,44 +190,19 @@ OaksLabScript7:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript8:
+OaksLabScript_PickStarter:
 	ld a, [wPlayerStarter]
 	cp STARTER1
-	jr z, .Charmander
-	cp STARTER2
-	jr z, .Squirtle
-	jr .Bulbasaur
-.Charmander
-	ld de, .MiddleBallMovement1
-	ld a, [wYCoord]
-	cp $4 ; is the player standing below the table?
-	jr z, .asm_1ccf3
-	ld de, .MiddleBallMovement2
-	jr .asm_1ccf3
+	jr z, .Pikachu
+	jr .Eevee
 
-.MiddleBallMovement1
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_UP
-	db $FF
-
-.MiddleBallMovement2
-	db NPC_MOVEMENT_DOWN
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db $FF
-
-.Squirtle
+.Pikachu
 	ld de, .RightBallMovement1
 	ld a, [wYCoord]
 	cp $4 ; is the player standing below the table?
-	jr z, .asm_1ccf3
+	jr z, .move
 	ld de, .RightBallMovement2
-	jr .asm_1ccf3
+	jr .move
 
 .RightBallMovement1
 	db NPC_MOVEMENT_DOWN
@@ -247,11 +222,11 @@ OaksLabScript8:
 	db NPC_MOVEMENT_RIGHT
 	db $FF
 
-.Bulbasaur
+.Eevee
 	ld de, .LeftBallMovement1
 	ld a, [wXCoord]
 	cp $9 ; is the player standing to the right of the table?
-	jr nz, .asm_1ccf3
+	jr nz, .move
 	push hl
 	ld a, $1
 	ld [H_SPRITEINDEX], a
@@ -270,7 +245,7 @@ OaksLabScript8:
 	ld [hl], $9
 	ld de, .LeftBallMovement2 ; the rival is not currently onscreen, so account for that
 	pop hl
-	jr .asm_1ccf3
+	jr .move
 
 .LeftBallMovement1
 	db NPC_MOVEMENT_DOWN
@@ -279,7 +254,7 @@ OaksLabScript8:
 	db NPC_MOVEMENT_RIGHT
 	db $FF
 
-.asm_1ccf3
+.move
 	ld a, $1
 	ld [H_SPRITEINDEX], a
 	call MoveSprite
@@ -288,7 +263,7 @@ OaksLabScript8:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript9:
+OaksLabScript_RivalStarter:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -299,7 +274,7 @@ OaksLabScript9:
 	ld a, SPRITE_FACING_UP
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, $d
+	ld a, $C
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, [wRivalStarterBallSpriteIndex]
@@ -308,12 +283,7 @@ OaksLabScript9:
 	ld a, HS_STARTER_BALL_1
 	jr .asm_1cd32
 .asm_1cd28
-	cp $3
-	jr nz, .asm_1cd30
 	ld a, HS_STARTER_BALL_2
-	jr .asm_1cd32
-.asm_1cd30
-	ld a, HS_STARTER_BALL_3
 .asm_1cd32
 	ld [wMissableObjectIndex], a
 	predef HideObject
@@ -328,7 +298,7 @@ OaksLabScript9:
 	ld a, SPRITE_FACING_UP
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, $e
+	ld a, $D
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_STARTER
@@ -339,7 +309,7 @@ OaksLabScript9:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript10:
+OaksLabScript_BlueChallengesPlayer:
 	ld a, [wYCoord]
 	cp $6
 	ret nz
@@ -353,7 +323,7 @@ OaksLabScript10:
 	ld c, BANK(Music_MeetRival)
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
-	ld a, $f
+	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, $1
@@ -375,7 +345,7 @@ OaksLabScript10:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript11:
+OaksLabScript_BlueBattle1:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -385,16 +355,11 @@ OaksLabScript11:
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
 	cp STARTER2
-	jr nz, .NotSquirtle
+	jr nz, .NotEevee
 	ld a, $1
 	jr .done
-.NotSquirtle
-	cp STARTER3
-	jr nz, .Charmander
+.NotEevee
 	ld a, $2
-	jr .done
-.Charmander
-	ld a, $3
 .done
 	ld [wTrainerNo], a
 	ld a, $1
@@ -414,7 +379,34 @@ OaksLabScript11:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript12:
+OaksLabScript_AfterBlueBattle1:
+	ld a, $ff
+	ld [wJoyIgnore], a
+
+	; If you beat your rival here, his Eevee will evolve into  JOLTEON - 2 wins
+	; Jolteon if you beat him on Route 22, or Flareon if you   FLAREON - 1 win, 1 loss
+	; skip or lose that battle.                                VAPOREON - 2 losses
+	; Otherwise, it will evolve into Vaporeon.
+	; Rival's Pikachu will evolve into Raichu.
+	ld a, [wRivalStarter]
+	cp STARTER2           ; Did Blue pick Eevee?
+	jp .notEevee          ; if not, branch and skip
+	ld a, [wBattleResult]
+	and a
+	ld b, VAPOREON        ; if you lost, Blue is set to evolve to Vaporeon (#3)
+	jr nz, .asm_1c660
+	ld b, FLAREON         ; if you won, Blue is set to evolve to Flareon (#2)
+
+.asm_1c660
+	ld a, b
+	ld [wRivalStarter], a
+	jr .setStarter
+
+.notEevee
+	ld a, RAICHU
+	ld [wRivalStarter], a
+
+.setStarter
 	ld a, $f0
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_UP
@@ -435,10 +427,10 @@ OaksLabScript12:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript13:
+OaksLabScript_BlueLeavesLab:
 	ld c, 20
 	call DelayFrames
-	ld a, $10
+	ld a, $F
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	callba Music_RivalAlternateStart
@@ -470,7 +462,7 @@ OaksLabScript13:
 	db NPC_MOVEMENT_DOWN
 	db $FF
 
-OaksLabScript14:
+OaksLabScript_BlueHasLeft:
 	ld a, [wd730]
 	bit 0, a
 	jr nz, .asm_1ce8c
@@ -506,7 +498,7 @@ OaksLabScript14:
 .done
 	ret
 
-OaksLabScript15:
+OaksLabScript_BlueReturns: ; Set to activate AFTER player returns WITH Oak's parcel and speaks to Oak
 	xor a
 	ld [hJoyHeld], a
 	call EnableAutoTextBoxDrawing
@@ -550,7 +542,7 @@ OaksLabScript_1cefd:
 	ld [hSpriteFacingDirection], a
 	jp SetSpriteFacingDirectionAndDelay
 
-OaksLabScript16:
+OaksLabScript_OakGivesPokedex:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -624,7 +616,7 @@ OaksLabScript16:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript17:
+OaksLabScript_BlueHasLeftAgain:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -647,7 +639,7 @@ OaksLabScript17:
 	ld [wOaksLabCurScript], a
 	ret
 
-OaksLabScript18:
+OaksLabScript_EventsEnd:
 	ret
 
 OaksLabScript_RemoveParcel:
@@ -719,21 +711,20 @@ OaksLabScript_1d076:
 	ld [wMapTextPtr+1], a
 	ret
 
-OaksLab_TextPointers:
-	dw OaksLabText1
-	dw OaksLabText2
-	dw OaksLabText3
-	dw OaksLabText4
-	dw OaksLabText5
-	dw OaksLabText6
-	dw OaksLabText7
-	dw OaksLabText8
-	dw OaksLabText9
-	dw OaksLabText10
-	dw OaksLabText11
-	dw OaksLabText12
-	dw OaksLabText13
-	dw OaksLabText14
+OaksLab_TextPointers:    ; if somehow, 0 is pulled, it opens the menu
+	dw OaksLabText1  ; 1 - Blue text at the start (Yo, Gramps isn't here/Humph...)
+	dw OaksLabText2  ; 2 - Pikachu selection
+	dw OaksLabText3  ; 3 - Eevee selection
+	dw OaksLabText5  ; 4 - Oak dialogue during starter cutscene (fix this to combine RB and Y)
+	dw OaksLabText6  ; 5 - Pokedex flavor text
+	dw OaksLabText7  ; 6 - Pokedex flavor text
+	dw OaksLabText8  ; 7 - Unused ? text
+	dw OaksLabText9  ; 8 - Lass: Oak is authority on Pokemon
+	dw OaksLabText10 ; 9 - Generic Aide
+	dw OaksLabText11 ; $A - Generic Aide
+	dw OaksLabText12 ; $B - Oak: Hey, dont go away yet!
+	dw OaksLabText13 ; $C
+	dw OaksLabText14 ; $D - <RIVAL> recieved a <MON>
 	dw OaksLabText15
 	dw OaksLabText16
 	dw OaksLabText17
@@ -752,7 +743,6 @@ OaksLab_TextPointers2:
 	dw OaksLabText1
 	dw OaksLabText2
 	dw OaksLabText3
-	dw OaksLabText4
 	dw OaksLabText5
 	dw OaksLabText6
 	dw OaksLabText7
@@ -763,19 +753,19 @@ OaksLab_TextPointers2:
 
 OaksLabText1:
 	TX_ASM
-	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
-	jr nz, .asm_1d0de
-	ld hl, OaksLabGaryText1
+	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB_2 ; Have we followed Oak into the lab?
+	jr nz, .Text1_OakInLab                   ; if yes, branch
+	ld hl, OaksLabGaryText1                  ; Blue tells us he isn't here
 	call PrintText
 	jr .asm_1d0f0
-.asm_1d0de
-	bit 2, a
-	jr nz, .asm_1d0ea
-	ld hl, OaksLabText40
+.Text1_OakInLab
+	bit 2, a                                 ; Did Player and Blue already pick starters?
+	jr nz, .asm_1d0ea                        ; if yes, branch
+	ld hl, OaksLabText40                     ; Blue insists he will pick a better starter
 	call PrintText
 	jr .asm_1d0f0
 .asm_1d0ea
-	ld hl, OaksLabText41
+	ld hl, OaksLabText41                     ; Blue tells us his starter is better.
 	call PrintText
 .asm_1d0f0
 	jp TextScriptEnd
@@ -783,16 +773,14 @@ OaksLabText1:
 OaksLabGaryText1:
 	TX_FAR _OaksLabGaryText1
 	db "@"
-
 OaksLabText40:
 	TX_FAR _OaksLabText40
 	db "@"
-
 OaksLabText41:
 	TX_FAR _OaksLabText41
 	db "@"
 
-OaksLabText2:
+OaksLabText2: ; Picking Pikachu
 	TX_ASM
 	ld a, STARTER2
 	ld [wRivalStarterTemp], a
@@ -800,41 +788,29 @@ OaksLabText2:
 	ld [wRivalStarterBallSpriteIndex], a
 	ld a, STARTER1
 	ld b, $2
-	jr OaksLabScript_1d133
+	jr OaksLabScript_PokeBall
 
-OaksLabText3:
-	TX_ASM
-	ld a, STARTER3
-	ld [wRivalStarterTemp], a
-	ld a, $4
-	ld [wRivalStarterBallSpriteIndex], a
-	ld a, STARTER2
-	ld b, $3
-	jr OaksLabScript_1d133
-
-OaksLabText4:
+OaksLabText3: ; Picking Eevee
 	TX_ASM
 	ld a, STARTER1
 	ld [wRivalStarterTemp], a
 	ld a, $2
 	ld [wRivalStarterBallSpriteIndex], a
-	ld a, STARTER3
-	ld b, $4
+	ld a, STARTER2
+	ld b, $3
 
-OaksLabScript_1d133:
-	ld [wcf91], a
+OaksLabScript_PokeBall:
+	ld [wcf91], a ; store your chosen starter in $CF91
 	ld [wd11e], a
 	ld a, b
 	ld [wSpriteIndex], a
-	CheckEvent EVENT_GOT_STARTER
-	jp nz, OaksLabScript_1d22d
-	CheckEventReuseA EVENT_OAK_ASKED_TO_CHOOSE_MON
+	CheckEvent EVENT_OAK_ASKED_TO_CHOOSE_MON
 	jr nz, OaksLabScript_1d157
-	ld hl, OaksLabText39
+	ld hl, OaksLabText_ThatsAPokeball
 	call PrintText
 	jp TextScriptEnd
 
-OaksLabText39:
+OaksLabText_ThatsAPokeball:
 	TX_FAR _OaksLabText39
 	db "@"
 
@@ -861,30 +837,21 @@ OaksLabScript_1d157:
 	call DelayFrames
 	ld a, [wSpriteIndex]
 	cp $2
-	jr z, OaksLabLookAtCharmander
-	cp $3
-	jr z, OaksLabLookAtSquirtle
-	jr OaksLabLookAtBulbasaur
+	jr z, OaksLabLookAtPikachu
+	jr OaksLabLookAtEevee
 
-OaksLabLookAtCharmander:
-	ld hl, OaksLabCharmanderText
+OaksLabLookAtPikachu:
+	ld hl, OaksLabPikachuText
 	jr OaksLabMonChoiceMenu
-OaksLabCharmanderText:
-	TX_FAR _OaksLabCharmanderText
+OaksLabPikachuText:
+	TX_FAR _OaksLabPikachuText
 	db "@"
 
-OaksLabLookAtSquirtle:
-	ld hl, OaksLabSquirtleText
+OaksLabLookAtEevee:
+	ld hl, OaksLabEeveeText
 	jr OaksLabMonChoiceMenu
-OaksLabSquirtleText:
-	TX_FAR _OaksLabSquirtleText
-	db "@"
-
-OaksLabLookAtBulbasaur:
-	ld hl, OaksLabBulbasaurText
-	jr OaksLabMonChoiceMenu
-OaksLabBulbasaurText:
-	TX_FAR _OaksLabBulbasaurText
+OaksLabEeveeText:
+	TX_FAR _OaksLabEeveeText
 	db "@"
 
 OaksLabMonChoiceMenu:
@@ -901,17 +868,12 @@ OaksLabMonChoiceMenu:
 	call GetMonName
 	ld a, [wSpriteIndex]
 	cp $2
-	jr nz, .asm_1d1db
+	jr nz, .OaksLab_EeveeBall
 	ld a, HS_STARTER_BALL_1
-	jr .asm_1d1e5
-.asm_1d1db
-	cp $3
-	jr nz, .asm_1d1e3
+	jr .OaksLab_HideBall
+.OaksLab_EeveeBall
 	ld a, HS_STARTER_BALL_2
-	jr .asm_1d1e5
-.asm_1d1e3
-	ld a, HS_STARTER_BALL_3
-.asm_1d1e5
+.OaksLab_HideBall
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, $1
@@ -920,6 +882,12 @@ OaksLabMonChoiceMenu:
 	call PrintText
 	ld hl, OaksLabReceivedMonText
 	call PrintText
+
+; Set Friendship and disable drawing
+	ld a, 163
+	ld [wPartyMon1CatchRate], a
+	;call DisablePartnerOverworldSpriteDrawing
+
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
 	ld a, 5
@@ -945,20 +913,7 @@ OaksLabReceivedMonText:
 	TX_SFX_KEY_ITEM
 	db "@"
 
-OaksLabScript_1d22d:
-	ld a, $5
-	ld [H_SPRITEINDEX], a
-	ld a, $9
-	ld [H_SPRITEDATAOFFSET], a
-	call GetPointerWithinSpriteStateData1
-	ld [hl], $0
-	ld hl, OaksLabLastMonText
-	call PrintText
-	jp TextScriptEnd
-
-OaksLabLastMonText:
-	TX_FAR _OaksLabLastMonText
-	db "@"
+; There is no last mon anymore
 
 OaksLabText32:
 OaksLabText5:
@@ -1033,15 +988,15 @@ OaksLabText5:
 	jp TextScriptEnd
 
 OaksLabText_1d2f0:
-	TX_FAR _OaksLabText_1d2f0
+	TX_FAR _OaksLabText_1d2f0  ; "Now, which mon do you want?"
 	db "@"
 
 OaksLabText_1d2f5:
-	TX_FAR _OaksLabText_1d2f5
+	TX_FAR _OaksLabText_1d2f5 ; "If a wild mon appears... afterward, go to the next town."
 	db "@"
 
 OaksLabText_1d2fa:
-	TX_FAR _OaksLabText_1d2fa
+	TX_FAR _OaksLabText_1d2fa ; "You should talk to it and see how it feels"
 	db "@"
 
 OaksLabDeliverParcelText:
