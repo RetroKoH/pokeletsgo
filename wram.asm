@@ -595,7 +595,24 @@ wNPCMovementDirections2:: ; cc97
 
 wSwitchPartyMonTempBuffer:: ; cc97
 ; temporary buffer when swapping party mon data
-	ds 10
+wEnemyWentFirst::
+; 1 = enemy mon attacked before player mon in battle
+; 0 = player mon attacked before enemy mon in battle
+wShinyMonFlag::
+; Bit 0 is set if the mon should be Shiny.
+; Bit 1 is set for enemy mon animation, reset for player mon animation
+wRelearnableMoves::
+; List of move ids that can be re-learend (Move Relearner)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+wDeletableMoves::
+; List of move ids that can be deleted (Move Deleter)
+; First byte is the number of moves in this list.
+; List is terminated with $ff
+	ds 1
+wGenderTemp::
+; temporary buffer used when checking/displaying a Pokemon's gender
+	ds 9
 
 wNumStepsToTake:: ; cca1
 ; used in Pallet Town scripted movement
@@ -2892,7 +2909,14 @@ wRoute18Gate1FCurScript:: ; d669
 	ds 78
 wGameProgressFlagsEnd::
 
-	ds 56
+	ds 54
+
+wPlayerGender::
+; $00 = male
+; $01 = female
+	ds 1
+
+	ds 1 ; ExtraFlags
 
 wObtainedHiddenItemsFlags::
 	ds 14

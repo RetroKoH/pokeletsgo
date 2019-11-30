@@ -15,14 +15,11 @@ PICS_6 EQU $2D
 INCLUDE "home.asm"
 
 
-SECTION "bank1", ROMX
+SECTION "bank1", ROMX, BANK[$1]
 
 INCLUDE "data/facing.asm"
 
 INCLUDE "engine/black_out.asm"
-
-; Mew sprites removed from here
-SECTION "Mew Base Stats",ROMX
 
 INCLUDE "engine/battle/safari_zone.asm"
 
@@ -31,7 +28,6 @@ INCLUDE "engine/load_mon_data.asm"
 
 INCLUDE "data/item_prices.asm"
 INCLUDE "text/item_names.asm"
-INCLUDE "text/unused_names.asm"
 
 INCLUDE "engine/overworld/oam.asm"
 INCLUDE "engine/oam_dma.asm"
@@ -39,8 +35,6 @@ INCLUDE "engine/oam_dma.asm"
 INCLUDE "engine/print_waiting_text.asm"
 
 INCLUDE "engine/overworld/map_sprite_functions1.asm"
-
-INCLUDE "engine/test_battle.asm"
 
 INCLUDE "engine/overworld/item.asm"
 INCLUDE "engine/overworld/movement.asm"
@@ -93,7 +87,7 @@ INCLUDE "color/oak_intro.asm"
 INCLUDE "color/load_hp_and_exp_bar.asm"
 
 
-SECTION "bank3",ROMX
+SECTION "bank3", ROMX, BANK[$3]
 
 INCLUDE "engine/joypad.asm"
 
@@ -136,8 +130,10 @@ INCLUDE "engine/hidden_object_functions3.asm"
 
 INCLUDE "color/update_hp_bar.asm"
 
-SECTION "NPC Sprites 1", ROMX ; BANK $04
+SECTION "NPC Sprites 1", ROMX, BANK[NPC_SPRITES_1] ; BANK $4
 
+RocketSprite:          INCBIN "gfx/sprites/rocket.2bpp"
+RocketFSprite:         INCBIN "gfx/sprites/rocketf.2bpp"
 OakAideSprite:         INCBIN "gfx/sprites/oak_aide.2bpp"
 RockerSprite:          INCBIN "gfx/sprites/rocker.2bpp"
 SwimmerSprite:         INCBIN "gfx/sprites/swimmer.2bpp"
@@ -156,19 +152,10 @@ SsCaptainSprite:       INCBIN "gfx/sprites/ss_captain.2bpp"
 Fisher2Sprite:         INCBIN "gfx/sprites/fisher2.2bpp"
 BlackbeltSprite:       INCBIN "gfx/sprites/blackbelt.2bpp"
 GuardSprite:           INCBIN "gfx/sprites/guard.2bpp"
-BallSprite:            INCBIN "gfx/sprites/ball.2bpp"
-OmanyteSprite:         INCBIN "gfx/sprites/omanyte.2bpp"
-BoulderSprite:         INCBIN "gfx/sprites/boulder.2bpp"
-PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
-BookMapSprite:         INCBIN "gfx/sprites/book_map.2bpp"
-ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
-SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
-OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
-LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
-PokedexSprite:         INCBIN "gfx/sprites/pokedex.2bpp"
-TownMapSprite:         INCBIN "gfx/sprites/townmap.2bpp"
+;BallSprite and others have been moved
 
-SECTION "Graphics (BANK 4)", ROMX
+
+SECTION "Graphics (BANK 4)", ROMX, BANK[GFX]
 
 PokemonLogoGraphics:            INCBIN "gfx/pokemon_logo.2bpp"
 FontGraphics:                   INCBIN "gfx/font.1bpp"
@@ -190,23 +177,18 @@ TextBoxGraphics:                INCBIN "gfx/text_box.2bpp"
 TextBoxGraphicsEnd:
 PokedexTileGraphics:            INCBIN "gfx/pokedex.2bpp"
 PokedexTileGraphicsEnd:
-WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
-WorldMapTileGraphicsEnd:
 PlayerCharacterTitleGraphics:   INCBIN "gfx/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
 
 
-SECTION "Battle (BANK 4)", ROMX
+SECTION "Battle (BANK 4)", ROMX, BANK[$4]
 
 INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/menu/status_screen.asm"
 INCLUDE "engine/menu/party_menu.asm"
 
 RedPicFront:: INCBIN "pic/trainer/red.pic"
-rept 11 ; Padding
-	db 0
-endr
-
+GreenPicFront:: INCBIN "pic/trainer/green.pic"
 ShrinkPic1::  INCBIN "pic/trainer/shrink1.pic"
 ShrinkPic2::  INCBIN "pic/trainer/shrink2.pic"
 
@@ -224,16 +206,19 @@ INCLUDE "engine/random.asm"
 INCLUDE "color/status_screen.asm"
 
 EXPBarGraphics:  INCBIN "gfx/exp_bar.2bpp"
+ShinySparkleGraphics: INCBIN "gfx/shiny_sparkle.2bpp"
+EXPBarShinySparkleGraphicsEnd:
 
 
-SECTION "NPC Sprites 2", ROMX ; BANK $05
+SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2] ; BANK $05
 
 RedCyclingSprite:     INCBIN "gfx/sprites/cycling.2bpp"
 RedSprite:            INCBIN "gfx/sprites/red.2bpp"
+GreenCyclingSprite:   INCBIN "gfx/sprites/greencycling.2bpp"
+GreenSprite:          INCBIN "gfx/sprites/green.2bpp"
 BlueSprite:           INCBIN "gfx/sprites/blue.2bpp"
 OakSprite:            INCBIN "gfx/sprites/oak.2bpp"
 BugCatcherSprite:     INCBIN "gfx/sprites/bug_catcher.2bpp"
-SlowbroSprite:        INCBIN "gfx/sprites/slowbro.2bpp"
 LassSprite:           INCBIN "gfx/sprites/lass.2bpp"
 BlackHairBoy1Sprite:  INCBIN "gfx/sprites/black_hair_boy_1.2bpp"
 LittleGirlSprite:     INCBIN "gfx/sprites/little_girl.2bpp"
@@ -251,11 +236,8 @@ SailorSprite:         INCBIN "gfx/sprites/sailor.2bpp"
 CookSprite:           INCBIN "gfx/sprites/cook.2bpp"
 BikeShopGuySprite:    INCBIN "gfx/sprites/bike_shop_guy.2bpp"
 MrFujiSprite:         INCBIN "gfx/sprites/mr_fuji.2bpp"
-GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
-RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
 MediumSprite:         INCBIN "gfx/sprites/medium.2bpp"
 WaiterSprite:         INCBIN "gfx/sprites/waiter.2bpp"
-ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
 MomGeishaSprite:      INCBIN "gfx/sprites/mom_geisha.2bpp"
 BrunetteGirlSprite:   INCBIN "gfx/sprites/brunette_girl.2bpp"
 LanceSprite:          INCBIN "gfx/sprites/lance.2bpp"
@@ -263,14 +245,13 @@ MomSprite:            INCBIN "gfx/sprites/mom.2bpp"
 BaldingGuySprite:     INCBIN "gfx/sprites/balding_guy.2bpp"
 YoungBoySprite:       INCBIN "gfx/sprites/young_boy.2bpp"
 GameboyKidSprite:     INCBIN "gfx/sprites/gameboy_kid.2bpp"
-ClefairySprite:       INCBIN "gfx/sprites/clefairy.2bpp"
 AgathaSprite:         INCBIN "gfx/sprites/agatha.2bpp"
 BrunoSprite:          INCBIN "gfx/sprites/bruno.2bpp"
 LoreleiSprite:        INCBIN "gfx/sprites/lorelei.2bpp"
-SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
+LaprasSprite:         INCBIN "gfx/sprites/lapras.2bpp"
 
 
-SECTION "Battle (BANK 5)", ROMX
+SECTION "Battle (BANK 5)", ROMX, BANK[$5]
 
 INCLUDE "engine/load_pokedex_tiles.asm"
 INCLUDE "engine/overworld/map_sprites.asm"
@@ -280,7 +261,7 @@ INCLUDE "engine/battle/moveEffects/substitute_effect.asm"
 INCLUDE "engine/menu/pc.asm"
 
 
-SECTION "bank6", ROMX
+SECTION "bank6", ROMX, BANK[$6]
 
 INCLUDE "data/mapHeaders/CeladonCity.asm"
 INCLUDE "data/mapObjects/CeladonCity.asm"
@@ -295,7 +276,7 @@ INCLUDE "data/mapObjects/ViridianCity.asm"
 ViridianCity_Blocks: INCBIN "maps/ViridianCity.blk"
 
 INCLUDE "data/mapHeaders/PewterCity.asm"
-	ds 1
+	;ds 1
 INCLUDE "data/mapObjects/PewterCity.asm"
 PewterCity_Blocks: INCBIN "maps/PewterCity.blk"
 
@@ -356,7 +337,7 @@ INCLUDE "engine/overworld/doors.asm"
 INCLUDE "engine/overworld/ledges.asm"
 
 
-SECTION "bank7", ROMX
+SECTION "bank7", ROMX, BANK[$7]
 
 INCLUDE "data/mapHeaders/CinnabarIsland.asm"
 INCLUDE "data/mapObjects/CinnabarIsland.asm"
@@ -415,7 +396,7 @@ INCLUDE "scripts/ViridianSchoolHouse.asm"
 INCLUDE "data/mapObjects/ViridianSchoolHouse.asm"
 
 INCLUDE "data/mapHeaders/ViridianNicknameHouse.asm"
-	ds 1
+	;ds 1
 INCLUDE "scripts/ViridianNicknameHouse.asm"
 INCLUDE "data/mapObjects/ViridianNicknameHouse.asm"
 
@@ -538,87 +519,17 @@ INCLUDE "engine/menu/oaks_pc.asm"
 INCLUDE "engine/hidden_object_functions7.asm"
 
 
-SECTION "Pics 1", ROMX ; BANK $09
-
-MoltresPicFront:    INCBIN "pic/mon/moltres.pic"
-MoltresPicBack:     INCBIN "pic/monback/moltresb.pic"
-
-TentacoolPicFront:  INCBIN "pic/mon/tentacool.pic"
-TentacoolPicBack:   INCBIN "pic/monback/tentacoolb.pic"
-ScytherPicFront:    INCBIN "pic/mon/scyther.pic"
-ScytherPicBack:     INCBIN "pic/monback/scytherb.pic"
-StaryuPicFront:     INCBIN "pic/mon/staryu.pic"
-StaryuPicBack:      INCBIN "pic/monback/staryub.pic"
-BlastoisePicFront:  INCBIN "pic/mon/blastoise.pic"
-BlastoisePicBack:   INCBIN "pic/monback/blastoiseb.pic"
-PinsirPicFront:     INCBIN "pic/mon/pinsir.pic"
-PinsirPicBack:      INCBIN "pic/monback/pinsirb.pic"
-TangelaPicFront:    INCBIN "pic/mon/tangela.pic"
-TangelaPicBack:     INCBIN "pic/monback/tangelab.pic"
-
-JolteonPicFront:    INCBIN "pic/mon/jolteon.pic"
-JolteonPicBack:     INCBIN "pic/monback/jolteonb.pic"
-VaporeonPicFront:   INCBIN "pic/mon/vaporeon.pic"
-VaporeonPicBack:    INCBIN "pic/monback/vaporeonb.pic"
-MachopPicFront:     INCBIN "pic/mon/machop.pic"
-MachopPicBack:      INCBIN "pic/monback/machopb.pic"
-ZubatPicFront:      INCBIN "pic/mon/zubat.pic"
-ZubatPicBack:       INCBIN "pic/monback/zubatb.pic"
-EkansPicFront:      INCBIN "pic/mon/ekans.pic"
-EkansPicBack:       INCBIN "pic/monback/ekansb.pic"
-ParasPicFront:      INCBIN "pic/mon/paras.pic"
-ParasPicBack:       INCBIN "pic/monback/parasb.pic"
-PoliwhirlPicFront:  INCBIN "pic/mon/poliwhirl.pic"
-PoliwhirlPicBack:   INCBIN "pic/monback/poliwhirlb.pic"
-PoliwrathPicFront:  INCBIN "pic/mon/poliwrath.pic"
-PoliwrathPicBack:   INCBIN "pic/monback/poliwrathb.pic"
-WeedlePicFront:     INCBIN "pic/mon/weedle.pic"
-WeedlePicBack:      INCBIN "pic/monback/weedleb.pic"
-KakunaPicFront:     INCBIN "pic/mon/kakuna.pic"
-KakunaPicBack:      INCBIN "pic/monback/kakunab.pic"
-BeedrillPicFront:   INCBIN "pic/mon/beedrill.pic"
-BeedrillPicBack:    INCBIN "pic/monback/beedrillb.pic"
-
-
-SECTION "Battle (BANK 9)", ROMX
+SECTION "Battle (BANK 9)", ROMX[$7d6b], BANK[$9]
 INCLUDE "engine/battle/print_type.asm"
 INCLUDE "engine/battle/save_trainer_name.asm"
 INCLUDE "engine/battle/moveEffects/focus_energy_effect.asm"
 
 
-SECTION "Pics 2", ROMX ; BANK $0A
-
-HaunterPicFront:    INCBIN "pic/mon/haunter.pic"
-HaunterPicBack:     INCBIN "pic/monback/haunterb.pic"
-AbraPicFront:       INCBIN "pic/mon/abra.pic"
-AbraPicBack:        INCBIN "pic/monback/abrab.pic"
-AlakazamPicFront:   INCBIN "pic/mon/alakazam.pic"
-AlakazamPicBack:    INCBIN "pic/monback/alakazamb.pic"
-PidgeottoPicFront:  INCBIN "pic/mon/pidgeotto.pic"
-PidgeottoPicBack:   INCBIN "pic/monback/pidgeottob.pic"
-PidgeotPicFront:    INCBIN "pic/mon/pidgeot.pic"
-PidgeotPicBack:     INCBIN "pic/monback/pidgeotb.pic"
-StarmiePicFront:    INCBIN "pic/mon/starmie.pic"
-StarmiePicBack:     INCBIN "pic/monback/starmieb.pic"
-RedPicBack:         INCBIN "pic/trainer/redb.pic"
-OldManPic:          INCBIN "pic/trainer/oldman.pic"
-
-GastlyPicFront:     INCBIN "pic/mon/gastly.pic"
-GastlyPicBack:      INCBIN "pic/monback/gastlyb.pic"
-VileplumePicFront:  INCBIN "pic/mon/vileplume.pic"
-VileplumePicBack:   INCBIN "pic/monback/vileplumeb.pic"
-
-
-SECTION "Battle (BANK A)", ROMX
+SECTION "Battle (BANK A)", ROMX[$7ea9], BANK[$A]
 INCLUDE "engine/battle/moveEffects/leech_seed_effect.asm"
 
 
-SECTION "Pics 3", ROMX ; BANK $0B
-
-; Removed 'mon sprites from here
-
-
-SECTION "Battle (BANK B)", ROMX
+SECTION "Battle (BANK B)", ROMX, BANK[$B]
 INCLUDE "engine/battle/display_effectiveness.asm"
 
 TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/trainer_info.2bpp"
@@ -633,22 +544,12 @@ INCLUDE "engine/battle/moveEffects/pay_day_effect.asm"
 INCLUDE "engine/game_corner_slots2.asm"
 
 
-SECTION "Pics 4", ROMX ; BANK $0C
-
-; Removed 'mon sprites from here
-
-
-SECTION "Battle (BANK C)", ROMX
+SECTION "Battle (BANK C)", ROMX[$7f2b], BANK[$C]
 INCLUDE "engine/battle/moveEffects/mist_effect.asm"
 INCLUDE "engine/battle/moveEffects/one_hit_ko_effect.asm"
 
 
-SECTION "Pics 5", ROMX ; BANK $0D
-
-; Removed 'mon sprites from here
-
-
-SECTION "Battle (BANK D)", ROMX
+SECTION "Battle (BANK D)", ROMX, BANK[$D]
 INCLUDE "engine/titlescreen2.asm"
 INCLUDE "engine/battle/link_battle_versus_text.asm"
 INCLUDE "engine/slot_machine.asm"
@@ -657,24 +558,15 @@ INCLUDE "engine/multiply_divide.asm"
 INCLUDE "engine/game_corner_slots.asm"
 
 
-SECTION "bankE", ROMX
+SECTION "bankE", ROMX, BANK[$E]
 
 INCLUDE "data/moves.asm"
-BaseStats: INCLUDE "data/base_stats.asm"
+
 INCLUDE "data/cries.asm"
 INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
-;INCLUDE "engine/battle/trainer_ai.asm"
+INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
-
-TradingAnimationGraphics:
-INCBIN "gfx/game_boy.2bpp"
-INCBIN "gfx/link_cable.2bpp"
-TradingAnimationGraphicsEnd:
-
-; Pokeball traveling through the link cable.
-TradingAnimationGraphics2: INCBIN "gfx/trade2.2bpp"
-TradingAnimationGraphics2End:
 
 INCLUDE "engine/evos_moves.asm"
 INCLUDE "engine/battle/moveEffects/heal_effect.asm"
@@ -684,12 +576,12 @@ INCLUDE "engine/battle/moveEffects/reflect_light_screen_effect.asm"
 INCLUDE "color/draw_hud_pokeball_gfx.asm"
 
 
-SECTION "bankF", ROMX
+SECTION "bankF", ROMX, BANK[$F]
 
 INCLUDE "engine/battle/core.asm"
 
 
-SECTION "bank10", ROMX
+SECTION "bank10", ROMX, BANK[$10]
 
 INCLUDE "engine/menu/pokedex.asm"
 INCLUDE "engine/trade.asm"
@@ -699,7 +591,8 @@ INCLUDE "engine/trade2.asm"
 ; Hooks for color hack
 INCLUDE "color/trade.asm"
 
-SECTION "bank11", ROMX
+
+SECTION "bank11", ROMX, BANK[$11]
 
 INCLUDE "data/mapHeaders/LavenderTown.asm"
 INCLUDE "data/mapObjects/LavenderTown.asm"
@@ -844,7 +737,7 @@ SeafoamIslandsB4F_Blocks: INCBIN "maps/SeafoamIslandsB4F.blk"
 INCLUDE "engine/overworld/hidden_objects.asm"
 
 
-SECTION "bank12", ROMX
+SECTION "bank12", ROMX, BANK[$12]
 
 INCLUDE "data/mapHeaders/Route7.asm"
 INCLUDE "data/mapObjects/Route7.asm"
@@ -1023,7 +916,7 @@ INCLUDE "data/mapObjects/SafariZoneSecretHouse.asm"
 SafariZoneSecretHouse_Blocks: INCBIN "maps/SafariZoneSecretHouse.blk"
 
 
-SECTION "bank13", ROMX
+SECTION "bank13", ROMX, BANK[$13]
 
 TrainerPics::
 YoungsterPic::     INCBIN "pic/trainer/youngster.pic"
@@ -1073,7 +966,6 @@ ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
 AgathaPic::        INCBIN "pic/trainer/agatha.pic"
 LancePic::         INCBIN "pic/trainer/lance.pic"
 
-SECTION "Trade Center",ROMX
 
 INCLUDE "data/mapHeaders/TradeCenter.asm"
 INCLUDE "scripts/TradeCenter.asm"
@@ -1259,10 +1151,180 @@ INCLUDE "engine/menu/diploma.asm"
 
 INCLUDE "engine/overworld/trainers.asm"
 
+
+IsMonShiny:
+; Input: de = address in RAM for DVs
+; Reset zero flag if mon is shiny
+; 1 in 1024 wild Pokémon is shiny.
+
+	ld h, d
+	ld l, e
+
+; Attack must be odd (1, 3, 5, 7, 9, 11, 13, or 15) (1 in 2)
+	ld a, [hl]
+	and 1 << 4
+	jr z, .NotShiny
+
+; Defense must be 2, 3, 7, or 11 (1 in 4)
+	ld a, [hli]
+	and $f
+	cp 2
+	jr z, .MaybeShiny1
+	cp 3
+	jr z, .MaybeShiny1
+	cp 7
+	jr z, .MaybeShiny1
+	cp 11
+	jr nz, .NotShiny
+
+; Speed must be 5 or 13 (1 in 8)
+.MaybeShiny1
+	ld a, [hl]
+	and $f << 4
+	cp 5 << 4
+	jr z, .MaybeShiny2
+	cp 13 << 4
+	jr nz, .NotShiny
+
+; Special must be 15 (1 in 16)
+.MaybeShiny2
+	ld a, [hl]
+	and $f
+	cp 15
+	jr nz, .NotShiny
+
+.Shiny
+	; set zero flag
+	and a ; a cannot be 0, so zero flag is set with thing command
+	ret
+.NotShiny
+	; reset zero flag
+	xor a
+	ret
+
+EvolutionSetWholeScreenPalette_:
+	; check if evolving mon is shiny
+	ld hl, wShinyMonFlag
+	res 0, [hl]
+	ld b, Bank(IsMonShiny)
+	ld hl, IsMonShiny
+	push de
+	ld de, wLoadedMonDVs
+	call Bankswitch
+	pop de
+	jr z, .setPAL
+	ld hl, wShinyMonFlag
+	set 0, [hl]
+.setPAL
+	ld c, d
+	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
+	jp RunPaletteCommand
+
+PlayShinySparkleAnimation:
+	; flash the screen
+	ld a, [rBGP]
+	push af
+	ld a,%00011011 ; 0, 1, 2, 3 (inverted colors)
+	ld [rBGP],a
+	ld c,4
+	call DelayFrames
+	pop af
+	ld [rBGP],a ; restore initial palette
+	; play animation
+	ld b, $b + 1
+.loop
+	dec b
+	jr z,.animationFinished
+	ld c, ((ShinySparkleCoordsEnd - ShinySparkleCoords) / 3) + 1
+	ld a, [wShinyMonFlag]
+	bit 1, a
+	ld de,ShinySparkleCoords
+	jr z, .ok
+	ld de,EnemyShinySparkleCoords
+.ok
+	ld hl,wOAMBuffer
+.innerLoop
+	dec c
+	jr z,.delayFrames
+	ld a, [de]
+	cp b
+	jr c, .sparkleInactive
+	sub b
+	cp 4
+	jr nc, .sparkleInactive
+	push bc
+	ld b, a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, $C9 ; first sparkle tile
+	add 3
+	sub b
+	ld [hli], a
+	xor a
+	ld [hli], a
+	pop bc
+	jr .innerLoop
+.sparkleInactive
+	inc de
+	inc de
+	inc de
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	jr .innerLoop
+.delayFrames
+	push bc
+	ld c,2
+	call DelayFrames
+	ld a, SFX_SILPH_SCOPE
+	call PlaySound
+	pop bc
+	jr .loop
+.animationFinished
+	xor a
+	ld hl, wOAMBuffer
+	ld bc, 4 * ((ShinySparkleCoordsEnd - ShinySparkleCoords) / 3)
+	jp FillMemory
+
+
+ShinySparkleCoords:
+; First byte is the frame where the animation starts (higher = sooner)
+; Second and third bytes are y/x coordinates
+	db $0B, 70, 48
+	db $0A, 75, 60
+	db $09, 86, 64
+	db $08, 99, 60
+	db $07, 103, 48
+	db $06, 99, 36
+	db $05, 86, 30
+	db $04, 75, 36
+ShinySparkleCoordsEnd:
+
+EnemyShinySparkleCoords:
+; First byte is the frame where the animation starts (higher = sooner)
+; Second and third bytes are y/x coordinates
+	db $0B, 70 - 48, 48 + 80
+	db $0A, 75 - 48, 60 + 80
+	db $09, 86 - 48, 64 + 80
+	db $08, 99 - 48, 60 + 80
+	db $07, 103 - 48, 48 + 80
+	db $06, 99 - 48, 36 + 80
+	db $05, 86 - 48, 30 + 80
+	db $04, 75 - 48, 36 + 80
+EnemyShinySparkleCoordsEnd:
+
+
 INCLUDE "color/exp_bar.asm"
 
 
-SECTION "bank16", ROMX
+SECTION "bank16", ROMX, BANK[$16]
 
 INCLUDE "data/mapHeaders/Route6.asm"
 INCLUDE "data/mapObjects/Route6.asm"
@@ -1346,7 +1408,7 @@ HallOfFame_Blocks: INCBIN "maps/HallOfFame.blk"
 INCLUDE "engine/overworld/saffron_guards.asm"
 
 
-SECTION "bank17", ROMX
+SECTION "bank17", ROMX, BANK[$17]
 
 SaffronMart_Blocks:
 LavenderMart_Blocks:
@@ -1502,7 +1564,7 @@ INCLUDE "engine/predefs17_2.asm"
 INCLUDE "engine/hidden_object_functions17.asm"
 
 
-SECTION "bank18", ROMX
+SECTION "bank18", ROMX, BANK[$18]
 
 ViridianForest_Blocks: INCBIN "maps/ViridianForest.blk"
 UndergroundPathNorthSouth_Blocks: INCBIN "maps/UndergroundPathNorthSouth.blk"
@@ -1625,14 +1687,13 @@ SilphCo11F_Blocks: INCBIN "maps/SilphCo11F.blk"
 INCLUDE "engine/hidden_object_functions18.asm"
 
 
-SECTION "bank19", ROMX
+SECTION "bank19", ROMX, BANK[$19]
 
 Overworld_GFX:     INCBIN "gfx/tilesets/overworld.2bpp"
 Overworld_Block:   INCBIN "gfx/blocksets/overworld.bst"
 
 RedsHouse1_GFX:
 RedsHouse2_GFX:    INCBIN "gfx/tilesets/reds_house.2bpp"
-	ds 16
 RedsHouse1_Block:
 RedsHouse2_Block:  INCBIN "gfx/blocksets/reds_house.bst"
 
@@ -1648,7 +1709,7 @@ Plateau_GFX:       INCBIN "gfx/tilesets/plateau.2bpp"
 Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 
 
-SECTION "bank1A", ROMX
+SECTION "bank1A", ROMX, BANK[$1A]
 
 INCLUDE "engine/battle/decrement_pp.asm"
 
@@ -1680,7 +1741,7 @@ Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 	ds 1
 
 
-SECTION "bank1B", ROMX
+SECTION "bank1B", ROMX, BANK[$1B]
 
 Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
@@ -1698,7 +1759,7 @@ Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 
-SECTION "bank1C", ROMX
+SECTION "bank1C", ROMX, BANK[$1C]
 
 INCLUDE "engine/gamefreak.asm"
 INCLUDE "engine/hall_of_fame.asm"
@@ -1710,8 +1771,6 @@ INCLUDE "engine/town_map.asm"
 INCLUDE "engine/mon_party_sprites.asm"
 INCLUDE "engine/in_game_trades.asm"
 INCLUDE "engine/palettes.asm"
-
-SECTION "Engine Save",ROMX
 
 INCLUDE "engine/save.asm"
  
@@ -1725,7 +1784,7 @@ INCLUDE "color/ghost_marowak_anim.asm"
 INCLUDE "color/color.asm"
 
 
-SECTION "bank1D", ROMX
+SECTION "bank1D", ROMX, BANK[$1D]
 
 CopycatsHouse1F_Blocks: INCBIN "maps/CopycatsHouse1F.blk"
 
@@ -1857,7 +1916,7 @@ INCLUDE "engine/menu/league_pc.asm"
 INCLUDE "engine/overworld/hidden_items.asm"
 
 
-SECTION "bank1E", ROMX
+SECTION "bank1E", ROMX, BANK[$1E]
 
 INCLUDE "engine/battle/animations.asm"
 
@@ -1878,15 +1937,144 @@ INCLUDE "engine/overworld/elevator.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
 
-;SECTION "Pics 6", ROMX, BANK[PICS_6]
-
 INCLUDE "color/animations.asm"
 
-; Inserted pokemon images go here
 
-SECTION "bank30", ROMX
+SECTION "bank2F", ROMX, BANK[$2F]
 
-INCLUDE "engine/battle/trainer_ai.asm" ; moved from bank $0E
+TradingAnimationGraphics:
+INCBIN "gfx/game_boy.2bpp"
+INCBIN "gfx/link_cable.2bpp"
+TradingAnimationGraphicsEnd:
+
+; Pokeball traveling through the link cable.
+TradingAnimationGraphics2: INCBIN "gfx/trade2.2bpp"
+TradingAnimationGraphics2End:
+
+RedPicBack:         INCBIN "pic/trainer/redb.pic"
+GreenPicBack:       INCBIN "pic/trainer/greenb.pic"
+OakPicBack:         INCBIN "pic/trainer/prof.oakb.pic"
+OldManPic:          INCBIN "pic/trainer/oldman.pic"
+
+GreenFishingTilesFront:: INCBIN "gfx/green_fishing_tile_front.2bpp"
+GreenFishingTilesBack::  INCBIN "gfx/green_fishing_tile_back.2bpp"
+GreenFishingTilesSide::  INCBIN "gfx/green_fishing_tile_side.2bpp"
+
+LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+BoulderSprite:         INCBIN "gfx/sprites/boulder.2bpp"
+PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
+BookMapSprite:         INCBIN "gfx/sprites/book_map.2bpp"
+ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
+OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
+PokedexSprite:         INCBIN "gfx/sprites/pokedex.2bpp"
+TownMapSprite:         INCBIN "gfx/sprites/townmap.2bpp"
+BallSprite:            INCBIN "gfx/sprites/ball.2bpp"
+OmanyteSprite:         INCBIN "gfx/sprites/omanyte.2bpp"
+SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
+SeelSprite:            INCBIN "gfx/sprites/seel.2bpp"
+SlowbroSprite:         INCBIN "gfx/sprites/slowbro.2bpp"
+ClefairySprite:        INCBIN "gfx/sprites/clefairy.2bpp"
+
+BrockSprite:        INCBIN "gfx/sprites/brock.2bpp"
+MistySprite:        INCBIN "gfx/sprites/misty.2bpp"
+SurgeSprite:        INCBIN "gfx/sprites/surge.2bpp"
+ErikaSprite:        INCBIN "gfx/sprites/erika.2bpp"
+SabrinaSprite:      INCBIN "gfx/sprites/sabrina.2bpp"
+KogaSprite:         INCBIN "gfx/sprites/koga.2bpp"
+BlaineSprite:       INCBIN "gfx/sprites/blaine.2bpp"
+GiovanniSprite:     INCBIN "gfx/sprites/giovanni.2bpp"
+
+OfficerJennySprite:    INCBIN "gfx/sprites/officer_jenny.2bpp"
+JessieSprite:          INCBIN "gfx/sprites/jessie.2bpp"
+JamesSprite:           INCBIN "gfx/sprites/james.2bpp"
+
+
+SECTION "bank30", ROMX, BANK[$30]
+
+BaseStats: INCLUDE "data/base_stats.asm"
+
+WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
+WorldMapTileGraphicsEnd:
+
+
+SECTION "Pics 1", ROMX ; BANK $09
+
+MoltresPicFront:    INCBIN "pic/mon/moltres.pic"
+MoltresPicBack:     INCBIN "pic/monback/moltresb.pic"
+
+TentacoolPicFront:  INCBIN "pic/mon/tentacool.pic"
+TentacoolPicBack:   INCBIN "pic/monback/tentacoolb.pic"
+ScytherPicFront:    INCBIN "pic/mon/scyther.pic"
+ScytherPicBack:     INCBIN "pic/monback/scytherb.pic"
+StaryuPicFront:     INCBIN "pic/mon/staryu.pic"
+StaryuPicBack:      INCBIN "pic/monback/staryub.pic"
+BlastoisePicFront:  INCBIN "pic/mon/blastoise.pic"
+BlastoisePicBack:   INCBIN "pic/monback/blastoiseb.pic"
+PinsirPicFront:     INCBIN "pic/mon/pinsir.pic"
+PinsirPicBack:      INCBIN "pic/monback/pinsirb.pic"
+TangelaPicFront:    INCBIN "pic/mon/tangela.pic"
+TangelaPicBack:     INCBIN "pic/monback/tangelab.pic"
+
+JolteonPicFront:    INCBIN "pic/mon/jolteon.pic"
+JolteonPicBack:     INCBIN "pic/monback/jolteonb.pic"
+VaporeonPicFront:   INCBIN "pic/mon/vaporeon.pic"
+VaporeonPicBack:    INCBIN "pic/monback/vaporeonb.pic"
+MachopPicFront:     INCBIN "pic/mon/machop.pic"
+MachopPicBack:      INCBIN "pic/monback/machopb.pic"
+ZubatPicFront:      INCBIN "pic/mon/zubat.pic"
+ZubatPicBack:       INCBIN "pic/monback/zubatb.pic"
+EkansPicFront:      INCBIN "pic/mon/ekans.pic"
+EkansPicBack:       INCBIN "pic/monback/ekansb.pic"
+ParasPicFront:      INCBIN "pic/mon/paras.pic"
+ParasPicBack:       INCBIN "pic/monback/parasb.pic"
+PoliwhirlPicFront:  INCBIN "pic/mon/poliwhirl.pic"
+PoliwhirlPicBack:   INCBIN "pic/monback/poliwhirlb.pic"
+PoliwrathPicFront:  INCBIN "pic/mon/poliwrath.pic"
+PoliwrathPicBack:   INCBIN "pic/monback/poliwrathb.pic"
+WeedlePicFront:     INCBIN "pic/mon/weedle.pic"
+WeedlePicBack:      INCBIN "pic/monback/weedleb.pic"
+KakunaPicFront:     INCBIN "pic/mon/kakuna.pic"
+KakunaPicBack:      INCBIN "pic/monback/kakunab.pic"
+BeedrillPicFront:   INCBIN "pic/mon/beedrill.pic"
+BeedrillPicBack:    INCBIN "pic/monback/beedrillb.pic"
+
+
+SECTION "Pics 2", ROMX ; BANK $0A
+
+HaunterPicFront:    INCBIN "pic/mon/haunter.pic"
+HaunterPicBack:     INCBIN "pic/monback/haunterb.pic"
+AbraPicFront:       INCBIN "pic/mon/abra.pic"
+AbraPicBack:        INCBIN "pic/monback/abrab.pic"
+AlakazamPicFront:   INCBIN "pic/mon/alakazam.pic"
+AlakazamPicBack:    INCBIN "pic/monback/alakazamb.pic"
+PidgeottoPicFront:  INCBIN "pic/mon/pidgeotto.pic"
+PidgeottoPicBack:   INCBIN "pic/monback/pidgeottob.pic"
+PidgeotPicFront:    INCBIN "pic/mon/pidgeot.pic"
+PidgeotPicBack:     INCBIN "pic/monback/pidgeotb.pic"
+StarmiePicFront:    INCBIN "pic/mon/starmie.pic"
+StarmiePicBack:     INCBIN "pic/monback/starmieb.pic"
+GastlyPicFront:     INCBIN "pic/mon/gastly.pic"
+GastlyPicBack:      INCBIN "pic/monback/gastlyb.pic"
+VileplumePicFront:  INCBIN "pic/mon/vileplume.pic"
+VileplumePicBack:   INCBIN "pic/monback/vileplumeb.pic"
+
+
+SECTION "Pics 3", ROMX ; BANK $0B
+
+; Removed 'mon sprites from here
+
+
+
+SECTION "Pics 4", ROMX ; BANK $0C
+
+; Removed 'mon sprites from here
+
+
+SECTION "Pics 5", ROMX ; BANK $0D
+
+; Removed 'mon sprites from here
+
+
 
 SECTION "bank32", ROMX
 
@@ -2130,8 +2318,8 @@ OddishPicFront:      INCBIN "pic/mon/oddish.pic"
 OddishPicBack:       INCBIN "pic/monback/oddishb.pic"
 GloomPicFront:       INCBIN "pic/mon/gloom.pic"
 GloomPicBack:        INCBIN "pic/monback/gloomb.pic"
-FossilKabutopsPic:   INCBIN "pic/mon/fossilkabutops.pic"
-FossilAerodactylPic: INCBIN "pic/mon/fossilaerodactyl.pic"
+FossilKabutopsPic:   INCBIN "pic/other/fossilkabutops.pic"
+FossilAerodactylPic: INCBIN "pic/other/fossilaerodactyl.pic"
 GhostPic:            INCBIN "pic/other/ghost.pic"
 
 SECTION "bank37",ROMX

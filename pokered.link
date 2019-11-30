@@ -60,8 +60,6 @@ ROM0
 ROMX $1
 	org $4000
 	"bank1"
-	org $425b
-	"Mew Base Stats"
 
 ROMX $2
 	org $4000
@@ -155,8 +153,6 @@ ROMX $12
 ROMX $13
 	org $4000
 	"bank13"
-	org $7d04
-	"Trade Center"
 
 ROMX $14
 	org $4000
@@ -200,8 +196,6 @@ ROMX $1C
 	org $6075
 	"PrepareSuperNintendoVRAMTransfer"
 	"bank1C_extension"
-	org $75e8
-	"Engine Save"
 
 ROMX $1D
 	org $4000
