@@ -54,8 +54,14 @@ OakSpeech:
 	xor a
 	ld [hTilesetType], a
 
-	ld a, PAL_OAK
+	ld hl,BoyGirlText  ; added to the same file as the other oak text
+	call PrintText     ; show this text
+	call BoyGirlChoice ; added routine at the end of this file
+	ld a, [wCurrentMenuItem]
+	ld [wPlayerGender], a ; store player's gender. 00 for boy, 01 for girl
 
+	call ClearScreen ; clear the screen before resuming normal intro
+	ld a, PAL_OAK
 	call GotIntroTrainerPalID ; HAX
 	nop
 	nop
@@ -85,6 +91,12 @@ OakSpeech:
 	call GetRedPalID ; HAX
 	ld de, RedPicFront
 	lb bc, Bank(RedPicFront), $00
+	ld a, [wPlayerGender] ; check gender
+	and a      ; check gender
+	jr z, .NotGreen1
+	ld de,GreenPicFront
+	lb bc, Bank(GreenPicFront), $00
+.NotGreen1:
 	call IntroDisplayPicCenteredOrUpperRight
 	call MovePicLeft
 	ld hl, IntroducePlayerText
@@ -104,6 +116,12 @@ OakSpeech:
 	call GetRedPalID ; HAX
 	ld de, RedPicFront
 	lb bc, Bank(RedPicFront), $00
+	ld a, [wPlayerGender] ; check gender
+	and a      ; check gender
+	jr z, .NotGreen2
+	ld de, GreenPicFront
+	lb bc, Bank(GreenPicFront), $00
+.NotGreen2:
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
 	ld a, [wd72d]
@@ -124,6 +142,12 @@ OakSpeech:
 	ld de, RedSprite
 	ld hl, vSprites
 	lb bc, BANK(RedSprite), $0C
+	ld a, [wPlayerGender] ; check gender
+	and a      ; check gender
+	jr z, .NotGreen3
+	ld de,GreenSprite
+	lb bc, BANK(GreenSprite), $0C
+.NotGreen3:
 	call CopyVideoData
 	ld de, ShrinkPic1
 	lb bc, BANK(ShrinkPic1), $00
@@ -176,6 +200,9 @@ IntroduceRivalText:
 	db "@"
 OakSpeechText3:
 	TX_FAR _OakSpeechText3
+	db "@"
+BoyGirlText: ; This is new so we had to add a reference to get it to compile
+	TX_FAR _BoyGirlText
 	db "@"
 
 FadeInIntroPic:
@@ -239,3 +266,20 @@ IntroDisplayPicCenteredOrUpperRight:
 	xor a
 	ld [hStartTileID], a
 	predef_jump CopyUncompressedPicToTilemap
+
+
+; displays boy/girl choice
+; check result using wCurrentMenuItem (0 = boy, 1 = girl)
+BoyGirlChoice::
+	call SaveScreenTilesToBuffer1
+	; which menu to show
+	ld a, BOY_GIRL_MENU
+	ld [wTwoOptionMenuID], a
+	; set the coords
+	coord hl, 13, 7 
+	lb bc, 8, 14
+	; show the menu
+	ld a, TWO_OPTION_MENU
+	ld [wTextBoxID], a
+	call DisplayTextBoxID
+	jp LoadScreenTilesFromBuffer1

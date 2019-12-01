@@ -2223,7 +2223,8 @@ RunNPCMovementScript::
 .NPCMovementScriptPointerTables
 	dw PalletMovementScriptPointerTable
 	dw PewterMuseumGuyMovementScriptPointerTable
-	dw PewterGymGuyMovementScriptPointerTable
+	;dw PewterGymGuyMovementScriptPointerTable
+
 .playerStepOutFromDoor
 	jpba PlayerStepOutFromDoor
 

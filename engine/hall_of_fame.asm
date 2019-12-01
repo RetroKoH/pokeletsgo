@@ -78,7 +78,14 @@ AnimateHallOfFame:
 	call AddNTimes
 	ld [hl], $ff
 	call SaveHallOfFameTeams
-	xor a
+	ld a, [wPlayerGender]
+	and a
+	jr z, .male
+	ld a, PLAYER_F
+	jr .female
+.male
+	ld a, PLAYER_M
+.female
 	ld [wHoFMonSpecies], a
 	inc a
 	ld [wHoFMonOrPlayer], a ; player
@@ -183,8 +190,16 @@ HoFMonInfoText:
 	next "TYPE2/@"
 
 HoFLoadPlayerPics:
+	ld a, [wPlayerGender] ; New gender check
+	and a      ; New gender check
+	jr nz, .GirlStuff1
 	ld de, RedPicFront
 	ld a, BANK(RedPicFront)
+	jr .resume ; skip the girl stuff and go to main routine
+.GirlStuff1
+	ld de, GreenPicFront
+	ld a, BANK(GreenPicFront)
+.resume ; resume original routine
 	call UncompressSpriteFromDE
 	ld hl, sSpriteBuffer1
 	ld de, sSpriteBuffer0
@@ -192,8 +207,16 @@ HoFLoadPlayerPics:
 	call CopyData
 	ld de, vFrontPic
 	call InterlaceMergeSpriteBuffers
+	ld a, [wPlayerGender] ; new gender check
+	and a      ; new gender check
+	jr nz, .GirlStuff2
 	ld de, RedPicBack
 	ld a, BANK(RedPicBack)
+	jr .resume2 ; skip the girl stuff and continue original routine if guy
+.GirlStuff2
+	ld de, GreenPicBack
+	ld a, BANK(GreenPicBack)
+.resume2 ; original routine
 	call UncompressSpriteFromDE
 
 ; Use uncompressed red sprite

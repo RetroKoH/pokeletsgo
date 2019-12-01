@@ -2221,7 +2221,7 @@ wMenuExitMethod:: ; d12e
 wDungeonWarpDataEntrySize:: ; d12f
 ; the size is always 6, so they didn't need a variable in RAM for this
 
-wWhichPewterGuy:: ; d12f
+;wWhichPewterGuy:: ; d12f
 ; 0 = museum guy
 ; 1 = gym guy
 

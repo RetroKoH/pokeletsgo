@@ -53,3 +53,8 @@ const_value = 1
 	trainer_const CHANNELER     ; $2D
 	trainer_const AGATHA        ; $2E
 	trainer_const LANCE         ; $2F
+
+	; Entries below this are only sprites, not actual classes
+
+	trainer_const PLAYER_M      ; $2F
+	trainer_const PLAYER_F      ; $2F

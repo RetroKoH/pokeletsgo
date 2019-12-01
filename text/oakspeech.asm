@@ -41,6 +41,11 @@ _IntroduceRivalText::
 	line "his name again?"
 	prompt
 
+_IntroduceRivalText2::
+	text "...Erm, what is"
+	line "his name again?"
+	prompt
+
 _OakSpeechText3::
 	text "<PLAYER>!"
 
@@ -52,4 +57,17 @@ _OakSpeechText3::
 	line "and adventures"
 	cont "with #MON"
 	cont "awaits! Let's go!"
+	done
+
+_BoyGirlText::
+	text "Play as a boy, or"
+	line "as a girl?"
+	done
+
+_YourNameIsText2::
+	text "Is it <PLAYER>?"
+	done
+
+_HisNameIsText2::
+	text "Was it <RIVAL>?"
 	done

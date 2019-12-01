@@ -5,39 +5,16 @@ PewterCity_Script:
 	jp CallFunctionInTable
 
 PewterCity_ScriptPointers:
-	dw PewterCityScript0
-	dw PewterCityScript1
-	dw PewterCityScript2
-	dw PewterCityScript3
-	dw PewterCityScript4
-	dw PewterCityScript5
-	dw PewterCityScript6
+	dw PewterCityScript0	; Check to auto trigger Gym Guy (Removed)
+	dw PewterCityScript1	; Follow the Museum Guy Event
+	dw PewterCityScript2	; Museum Guy disappears
+	dw PewterCityScript3	; Museum Guy reappears
 
 PewterCityScript0:
 	xor a
 	ld [wMuseum1FCurScript], a
 	ResetEvent EVENT_BOUGHT_MUSEUM_TICKET
-	call PewterCityScript_1925e
 	ret
-
-PewterCityScript_1925e:
-	CheckEvent EVENT_BEAT_BROCK
-	ret nz
-	ld hl, CoordsData_19277
-	call ArePlayerCoordsInArray
-	ret nc
-	ld a, $f0
-	ld [wJoyIgnore], a
-	ld a, $5
-	ld [hSpriteIndexOrTextID], a
-	jp DisplayTextID
-
-CoordsData_19277:
-	db $11,$23
-	db $11,$24
-	db $12,$25
-	db $13,$25
-	db $ff
 
 PewterCityScript1:
 	ld a, [wNPCMovementScriptPointerTableNum]
@@ -107,81 +84,12 @@ PewterCityScript3:
 	ld [wPewterCityCurScript], a
 	ret
 
-PewterCityScript4:
-	ld a, [wNPCMovementScriptPointerTableNum]
-	and a
-	ret nz
-	ld a, $5
-	ld [H_SPRITEINDEX], a
-	ld a, SPRITE_FACING_LEFT
-	ld [hSpriteFacingDirection], a
-	call SetSpriteFacingDirectionAndDelay
-	ld a, ($1 << 4) | SPRITE_FACING_LEFT
-	ld [hSpriteImageIndex], a
-	call SetSpriteImageIndexAfterSettingFacingDirection
-	call PlayDefaultMusic
-	ld hl, wFlags_0xcd60
-	set 4, [hl]
-	ld a, $e
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	ld a, $3c
-	ld [$ffeb], a
-	ld a, $40
-	ld [$ffec], a
-	ld a, $16
-	ld [$ffed], a
-	ld a, $10
-	ld [$ffee], a
-	ld a, $5
-	ld [wSpriteIndex], a
-	call SetSpritePosition1
-	ld a, $5
-	ld [H_SPRITEINDEX], a
-	ld de, MovementData_PewterGymGuyExit
-	call MoveSprite
-	ld a, $5
-	ld [wPewterCityCurScript], a
-	ret
-
-MovementData_PewterGymGuyExit:
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db NPC_MOVEMENT_RIGHT
-	db $FF
-
-PewterCityScript5:
-	ld a, [wd730]
-	bit 0, a
-	ret nz
-	ld a, HS_GYM_GUY
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, $6
-	ld [wPewterCityCurScript], a
-	ret
-
-PewterCityScript6:
-	ld a, $5
-	ld [wSpriteIndex], a
-	call SetSpritePosition2
-	ld a, HS_GYM_GUY
-	ld [wMissableObjectIndex], a
-	predef ShowObject
-	xor a
-	ld [wJoyIgnore], a
-	ld a, $0
-	ld [wPewterCityCurScript], a
-	ret
-
 PewterCity_TextPointers:
-	dw PewterCityText1
-	dw PewterCityText2
-	dw PewterCityText3
-	dw PewterCityText4
-	dw PewterCityText5
+	dw PewterCityText1		; "It's rumored that CLEFAIRY came from the moon!"
+	dw PewterCityText2		; "There aren't many serious trainers here!"
+	dw PewterCityText3		; "Did you check out the MUSEUM?"
+	dw PewterCityText4		; REPEL garden person "Psst... Do you know what I'm doing?"
+	dw PewterCityText5		; "You're a trainer, right?"
 	dw PewterCityText6
 	dw PewterCityText7
 	dw MartSignText
@@ -189,7 +97,7 @@ PewterCity_TextPointers:
 	dw PewterCityText10
 	dw PewterCityText11
 	dw PewterCityText12
-	dw PewterCityText13
+	dw PewterCityText13		; "It's (Museum) right here! ..."
 	dw PewterCityText14
 
 PewterCityText1:
@@ -202,17 +110,17 @@ PewterCityText2:
 
 PewterCityText3:
 	TX_ASM
-	ld hl, PewterCityText_193f1
+	ld hl, PewterCityText_MuseumQuestion
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .asm_193c9
-	ld hl, PewterCityText_193f6
+	ld hl, PewterCityText_MuseumAnswerYes
 	call PrintText
 	jr .asm_193ee
 .asm_193c9
-	ld hl, PewterCityText_193fb
+	ld hl, PewterCityText_MuseumAnswerNo
 	call PrintText
 	xor a
 	ld [hJoyPressed], a
@@ -230,16 +138,16 @@ PewterCityText3:
 .asm_193ee
 	jp TextScriptEnd
 
-PewterCityText_193f1:
-	TX_FAR _PewterCityText_193f1
+PewterCityText_MuseumQuestion:
+	TX_FAR _PewterCityText_MuseumQuestion
 	db "@"
 
-PewterCityText_193f6:
-	TX_FAR _PewterCityText_193f6
+PewterCityText_MuseumAnswerYes:
+	TX_FAR _PewterCityText_MuseumAnswerYes
 	db "@"
 
-PewterCityText_193fb:
-	TX_FAR _PewterCityText_193fb
+PewterCityText_MuseumAnswerNo:
+	TX_FAR _PewterCityText_MuseumAnswerNo
 	db "@"
 
 PewterCityText13:
@@ -248,53 +156,41 @@ PewterCityText13:
 
 PewterCityText4:
 	TX_ASM
-	ld hl, PewterCityText_19427
+	ld hl, PewterCityText_DoYouKnowWhatImDoing
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	cp $0
 	jr nz, .asm_1941e
-	ld hl, PewterCityText_1942c
+	ld hl, PewterCityText_ItsHardWork
 	call PrintText
 	jr .asm_19424
 .asm_1941e
-	ld hl, PewterCityText_19431
+	ld hl, PewterCityText_SprayingRepel
 	call PrintText
 .asm_19424
 	jp TextScriptEnd
 
-PewterCityText_19427:
-	TX_FAR _PewterCityText_19427
+PewterCityText_DoYouKnowWhatImDoing:
+	TX_FAR _PewterCityText_DoYouKnowWhatImDoing
 	db "@"
 
-PewterCityText_1942c:
-	TX_FAR _PewterCityText_1942c
+PewterCityText_ItsHardWork:
+	TX_FAR _PewterCityText_ItsHardWork
 	db "@"
 
-PewterCityText_19431:
-	TX_FAR _PewterCityText_19431
+PewterCityText_SprayingRepel:
+	TX_FAR _PewterCityText_SprayingRepel
 	db "@"
 
 PewterCityText5:
 	TX_ASM
-	ld hl, PewterCityText_1945d
-	call PrintText
-	xor a
-	ld [hJoyHeld], a
-	ld [wNPCMovementScriptFunctionNum], a
-	ld a, $3
-	ld [wNPCMovementScriptPointerTableNum], a
-	ld a, [H_LOADEDROMBANK]
-	ld [wNPCMovementScriptBank], a
-	ld a, $5
-	ld [wSpriteIndex], a
-	call GetSpritePosition2
-	ld a, $4
-	ld [wPewterCityCurScript], a
+	ld hl, PewterCityText_YoureATrainer
+	call PrintText							; "You're a trainer, right?"
 	jp TextScriptEnd
 
-PewterCityText_1945d:
-	TX_FAR _PewterCityText_1945d
+PewterCityText_YoureATrainer:
+	TX_FAR _PewterCityText_YoureATrainer
 	db "@"
 
 PewterCityText14:

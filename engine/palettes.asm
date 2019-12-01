@@ -62,9 +62,8 @@ SetPalFunctions:
 ; Also skips the "transform" check, caller does that instead
 DeterminePaletteID:
 	ld [wd11e], a
-	ld hl, MonsterPalettes
 	and a
-	jr nz,.skipDexNumConversion ; Check if trainer?
+	jr nz, GetMonPalette
 
 ; Trainers are given individualized palettes
 	; In link battle, don't rely in wTrainerClass (for some reason it's set to
@@ -76,23 +75,29 @@ DeterminePaletteID:
 
 	ld a,[wTrainerClass] ; Get trainer ID
 	ld hl, TrainerPalettes
-
-.skipDexNumConversion
-	ld e, a
-	ld d, $00
-	add hl, de
-	ld a, [hl]
-	ret
+	jr GetPaletteID
 
 DetermineBackSpritePaletteID:
 	ld [wd11e], a
-	ld hl, MonsterPalettes
 	and a
-	jr nz,.getPaletteID ; Check if trainer?
+	jr nz, GetMonPalette
+	ld a, [wPlayerGender]
+	and a
+	jr z, .male
+	ld a, PAL_GREEN
+	ret
+.male
 	ld a, PAL_HERO
 	ret
 
-.getPaletteID
+GetMonPalette:
+; originally there was a redundant table of IDs that were just Mon ID - 1
+; I got rid of that
+	ld a, [wd11e]
+	dec a
+	ret
+
+GetPaletteID:
 	ld e, a
 	ld d, $00
 	add hl, de

@@ -189,11 +189,11 @@ ROMX $1B
 ROMX $1C
 	org $4000
 	"bank1C"
-	org $4a69
+	;org $4a69
 	"BattleTransition_BlackScreen"
-	org $5fb6
+	;org $5fb6
 	"InitPartyMenuBlkPacket"
-	org $6075
+	;org $6075
 	"PrepareSuperNintendoVRAMTransfer"
 	"bank1C_extension"
 

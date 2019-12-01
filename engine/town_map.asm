@@ -453,6 +453,41 @@ WriteTownMapSpriteOAM:
 	ld b, h
 	ld c, l
 	pop hl
+	;added code
+	lb de, 2, 2
+.loop
+	push de
+	push bc
+.innerLoop
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld a, [wOAMBaseTile]
+	ld [hli], a
+	inc a
+	ld [wOAMBaseTile], a
+	ld a, [wPlayerGender]
+	and a ; Are you a boy? Or a girl?
+	ld a, SPR_PAL_GREEN
+	jr nz, .gotPal
+	xor a ; ld a, SPR_PAL_ORANGE
+.gotPal
+	ld [hli], a
+	inc d
+	ld a, 8
+	add c
+	ld c, a
+	dec e
+	jr nz, .innerLoop
+	pop bc
+	pop de
+	ld a, 8
+	add b
+	ld b, a
+	dec d
+	jr nz, .loop
+	ret
 
 WriteAsymmetricMonPartySpriteOAM:
 ; Writes 4 OAM blocks for a helix mon party sprite, since it does not have

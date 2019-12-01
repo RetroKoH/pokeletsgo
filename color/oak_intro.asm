@@ -7,7 +7,14 @@ GetNidorinoPalID:
 
 GetRedPalID:
 	call ClearScreen
+	ld a, [wPlayerGender]
+	and a
+	jr z, .male
+	ld a, PAL_GREEN
+	jr .female
+.male
 	ld a, PAL_HERO
+.female
 	jr GotIntroTrainerPalID
 
 GetRivalPalID:

@@ -824,8 +824,12 @@ SetPal_GameFreakIntro:
 
 ; Trainer card
 SetPal_TrainerCard:
+	ld a, [wPlayerGender]
+	ld b, a
+
 	ld a,2
 	ld [rSVBK],a
+	push bc
 	
 	ld d,PAL_MEWMON
 	ld e,0
@@ -841,16 +845,25 @@ SetPal_TrainerCard:
 	callba LoadSGBPalette
 
 	; Red's palette
+	pop bc
+	ld a, b
+	and a
+	jr z, .male
+	ld d, PAL_GREEN
+	jr .female
+.male
 	ld d, PAL_HERO
+.female
 	ld e,4
 	callba LoadTrainerPalette
 
 	; Palette for border tiles
-IF DEF(_BLUE)
-	ld d, PAL_BLUEMON
-ELSE ; _RED
+;IF DEF(_BLUE)
+;	ld d, PAL_BLUEMON
+;ELSE ; _RED
+;	ld d, PAL_REDMON
+;ENDC
 	ld d, PAL_REDMON
-ENDC
 	ld e,5
 	callba LoadSGBPalette
 

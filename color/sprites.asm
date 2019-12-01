@@ -1,27 +1,3 @@
-; Handles sprite attributes
-
-ATK_PAL_GREY    EQU 0
-ATK_PAL_BLUE    EQU 1
-ATK_PAL_RED     EQU 2
-ATK_PAL_BROWN   EQU 3
-ATK_PAL_YELLOW  EQU 4
-ATK_PAL_GREEN   EQU 5
-ATK_PAL_ICE     EQU 6
-ATK_PAL_PURPLE	EQU 7
-; 8: color based on attack type
-; 9: don't change color palette (assume it's already set properly from elsewhere)
-
-
-SPR_PAL_ORANGE	EQU 0
-SPR_PAL_BLUE	EQU 1
-SPR_PAL_GREEN	EQU 2
-SPR_PAL_BROWN	EQU 3
-SPR_PAL_PURPLE  EQU 4
-SPR_PAL_EMOJI   EQU 5
-SPR_PAL_TREE    EQU 6
-SPR_PAL_ROCK    EQU 7
-SPR_PAL_RANDOM  EQU 8
-
 LoadOverworldSpritePalettes:
 	ld a,[rSVBK]
 	ld b,a
@@ -86,6 +62,8 @@ ColorOverworldSprite:
 	ld d,wSpriteStateData1>>8
 	ld a,[de]		; Load A with picture ID
 	dec a
+	and a
+	jr z, .playerSprite
 
 	ld de, SpritePaletteAssignments
 	add e
@@ -94,7 +72,16 @@ ColorOverworldSprite:
 	inc d
 .noCarry
 	ld a,[de]		; Get the picture ID's palette
+	jr .continue
 
+.playerSprite
+	ld a, [wPlayerGender]
+	and a
+	ld a, SPR_PAL_ORANGE
+	jr z, .continue
+	ld a, SPR_PAL_GREEN
+
+.continue
 	; If it's 8, that means no particular palette is assigned
 	cp SPR_PAL_RANDOM
 	jr nz,.norandomColor

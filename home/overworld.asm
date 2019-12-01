@@ -2001,6 +2001,11 @@ RunMapScript::
 
 LoadWalkingPlayerSpriteGraphics::
 	ld de, RedSprite
+	ld a, [wPlayerGender]
+	and a
+	jr z, .areMale1
+	ld de,GreenSprite
+.areMale1
 	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
@@ -2011,6 +2016,11 @@ LoadSurfingPlayerSpriteGraphics::
 
 LoadBikePlayerSpriteGraphics::
 	ld de, RedCyclingSprite
+	ld a, [wPlayerGender]
+	and a
+	jr z, .areMale2
+	ld de,GreenCyclingSprite
+.areMale2
 	ld hl, vNPCSprites
 
 LoadPlayerSpriteGraphicsCommon::

@@ -1167,3 +1167,7 @@ TrainerPaletteTable:
 ; PAL_HERO
 	RGB 28, 18, 17
 	RGB 22, 07, 08
+
+; PAL_GREEN
+	RGB 30, 22, 17
+	RGB 09, 20, 11

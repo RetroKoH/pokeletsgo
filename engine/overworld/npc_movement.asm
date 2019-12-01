@@ -178,7 +178,7 @@ PewterMovementScript_WalkToMuseum:
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	xor a
-	ld [wWhichPewterGuy], a
+	;ld [wWhichPewterGuy], a
 	predef PewterGuys
 	ld hl, wNPCMovementDirections2
 	ld de, RLEList_PewterMuseumGuy
@@ -212,59 +212,6 @@ PewterMovementScript_Done:
 	ld hl, wd72e
 	res 7, [hl]
 	jp EndNPCMovementScript
-
-PewterGymGuyMovementScriptPointerTable:
-	dw PewterMovementScript_WalkToGym
-	dw PewterMovementScript_Done
-
-PewterMovementScript_WalkToGym:
-	ld a, BANK(Music_MuseumGuy)
-	ld [wAudioROMBank], a
-	ld [wAudioSavedROMBank], a
-	ld a, MUSIC_MUSEUM_GUY
-	ld [wNewSoundID], a
-	call PlaySound
-	ld a, [wSpriteIndex]
-	swap a
-	ld [wNPCMovementScriptSpriteOffset], a
-	xor a
-	ld [wSpriteStateData2 + $06], a
-	ld hl, wSimulatedJoypadStatesEnd
-	ld de, RLEList_PewterGymPlayer
-	call DecodeRLEList
-	dec a
-	ld [wSimulatedJoypadStatesIndex], a
-	ld a, 1
-	ld [wWhichPewterGuy], a
-	predef PewterGuys
-	ld hl, wNPCMovementDirections2
-	ld de, RLEList_PewterGymGuy
-	call DecodeRLEList
-	ld hl, wd72e
-	res 7, [hl]
-	ld hl, wd730
-	set 7, [hl]
-	ld a, $1
-	ld [wNPCMovementScriptFunctionNum], a
-	ret
-
-RLEList_PewterGymPlayer:
-	db 0, $01
-	db D_RIGHT, $02
-	db D_DOWN, $05
-	db D_LEFT, $0B
-	db D_UP, $05
-	db D_LEFT, $0F
-	db $FF
-
-RLEList_PewterGymGuy:
-	db NPC_MOVEMENT_DOWN, $02
-	db NPC_MOVEMENT_LEFT, $0F
-	db NPC_MOVEMENT_UP, $05
-	db NPC_MOVEMENT_LEFT, $0B
-	db NPC_MOVEMENT_DOWN, $05
-	db NPC_MOVEMENT_RIGHT, $03
-	db $FF
 
 FreezeEnemyTrainerSprite:
 	ld a, [wCurMap]

@@ -1,6 +1,6 @@
 _PewterCityText1::
 	text "It's rumored that"
-	line "CLEFAIRYs came"
+	line "CLEFAIRY came"
 	cont "from the moon!"
 
 	para "They appeared "
@@ -20,18 +20,18 @@ _PewterCityText2::
 	cont "into it!"
 	done
 
-_PewterCityText_193f1::
+_PewterCityText_MuseumQuestion::
 	text "Did you check out"
 	line "the MUSEUM?"
 	done
 
-_PewterCityText_193f6::
+_PewterCityText_MuseumAnswerYes::
 	text "Weren't those"
 	line "fossils from MT."
 	cont "MOON amazing?"
 	done
 
-_PewterCityText_193fb::
+_PewterCityText_MuseumAnswerNo::
 	text "Really?"
 	line "You absolutely"
 	cont "have to go!"
@@ -45,29 +45,28 @@ _PewterCityText13::
 	cont "See you around!"
 	done
 
-_PewterCityText_19427::
+_PewterCityText_DoYouKnowWhatImDoing::
 	text "Psssst!"
 	line "Do you know what"
 	cont "I'm doing?"
 	done
 
-_PewterCityText_1942c::
+_PewterCityText_ItsHardWork::
 	text "That's right!"
 	line "It's hard work!"
 	done
 
-_PewterCityText_19431::
+_PewterCityText_SprayingRepel::
 	text "I'm spraying REPEL"
 	line "to keep #MON"
 	cont "out of my garden!"
 	done
 
-_PewterCityText_1945d::
+_PewterCityText_YoureATrainer::
 	text "You're a trainer"
 	line "right? BROCK's"
 	cont "looking for new"
 	cont "challengers!"
-	cont "Follow me!"
 	done
 
 _PewterCityText14::

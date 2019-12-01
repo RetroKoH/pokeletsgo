@@ -9,11 +9,11 @@ PewterGuys:
 	ld d, h
 	ld e, l
 	ld hl, PointerTable_37ce6
-	ld a, [wWhichPewterGuy]
-	add a
-	ld b, 0
-	ld c, a
-	add hl, bc
+;	ld a, [wWhichPewterGuy]
+;	add a
+;	ld b, 0
+;	ld c, a
+;	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -50,7 +50,7 @@ PewterGuys:
 
 PointerTable_37ce6:
 	dw PewterMuseumGuyCoords
-	dw PewterGymGuyCoords
+	;dw PewterGymGuyCoords
 
 ; these are the four coordinates of the spaces below, above, to the left and
 ; to the right of the museum guy, and pointers to different movements for
@@ -73,30 +73,3 @@ PewterMuseumGuyCoords:
 	db D_UP, D_RIGHT, $ff
 .right
 	db D_UP, D_LEFT, $ff
-
-; these are the five coordinates which trigger the gym guy and pointers to
-; different movements for the player to make to get positioned before the
-; main movement
-; $00 is a pause
-PewterGymGuyCoords:
-	db 16, 34
-	dw .one
-	db 17, 35
-	dw .two
-	db 18, 37
-	dw .three
-	db 19, 37
-	dw .four
-	db 17, 36
-	dw .five
-
-.one
-	db D_LEFT, D_DOWN, D_DOWN, D_RIGHT, $ff
-.two
-	db D_LEFT, D_DOWN, D_RIGHT, D_LEFT, $ff
-.three
-	db D_LEFT, D_LEFT, D_LEFT, $00, $00, $00, $00, $00, $00, $00, $00, $ff
-.four
-	db D_LEFT, D_LEFT, D_UP, D_LEFT, $ff
-.five
-	db D_LEFT, D_DOWN, D_LEFT, $00, $00, $00, $00, $00, $00, $00, $00, $ff

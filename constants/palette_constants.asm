@@ -313,3 +313,4 @@ const_value = 0
 	const PAL_AGATHA
 	const PAL_LANCE
 	const PAL_HERO
+	const PAL_GREEN

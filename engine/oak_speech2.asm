@@ -1,5 +1,11 @@
+ReChoosePlayerName:
+	ld hl,IntroducePlayerText
+	call PrintText
 ChoosePlayerName:
 	call OakSpeechSlidePicRight
+	ld a, [wPlayerGender]   ; Added gender check
+	and a        ; Added gender check
+	jr nz, .AreGirl ; Skip to girl names if you are a girl instead
 	ld de, DefaultNamesPlayer
 	call DisplayIntroNameTextBox
 	ld a, [wCurrentMenuItem]
@@ -10,6 +16,17 @@ ChoosePlayerName:
 	ld de, wPlayerName
 	call OakSpeechSlidePicLeft
 	jr .done
+.AreGirl ; Copy of the boy naming routine, just with girl's names
+	ld de, DefaultNamesGirl
+	call DisplayIntroNameTextBox
+	ld a, [wCurrentMenuItem] ; wCurrentMenuItem
+	and a
+	jr z, .customName
+	ld hl, DefaultNamesGirlList
+	call GetDefaultName
+	ld de, wPlayerName
+	call OakSpeechSlidePicLeft
+	jr .done ; End of new Girl Names routine
 .customName
 	ld hl, wPlayerName
 	xor a ; NAME_PLAYER_SCREEN
@@ -17,13 +34,35 @@ ChoosePlayerName:
 	call DisplayNamingScreen
 	ld a, [wcf4b]
 	cp "@"
-	jr z, .customName
+	jr nz, .notBlankName
+	ld hl, RedDefaultName
+	ld a, [wPlayerGender]
+	and a
+	jr z, .okGo
+	ld hl, GreenDefaultName
+.okGo
+	ld de, wPlayerName
+	ld bc, NAME_LENGTH
+	call CopyData
+.notBlankName
 	call ClearScreen
 	call Delay3
 	ld de, RedPicFront
 	ld b, BANK(RedPicFront)
+	ld a, [wPlayerGender] ; Added gender check
+	and a      ; Added gender check
+	jr z, .AreBoy3
+	ld de, GreenPicFront
+	ld b, BANK(GreenPicFront)
+.AreBoy3
 	call IntroDisplayPicCenteredOrUpperRight
 .done
+	ld hl, YourNameIsText2
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jp nz, ReChoosePlayerName
 	ld hl, YourNameIsText
 	jp PrintText
 
@@ -31,6 +70,13 @@ YourNameIsText:
 	TX_FAR _YourNameIsText
 	db "@"
 
+YourNameIsText2:
+	TX_FAR _YourNameIsText2
+	db "@"
+
+ReChooseRivalName:
+	ld hl,IntroduceRivalText2
+	call PrintText
 ChooseRivalName:
 	call OakSpeechSlidePicRight
 	ld de, DefaultNamesRival
@@ -50,18 +96,37 @@ ChooseRivalName:
 	call DisplayNamingScreen
 	ld a, [wcf4b]
 	cp "@"
-	jr z, .customName
+	jr nz, .notBlankName
+	ld hl, RivalDefaultName
+	ld de, wRivalName
+	ld bc, NAME_LENGTH
+	call CopyData
+.notBlankName
 	call ClearScreen
 	call Delay3
 	ld de, Rival1Pic
 	ld b, $13
 	call IntroDisplayPicCenteredOrUpperRight
 .done
+	ld hl, HisNameIsText2
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jp nz, ReChooseRivalName
 	ld hl, HisNameIsText
 	jp PrintText
 
+IntroduceRivalText2:
+	TX_FAR _IntroduceRivalText2
+	db "@"
+
 HisNameIsText:
 	TX_FAR _HisNameIsText
+	db "@"
+
+HisNameIsText2:
+	TX_FAR _HisNameIsText2
 	db "@"
 
 OakSpeechSlidePicLeft:
@@ -194,6 +259,13 @@ DefaultNamesPlayer:
 	next "JACK"
 	db   "@"
 
+DefaultNamesGirl:
+	db   "NEW NAME"
+	next "GREEN"
+	next "ASHLEY"
+	next "LEAF"
+	db   "@"
+
 DefaultNamesRival:
 	db   "NEW NAME"
 	next "BLUE"
@@ -227,14 +299,22 @@ GetDefaultName:
 
 DefaultNamesPlayerList:
 	db "NEW NAME@"
+RedDefaultName:
 	db "RED@"
 	db "ASH@"
 	db "JACK@"
 DefaultNamesRivalList:
 	db "NEW NAME@"
+RivalDefaultName:
 	db "BLUE@"
 	db "GARY@"
 	db "JOHN@"
+DefaultNamesGirlList:
+	db "NEW NAME@"
+GreenDefaultName:
+	db "GREEN@"
+	db "ASHLEY@"
+	db "LEAF@"
 
 TextTerminator_6b20:
 	db "@"

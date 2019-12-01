@@ -10,7 +10,14 @@ RedsHouse1FText1: ; Mom
 	ld a, [wd72e]
 	bit 3, a
 	jr nz, .heal ; if player has received a Pokémon from Oak, heal team
+	ld a, [wPlayerGender]
+	and a
+	jr nz, .girl
 	ld hl, MomWakeUpText
+	call PrintText
+	jr .done
+.girl
+	ld hl, MomWakeUpText2
 	call PrintText
 	jr .done
 .heal
@@ -20,6 +27,10 @@ RedsHouse1FText1: ; Mom
 
 MomWakeUpText:
 	TX_FAR _MomWakeUpText
+	db "@"
+
+MomWakeUpText2:
+	TX_FAR _MomWakeUpText2
 	db "@"
 
 MomHealPokemon:
@@ -54,14 +65,24 @@ RedsHouse1FText2: ; TV
 	ld a, [wSpriteStateData1 + 9]
 	cp SPRITE_FACING_UP
 	ld hl, TVWrongSideText
-	jr nz, .notUp
-	ld hl, StandByMeText
-.notUp
+	jr nz, .done
+	ld a, [wPlayerGender]
+	and a
+	jr nz, .girl
+	ld hl,StandByMeText
+	jr .done
+.girl
+	ld hl,WizardOfOzText
+.done
 	call PrintText
 	jp TextScriptEnd
 
 StandByMeText:
 	TX_FAR _StandByMeText
+	db "@"
+
+WizardOfOzText:
+	TX_FAR _WizardOfOzText
 	db "@"
 
 TVWrongSideText:
