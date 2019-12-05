@@ -317,7 +317,16 @@ Evolution_ReloadTilesetTilePatterns:
 LearnMoveFromEvolution:
 	ld a, [wd11e]		; current mon species
 	ld [wcf91], a
-	call GetMonLearnset	; Red++ loads from a unique table. We will look at the regular list and check for Level 0 moves.
+	ld hl, LearnsetsPointerTable
+	ld b, 0
+	ld a, [wcf91]
+	dec a
+	ld c, a
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 
 .learnSetLoop			; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
@@ -332,7 +341,7 @@ LearnMoveFromEvolution:
 	and a
 	jr nz, .next
 	ld hl, wPartyMon1Moves
-	ld a, [wCurPartyMon]
+	ld a, [wWhichPokemon]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 
@@ -359,19 +368,28 @@ LearnMoveFromEvolution:
 	ret
 
 LearnMoveFromLevelUp:
-	ld hl, LearnsetsPointerTable
 	ld a, [wd11e] ; species
 	ld [wcf91], a
-	dec a
-	ld bc, 0
 	ld hl, LearnsetsPointerTable
-	add a
-	rl b
+	ld b, 0
+	ld a, [wcf91]
+	dec a
 	ld c, a
+	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+;	dec a
+;	ld bc, 0
+;	ld hl, LearnsetsPointerTable
+;	add a
+;	rl b
+;	ld c, a
+;	add hl, bc
+;	ld a, [hli]
+;	ld h, [hl]
+;	ld l, a
 
 .learnSetLoop ; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
