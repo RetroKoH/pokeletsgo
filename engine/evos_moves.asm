@@ -314,6 +314,50 @@ Evolution_ReloadTilesetTilePatterns:
 	ret z
 	jp ReloadTilesetTilePatterns
 
+LearnMoveFromEvolution:
+	ld a, [wd11e]		; current mon species
+	ld [wcf91], a
+	call GetMonLearnset	; Red++ loads from a unique table. We will look at the regular list and check for Level 0 moves.
+
+.learnSetLoop			; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
+	ld a, [hli]
+	and a 			; have we reached the end of the learn set?
+	jr z, .done		; if we've reached the end of the learn set, jump (If no moves present in set)
+	ld b, a			; check value of the level the move is learnt at
+	cp $ff			; is the move an evo move? (Level = $FF)
+	jp nz, .done	; assuming that the moves are in sequential order, stop here.
+	ld a, [hli]		; a = move ID
+	ld d, a			; ID of move to learn
+	ld a, [wMonDataLocation]
+	and a
+	jr nz, .next
+	ld hl, wPartyMon1Moves
+	ld a, [wCurPartyMon]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+
+.next
+	ld b, NUM_MOVES
+
+.checkCurrentMovesLoop ; check if the move to learn is already known
+	ld a, [hli]
+	cp d
+	jr z, .done                      ; if already known, jump
+	dec b
+	jr nz, .checkCurrentMovesLoop    ; if not, loop and check others
+
+	ld a, d
+	ld [wMoveNum], a
+	ld [wd11e], a
+	call GetMoveName
+	call CopyStringToCF4B
+	predef LearnMove
+	ld a, [wcf91]
+	ld [wd11e], a
+
+.done
+	ret
+
 LearnMoveFromLevelUp:
 	ld hl, LearnsetsPointerTable
 	ld a, [wd11e] ; species

@@ -4296,6 +4296,7 @@ GetDamageVarsForPlayerAttack:
 	ld a, [hl]              ; a = move category
 	cp SPECIAL              ; PHYSICAL/SPECIAL SPLIT: No longer based on type
 	jr z, .specialAttack
+
 .physicalAttack
 	ld hl, wEnemyMonDefense
 	ld a, [hli]
@@ -4307,6 +4308,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Reflect, double the enemy's defense
 	sla c
 	rl b
+
 .physicalAttackCritCheck
 	ld hl, wBattleMonAttack
 	ld a, [wCriticalHitOrOHKO]
@@ -4326,6 +4328,7 @@ GetDamageVarsForPlayerAttack:
 	call AddNTimes
 	pop bc
 	jr .scaleStats
+
 .specialAttack
 	ld hl, wEnemyMonSpecial
 	ld a, [hli]
@@ -4337,6 +4340,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Light Screen, double the enemy's special
 	sla c
 	rl b
+
 ; reflect and light screen boosts do not cap the stat at 999, so weird things will happen during stats scaling if
 ; a Pokemon with 512 or more Defense has used Reflect, or if a Pokemon with 512 or more Special has used Light Screen
 .specialAttackCritCheck
@@ -4357,6 +4361,7 @@ GetDamageVarsForPlayerAttack:
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 	pop bc
+
 ; if either the offensive or defensive stat is too large to store in a byte, scale both stats by dividing them by 4
 ; this allows values with up to 10 bits (values up to 1023) to be handled
 ; anything larger will wrap around
