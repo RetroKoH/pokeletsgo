@@ -569,6 +569,10 @@ INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 
 INCLUDE "engine/evos_moves.asm"
+INCLUDE "data/evos.asm"
+INCLUDE "data/learnsets.asm"
+INCLUDE "data/techniques.asm"
+
 INCLUDE "engine/battle/moveEffects/heal_effect.asm"
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
 INCLUDE "engine/battle/moveEffects/reflect_light_screen_effect.asm"
@@ -579,7 +583,6 @@ INCLUDE "color/draw_hud_pokeball_gfx.asm"
 SECTION "bankF", ROMX, BANK[$F]
 
 INCLUDE "engine/battle/core.asm"
-
 
 SECTION "bank10", ROMX, BANK[$10]
 

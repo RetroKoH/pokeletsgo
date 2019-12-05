@@ -930,9 +930,10 @@ wSwappedMenuItem:: ; cd3d
 
 wHoFMonSpecies:: ; cd3d
 
+wTechniques::
 wFieldMoves:: ; cd3d
 ; 4 bytes
-; the current mon's field moves
+; the current mon's techniques (field moves)
 
 wBadgeNumberTile:: ; cd3d
 ; tile ID of the badge number being drawn
@@ -1079,6 +1080,7 @@ wHiddenObjectX:: ; cd41
 wSlotMachineWinningSymbol:: ; cd41
 ; the OAM tile number of the upper left corner of the winning symbol minus 2
 
+wNumTechniques::
 wNumFieldMoves:: ; cd41
 
 wSlotMachineWheel1BottomTile:: ; cd41

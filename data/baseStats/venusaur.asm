@@ -11,11 +11,13 @@ db 208 ; base exp yield
 INCBIN "pic/mon/venusaur.pic",0,1 ; 77, sprite dimensions
 dw VenusaurPicFront
 dw VenusaurPicBack
+
 ; attacks known at lvl 0
-db TACKLE
-db GROWL
-db LEECH_SEED
-db VINE_WHIP
+db 0
+db 0
+db 0
+db 0
+
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

@@ -40,19 +40,19 @@ Route22Script_SetLastRivalTeam: ; define which team rival uses, and fight it
 	ld [wCurOpponent], a
 
 	ld a, [wRivalStarter]
-        cp JOLTEON
-        jr nz, .notJolteon
-        ld a, $B
+	cp JOLTEON
+	jr nz, .notJolteon
+	ld a, $B
 	jr .done
 .notJolteon
-        cp FLAREON
-        jr nz, .notFlareon
-        ld a, $C
+	cp FLAREON
+	jr nz, .notFlareon
+	ld a, $C
 	jr .done
 .notFlareon
-        cp VAPOREON
-        jr nz, .isPikachu
-        ld a, $D
+	cp VAPOREON
+	jr nz, .isPikachu
+	ld a, $D
 	jr .done
 .isPikachu
 	ld a, $E ; Raichu party
@@ -311,18 +311,10 @@ Route22Script4:
 	ld hl, Route22RivalDefeatedText2
 	ld de, Route22Text_511d0
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY2
-	ld [wCurOpponent], a
-	ld hl, StarterMons_510d9
-	call Route22Script_SetFirstRivalTeam
+	call Route22Script_SetLastRivalTeam
 	ld a, $5
 	ld [wRoute22CurScript], a
 	ret
-
-StarterMons_510d9:
-	db STARTER2,$0a
-	db STARTER3,$0b
-	db STARTER1,$0c
 
 Route22Script5:
 	ld a, [wIsInBattle]

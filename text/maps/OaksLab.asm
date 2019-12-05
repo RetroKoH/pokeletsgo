@@ -105,21 +105,7 @@ _OaksLabAroundWorldText::
 	cont "you, <PLAYER>!"
 	done
 
-_OaksLabGivePokeballsText1::
-	text "OAK: You can't get"
-	line "detailed data on"
-	cont "#MON by just"
-	cont "seeing them."
-
-	para "You must catch"
-	line "them! Use these"
-	cont "to capture wild"
-	cont "#MON."
-
-	para "<PLAYER> got 5"
-	line "# BALLs!@@"
-
-_OaksLabGivePokeballsText2::
+_OaksLabGivePokeballsText::
 	text ""
 	para "When a wild"
 	line "#MON appears,"
@@ -315,13 +301,25 @@ _OaksLabText26::
 	line "to fulfill my"
 	cont "dream for me!"
 
-	para "Get moving, you"
-	line "two!"
+	;para "Get moving, you"
+	;line "two!"
 
-	para "This is a great"
-	line "undertaking in"
-	cont "#MON history!"
-	done
+	;para "This is a great"
+	;line "undertaking in"
+	;cont "#MON history!"
+
+	para "But you can't get"
+	line "detailed data on"
+	cont "#MON by just"
+	cont "seeing them."
+
+	para "You must catch"
+	line "them! Use these"
+	cont "to capture wild"
+	cont "#MON."
+
+	para "<PLAYER> got 5"
+	line "# BALLS!@@"
 
 _OaksLabText27::
 	text "<RIVAL>: Alright"

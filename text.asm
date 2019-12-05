@@ -2709,10 +2709,10 @@ _NotHealthyEnoughText::
 	line "enough."
 	prompt
 
-_NewBadgeRequiredText::
-	text "No! A new BADGE"
-	line "is required."
-	prompt
+;_NewBadgeRequiredText::
+;	text "No! A new BADGE"
+;	line "is required."
+;	prompt
 
 _CannotUseItemsHereText::
 	text "You can't use items"

@@ -166,27 +166,24 @@ _AddPartyMon:
 	inc de
 	ld a, [hli]       ; catch rate (held item in gen 2)
 	ld [de], a
-	ld hl, wMonHMoves
-	ld a, [hli]
+; for a wild mon, first clear the movepool before copying
+	xor a
 	inc de
 	push de
-	ld [de], a
-	ld a, [hli]
+	ld [de], a ; Move 1
 	inc de
-	ld [de], a
-	ld a, [hli]
+	ld [de], a ; Move 2
 	inc de
-	ld [de], a
-	ld a, [hli]
+	ld [de], a ; Move 3
 	inc de
-	ld [de], a
+	ld [de], a ; Move 4
 	push de
 	dec de
 	dec de
 	dec de
 	xor a
 	ld [wLearningMovesFromDayCare], a
-	predef WriteMonMoves
+	predef WriteMonMoves  ; get moves based on current level
 	pop de
 	ld a, [wPlayerID]  ; set trainer ID to player ID
 	inc de

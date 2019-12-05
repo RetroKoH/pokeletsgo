@@ -566,15 +566,15 @@ TwoOptionMenuStrings:
 
 DisplayFieldMoveMonMenu:
 	xor a
-	ld hl, wFieldMoves
-	ld [hli], a ; wFieldMoves
-	ld [hli], a ; wFieldMoves + 1
-	ld [hli], a ; wFieldMoves + 2
-	ld [hli], a ; wFieldMoves + 3
-	ld [hli], a ; wNumFieldMoves
+	ld hl, wTechniques
+	ld [hli], a ; wTechniques
+	ld [hli], a ; wTechniques + 1
+	ld [hli], a ; wTechniques + 2
+	ld [hli], a ; wTechniques + 3
+	ld [hli], a ; wNumTechniques
 	ld [hl], 12 ; wFieldMovesLeftmostXCoord
 	call GetMonFieldMoves
-	ld a, [wNumFieldMoves]
+	ld a, [wNumTechniques]
 	and a
 	jr nz, .fieldMovesExist
 
@@ -685,15 +685,17 @@ DisplayFieldMoveMonMenu:
 	jp PlaceString
 
 FieldMoveNames:
-	db "CUT@"
-	db "FLY@"
+	db "CHOP@"		; CUT
+	db "SOAR@"		; FLY
 	db "@"
-	db "SURF@"
-	db "STRENGTH@"
-	db "FLASH@"
+	db "SWIM@"		; SURF
+	db "PUSH@"		; STRENGTH
+	db "GLOW@"		; FLASH
 	db "DIG@"
-	db "TELEPORT@"
-	db "SOFTBOILED@"
+	db "WARP@"		; TELEPORT
+	db "HEAL@"		; SOFTBOILED
+
+	; Add ability to headbutt (incorporate into push), LURE, LULL, and SOAR
 
 PokemonMenuEntries:
 	db   "STATS"
@@ -701,7 +703,7 @@ PokemonMenuEntries:
 	next "CANCEL@"
 
 GetMonFieldMoves:
-	ld a, [wWhichPokemon]
+	ld a, [wWhichPokemon]			; load current mon to a
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
@@ -762,9 +764,9 @@ FieldMoveDisplayData:
 	db FLY, $02, $0C
 	db $B4, $03, $0C ; unused field move
 	db SURF, $04, $0C
-	db STRENGTH, $05, $0A
+	db STRENGTH, $05, $0C
 	db FLASH, $06, $0C
 	db DIG, $07, $0C
-	db TELEPORT, $08, $0A
-	db SOFTBOILED, $09, $08
+	db TELEPORT, $08, $0C
+	db SOFTBOILED, $09, $0C
 	db $ff ; list terminator

@@ -44,7 +44,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, [wEvoOldSpecies]
 	dec a
 	ld b, 0
-	ld hl, EvosMovesPointerTable
+	ld hl, EvosPointerTable
 	add a
 	rl b
 	ld c, a
@@ -315,12 +315,12 @@ Evolution_ReloadTilesetTilePatterns:
 	jp ReloadTilesetTilePatterns
 
 LearnMoveFromLevelUp:
-	ld hl, EvosMovesPointerTable
+	ld hl, LearnsetsPointerTable
 	ld a, [wd11e] ; species
 	ld [wcf91], a
 	dec a
 	ld bc, 0
-	ld hl, EvosMovesPointerTable
+	ld hl, LearnsetsPointerTable
 	add a
 	rl b
 	ld c, a
@@ -328,10 +328,7 @@ LearnMoveFromLevelUp:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.skipEvolutionDataLoop ; loop to skip past the evolution data, which comes before the move data
-	ld a, [hli]
-	and a ; have we reached the end of the evolution data?
-	jr nz, .skipEvolutionDataLoop ; if not, jump back up
+
 .learnSetLoop ; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
 	and a ; have we reached the end of the learn set?
@@ -379,7 +376,7 @@ WriteMonMoves:
 	push hl
 	push de
 	push bc
-	ld hl, EvosMovesPointerTable
+	ld hl, LearnsetsPointerTable
 	ld b, 0
 	ld a, [wcf91]  ; cur mon ID
 	dec a
@@ -390,11 +387,8 @@ WriteMonMoves:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.skipEvoEntriesLoop
-	ld a, [hli]
-	and a
-	jr nz, .skipEvoEntriesLoop
 	jr .firstMove
+
 .nextMove
 	pop de
 .nextMove2
@@ -415,7 +409,6 @@ WriteMonMoves:
 	jr nc, .nextMove2 ; min level >= move level
 
 .skipMinLevelCheck
-
 ; check if the move is already known
 	push de
 	ld c, NUM_MOVES
@@ -506,5 +499,3 @@ WriteMonMoves_ShiftMoveData:
 
 Evolution_FlagAction:
 	predef_jump FlagActionPredef
-
-INCLUDE "data/evos_moves.asm"

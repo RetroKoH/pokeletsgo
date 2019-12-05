@@ -26,6 +26,7 @@ EvosMovesPointerTable:
 	dw FearowEvosMoves
 	dw EkansEvosMoves
 	dw ArbokEvosMoves
+	dw PichuEvosMoves
 	dw PikachuEvosMoves
 	dw RaichuEvosMoves
 	dw SandshrewEvosMoves
@@ -111,6 +112,8 @@ EvosMovesPointerTable:
 	dw KinglerEvosMoves
 	dw VoltorbEvosMoves
 	dw ElectrodeEvosMoves
+	dw ExeggcuteEvosMoves
+	dw ExeggutorEvosMoves
 	dw CuboneEvosMoves
 	dw MarowakEvosMoves
 	dw TyrogueEvosMoves
@@ -119,8 +122,6 @@ EvosMovesPointerTable:
 	dw HitmontopEvosMoves
 	dw LickitungEvosMoves
 	dw LickilickyEvosMoves
-	dw ExeggcuteEvosMoves
-	dw ExeggutorEvosMoves
 	dw KoffingEvosMoves
 	dw WeezingEvosMoves
 	dw RhyhornEvosMoves

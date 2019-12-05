@@ -6343,19 +6343,15 @@ LoadEnemyMonData:
 	call CopyData
 	jr .loadMovePPs
 .copyStandardMoves
-; for a wild mon, first copy default moves from the mon header
-	ld hl, wMonHMoves
-	ld a, [hli]
-	ld [de], a
+; for a wild mon, first clear the movepool before copying
+	xor a
+	ld [de], a ; Move 1
 	inc de
-	ld a, [hli]
-	ld [de], a
+	ld [de], a ; Move 2
 	inc de
-	ld a, [hli]
-	ld [de], a
+	ld [de], a ; Move 3
 	inc de
-	ld a, [hl]
-	ld [de], a
+	ld [de], a ; Move 4
 	dec de
 	dec de
 	dec de

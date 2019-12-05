@@ -1,27 +1,36 @@
 Route24Mons:
 	db $19
-	IF DEF(_RED)
-		db 7,WEEDLE
-		db 8,KAKUNA
-		db 12,PIDGEY
-		db 12,ODDISH
-		db 13,ODDISH
-		db 10,ABRA
-		db 14,ODDISH
-		db 13,PIDGEY
-		db 8,ABRA
-		db 12,ABRA
-	ENDC
-	IF DEF(_BLUE)
-		db 7,CATERPIE
-		db 8,METAPOD
-		db 12,PIDGEY
-		db 12,BELLSPROUT
-		db 13,BELLSPROUT
-		db 10,ABRA
-		db 14,BELLSPROUT
-		db 13,PIDGEY
-		db 8,ABRA
-		db 12,ABRA
-	ENDC
-	db $00
+	db 12,ODDISH		; 25%
+	db 12,BELLSPROUT	; 15%
+	db 13,PIDGEY		; 15%
+	db 13,BELLSPROUT	; 10%
+	db 13,ABRA			; 10%
+	db 10,ABRA			; 10%
+	db 14,VENONAT		; 5%
+	db 13,VENONAT		; 5%
+	db 8,PSYDUCK		; 4%
+	db 12,PSYDUCK		; 1%
+	db $00				; No Sea Mons
+
+; ODDISH - 25%
+; Level 12 - 25%
+
+; BELLSPROUT - 25%
+; Level 12 - 15%
+; Level 13 - 10%
+
+; PIDGEY - 15%
+; Level 13 - 15%
+
+; SANDSHREW - 10%
+; Level 10 - 10%
+
+; JIGGLYPUFF - 5%
+; Level 10 - 5%
+
+; MANKEY - 5%
+; Level 12 - 5%
+
+; PSYDUCK - 5%
+; Level 11 - 4%
+; Level 12 - 1%

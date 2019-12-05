@@ -353,13 +353,13 @@ OaksLabScript_BlueBattle1:
 	; define which team rival uses, and fight it
 	ld a, OPP_SONY1
 	ld [wCurOpponent], a
-	ld a, [wRivalStarter]
-	cp STARTER2
-	jr nz, .NotEevee
-	ld a, $1
+	ld a, [wRivalStarter]	; check the rival's starter
+	cp STARTER2				; is it Eevee?
+	jr nz, .NotEevee		; if not, branch
+	ld a, $1				; load Eevee as its Pokemon
 	jr .done
 .NotEevee
-	ld a, $2
+	ld a, $2				; load Pikachu as its Pokemon
 .done
 	ld [wTrainerNo], a
 	ld a, $1
@@ -388,14 +388,14 @@ OaksLabScript_AfterBlueBattle1:
 	; skip or lose that battle.                                VAPOREON - 2 losses
 	; Otherwise, it will evolve into Vaporeon.
 	; Rival's Pikachu will evolve into Raichu.
-	ld a, [wRivalStarter]
-	cp STARTER2           ; Did Blue pick Eevee?
-	jp .notEevee          ; if not, branch and skip
+	ld a, [wRivalStarter]	; check the rival's starter
+	cp STARTER2				; Did Blue pick Eevee?
+	jp nz, .notEevee		; if not, branch and skip
 	ld a, [wBattleResult]
 	and a
-	ld b, VAPOREON        ; if you lost, Blue is set to evolve to Vaporeon (#3)
+	ld b, VAPOREON			; if you lost, Blue is set to evolve to Vaporeon (#3)
 	jr nz, .asm_1c660
-	ld b, FLAREON         ; if you won, Blue is set to evolve to Flareon (#2)
+	ld b, FLAREON			; if you won, Blue is set to evolve to Flareon (#2)
 
 .asm_1c660
 	ld a, b
@@ -403,7 +403,7 @@ OaksLabScript_AfterBlueBattle1:
 	jr .setStarter
 
 .notEevee
-	ld a, RAICHU
+	ld a, RAICHU			; Win or lose, Blue is set to evolve to Raichu (#3)
 	ld [wRivalStarter], a
 
 .setStarter
@@ -506,7 +506,7 @@ OaksLabScript_BlueReturns: ; Set to activate AFTER player returns WITH Oak's par
 	ld [wNewSoundID], a
 	call PlaySound
 	callba Music_RivalAlternateStart
-	ld a, $15
+	ld a, $14
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call OaksLabScript_1d02b
@@ -551,6 +551,11 @@ OaksLabScript_OakGivesPokedex:
 	ld a, $fc
 	ld [wJoyIgnore], a
 	call OaksLabScript_1cefd
+	ld a, $15
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	call DelayFrame
+	call OaksLabScript_1cefd
 	ld a, $16
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -560,12 +565,7 @@ OaksLabScript_OakGivesPokedex:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call DelayFrame
-	call OaksLabScript_1cefd
 	ld a, $18
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	call DelayFrame
-	ld a, $19
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call Delay3
@@ -576,7 +576,7 @@ OaksLabScript_OakGivesPokedex:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call OaksLabScript_1cefd
-	ld a, $1a
+	ld a, $19
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, $1
@@ -585,7 +585,7 @@ OaksLabScript_OakGivesPokedex:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	call Delay3
-	ld a, $1b
+	ld a, $1a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_POKEDEX
@@ -733,8 +733,8 @@ OaksLab_TextPointers:    ; if somehow, 0 is pulled, it opens the menu
 	dw OaksLabText20
 	dw OaksLabText21
 	dw OaksLabText22
-	dw OaksLabText23
-	dw OaksLabText24
+	dw OaksLabText23 ; $16
+	dw OaksLabText24 ; $17 "On my desk there, is a Pokedex!"
 	dw OaksLabText25
 	dw OaksLabText26
 	dw OaksLabText27
@@ -918,8 +918,8 @@ OaksLabReceivedMonText:
 OaksLabText32:
 OaksLabText5:
 	TX_ASM
-	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	jr nz, .asm_1d266
+	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS ; did you already get pokeballs?
+	jr nz, .asm_1d266								; if yes, branch ahead
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -929,22 +929,19 @@ OaksLabText5:
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .asm_1d279
 .asm_1d266
-	ld hl, OaksLabText_1d31d
+	ld hl, OaksLabText_1d31d ; Oak checks your pokedex
 	call PrintText
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	predef DisplayDexRating
 	jp .asm_1d2ed
 .asm_1d279
-	ld b, POKE_BALL
-	call IsItemInBag
-	jr nz, .asm_1d2e7
-	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
-	jr nz, .asm_1d2d0
-	CheckEvent EVENT_GOT_POKEDEX
-	jr nz, .asm_1d2c8
-	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
-	jr nz, .asm_1d2a9
+	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE 		; have you beaten optional rival?
+	jr nz, .asm_1d2e7 									; if yes, branch
+	CheckEvent EVENT_GOT_POKEDEX 						; did you get a pokedex?
+	jr nz, .asm_1d2c8 									; if yes, branch
+	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB	; have you played Rival 1?
+	jr nz, .asm_1d2a9 									; if yes, branch
 	ld a, [wd72e]
 	bit 3, a
 	jr nz, .asm_1d2a1
@@ -973,14 +970,14 @@ OaksLabText5:
 	ld hl, OaksLabAroundWorldText
 	call PrintText
 	jr .asm_1d2ed
-.asm_1d2d0
-	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	jr nz, .asm_1d2e7
-	lb bc, POKE_BALL, 5
-	call GiveItem
-	ld hl, OaksLabGivePokeballsText
-	call PrintText
-	jr .asm_1d2ed
+;.asm_1d2d0
+;	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
+;	jr nz, .asm_1d2e7
+;	lb bc, POKE_BALL, 5
+;	call GiveItem
+;	ld hl, OaksLabGivePokeballsText
+;	call PrintText
+;	jr .asm_1d2ed
 .asm_1d2e7
 	ld hl, OaksLabPleaseVisitText
 	call PrintText
@@ -1007,12 +1004,6 @@ OaksLabDeliverParcelText:
 
 OaksLabAroundWorldText:
 	TX_FAR _OaksLabAroundWorldText
-	db "@"
-
-OaksLabGivePokeballsText:
-	TX_FAR _OaksLabGivePokeballsText1
-	TX_SFX_KEY_ITEM
-	TX_FAR _OaksLabGivePokeballsText2
 	db "@"
 
 OaksLabPleaseVisitText:
@@ -1160,7 +1151,7 @@ OaksLabText23:
 	db "@"
 
 OaksLabText24:
-	TX_FAR _OaksLabText24
+	TX_FAR _OaksLabText24 ; It's a high-tech Encyclopedia
 	db "@"
 
 OaksLabText25:
@@ -1170,7 +1161,12 @@ OaksLabText25:
 
 OaksLabText26:
 	TX_FAR _OaksLabText26
-	db "@"
+	db $11 ; play received item sound
+	TX_ASM
+	lb bc, POKE_BALL,5
+	call GiveItem
+	TX_FAR _OaksLabGivePokeballsText
+	jp TextScriptEnd
 
 OaksLabText27:
 	TX_FAR _OaksLabText27

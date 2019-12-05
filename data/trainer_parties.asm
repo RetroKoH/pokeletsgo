@@ -459,13 +459,13 @@ BlackbeltData:
 ; Victory Road 2F
 	db 43,MACHOKE,MACHOP,MACHOKE,0
 Green1Data:
-        ; Oak Lab
-        db 5,EEVEE,0                ; if you chose Pikachu
+	; Oak Lab
+	db 5,EEVEE,0                ; if you chose Pikachu
 	db 5,PIKACHU,0              ; if you chose Eevee
 	; Route 22
 	db $FF,9,SPEAROW,8,EEVEE,0  ; if you chose Pikachu
-        db $FF,9,PIDGEY,8,PIKACHU,0 ; if you chose Eevee
-        ; Cerulean City
+	db $FF,9,PIDGEY,8,PIKACHU,0 ; if you chose Eevee
+	; Cerulean City
 	db $FF,18,SPEAROW,15,SANDSHREW,15,RATTATA,17,EEVEE,0 ; if you chose Pikachu
 	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,PIKACHU,0  ; if you chose Eevee
 ProfOakData:
