@@ -54,8 +54,8 @@ ROM0
 	org $1665
 	"LoadMonFrontSprite"
 
-	org $1dd9
-	"JpPoint"
+	;org $1dd9
+	;"JpPoint"
 
 ROMX $1
 	org $4000

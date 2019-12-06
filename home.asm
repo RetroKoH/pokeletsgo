@@ -3365,6 +3365,16 @@ GetItemPrice::
 	ld a, [wcf91] ; a contains item id
 	cp HM_01
 	jr nc, .getTMPrice
+	cp OAKS_PARCEL
+	jr c, .notKeyItem
+; Key Items aren't sold or bought
+	xor a
+	ld [hItemPrice], a
+	ld [hItemPrice + 1], a
+	ld [hItemPrice + 2], a ; price of 0
+	jr .done
+
+.notKeyItem
 	ld bc, $3
 .loop
 	add hl, bc

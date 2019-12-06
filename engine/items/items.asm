@@ -16,89 +16,127 @@ UseItem_:
 	jp hl
 
 ItemUsePtrTable:
-	dw ItemUseBall       ; MASTER_BALL
-	dw ItemUseBall       ; ULTRA_BALL
-	dw ItemUseBall       ; GREAT_BALL
-	dw ItemUseBall       ; POKE_BALL
-	dw ItemUseTownMap    ; TOWN_MAP
-	dw ItemUseBicycle    ; BICYCLE
-	dw ItemUseSurfboard  ; out-of-battle Surf effect
-	dw ItemUseBall       ; SAFARI_BALL
-	dw ItemUsePokedex    ; POKEDEX
-	dw ItemUseEvoStone   ; MOON_STONE
+	dw ItemUseBall		; POKE_BALL
+	dw ItemUseBall		; GREAT_BALL
+	dw ItemUseBall		; ULTRA_BALL
+	dw ItemUseBall		; MASTER_BALL
+	dw ItemUseBall		; SAFARI_BALL
+	dw ItemUseBall		; FAST_BALL
+	dw ItemUseBall		; LEVEL_BALL
+	dw ItemUseBall		; LURE_BALL
+
+	dw ItemUseBall		; HEAVY_BALL
+	dw ItemUseBall		; LOVE_BALL
+	dw ItemUseBall		; FRIEND_BALL
+	dw ItemUseBall		; MOON_BALL
+	dw ItemUseBall		; SNAG_BALL
+	dw ItemUseMedicine	; POTION
+	dw ItemUseMedicine	; SUPER_POTION
+	dw ItemUseMedicine	; HYPER_POTION
+
+
+	dw ItemUseMedicine   ; MAX_POTION
 	dw ItemUseMedicine   ; ANTIDOTE
 	dw ItemUseMedicine   ; BURN_HEAL
 	dw ItemUseMedicine   ; ICE_HEAL
 	dw ItemUseMedicine   ; AWAKENING
 	dw ItemUseMedicine   ; PARLYZ_HEAL
+	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; FULL_RESTORE
-	dw ItemUseMedicine   ; MAX_POTION
-	dw ItemUseMedicine   ; HYPER_POTION
-	dw ItemUseMedicine   ; SUPER_POTION
-	dw ItemUseMedicine   ; POTION
-	dw ItemUseBait       ; BOULDERBADGE
-	dw ItemUseRock       ; CASCADEBADGE
-	dw UnusableItem      ; THUNDERBADGE
-	dw UnusableItem      ; RAINBOWBADGE
-	dw UnusableItem      ; SOULBADGE
-	dw UnusableItem      ; MARSHBADGE
-	dw UnusableItem      ; VOLCANOBADGE
-	dw UnusableItem      ; EARTHBADGE
-	dw ItemUseEscapeRope ; ESCAPE_ROPE
-	dw ItemUseRepel      ; REPEL
-	dw UnusableItem      ; OLD_AMBER
-	dw ItemUseEvoStone   ; FIRE_STONE
-	dw ItemUseEvoStone   ; THUNDER_STONE
-	dw ItemUseEvoStone   ; WATER_STONE
+
+	dw ItemUseMedicine   ; REVIVE
+	dw ItemUseMedicine   ; MAX_REVIVE
+	dw ItemUseMedicine   ; FRESH_WATER
+	dw ItemUseMedicine   ; SODA_POP
+	dw ItemUseMedicine   ; LEMONADE
+	dw ItemUseMedicine   ; MOOMOOMILK
+	dw ItemUsePPRestore  ; ETHER
+	dw ItemUsePPRestore  ; MAX_ETHER
+
+	dw ItemUsePPRestore  ; ELIXER
+	dw ItemUsePPRestore  ; MAX_ELIXER
 	dw ItemUseVitamin    ; HP_UP
 	dw ItemUseVitamin    ; PROTEIN
 	dw ItemUseVitamin    ; IRON
 	dw ItemUseVitamin    ; CARBOS
 	dw ItemUseVitamin    ; CALCIUM
+	dw ItemUseVitamin    ; ZINC
+
+	dw ItemUsePPUp       ; PP_UP (real one)
+	dw ItemUsePPUp       ; PP_MAX
 	dw ItemUseVitamin    ; RARE_CANDY
-	dw UnusableItem      ; DOME_FOSSIL
-	dw UnusableItem      ; HELIX_FOSSIL
-	dw UnusableItem      ; SECRET_KEY
-	dw UnusableItem
-	dw UnusableItem      ; BIKE_VOUCHER
-	dw ItemUseXAccuracy  ; X_ACCURACY
-	dw ItemUseEvoStone   ; LEAF_STONE
-	dw ItemUseCardKey    ; CARD_KEY
-	dw UnusableItem      ; NUGGET
-	dw UnusableItem      ; ??? PP_UP
-	dw ItemUsePokedoll   ; POKE_DOLL
-	dw ItemUseMedicine   ; FULL_HEAL
-	dw ItemUseMedicine   ; REVIVE
-	dw ItemUseMedicine   ; MAX_REVIVE
-	dw ItemUseGuardSpec  ; GUARD_SPEC
-	dw ItemUseSuperRepel ; SUPER_REPL
-	dw ItemUseMaxRepel   ; MAX_REPEL
-	dw ItemUseDireHit    ; DIRE_HIT
-	dw UnusableItem      ; COIN
-	dw ItemUseMedicine   ; FRESH_WATER
-	dw ItemUseMedicine   ; SODA_POP
-	dw ItemUseMedicine   ; LEMONADE
-	dw UnusableItem      ; S_S_TICKET
-	dw UnusableItem      ; GOLD_TEETH
 	dw ItemUseXStat      ; X_ATTACK
 	dw ItemUseXStat      ; X_DEFEND
 	dw ItemUseXStat      ; X_SPEED
 	dw ItemUseXStat      ; X_SPECIAL
-	dw ItemUseCoinCase   ; COIN_CASE
-	dw ItemUseOaksParcel ; OAKS_PARCEL
-	dw ItemUseItemfinder ; ITEMFINDER
-	dw UnusableItem      ; SILPH_SCOPE
-	dw ItemUsePokeflute  ; POKE_FLUTE
-	dw UnusableItem      ; LIFT_KEY
-	dw UnusableItem      ; EXP_ALL
+	dw ItemUseXStat      ; X_SP_DEF
+
+	dw ItemUseXAccuracy  ; X_ACCURACY
+	dw ItemUseDireHit    ; DIRE_HIT
+	dw ItemUseGuardSpec  ; GUARD_SPEC
+	dw ItemUseRepel      ; REPEL
+	dw ItemUseSuperRepel ; SUPER_REPEL
+	dw ItemUseMaxRepel   ; MAX_REPEL
+	dw ItemUseRepel      ; LURE
+	dw ItemUseSuperRepel ; SUPER_LURE
+
+	dw ItemUseMaxRepel   ; MAX_LURE
+	dw ItemUseEscapeRope ; ESCAPE_ROPE
+	dw ItemUsePokedoll   ; POKE_DOLL
+	dw ItemUseEvoStone   ; FIRE_STONE
+	dw ItemUseEvoStone   ; THUNDER_STONE
+	dw ItemUseEvoStone   ; WATER_STONE
+	dw ItemUseEvoStone   ; LEAF_STONE
+	dw ItemUseEvoStone   ; ICE_STONE
+
+	dw ItemUseEvoStone   ; SUN_STONE
+	dw ItemUseEvoStone   ; MOON_STONE
+	dw ItemUseEvoStone   ; KINGS_ROCK
+	dw ItemUseEvoStone   ; METAL_COAT
+	dw ItemUseEvoStone   ; DRAGON_SCALE
+	dw ItemUseEvoStone   ; UPGRADE
+	dw ItemUseEvoStone   ; DUBIOUS_DISC
+	dw UnusableItem      ; DOME_FOSSIL
+
+	dw UnusableItem      ; HELIX_FOSSIL
+	dw UnusableItem      ; OLD_AMBER
+	dw UnusableItem      ; PEARL
+	dw UnusableItem      ; BIG_PEARL
+	dw UnusableItem      ; STAR_PIECE
+	dw UnusableItem      ; STARDUST
+	dw UnusableItem      ; NUGGET
+	dw UnusableItem      ; BIG_NUGGET
+
+	dw ItemUseOaksParcel	; OAKS_PARCEL
+	dw ItemUseTownMap		; TOWN_MAP
+	dw UnusableItem			; TM_CASE
+	dw UnusableItem			; POKEMON_BOX
+	dw ItemUseItemfinder	; ITEMFINDER
+	dw UnusableItem			; EXP_SHARE
+	dw UnusableItem      ; S_S_TICKET
 	dw ItemUseOldRod     ; OLD_ROD
 	dw ItemUseGoodRod    ; GOOD_ROD
 	dw ItemUseSuperRod   ; SUPER_ROD
-	dw ItemUsePPUp       ; PP_UP (real one)
-	dw ItemUsePPRestore  ; ETHER
-	dw ItemUsePPRestore  ; MAX_ETHER
-	dw ItemUsePPRestore  ; ELIXER
-	dw ItemUsePPRestore  ; MAX_ELIXER
+	dw UnusableItem      ; VS_SEEKER
+	dw UnusableItem      ; BIKE_VOUCHER
+	dw ItemUseBicycle    ; BICYCLE
+	dw ItemUseCoinCase   ; COIN_CASE
+	dw UnusableItem      ; LIFT_KEY
+	dw ItemUseCardKey    ; CARD_KEY
+	dw UnusableItem      ; SILPH_SCOPE
+	dw ItemUsePokeflute  ; POKE_FLUTE
+	dw UnusableItem      ; GOLD_TEETH
+	dw UnusableItem      ; SECRET_KEY
+	dw UnusableItem      ; SHINY_CHARM
+	dw UnusableItem      ; OLD_SEA_MAP
+	dw UnusableItem      ; MEGA_STONE_X
+	dw UnusableItem      ; MEGA_STONE_Y
+	dw UnusableItem      ; MELTANBOX
+
+	dw ItemUsePokedex	; POKEDEX
+	dw ItemUseSurfboard	; SURFBOARD
+	dw ItemUseBait       ; BAIT
+	dw ItemUseRock       ; ROCK
 
 ItemUseBall:
 
@@ -2658,34 +2696,53 @@ TooImportantToTossText:
 ; 01: item is key item
 IsKeyItem_:
 	ld a, $01
-	ld [wIsKeyItem], a
-	ld a, [wcf91]
-	cp HM_01 ; is the item an HM or TM?
-	jr nc, .checkIfItemIsHM
-; if the item is not an HM or TM
-	push af
-	ld hl, KeyItemBitfield
-	ld de, wBuffer
-	ld bc, 15 ; only 11 bytes are actually used
-	call CopyData
-	pop af
-	dec a
-	ld c, a
-	ld hl, wBuffer
-	ld b, FLAG_TEST
-	predef FlagActionPredef
-	ld a, c
-	and a
-	ret nz
-.checkIfItemIsHM
-	ld a, [wcf91]
-	call IsItemHM
-	ret c
+	ld [wIsKeyItem], a		; assume that this is a key item
+	ld a, [wcf91]			; a = item ID
+;	cp HM_01 				; is the item an HM or TM?
+;	jr nc, .checkIfItemIsHM	; if yes, check if it's a TM or HM
+
+	cp OAKS_PARCEL
+	ret nc					; IS a key item
 	xor a
-	ld [wIsKeyItem], a
+	ld [wIsKeyItem], a		; NOT a key item
 	ret
 
-INCLUDE "data/key_items.asm"
+; if the item is not an HM or TM
+;	push af
+;	ld hl, KeyItemBitfield
+;	ld de, wBuffer
+;	ld bc, 15 ; only 11 bytes are actually used
+;	call CopyData
+;	pop af
+;	dec a
+;	ld c, a
+;	ld hl, wBuffer
+;	ld b, FLAG_TEST
+;	predef FlagActionPredef
+;	ld a, c
+;	and a
+;	ret nz			; if the bit is set, the item is a key item
+
+;.checkIfItemIsHM
+;	ld a, [wcf91]			; a = item ID
+;	call IsItemHM			; check if HM
+;	ret c 					; if yes, branch. (HMs are "Key TMs")
+;	xor a
+;	ld [wIsKeyItem], a		; TMs can be accumulated and are disposable.
+;	ret
+
+;KeyItemBitfield:
+;	db %00000000 ; 1
+;	db %00000000 ; 2
+;	db %00000000 ; 3
+;	db %01001111 ; 4
+;	db %00000000 ; 5
+;	db %10011111 ; 6
+;	db %00000000 ; 7
+;	db %11000000 ; 8
+;	db %11110000 ; 9
+;	db %00111011 ; 10
+;	db %00000000 ; 11
 
 SendNewMonToBox:
 	ld de, wNumInBox
