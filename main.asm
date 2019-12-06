@@ -1996,6 +1996,8 @@ SECTION "bank30", ROMX, BANK[$30]
 
 BaseStats: INCLUDE "data/base_stats.asm"
 
+INCLUDE "engine/mon_gender.asm"
+
 WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 

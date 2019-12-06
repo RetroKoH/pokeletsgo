@@ -165,6 +165,14 @@ StatusScreen:
 	ld de, wLoadedMonOTID
 	lb bc, LEADING_ZEROES | 2, 5
 	call PrintNumber ; ID Number
+
+; Shiny Symbol
+
+; Gender Symbol
+	ld a, [wLoadedMonSpecies]
+	ld [wGenderTemp], a
+	call PrintGenderStatusScreen
+
 	ld d, $0
 	call PrintStatsBox
 	call Delay3
@@ -245,6 +253,28 @@ DrawLineBox:
 PTile: ; This is a single 1bpp "P" tile
 	INCBIN "gfx/p_tile.1bpp"
 PTileEnd:
+
+PrintGenderStatusScreen: ; called on status screen
+	; get gender
+	ld de, wLoadedMonDVs
+	callba GetMonGender
+	ld a, [wGenderTemp]
+	and a
+	jr z, .noGender
+	dec a
+	jr z, .male
+	; else female
+	ld a, "♀"
+	jr .printSymbol
+.male
+	ld a, "♂"
+	jr .printSymbol
+.noGender
+	ld a, " "
+.printSymbol
+	coord hl, 17, 2
+	ld [hl], a
+	ret
 
 PrintStatsBox:
 	ld a, d

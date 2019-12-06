@@ -1920,6 +1920,11 @@ DrawPlayerHUDAndHPBar:
 	coord hl, 10, 7
 
 	call PlaceString ; Note: "CenterMonName" not called to be consistent with gen 2
+	
+	ld a, [wBattleMonSpecies]
+	ld [wGenderTemp], a
+	call PrintPlayerMonGender
+
 	call PrintEXPBarAt1711
 
 	ld hl, wBattleMonSpecies
@@ -1982,8 +1987,11 @@ DrawEnemyHUDAndHPBar:
 	call CenterMonName
 	call PlaceString
 
-	coord hl, 6, 1
+	ld a, [wEnemyMonSpecies]
+	ld [wGenderTemp], a
+	call PrintEnemyMonGender
 
+	coord hl, 6, 1
 	push hl
 	inc hl
 	ld de, wEnemyMonStatus
@@ -2971,9 +2979,9 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wcd6d], a
+
 ; Physical/Special/Status text
 	ld a, [wPlayerSelectedMove]
-
 	;call PhysicalSpecialSplit
 	; load byte from move data instead of jumping to a routine
 	push hl
@@ -8791,6 +8799,41 @@ PlayBattleAnimationGotID:
 	pop hl
 	ret
 
+PrintEnemyMonGender: ; called during battle
+	; get gender
+	ld a, [wEnemyMonSpecies]
+	ld de, wEnemyMonDVs
+	call PrintGenderCommon
+	coord hl, 9, 1
+	ld [hl], a
+	ret
+
+PrintPlayerMonGender: ; called during battle
+	; get gender
+	ld a, [wBattleMonSpecies]
+	ld de, wBattleMonDVs
+	call PrintGenderCommon
+	coord hl, 17, 8
+	ld [hl], a
+	ret
+
+PrintGenderCommon: ; used by both routines
+	ld [wGenderTemp], a
+	callba GetMonGender
+	ld a, [wGenderTemp]
+	and a
+	jr z, .noGender
+	dec a
+	jr z, .male
+	; else female
+	ld a, "♀"
+	ret
+.male
+	ld a, "♂"
+	ret
+.noGender
+	ld a, " "
+	ret
 
 ; HAX: Following are hooks for pokered_color. This is the end of the bank so it won't
 ; cause data shifting.
