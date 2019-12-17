@@ -4756,31 +4756,10 @@ JumpToOHKOMoveEffect:
 	dec a
 	ret
 
-
-UnusedHighCriticalMoves:
-	db KARATE_CHOP
-	db RAZOR_LEAF
-	db CRABHAMMER
-	db SLASH
-	db $FF
-
 ; determines if attack is a critical hit
-; azure heights claims "the fastest pokémon (who are,not coincidentally,
-; among the most popular) tend to CH about 20 to 25% of the time."
 CriticalHitTest:
 	xor a
 	ld [wCriticalHitOrOHKO], a
-	ld a, [H_WHOSETURN]
-	and a
-	ld a, [wEnemyMonSpecies]
-	jr nz, .handleEnemy
-	ld a, [wBattleMonSpecies]
-.handleEnemy
-	ld [wd0b5], a
-	call GetMonHeader
-	ld a, [wMonHBaseSpeed]
-	ld b, a
-	srl b                        ; (effective (base speed/2))
 	ld a, [H_WHOSETURN]
 	and a
 	ld hl, wPlayerMovePower
@@ -4792,46 +4771,62 @@ CriticalHitTest:
 	ld a, [hld]                  ; read base power from RAM
 	and a
 	ret z                        ; do nothing if zero
-	dec hl
-	ld c, [hl]                   ; read move id
+
+	ld c, 0 					 ; Set default entry as 0
 	ld a, [de]
-	bit GETTING_PUMPED, a         ; test for focus energy
-	jr nz, .focusEnergyUsed      ; bug: using focus energy causes a shift to the right instead of left,
-	                             ; resulting in 1/4 the usual crit chance
-	sla b                        ; (effective (base speed/2)*2)
-	jr nc, .noFocusEnergyUsed
-	ld b, $ff                    ; cap at 255/256
-	jr .noFocusEnergyUsed
-.focusEnergyUsed
-	srl b
-.noFocusEnergyUsed
+	bit GETTING_PUMPED, a        ; test for focus energy
+	jr z, .CheckCritMove
+	inc c
+.CheckCritMove
 	ld hl, HighCriticalMoves     ; table of high critical hit moves
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .PlayersTurn
+.EnemyTurn
+	ld a, [wEnemySelectedMove]
+	ld b, a
+	jr .checkAlwaysCrit
+.PlayersTurn
+	ld a, [wPlayerSelectedMove]
+	ld b, a
+.checkAlwaysCrit
+; first, check moves that always crit
+;	cp MOVE_ID_HERE
+;	jr z, .CritSuccess
 .Loop
+; if it wasn't one of those, loop over the list of high-crit moves
 	ld a, [hli]                  ; read move from move table
-	cp c                         ; does it match the move about to be used?
+	cp b                         ; does it match the move about to be used?
 	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
 	inc a                        ; move on to the next move, FF terminates loop
 	jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	srl b                        ; /2 for regular move (effective (base speed / 2))
 	jr .SkipHighCritical         ; continue as a normal move
 .HighCritical
-	sla b                        ; *2 for high critical hit moves
-	jr nc, .noCarry
-	ld b, $ff                    ; cap at 255/256
-.noCarry
-	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
-	jr nc, .SkipHighCritical
-	ld b, $ff
+	inc c
+	inc c
 .SkipHighCritical
+	; Add cheat for A + Left
+	;ld a, [hJoyInput]
+	;cp a, $21 ; A + Left
+	;jr nz, .Calculate
+	;inc c
+	;inc c
+.Calculate
+	ld hl, .Chances
+	ld b, 0
+	add hl, bc
 	call BattleRandom            ; generates a random value, in "a"
-	rlc a
-	rlc a
-	rlc a
-	cp b                         ; check a against calculated crit rate
+	cp [hl]                      ; check a against calculated crit rate
 	ret nc                       ; no critical hit if no borrow
-	ld a, $1
+.CritSuccess
+	ld a, 1
 	ld [wCriticalHitOrOHKO], a   ; set critical hit flag
 	ret
+
+.Chances
+	; 6.25% 12.1% 24.6% 33.2% 49.6% 49.6% 49.6%
+	db $11,  $20,  $40,  $55,  $80,  $80,  $80
+	;   0     1     2     3     4     5     6
 
 ; high critical hit moves
 HighCriticalMoves:
