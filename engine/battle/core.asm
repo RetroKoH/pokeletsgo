@@ -404,9 +404,10 @@ MainInBattleLoop:
 	ld a, [wEscapedFromBattle]
 	and a
 	ret nz ; return if pokedoll was used to escape from battle
-	ld a, [wBattleMonStatus]
-	and (1 << FRZ) | SLP ; is mon frozen or asleep?
-	jr nz, .selectEnemyMove ; if so, jump
+; the player can now select a move even if asleep or frozen	
+	;ld a, [wBattleMonStatus]
+	;and (1 << FRZ) | SLP ; is mon frozen or asleep?
+	;jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wPlayerBattleStatus1]
 	and (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap
 	jr nz, .selectEnemyMove ; if so, jump
@@ -3095,9 +3096,10 @@ SelectEnemyMove:
 	ld a, [hl]
 	and (1 << CHARGING_UP) | (1 << THRASHING_ABOUT) ; using a charging move or thrash/petal dance
 	ret nz
-	ld a, [wEnemyMonStatus]
-	and SLP | 1 << FRZ ; sleeping or frozen
-	ret nz
+	; Enemy mon can now select moves even if frozen or sleeping
+	;ld a, [wEnemyMonStatus]
+	;and SLP | 1 << FRZ ; sleeping or frozen
+	;ret nz
 	ld a, [wEnemyBattleStatus1]
 	and (1 << USING_TRAPPING_MOVE) | (1 << STORING_ENERGY) ; using a trapping move like wrap or bide
 	ret nz
@@ -3481,25 +3483,50 @@ CheckPlayerStatusConditions:
 	call PlayMoveAnimation
 	ld hl, FastAsleepText
 	call PrintText
-	jr .sleepDone
-.WakeUp
-	ld hl, WokeUpText
-	call PrintText
+
+; Players no longer loses a turn waking up from sleep
 .sleepDone
 	xor a
 	ld [wPlayerUsedMove], a
 	ld hl, ExecutePlayerMoveDone ; player can't move this turn
 	jp .returnToHL
 
+.WakeUp
+	ld hl,WokeUpText
+	call PrintText
+	call DrawHUDsAndHPBars
+	jr .HeldInPlaceCheck
+
 .FrozenCheck
 	bit FRZ, [hl] ; frozen?
 	jr z, .HeldInPlaceCheck
+	ld a, [wPlayerSelectedMove] ; Added checks for the use of certain moves to thaw you
+	cp SCALD
+	jr z, .defrostMon
+	cp FLARE_BLITZ
+	jr z, .defrostMon
+	; Adding chance to defrost naturally
+	call BattleRandom
+	cp $19
+	jr c, .defrostMon
+	; Continues to original routine, calling you frozen
 	ld hl, IsFrozenText
 	call PrintText
 	xor a
 	ld [wPlayerUsedMove], a
 	ld hl, ExecutePlayerMoveDone ; player can't move this turn
 	jp .returnToHL
+
+.defrostMon ; New routine to thaw Pokemon, called from FrozenCheck
+	ld hl, wBattleMonStatus
+	res FRZ, [hl]
+	xor a
+	inc a
+	ld [H_WHOSETURN],a
+	ld hl, FireDefrostedText
+	call PrintText
+	xor a
+	ld [H_WHOSETURN],a
 
 .HeldInPlaceCheck
 	ld a, [wEnemyBattleStatus1]
@@ -6001,34 +6028,63 @@ CheckEnemyStatusConditions:
 	ld a, [hl]
 	and SLP ; sleep mask
 	jr z, .checkIfFrozen
+; sleeping
 	dec a ; decrement number of turns left
 	ld [wEnemyMonStatus], a
 	and a
-	jr z, .wokeUp ; if the number of turns hit 0, wake up
-	ld hl, FastAsleepText
-	call PrintText
+	jr z, .WakeUp ; if the number of turns hit 0, wake up
+; fast asleep
 	xor a
 	ld [wAnimationType], a
 	ld a, SLP_ANIM
 	call PlayMoveAnimation
-	jr .sleepDone
-.wokeUp
-	ld hl, WokeUpText
+	ld hl, FastAsleepText
 	call PrintText
+
+; Enemy no longer loses a turn waking up from sleep
 .sleepDone
 	xor a
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+
+.WakeUp
+	ld hl, WokeUpText
+	call PrintText
+	call DrawHUDsAndHPBars
+	jr .checkIfTrapped
+
 .checkIfFrozen
 	bit FRZ, [hl]
 	jr z, .checkIfTrapped
+	ld a, [wEnemySelectedMove] ; Added checks for the use of certain moves to thaw you
+	cp SCALD
+	jr z, .defrostMon
+	cp FLARE_BLITZ
+	jr z, .defrostMon
+	; Adding chance to defrost naturally
+	call BattleRandom
+	cp $19
+	jr c, .defrostMon
+	; Continues to original routine, calling you frozen
 	ld hl, IsFrozenText
 	call PrintText
 	xor a
 	ld [wEnemyUsedMove], a
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+
+.defrostMon ; New routine to thaw mon
+	ld hl, wEnemyMonStatus
+	res FRZ, [hl]
+	xor a
+	ld [H_WHOSETURN],a
+	ld hl, FireDefrostedText
+	call PrintText
+	xor a
+	inc a
+	ld [H_WHOSETURN],a
+
 .checkIfTrapped
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn attack like warp
