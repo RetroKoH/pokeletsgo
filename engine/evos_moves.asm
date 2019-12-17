@@ -386,37 +386,38 @@ LearnMoveFromLevelUp:
 	ld a, [hli]
 	and a ; have we reached the end of the learn set?
 	jr z, .done ; if we've reached the end of the learn set, jump
+
 	ld b, a ; level the move is learnt at
 	ld a, [wCurEnemyLVL]
 	cp b ; is the move learnt at the mon's current level?
 	ld a, [hli] ; move ID
 	jr nz, .learnSetLoop
+
+	push hl
 	ld d, a ; ID of move to learn
-	ld a, [wMonDataLocation]
-	and a
-	jr nz, .next
-; If [wMonDataLocation] is 0 (PLAYER_PARTY_DATA), get the address of the mon's
-; current moves in party data. Every call to this function sets
-; [wMonDataLocation] to 0 because other data locations are not supported.
-; If it is not 0, this function will not work properly.
 	ld hl, wPartyMon1Moves
 	ld a, [wWhichPokemon]
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
-.next
+
 	ld b, NUM_MOVES
 .checkCurrentMovesLoop ; check if the move to learn is already known
 	ld a, [hli]
 	cp d
-	jr z, .done ; if already known, jump
+	jr z, .has_move ; if already known, jump
 	dec b
 	jr nz, .checkCurrentMovesLoop
+;learn move
 	ld a, d
 	ld [wMoveNum], a
 	ld [wd11e], a
 	call GetMoveName
 	call CopyStringToCF4B
 	predef LearnMove
+.has_move
+	pop hl
+	jr .learnSetLoop
+
 .done
 	ld a, [wcf91]
 	ld [wd11e], a

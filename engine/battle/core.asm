@@ -852,7 +852,8 @@ FaintEnemyPokemon:
 ; and the states of the two Game Boys will go out of sync unless the damage
 ; was congruent to 0 modulo 256.
 	xor a
-	ld [wPlayerBideAccumulatedDamage], a
+	ld [wPlayerBideAccumulatedDamage], a ; also PlayerNumHits; Fixes above noted bug
+	ld [wPlayerBideAccumulatedDamage + 1], a
 	ld hl, wEnemyStatsToDouble ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
@@ -913,15 +914,25 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
+
+	; give EXP to mons that fought
+	ld [wBoostExpByExpAll], a
+	ld a, [wPartyGainExpFlags]
+	push af
+	callab GainExperience
+
 	ld b, EXP_ALL
 	call IsItemInBag
-	push af
-	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
+	pop bc
+	ret z ; If you don't have the EXP SHARE, exit
 
-; the player has exp all
-; first, we halve the values that determine exp gain
-; the enemy mon base stats are added to stat exp, so they are halved
-; the base exp (which determines normal exp) is also halved
+	; handle EXP all
+	push bc
+	ld a, $1
+	ld [wBoostExpByExpAll], a
+	; first, we halve the values that determine exp gain
+	; the enemy mon base stats are added to stat exp, so they are halved
+	; the base exp (which determines normal exp) is also halved
 	ld hl, wEnemyMonBaseStats
 	ld b, $7
 .halveExpDataLoop
@@ -930,20 +941,8 @@ FaintEnemyPokemon:
 	dec b
 	jr nz, .halveExpDataLoop
 
-; give exp (divided evenly) to the mons that actually fought in battle against the enemy mon that has fainted
-; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
-.giveExpToMonsThatFought
-	xor a
-	ld [wBoostExpByExpAll], a
-	callab GainExperience
-	pop af
-	ret z ; return if no exp all
-
-; the player has exp all
-; now, set the gain exp flag for every party member
-; half of the total stat exp and normal exp will divided evenly amongst every party member
-	ld a, $1
-	ld [wBoostExpByExpAll], a
+	; find mons that did NOT fight in the battle
+		; b = 00111111 (ones count = # mons in party)
 	ld a, [wPartyCount]
 	ld b, 0
 .gainExpFlagsLoop
@@ -951,8 +950,13 @@ FaintEnemyPokemon:
 	rl b
 	dec a
 	jr nz, .gainExpFlagsLoop
-	ld a, b
+
+	; a = party gain flags
+	pop af
+	; a = a XOR b = flags for mons that didn't fight
+	xor b
 	ld [wPartyGainExpFlags], a
+
 	jpab GainExperience
 
 EnemyMonFaintedText:
