@@ -12,8 +12,8 @@ INCBIN "pic/mon/bellsprout.pic",0,1 ; 55, sprite dimensions
 dw BellsproutPicFront
 dw BellsproutPicBack
 ; attacks known at lvl 0
-db VINE_WHIP
-db GROWTH
+db 0
+db 0
 db 0
 db 0
 db 3 ; growth rate

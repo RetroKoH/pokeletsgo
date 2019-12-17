@@ -205,6 +205,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wd11e], a
 	xor a
 	ld [wMonDataLocation], a
+	call LearnMoveFromEvolution
 	call LearnMoveFromLevelUp
 	pop hl
 	predef SetPartyMonTypes
@@ -328,7 +329,7 @@ LearnMoveFromEvolution:
 	ld h, [hl]
 	ld l, a
 
-.learnSetLoop			; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
+.learnSetLoop		; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
 	and a 			; have we reached the end of the learn set?
 	jr z, .done		; if we've reached the end of the learn set, jump (If no moves present in set)
@@ -380,16 +381,6 @@ LearnMoveFromLevelUp:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-;	dec a
-;	ld bc, 0
-;	ld hl, LearnsetsPointerTable
-;	add a
-;	rl b
-;	ld c, a
-;	add hl, bc
-;	ld a, [hli]
-;	ld h, [hl]
-;	ld l, a
 
 .learnSetLoop ; loop over the learn set until we reach a move that is learnt at the current level or the end of the list
 	ld a, [hli]
@@ -456,13 +447,15 @@ WriteMonMoves:
 .nextMove2
 	inc hl
 .firstMove
-	ld a, [hli]       ; read level of next move in learnset
+	ld a, [hli]			; read level of next move in learnset
+	cp $FF
+	jr z, .nextMove2	; skip evolution moves
 	and a
-	jp z, .done       ; end of list
+	jp z, .done			; end of list
 	ld b, a
 	ld a, [wCurEnemyLVL]
 	cp b
-	jp c, .done       ; mon level < move level (assumption: learnset is sorted by level)
+	jp c, .done			; mon level < move level (assumption: learnset is sorted by level)
 	ld a, [wLearningMovesFromDayCare]
 	and a
 	jr z, .skipMinLevelCheck

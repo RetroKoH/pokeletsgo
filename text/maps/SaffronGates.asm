@@ -35,3 +35,8 @@ _SaffronGateText_1dff6::
 	text "Hi, thanks for"
 	line "the cool drinks!"
 	done
+
+_SaffronGateText_1::
+	text "Hi there. Welcome"
+	line "to SAFFRON CITY!"
+	done

@@ -20,13 +20,19 @@ db 0
 db 0
 
 db 3 ; growth rate
-; learnset
-	tmlearn 3,6,8
-	tmlearn 9,10
-	tmlearn 20,21,22
-	tmlearn 31,32
-	tmlearn 33,34
-	tmlearn 44
-	tmlearn 50,51
+
+; TM learnset
+	tmlearn 1,5,6,7,8
+	tmlearn 9,12
+	tmlearn 0
+	tmlearn 27
+	tmlearn 39
+	tmlearn 45
+	tmlearn 52,53
+; 08 16 24 32 40 48 56
+;Support for only 56 TMs
+
+
 db BANK(BulbasaurPicFront)
+
 MonBaseStatsEnd:

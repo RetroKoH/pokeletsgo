@@ -1,3 +1,18 @@
+; Field techniques
+const_value = 1
+	const CHOP
+	const DASH
+	const SWIM
+	const PUSH_T
+	const GLOW
+	const DIG_T
+	const WARP
+	const LURE
+	const LULL
+	const HEAL
+	const SOAR
+
+; Battle moves
 const_value = 1
 
 	const POUND        ; 01
@@ -164,10 +179,50 @@ const_value = 1
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
+	const STRUGGLE	   ; a5
+;--------------------------------
+	;const PROTECT      ; a6
+	const SLUDGE_BOMB  ; a7
+	const OUTRAGE      ; a8
+	const MEGAHORN     ; a9
+	const IRON_TAIL    ; aa
+	const CRUNCH       ; ab
+	;const MIRROR_COAT  ; ac
+	const SHADOW_BALL  ; ad
+	const FAKE_OUT     ; ae
+	const HEAT_WAVE    ; af
+	;const WILL_O_WISP   ; b0
+	const FACADE       ; b1
+	const SUPERPOWER   ; b2
+	const BRICK_BREAK  ; b3
+	const YAWN         ; b4
+	const ROOST        ; b5
+	const FEINT        ; b6
+	const U_TURN       ; b7
+	const SUCKERPUNCH  ; b8
+	const FLARE_BLITZ  ; b9
+	const POISON_JAB   ; ba
+	const DARK_PULSE   ; bb
+	const AIR_SLASH    ; bc
+	const X_SCISSOR    ; bd
+	const BUG_BUZZ     ; be
+	const DRAGON_PULSE ; bf
+	const ICE_SHARD    ; c0
+	const FLASH_CANNON ; c1
+	const POWER_WHIP   ; c2
+	const AQUA_JET     ; c3
+	const FOUL_PLAY    ; c4
+	const CLEAR_SMOG   ; c5
+	const SCALD        ; c6
+	const DRAGON_TAIL  ; c7
+	const DRILL_RUN    ; c8
+	const PLAY_ROUGH   ; c9
+	const MOONBLAST    ; ca
+	const DAZZLEGLEAM  ; cb
+	const IRON_BASH ; cc
 
-NUM_ATTACKS EQU const_value + -1
-
-	const STRUGGLE
+NUM_ATTACKS EQU const_value
+const_value = STRUGGLE + 1
 
 	; Moves do double duty as animation identifiers.
 

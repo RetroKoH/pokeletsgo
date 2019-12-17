@@ -61,7 +61,6 @@ DrawHP_:
 	pop de
 	ret
 
-
 ; Predef 0x37
 StatusScreen:
 	call LoadMonData
@@ -126,7 +125,7 @@ StatusScreen:
 	ld hl, wStatusScreenHPBarColor
 	call GetHealthBarColor
 	ld b, SET_PAL_STATUS_SCREEN
-	call StatusScreenHook ; HAX: Draws EXP bar if GEN_2_GRAPHICS is set
+	call StatusScreenHook ; HAX: Draws EXP bar
 	coord hl, 16, 6
 	ld de, wLoadedMonStatus
 	call PrintStatusCondition
@@ -138,6 +137,17 @@ StatusScreen:
 	coord hl, 9, 6
 	ld de, StatusText
 	call PlaceString ; "STATUS/"
+
+;Print friendship value (Debug purposes)
+	coord hl, 9, 7
+	ld de, FriendshipText
+	call PlaceString ; "FRIEND/"
+
+	coord hl, 16, 7
+	ld de, wLoadedMonFriendship
+	lb bc, 1, 3
+	call PrintNumber
+
 	coord hl, 14, 2
 	call PrintLevel ; Pokémon level
 	ld a, [wMonHIndex]
@@ -166,7 +176,7 @@ StatusScreen:
 	lb bc, LEADING_ZEROES | 2, 5
 	call PrintNumber ; ID Number
 
-; Shiny Symbol
+; Shiny Symbol (For debug purposes, always draw this)
 
 ; Gender Symbol
 	ld a, [wLoadedMonSpecies]
@@ -232,6 +242,9 @@ StatusText:
 OKText:
 	db "OK@"
 
+FriendshipText:
+	db "FRIEND/@"
+
 ; Draws a line starting from hl high b and wide c
 DrawLineBox:
 	ld de, SCREEN_WIDTH ; New line
@@ -287,6 +300,7 @@ PrintStatsBox:
 	coord hl, 1, 9 ; Start printing stats from here
 	ld bc, $0019 ; Number offset
 	jr .PrintStats
+
 .DifferentBox
 	coord hl, 9, 2
 	ld b, 8
@@ -302,6 +316,7 @@ PrintStatsBox:
 	pop hl
 	pop bc
 	add hl, bc
+
 	ld de, wLoadedMonAttack
 	lb bc, 2, 3
 	call PrintStat
@@ -310,7 +325,13 @@ PrintStatsBox:
 	ld de, wLoadedMonSpeed
 	call PrintStat
 	ld de, wLoadedMonSpecial
-	jp PrintNumber
+	;jp PrintNumber
+; Draw out Stat Exp (For Debug purposes)
+	call PrintNumber
+	call PrintEVs
+	jr PrintIVs
+	ret
+
 PrintStat:
 	push hl
 	call PrintNumber
@@ -320,10 +341,137 @@ PrintStat:
 	ret
 
 StatsText:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPEED"
-	next "SPECIAL@"
+	db   "ATK:" ;"ATTACK"
+	next "DEF:";"DEFENSE"
+	next "SPD:";"SPEED"
+	next "SPC:@";"SPECIAL@"
+
+PrintEVs:
+	coord hl, 1, 10
+	ld de, wLoadedMonAttackExp
+	call PrintNumber
+	coord hl, 1, 12
+	ld de, wLoadedMonDefenseExp
+	call PrintNumber
+	coord hl, 1, 14
+	ld de, wLoadedMonSpeedExp
+	call PrintNumber
+	coord hl, 1, 16
+	ld de, wLoadedMonSpecialExp
+	jp PrintNumber
+
+PrintIVs:
+	ld de, wLoadedMonDVs
+	ld a, [de]
+	ld b, a			; b is the first byte of the DVs 
+	inc de
+	ld a, [de]
+	ld c, a			; c is the second byte of the DVs
+	push bc
+
+	ld de, wLoadedMonDVs
+	ld a, 0
+	ld [de], a
+	inc de
+	pop bc
+	ld a, b
+	push bc
+	and $f0
+	swap a
+	ld [de], a
+	coord hl, 5, 9 ; atk disp coords
+	lb bc, LEADING_ZEROES | 2, 2
+	ld de, wLoadedMonDVs
+	call PrintNumber
+
+	ld de, wLoadedMonDVs
+	ld a, 0
+	ld [de], a
+	inc de
+	pop bc
+	ld a, b
+	push bc
+	and $f
+	ld [de], a
+	coord hl, 5, 11 ; def disp coords
+	lb bc, LEADING_ZEROES | 2, 2
+	ld de, wLoadedMonDVs
+	call PrintNumber
+
+	ld de, wLoadedMonDVs
+	ld a, 0
+	ld [de], a
+	inc de
+	pop bc
+	ld a, c
+	push bc
+	and $f0
+	swap a
+	ld [de], a
+	coord hl, 5, 13 ; spe disp coords
+	lb bc, LEADING_ZEROES | 2, 2
+	ld de, wLoadedMonDVs
+	call PrintNumber
+
+	ld de, wLoadedMonDVs
+	ld a, 0
+	ld [de], a
+	inc de
+	pop bc
+	ld a, c
+	push bc
+	and $f
+	ld [de], a
+	coord hl, 5, 15 ; spc disp coords
+	lb bc, LEADING_ZEROES | 2, 2
+	ld de, wLoadedMonDVs
+	call PrintNumber
+
+	ld de, wLoadedMonDVs
+	pop bc
+	ld a, b
+	ld [de], a
+	inc de
+	ld a, c
+	ld [de], a
+	ret
+
+;	ld de, wLoadedMonDVs
+;	ld a, 0
+;	ld [de], a
+;	inc de
+;	pop bc
+;	bit 4, b
+;	jr z, .noAttackHP
+;	set 3, a
+;.noAttackHP
+;	bit 0, b
+;	jr z, .noDefenseHP
+;	set 2, a
+;.noDefenseHP
+;	bit 4, c
+;	jr z, .noSpeedHP
+;	set 1, a
+;.noSpeedHP
+;	bit 0, c
+;	jr z, .noSpecialHP
+;	set 0, a
+;.noSpecialHP
+;	push bc
+;	ld [de], a
+;	hlcoord 18, 10 ; hp disp coords
+;	lb bc, PRINTNUM_LEADINGZEROS | 2, 2
+;	ld de, wLoadedMonDVs
+;	call PrintNum
+
+;	ld de, wLoadedMonDVs
+;	pop bc
+;	ld a, b
+;	ld [de], a
+;	inc de
+;	ld a, c
+;	ld [de], a
+;	ret
 
 StatusScreen2:
 	ld a, [hTilesetType]

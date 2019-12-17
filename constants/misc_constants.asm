@@ -218,3 +218,22 @@ NO_GENDER         EQU $FF
 GENDERLESS EQU $00
 MALE       EQU $01
 FEMALE     EQU $02
+
+; ModifyFriendship arguments (see data/happiness_changes.asm)
+const_value = 1
+	const FRIENDSHIP_GAINLEVEL         ; 01
+	const FRIENDSHIP_USEDITEM          ; 02 ; same values as above, but kept due to RAM value that is used.
+	const FRIENDSHIP_USEDXITEM         ; 03
+	const FRIENDSHIP_GYMBATTLE         ; 04
+	const FRIENDSHIP_LEARNMOVE         ; 05  tm/hm
+	const FRIENDSHIP_FAINTED           ; 06
+	const FRIENDSHIP_POISONFAINT       ; 07
+	const FRIENDSHIP_CARELESSTRAINER   ; 08 ; Same as above. Can probably combine the two
+	const FRIENDSHIP_GROOMING          ; 09 ; Not yet implemented
+
+; significant happiness values
+BASE_FRIENDSHIP        EQU 70  ; This will be removed, as every mon will have its own base value
+FRIEND_BALL_FRIENDSHIP EQU 200
+FRIENDSHIP_TO_EVOLVE   EQU 220
+FRIENDSHIP_THRESHOLD_1 EQU 100
+FRIENDSHIP_THRESHOLD_2 EQU 200

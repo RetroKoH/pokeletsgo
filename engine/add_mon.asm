@@ -6,33 +6,40 @@ _AddPartyMon:
 	ld de, wPartyCount
 	ld a, [wMonDataLocation]
 	and $f
-	jr z, .next
+	jr z, .getpartylocation
 	ld de, wEnemyPartyCount
-.next
+
+.getpartylocation ; Do we have room for it?
 	ld a, [de]
 	inc a
 	cp PARTY_LENGTH + 1
 	ret nc ; return if the party is already full
-	ld [de], a
-	ld a, [de]
-	ld [hNewPartyLength], a
+	ld [de], a 	; Increase the party count
+	ld a, [de] ; Why are we doing this?
+	ld [hNewPartyLength], a ; HRAM backup
 	add e
 	ld e, a
-	jr nc, .noCarry
+	jr nc, .loadspecies
 	inc d
-.noCarry
+
+.loadspecies
+	; Load the species of the Pokemon into the party list.
+	; The terminator is usually here, but it'll be back.
 	ld a, [wcf91]
 	ld [de], a ; write species of new mon in party list
+	; Load the terminator into the next slot.
 	inc de
 	ld a, $ff ; terminator
 	ld [de], a
+	; Now let's load the OT name.
 	ld hl, wPartyMonOT
 	ld a, [wMonDataLocation]
 	and $f
-	jr z, .next2
+	jr z, .loadOTname
 	ld hl, wEnemyMonOT
-.next2
-	ld a, [hNewPartyLength]
+
+.loadOTname
+	ld a, [hNewPartyLength] ; Restore index from backup
 	dec a
 	call SkipFixedLengthTextEntries
 	ld d, h
@@ -40,6 +47,7 @@ _AddPartyMon:
 	ld hl, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData
+	; Only initialize the nickname for party mon
 	ld a, [wMonDataLocation]
 	and a
 	jr nz, .skipNaming
@@ -50,20 +58,31 @@ _AddPartyMon:
 	ld a, NAME_MON_SCREEN
 	ld [wNamingScreenType], a
 	predef AskName
+
 .skipNaming
 	ld hl, wPartyMons
 	ld a, [wMonDataLocation]
 	and $f
-	jr z, .next3
+	jr z, .initializeStats
 	ld hl, wEnemyMons
-.next3
+
+.initializeStats
 	ld a, [hNewPartyLength]
 	dec a
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
+
+;GeneratePartyMonStats:
+; wBattleMode specifies whether it's a wild mon or not.
+; wMonType specifies whether it's an opposing mon or not.
+; wCurPartySpecies/wCurPartyLevel specify the species and level.
+; hl points to the wPartyMon struct to fill.
+
 	ld e, l
 	ld d, h
 	push hl
+
+	; Initialize the species
 	ld a, [wcf91]
 	ld [wd0b5], a
 	call GetMonHeader
@@ -80,6 +99,7 @@ _AddPartyMon:
 	jr nz, .next4
 
 ; If the mon is being added to the player's party, update the pokedex.
+;.registerpokedex
 	ld a, [wcf91]
 	ld [wd11e], a
 	dec a
@@ -88,7 +108,6 @@ _AddPartyMon:
 	ld hl, wPokedexOwned
 	call FlagAction
 	ld a, c ; whether the mon was already flagged as owned
-	ld [wUnusedD153], a ; not read
 	ld a, [wd11e]
 	dec a
 	ld c, a
@@ -137,6 +156,7 @@ _AddPartyMon:
 	ld [de], a         ; status ailments
 	inc de
 	jr .copyMonTypesAndMoves
+
 .copyEnemyMonData
 	ld bc, wEnemyMon1DVs - wEnemyMon1
 	add hl, bc
@@ -156,6 +176,7 @@ _AddPartyMon:
 	ld a, [wEnemyMonStatus]   ; copy status ailments from cur enemy mon
 	ld [de], a
 	inc de
+
 .copyMonTypesAndMoves
 	ld hl, wMonHTypes
 	ld a, [hli]       ; type 1
@@ -164,8 +185,11 @@ _AddPartyMon:
 	ld a, [hli]       ; type 2
 	ld [de], a
 	inc de
-	ld a, [hli]       ; catch rate (held item in gen 2)
+
+; Initialize friendship. (formerly catch rate)
+	ld a, BASE_FRIENDSHIP
 	ld [de], a
+
 ; for a wild mon, first clear the movepool before copying
 	xor a
 	inc de

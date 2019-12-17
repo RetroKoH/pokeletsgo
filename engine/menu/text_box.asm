@@ -573,7 +573,7 @@ DisplayFieldMoveMonMenu:
 	ld [hli], a ; wTechniques + 3
 	ld [hli], a ; wNumTechniques
 	ld [hl], 12 ; wFieldMovesLeftmostXCoord
-	call GetMonFieldMoves
+	call GetMonTechniques
 	ld a, [wNumTechniques]
 	and a
 	jr nz, .fieldMovesExist
@@ -633,15 +633,15 @@ DisplayFieldMoveMonMenu:
 	ld d, 0
 	add hl, de
 	ld de, -SCREEN_WIDTH * 2
-	ld a, [wNumFieldMoves]
+	ld a, [wNumTechniques]
 .calcFirstFieldMoveYLoop
 	add hl, de
 	dec a
 	jr nz, .calcFirstFieldMoveYLoop
 
 	xor a
-	ld [wNumFieldMoves], a
-	ld de, wFieldMoves
+	ld [wNumTechniques], a
+	ld de, wTechniques
 .printNamesLoop
 	push hl
 	ld hl, FieldMoveNames
@@ -685,88 +685,51 @@ DisplayFieldMoveMonMenu:
 	jp PlaceString
 
 FieldMoveNames:
-	db "CHOP@"		; CUT
-	db "SOAR@"		; FLY
-	db "@"
-	db "SWIM@"		; SURF
-	db "PUSH@"		; STRENGTH
-	db "GLOW@"		; FLASH
+	db "CHOP@"
+	db "DASH@"
+	db "SWIM@"
+	db "PUSH@"
+	db "GLOW@"
 	db "DIG@"
-	db "WARP@"		; TELEPORT
-	db "HEAL@"		; SOFTBOILED
-
-	; Add ability to headbutt (incorporate into push), LURE, LULL, and SOAR
+	db "WARP@"
+	db "LURE@"
+	db "LULL@"
+	db "HEAL@"
+	db "SOAR@"
 
 PokemonMenuEntries:
 	db   "STATS"
 	next "SWITCH"
 	next "CANCEL@"
 
-GetMonFieldMoves:
-	ld a, [wWhichPokemon]			; load current mon to a
-	ld hl, wPartyMon1Moves
-	ld bc, wPartyMon2 - wPartyMon1
-	call AddNTimes
-	ld d, h
-	ld e, l
-	ld c, NUM_MOVES + 1
-	ld hl, wFieldMoves
-.loop
-	push hl
-.nextMove
-	dec c
-	jr z, .done
-	ld a, [de] ; move ID
+GetMonTechniques:
+	ld a, [wWhichPokemon]
+	ld c, a
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [hl] ; species
+
+	ld hl, TechniquesPointerTable
+	ld b, 0
+	dec a
+	ld c, a
+	add hl, bc
+	add hl, bc	; hl points to the species' techniques list
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	ld hl, wTechniques
+
+.nextTechnique
+	ld a, [de]		; field technique ID
 	and a
 	jr z, .done
-	ld b, a
 	inc de
-	ld hl, FieldMoveDisplayData
-.fieldMoveLoop
-	ld a, [hli]
-	cp $ff
-	jr z, .nextMove ; if the move is not a field move
-	cp b
-	jr z, .foundFieldMove
-	inc hl
-	inc hl
-	jr .fieldMoveLoop
-.foundFieldMove
-	ld a, b
-	ld [wLastFieldMoveID], a
-	ld a, [hli] ; field move name index
-	ld b, [hl] ; field move leftmost X coordinate
-	pop hl
-	ld [hli], a ; store name index in wFieldMoves
-	ld a, [wNumFieldMoves]
+	ld [hli], a
+	ld a, [wNumTechniques]
 	inc a
-	ld [wNumFieldMoves], a
-	ld a, [wFieldMovesLeftmostXCoord]
-	cp b
-	jr c, .skipUpdatingLeftmostXCoord
-	ld a, b
-	ld [wFieldMovesLeftmostXCoord], a
-.skipUpdatingLeftmostXCoord
-	ld a, [wLastFieldMoveID]
-	ld b, a
-	jr .loop
+	ld [wNumTechniques], a
+	jr .nextTechnique
 .done
-	pop hl
 	ret
-
-; Format: [Move id], [name index], [leftmost tile]
-; Move id = id of move
-; Name index = index of name in FieldMoveNames
-; Leftmost tile = -1 + tile column in which the first letter of the move's name should be displayed
-;                 "SOFTBOILED" is $08 because it has 4 more letters than "SURF", for example, whose value is $0C
-FieldMoveDisplayData:
-	db CUT, $01, $0C
-	db FLY, $02, $0C
-	db $B4, $03, $0C ; unused field move
-	db SURF, $04, $0C
-	db STRENGTH, $05, $0C
-	db FLASH, $06, $0C
-	db DIG, $07, $0C
-	db TELEPORT, $08, $0C
-	db SOFTBOILED, $09, $0C
-	db $ff ; list terminator

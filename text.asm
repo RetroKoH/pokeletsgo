@@ -66,8 +66,8 @@ _GroundRoseText::
 	done
 
 _BoulderText::
-	text "This requires"
-	line "STRENGTH to move!"
+	text "A strong #MON"
+	line "could PUSH this!"
 	done
 
 _MartSignText::
@@ -2452,7 +2452,7 @@ _PlayerBlackedOutText::
 _RepelWoreOffText::
 	text "REPEL's effect"
 	line "wore off."
-	done
+	prompt ;done Changed to allow user to see the text before the prompt
 
 _PokemartBuyingGreetingText::
 	text "Take your time."
@@ -2664,7 +2664,7 @@ _CableClubNPCMakingPreparationsText::
 _UsedStrengthText::
 	TX_RAM wcd6d
 	text " used"
-	line "STRENGTH.@@"
+	line "PUSH.@@"
 
 _CanMoveBouldersText::
 	TX_RAM wcd6d
@@ -2679,11 +2679,11 @@ _CurrentTooFastText::
 
 _CyclingIsFunText::
 	text "Cycling is fun!"
-	line "Forget SURFing!"
+	line "No need to SWIM!"
 	prompt
 
 _FlashLightsAreaText::
-	text "A blinding FLASH"
+	text "A blinding GLOW"
 	line "lights the area!"
 	prompt
 
@@ -2695,24 +2695,19 @@ _WarpToLastPokemonCenterText::
 _CannotUseTeleportNowText::
 	TX_RAM wcd6d
 	text " can't"
-	line "use TELEPORT now."
+	line "use WARP now."
 	prompt
 
 _CannotFlyHereText::
 	TX_RAM wcd6d
 	text " can't"
-	line "FLY here."
+	line "use DASH here."
 	prompt
 
 _NotHealthyEnoughText::
 	text "Not healthy"
 	line "enough."
 	prompt
-
-;_NewBadgeRequiredText::
-;	text "No! A new BADGE"
-;	line "is required."
-;	prompt
 
 _CannotUseItemsHereText::
 	text "You can't use items"
@@ -2967,6 +2962,11 @@ _ItemUseNoEffectText::
 	line "effect."
 	prompt
 
+_ItemRepelInEffectText::
+	text "The REPEL effect"
+	line "still lingers."
+	prompt
+
 _ThrowBallAtTrainerMonText1::
 	text "The trainer"
 	line "blocked the BALL!"
@@ -3185,13 +3185,13 @@ _AfterTrade3Text::
 
 _NothingToCutText::
 	text "There isn't"
-	line "anything to CUT!"
+	line "anything to CHOP!"
 	prompt
 
 _UsedCutText::
 	TX_RAM wcd6d
 	text " hacked"
-	line "away with CUT!"
+	line "away with CHOP!"
 	prompt
 
 

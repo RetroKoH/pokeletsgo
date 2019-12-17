@@ -456,9 +456,9 @@ GameCornerHiddenObjects:
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $FF
 CeladonHotelHiddenObjects:
-	db $03,$0d,$04
-	db BANK(OpenPokemonCenterPC)
-	dw OpenPokemonCenterPC
+	;db $03,$0d,$04
+	;db BANK(OpenPokemonCenterPC)
+	;dw OpenPokemonCenterPC
 	db $04,$00,$08
 	db Bank(PrintBenchGuyText)
 	dw PrintBenchGuyText
@@ -706,25 +706,25 @@ SafariZoneRestHouse2HiddenObjects:
 	db $04,$00,$08
 	db Bank(PrintBenchGuyText)
 	dw PrintBenchGuyText
-	db $03,$0d,$04
-	db BANK(OpenPokemonCenterPC)
-	dw OpenPokemonCenterPC
+	;db $03,$0d,$04
+	;db BANK(OpenPokemonCenterPC)
+	;dw OpenPokemonCenterPC
 	db $FF
 SafariZoneRestHouse3HiddenObjects:
 	db $04,$00,$08
 	db Bank(PrintBenchGuyText)
 	dw PrintBenchGuyText
-	db $03,$0d,$04
-	db BANK(OpenPokemonCenterPC)
-	dw OpenPokemonCenterPC
+	;db $03,$0d,$04
+	;db BANK(OpenPokemonCenterPC)
+	;dw OpenPokemonCenterPC
 	db $FF
 SafariZoneRestHouse4HiddenObjects:
 	db $04,$00,$08
 	db Bank(PrintBenchGuyText)
 	dw PrintBenchGuyText
-	db $03,$0d,$04
-	db BANK(OpenPokemonCenterPC)
-	dw OpenPokemonCenterPC
+	;db $03,$0d,$04
+	;db BANK(OpenPokemonCenterPC)
+	;dw OpenPokemonCenterPC
 	db $FF
 Route15GateUpstairsHiddenObjects:
 	db $02,$01,$04

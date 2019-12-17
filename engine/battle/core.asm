@@ -1138,7 +1138,24 @@ RemoveFaintedPlayerMon:
 	ld a, [wBattleMonSpecies]
 	call PlayCry
 	ld hl, PlayerMonFaintedText
-	jp PrintText
+	call PrintText
+	ld a, [wPlayerMonNumber]
+	ld [wWhichPokemon], a
+	ld a, [wBattleMonLevel]
+	ld b, a
+	ld a, [wEnemyMonLevel]
+	sub b ; enemylevel - playerlevel
+	      ; are we stronger than the opposing pokemon?
+	jr c, .regularFaint ; if so, deduct happiness regularly
+
+	cp 30 ; is the enemy 30 levels greater than us?
+	jr nc, .carelessTrainer ; if so, punish the player for being careless, as they shouldn't be fighting a very high leveled trainer with such a level difference
+.regularFaint
+	callabd_ModifyFriendship FRIENDSHIP_FAINTED
+	ret
+.carelessTrainer
+	callabd_ModifyFriendship FRIENDSHIP_CARELESSTRAINER
+	ret
 
 PlayerMonFaintedText:
 	TX_FAR _PlayerMonFaintedText
@@ -3261,8 +3278,12 @@ PlayerCalcMoveDamage:
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
 	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
-	               ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
-	call AdjustDamageForMoveType
+										 ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
+	ld a, [wPlayerSelectedMove]
+	cp STRUGGLE                  ; is the player's mon using Struggle?
+	jr z, .skipMoveType          ; if so, omit type effectiveness and immunities [Let's Go Edit: Struggle Fix]
+	call AdjustDamageForMoveType ; STAB and Type Effectiveness
+.skipMoveType
 	call RandomizeDamage
 .moveHitTest
 	call MoveHitTest
@@ -5813,7 +5834,12 @@ EnemyCalcMoveDamage:
 	call SwapPlayerAndEnemyLevels
 	call CalculateDamage
 	jp z, EnemyCheckIfFlyOrChargeEffect
-	call AdjustDamageForMoveType
+
+	ld a, [wEnemySelectedMove]
+	cp STRUGGLE                  ; is the player's mon using Struggle?
+	jr z, .skipMoveType          ; if so, omit type effectiveness and immunities [Let's Go Edit: Struggle Fix]
+	call AdjustDamageForMoveType ; STAB and Type Effectiveness
+.skipMoveType
 	call RandomizeDamage
 
 EnemyMoveHitTest:
@@ -6959,7 +6985,45 @@ InitBattleCommon:
 	ld [wEnemyMonPartyPos], a
 	ld a, $2
 	ld [wIsInBattle], a
+
+	ld a, [wLoneAttackNo]	; Is this a major story battle? (Gym leader)
+	and a
+	jp z, _InitBattleCommon	; if not, branch. This is a normal trainer
+
+; FRIENDSHIP MOD
+	xor a
+	ld [wWhichPokemon], a	; start with first party mon
+	ld a, [wPartyCount]		; get total party members
+	ld b, a					; b = party size
+
+.partyloop
+	push bc
+;GetPartyParamLocation
+	push bc
+	ld hl, wPartyMons
+	ld c, 1 ; MON_HP
+	ld b, 0
+	add hl, bc ; h1 = wPartyMons + HP
+	ld a, [wWhichPokemon]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	pop bc
+	ld a, [hli]
+	or [hl]
+	jr z, .skipfaintedmon
+	callabd_ModifyFriendship FRIENDSHIP_GYMBATTLE
+
+.skipfaintedmon
+	pop bc
+	dec b
+	jr z, .done				; exit loop at the end of the party
+	ld hl, wWhichPokemon
+	inc [hl]				; next party mon
+	jr .partyloop
+
+.done
 	jp _InitBattleCommon
+
 
 InitWildBattle:
 	ld a, $1

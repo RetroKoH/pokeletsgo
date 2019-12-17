@@ -242,6 +242,7 @@ GainExperience:
 	callab PrintEmptyString
 	call SaveScreenTilesToBuffer1
 .printGrewLevelText
+	callabd_ModifyFriendship FRIENDSHIP_GAINLEVEL
 	ld hl, GrewLevelText
 	call PrintText
 	xor a ;PLAYER_PARTY_DATA

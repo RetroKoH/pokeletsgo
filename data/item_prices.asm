@@ -1,10 +1,10 @@
 ItemPrices:
-	money 200   ; POKE_BALL
-	money 600   ; GREAT_BALL
-	money 1200  ; ULTRA_BALL
+	money 100   ; POKE_BALL
+	money 300   ; GREAT_BALL
+	money 500	; ULTRA_BALL
 	money 0     ; MASTER_BALL
-	money 1000  ; SAFARI_BALL
-	money 0     ; FAST_BALL
+	money 0		; SAFARI_BALL
+	money 0		; FAST_BALL
 	money 0     ; LEVEL_BALL
 	money 0     ; LURE_BALL
 	money 0     ; HEAVY_BALL
@@ -12,18 +12,18 @@ ItemPrices:
 	money 0     ; FRIEND_BALL
 	money 0     ; MOON_BALL
 	money 0     ; SNAG_BALL
-	money 300   ; POTION
+	money 200   ; POTION
 	money 700   ; SUPER_POTION
 	money 1500  ; HYPER_POTION
 	money 2500  ; MAX_POTION
-	money 100   ; ANTIDOTE
-	money 250   ; BURN_HEAL
-	money 250   ; ICE_HEAL
-	money 200   ; AWAKENING
-	money 200   ; PARLYZ_HEAL
-	money 600   ; FULL_HEAL
+	money 200   ; ANTIDOTE
+	money 300   ; BURN_HEAL
+	money 100   ; ICE_HEAL
+	money 100   ; AWAKENING
+	money 300   ; PARLYZ_HEAL
+	money 400   ; FULL_HEAL
 	money 3000  ; FULL_RESTORE
-	money 1500  ; REVIVE
+	money 2000  ; REVIVE
 	money 4000  ; MAX_REVIVE
 	money 200   ; FRESH_WATER
 	money 300   ; SODA_POP
@@ -41,41 +41,41 @@ ItemPrices:
 	money 9800  ; ZINC
 	money 9800  ; PP_UP
 	money 9800  ; PP_MAX
-	money 4800  ; RARE_CANDY
-	money 500   ; X_ATTACK
-	money 550   ; X_DEFEND
+	money 9800  ; RARE_CANDY
+	money 550   ; X_ATTACK
+	money 500   ; X_DEFEND
 	money 350   ; X_SPEED
 	money 350   ; X_SPECIAL
 	money 350   ; X_SPECDEF
 	money 950   ; X_ACCURACY
 	money 650   ; DIRE_HIT
 	money 700   ; GUARD_SPEC
-	money 350   ; REPEL
-	money 500   ; SUPER_REPEL
-	money 700   ; MAX_REPEL
-	money 350   ; LURE
-	money 500   ; SUPER_REPEL
-	money 700   ; MAX_REPEL
-	money 550   ; ESCAPE_ROPE
+	money 400   ; REPEL
+	money 700   ; SUPER_REPEL
+	money 900   ; MAX_REPEL
+	money 400   ; LURE
+	money 700   ; SUPER_REPEL
+	money 900   ; MAX_REPEL
+	money 300   ; ESCAPE_ROPE
 	money 1000  ; POKE_DOLL
-	money 2100  ; FIRE_STONE
-	money 2100  ; THUNDER_STONE
-	money 2100  ; WATER_STONE
-	money 2100  ; LEAF_STONE
-	money 2100  ; ICE_STONE
-	money 2100  ; SUN_STONE
-	money 2100  ; MOON_STONE
-	money 2100  ; MOON_STONE
-	money 2100  ; MOON_STONE
-	money 2100  ; MOON_STONE
-	money 2100  ; MOON_STONE
-	money 2100  ; MOON_STONE
+	money 5000  ; FIRE_STONE
+	money 5000  ; THUNDER_STONE
+	money 5000  ; WATER_STONE
+	money 5000  ; LEAF_STONE
+	money 5000  ; ICE_STONE
+	money 5000  ; SUN_STONE
+	money 5000  ; MOON_STONE
+	money 5000  ; KINGS_ROCK
+	money 5000  ; METAL_COAT
+	money 5000  ; DRAGON_SCALE
+	money 5000  ; UPGRADE
+	money 5000  ; DUBIOUS_DISC
 	money 1000  ; DOME_FOSSIL
 	money 1000  ; HELIX_FOSSIL
 	money 1000  ; OLD_AMBER
+	money 1400	; PEARL
+	money 7000	; BIG PEARL
+	money 9800	; STARPIECE
+	money 2000	; STARDUST
 	money 10000 ; NUGGET
-	money 10000 ; NUGGET
-	money 10000 ; NUGGET
-	money 10000 ; NUGGET
-	money 10000 ; NUGGET
-	money 10000 ; NUGGET
+	money 20000 ; BIGNUGGET

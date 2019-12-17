@@ -1,16 +1,5 @@
 ; New mechanic replacing field moves
 
-CHOP EQU 1
-DASH EQU 2
-SWIM EQU 3
-PUSH_T EQU 4
-GLOW EQU 5
-WARP EQU 6
-LURE EQU 7
-LULL EQU 8
-HEAL EQU 9
-SOAR EQU $A
-
 TechniquesPointerTable:
 	dw TechniqueChop		; BULBASAUR
 	dw IvysaurTechniques
@@ -27,8 +16,8 @@ TechniquesPointerTable:
 	dw NoTechniques			; WEEDLE
 	dw NoTechniques			; KAKUNA
 	dw BeedrillTechniques
-	dw NoTechniques			; PIDGEY
-	dw NoTechniques			; PIDGEOTTO
+	dw TechniqueDash		; PIDGEY
+	dw TechniqueDash		; PIDGEOTTO
 	dw TechniqueDash		; PIDGEOT
 	dw NoTechniques			; RATTATA
 	dw RaticateTechniques

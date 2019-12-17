@@ -1,6 +1,5 @@
 const_value = 1
 
-; Row 01
 	const POKE_BALL     ; $01
 	const GREAT_BALL    ; $02
 	const ULTRA_BALL    ; $03
@@ -9,8 +8,6 @@ const_value = 1
 	const FAST_BALL		; $06
 	const LEVEL_BALL	; $07
 	const LURE_BALL		; $08
-
-; Row 02
 	const HEAVY_BALL	; $09
 	const LOVE_BALL		; $0A
 	const FRIEND_BALL	; $0B
@@ -19,8 +16,6 @@ const_value = 1
 	const POTION		; $0E	
 	const SUPER_POTION	; $0F
 	const HYPER_POTION	; $10
-
-; Row 03
 	const MAX_POTION	; $11
 	const ANTIDOTE		; $12
 	const BURN_HEAL		; $13
@@ -29,38 +24,30 @@ const_value = 1
 	const PARLYZ_HEAL	; $16
 	const FULL_HEAL		; $17
 	const FULL_RESTORE	; $18
-
-; Row 04
 	const REVIVE		; $19
 	const MAX_REVIVE	; $1A
 	const FRESH_WATER	; $1B
 	const SODA_POP		; $1C
 	const LEMONADE		; $1D
 	const MOOMOOMILK	; $1E
-	const ETHER         ; $1F
-	const MAX_ETHER     ; $20
-
-; Row 05
-	const ELIXER        ; $21
-	const MAX_ELIXER    ; $22
-	const HP_UP         ; $23
-	const PROTEIN       ; $24
-	const IRON          ; $25
-	const CARBOS        ; $26
-	const CALCIUM       ; $27
-	const ZINC			; $28
-
-; Row 06
-	const PP_UP         ; $29
-	const PP_MAX		; $2A
+	const PP_UP         ; $1F
+	const PP_MAX		; $20
+	const ETHER         ; $21
+	const MAX_ETHER     ; $22
+	const ELIXER        ; $23
+	const MAX_ELIXER    ; $24
+	const HP_UP         ; $25
+	const PROTEIN       ; $26
+	const IRON          ; $27
+	const CARBOS        ; $28
+	const CALCIUM       ; $29
+	const ZINC			; $2A
 	const RARE_CANDY    ; $2B
 	const X_ATTACK      ; $2C
 	const X_DEFEND      ; $2D
 	const X_SPEED       ; $2E
 	const X_SPECIAL     ; $2F
 	const X_SPDEF 		; $30
-
-; Row 07
 	const X_ACCURACY    ; $31
 	const DIRE_HIT      ; $32
 	const GUARD_SPEC    ; $33
@@ -69,8 +56,6 @@ const_value = 1
 	const MAX_REPEL     ; $36
 	const LURE_ITEM		; $37
 	const SUPER_LURE	; $38
-
-; Row 08
 	const MAX_LURE		; $39
 	const ESCAPE_ROPE   ; $3A
 	const POKE_DOLL     ; $3B
@@ -79,8 +64,6 @@ const_value = 1
 	const WATER_STONE   ; $3E
 	const LEAF_STONE    ; $3F
 	const ICE_STONE 	; $40
-
-; Row 09
 	const SUN_STONE		; $41
 	const MOON_STONE	; $42
 	const KINGS_ROCK	; $43
@@ -89,8 +72,6 @@ const_value = 1
 	const UPGRADE		; $46
 	const DUBIOUS_DISC	; $47
 	const DOME_FOSSIL   ; $48
-
-; Row 10
 	const HELIX_FOSSIL	; $49
 	const OLD_AMBER		; $4A
 	const PEARL			; $4B
@@ -100,7 +81,7 @@ const_value = 1
 	const NUGGET		; $4F
 	const BIG_NUGGET	; $50
 
-; Row 11 - Everything onward is key item
+; Everything onward is key item
 	const OAKS_PARCEL	; $51
 	const TOWN_MAP		; $52
 	const TM_CASE		; $53

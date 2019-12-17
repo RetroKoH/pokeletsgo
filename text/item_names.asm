@@ -7,7 +7,6 @@ ItemNames:
 	db "FAST BALL@"
 	db "LEVEL BALL@"
 	db "LURE BALL@"
-
 	db "HEAVY BALL@"
 	db "LOVE BALL@"
 	db "FRIEND BALL@"
@@ -16,7 +15,6 @@ ItemNames:
 	db "POTION@"
 	db "SUPER POTION@"
 	db "HYPER POTION@"
-
 	db "MAX POTION@"
 	db "ANTIDOTE@"
 	db "BURN HEAL@"
@@ -25,16 +23,16 @@ ItemNames:
 	db "PARLYZ HEAL@"
 	db "FULL HEAL@"
 	db "FULL RESTORE@"
-
 	db "REVIVE@"
 	db "MAX REVIVE@"
 	db "FRESH WATER@"
 	db "SODA POP@"
 	db "LEMONADE@"
-	db "MOO MOO MILK@"
+	db "MOOMOO MILK@"
+	db "PP UP@"
+	db "PP MAX@"
 	db "ETHER@"
 	db "MAX ETHER@"
-
 	db "ELIXER@"
 	db "MAX ELIXER@"
 	db "HP UP@"
@@ -43,9 +41,6 @@ ItemNames:
 	db "CARBOS@"
 	db "CALCIUM@"
 	db "ZINC@"
-
-	db "PP UP@"
-	db "PP MAX@"
 	db "RARE CANDY@"
 	db "X ATTACK@"
 	db "X DEFEND@"

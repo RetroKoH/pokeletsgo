@@ -295,6 +295,11 @@ OverworldLoopLessDelay::
 ; step counting
 	ld hl, wStepCounter
 	dec [hl]
+	jr nz, .skip_friendship
+
+	callba StepFriendship ; callba
+
+.skip_friendship
 	ld a, [wd72c]
 	bit 0, a
 	jr z, .doneStepCounting

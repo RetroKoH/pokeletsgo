@@ -54,6 +54,7 @@ ApplyOutOfBattlePoisonDamage:
 	ld a, TEXT_MON_FAINTED
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+	calladb_ModifyFriendship FRIENDSHIP_POISONFAINT
 	pop de
 	pop hl
 .nextMon

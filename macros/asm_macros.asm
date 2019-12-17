@@ -29,6 +29,20 @@ callab: MACRO
 	call Bankswitch
 ENDM
 
+calladb_ModifyFriendship: MACRO
+	ld hl, ModifyFriendship
+	ld d, \1
+	ld b, BANK(ModifyFriendship)
+	call Bankswitch
+	ENDM
+
+callabd_ModifyFriendship: MACRO
+	ld hl, ModifyFriendship
+	ld b, BANK(ModifyFriendship)
+	ld d, \1
+	call Bankswitch
+	ENDM
+
 jpba: MACRO
 	ld b, BANK(\1)
 	ld hl, \1

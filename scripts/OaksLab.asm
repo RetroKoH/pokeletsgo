@@ -883,9 +883,9 @@ OaksLabMonChoiceMenu:
 	ld hl, OaksLabReceivedMonText
 	call PrintText
 
-; Set Friendship and disable drawing
-	ld a, 163
-	ld [wPartyMon1CatchRate], a
+; Set Friendship and disable drawing (Pokemon Yellow has this here_)
+;	ld a, 90
+;	ld [wPartyMon1Friendship], a
 	;call DisablePartnerOverworldSpriteDrawing
 
 	xor a ; PLAYER_PARTY_DATA
@@ -895,6 +895,12 @@ OaksLabMonChoiceMenu:
 	ld a, [wcf91]
 	ld [wd11e], a
 	call AddPartyMon
+
+; Set Friendship and disable drawing (For some reason, need to place this here)
+	ld a, 90
+	ld [wPartyMon1Friendship], a
+	;call DisablePartnerOverworldSpriteDrawing
+
 	ld hl, wd72e
 	set 3, [hl]
 	ld a, $fc

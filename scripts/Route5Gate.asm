@@ -16,6 +16,7 @@ Route5GateScript_1df43:
 	jp StartSimulatingJoypadStates
 
 Route5GateScript0:
+	ret
 	ld a, [wd728]
 	bit 6, a
 	ret nz
@@ -51,6 +52,7 @@ CoordsData_1df8f:
 	db $ff
 
 Route5GateScript1:
+	ret
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz

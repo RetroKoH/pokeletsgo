@@ -71,6 +71,7 @@ INCLUDE "engine/menu/draw_start_menu.asm"
 INCLUDE "engine/overworld/cable_club_npc.asm"
 
 INCLUDE "engine/menu/text_box.asm"
+INCLUDE "data/techniques.asm"
 
 INCLUDE "engine/battle/moveEffects/drain_hp_effect.asm"
 
@@ -571,7 +572,6 @@ INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "engine/evos_moves.asm"
 INCLUDE "data/evos.asm"
 INCLUDE "data/learnsets.asm"
-INCLUDE "data/techniques.asm"
 
 INCLUDE "engine/battle/moveEffects/heal_effect.asm"
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
@@ -2068,7 +2068,137 @@ SECTION "Pics 3", ROMX ; BANK $0B
 
 ; Removed 'mon sprites from here
 
+ModifyFriendship::
+; Perform friendship action c on wCurPartyMon
+	ld c, d ; FOR SOME REASON, c becomes $40 during the bankswitch
+	; I need to load the value to d and move it to c first.
 
+	ld a, c
+	cp FRIENDSHIP_USEDITEM
+	jr nz, .notHealItem
+	ld a, [wUsedItemOnWhichPokemon]
+	jr .skip
+
+.notHealItem
+	ld a, [wWhichPokemon]
+
+.skip
+	ld [wTempWhichPokemon], a
+
+; Continue as normal. Above was modded to prevent a bug with healing items
+	inc a
+	ld e, a
+	ld d, 0
+	ld hl, wPartySpecies-1
+	add hl, de
+	ld a, [hl]
+
+	push bc
+	ld hl, wPartyMon1Friendship
+	ld bc, 44 ;party_struct_length
+	ld a, [wTempWhichPokemon]
+	call AddNTimes
+	pop bc
+
+	ld d, h
+	ld e, l ; Load current mon's friendship address to de
+
+	push de
+	ld a, [de] 	; Divide friendship by 100.  Hold the integer part in e.
+	cp FRIENDSHIP_THRESHOLD_1 ;(100)
+	ld e, 0
+	jr c, .Friendship_div_100 ; Use the first column
+	inc e
+	cp FRIENDSHIP_THRESHOLD_2 ; (200)
+	jr c, .Friendship_div_100 ; use the second column
+	inc e                     ; use the third column
+
+.Friendship_div_100
+	dec c
+	ld b, $0
+	ld hl, FriendshipChangeTable
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	ld d, $0
+	add hl, de ; Get correct column in the table from e
+	ld a, [hl] ; load amount to change by, to a
+
+	; If [hl] is positive, take min(0xff, [hl] + Friendship).
+	; If [hl] is negative, take max(0x00, [hl] + Friendship).
+	; Inexplicably, we're using 100 as the threshold for comparison.
+	; Change to $80?
+	cp $80
+	pop de
+
+	ld a, [de]
+	jr nc, .negative
+	add [hl]
+	jr nc, .okay
+	ld a, -1
+	jr .okay
+
+.negative
+	add [hl]
+	jr c, .okay
+	xor a
+
+.okay
+	ld [de], a          ; apply friendship to wPartyMonx
+	ld a, [wIsInBattle] ; [wBattleMode]
+	and a
+	ret z
+	ld a, [wTempWhichPokemon]
+	ld b, a
+	ld a, [wMenuCursorLocation] ;[wPartyMenuCursor]
+	cp b
+	ret nz
+	ld a, [de]
+	ld [wBattleMonFriendship], a
+	ret
+
+FriendshipChangeTable:
+	db   5, 3, 2	; Gained a level - Functions correctly
+	db   5, 3, 2	; HP restore - Used with non-medicinal heal items. Functions correctly
+	db   1, 1, 0	; Used X item - Functions correctly
+	db   3, 2, 1	; Challenged Gym Leader
+	db   1, 1, 0	; Teach TM/HM - Functions correctly
+	db  -1, -1, -1	; Fainted in battle - Functions correctly
+	db  -5, -5, -10	; Fainted due to Poison outside of battle - Functions correctly
+	db  -5, -5, -10	; Careless trainer - Functions correctly. Combine with the above data
+	db   3,  3,  1	; Grooming
+
+StepFriendship::
+; Raise the party's happiness by 1 point every other step cycle.
+	ld hl, wFriendshipStepCount
+	ld a, [hl]
+	inc a
+	and 1
+	ld [hl], a
+	ret nz
+
+	ld de, wPartyCount
+	ld a, [de]
+	and a
+	ret z
+
+	ld c, a
+	ld hl, wPartyMon1Friendship
+.loop
+	inc de
+	ld a, [de]
+	inc [hl]
+	jr nz, .next
+	ld [hl], $ff
+
+.next
+	push de
+	ld de, 44 ;party_struct_length
+	add hl, de
+	pop de
+	dec c
+	jr nz, .loop
+	ret
 
 SECTION "Pics 4", ROMX ; BANK $0C
 
@@ -2077,7 +2207,7 @@ SECTION "Pics 4", ROMX ; BANK $0C
 
 SECTION "Pics 5", ROMX ; BANK $0D
 
-; Removed 'mon sprites from here
+INCLUDE "engine/overworld/auto_repel.asm"
 
 
 

@@ -33,14 +33,14 @@ StartMenu_Pokemon:
 	ld a, FIELD_MOVE_MON_MENU
 	ld [wTextBoxID], a
 	call DisplayTextBoxID ; display pokemon menu options
-	ld hl, wFieldMoves
+	ld hl, wTechniques
 	lb bc, 2, 12 ; max menu item ID, top menu item Y
 	ld e, 5
 .adjustMenuVariablesLoop
 	dec e
 	jr z, .storeMenuVariables
 	ld a, [hli]
-	and a ; end of field moves?
+	and a ; end of field techniques?
 	jr z, .storeMenuVariables
 	inc b
 	dec c
@@ -81,7 +81,7 @@ StartMenu_Pokemon:
 	jp z, .choseStats
 	ld c, a
 	ld b, 0
-	ld hl, wFieldMoves
+	ld hl, wTechniques
 	add hl, bc
 	jp .choseOutOfBattleMove
 .choseSwitch
@@ -119,25 +119,24 @@ StartMenu_Pokemon:
 	ld l, a
 	jp hl
 .outOfBattleMovePointers
-	dw .cut
-	dw .fly
-	dw .surf
-	dw .surf
-	dw .strength
-	dw .flash
+	dw .chop
+	dw .dash
+	dw .swim
+	dw .push_t
+	dw .glow
 	dw .dig
-	dw .teleport
+	dw .warp
 	dw .softboiled
-.fly
+.dash
 	call CheckIfInOutsideMap
-	jr z, .canFly
+	jr z, .canSkyDash
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
 	ld hl, .cannotFlyHereText
 	call PrintText
 	jp .loop
-.canFly
+.canSkyDash
 	call ChooseFlyDestination
 	ld a, [wd732]
 	bit 3, a ; did the player decide to fly?
@@ -146,13 +145,13 @@ StartMenu_Pokemon:
 	ld hl, wd72e
 	set 1, [hl]
 	jp StartMenu_Pokemon
-.cut
+.chop
 	predef UsedCut
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
 	jp z, .loop
 	jp CloseTextDisplay
-.surf
+.swim
 	callba IsSurfingAllowed
 	ld hl, wd728
 	bit 1, [hl]
@@ -167,18 +166,18 @@ StartMenu_Pokemon:
 	jp z, .loop
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
-.strength
+.push_t
 	predef PrintStrengthTxt
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
-.flash
+.glow
 	xor a
 	ld [wMapPalOffset], a
-	ld hl, .flashLightsAreaText
+	ld hl, .glowLightsAreaText
 	call PrintText
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
-.flashLightsAreaText
+.glowLightsAreaText
 	TX_FAR _FlashLightsAreaText
 	db "@"
 .dig
@@ -191,16 +190,16 @@ StartMenu_Pokemon:
 	jp z, .loop
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
-.teleport
+.warp
 	call CheckIfInOutsideMap
-	jr z, .canTeleport
+	jr z, .canWarp
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
 	ld hl, .cannotUseTeleportNowText
 	call PrintText
 	jp .loop
-.canTeleport
+.canWarp
 	ld hl, .warpToLastPokemonCenterText
 	call PrintText
 	ld hl, wd732

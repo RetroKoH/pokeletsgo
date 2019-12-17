@@ -9,10 +9,10 @@ LearnsetsPointerTable:
 	dw WartortleLearnset
 	dw BlastoiseLearnset
 	dw CaterpieLearnset
-	dw MetapodLearnset
+	dw CocoonLearnset ; Metapod
 	dw ButterfreeLearnset
 	dw WeedleLearnset
-	dw KakunaLearnset
+	dw CocoonLearnset ; Kakuna
 	dw BeedrillLearnset
 	dw PidgeyLearnset
 	dw PidgeottoLearnset
@@ -155,7 +155,7 @@ LearnsetsPointerTable:
 	dw MagikarpLearnset
 	dw GyaradosLearnset
 	dw LaprasLearnset
-	dw NoLearnset ; DITTO
+	dw DittoLearnset
 	dw EeveeLearnset
 	dw VaporeonLearnset
 	dw JolteonLearnset
@@ -185,9 +185,6 @@ LearnsetsPointerTable:
 	dw MewLearnset
 	dw MeltanLearnset
 	dw MelmetalLearnset
-
-NoLearnset:
-	db 0
 
 BulbasaurLearnset:
 	db 01, TACKLE
@@ -219,7 +216,7 @@ IvysaurLearnset:
 VenusaurLearnset:
 	db $FF, PETAL_DANCE
 	db 01, AMNESIA
-	;db 01, POWER_WHIP
+	db 01, POWER_WHIP
 	db 01, TACKLE
 	db 01, GROWL
 	db 05, VINE_WHIP
@@ -261,7 +258,7 @@ CharizardLearnset:
 	db $FF, WING_ATTACK
 	db 01, WING_ATTACK
 	db 01, COUNTER
-	;db 01, HEAT_WAVE
+	db 01, HEAT_WAVE
 	db 01, SCRATCH
 	db 04, GROWL
 	db 09, EMBER
@@ -271,8 +268,8 @@ CharizardLearnset:
 	db 33, FIRE_SPIN
 	db 43, SLASH
 	db 54, FLAMETHROWER
-	;db 62, AIR_SLASH
-	;db 75, FLARE_BLITZ
+	db 62, AIR_SLASH
+	db 75, FLARE_BLITZ
 	db 0
 
 SquirtleLearnset:
@@ -304,9 +301,9 @@ WartortleLearnset:
 	db 0
 
 BlastoiseLearnset:
-	;db 01, FLASH_CANNON
-	;db 01, FAKE_OUT
-	;db 01, AQUA_JET
+	db 01, FLASH_CANNON
+	db 01, FAKE_OUT
+	db 01, AQUA_JET
 	db 01, TACKLE
 	db 05, TAIL_WHIP
 	db 09, BUBBLE
@@ -325,7 +322,7 @@ CaterpieLearnset:
 	db 01, STRING_SHOT
 	db 0
 
-MetapodLearnset:
+CocoonLearnset: ; Metapod/Kakuna
 	db $FF, HARDEN
 	db 01, HARDEN
 	db 0
@@ -341,18 +338,13 @@ ButterfreeLearnset:
 	db 19, SUPERSONIC
 	;db 22, QUIVER_DANCE
 	db 25, WHIRLWIND
-	;db 28, AIR_SLASH
-	;db 31, BUG_BUZZ
+	db 28, AIR_SLASH
+	db 31, BUG_BUZZ
 	db 0
 
 WeedleLearnset:
 	db 01, POISON_STING
 	db 01, STRING_SHOT
-	db 0
-
-KakunaLearnset:
-	db $FF, HARDEN
-	db 01, HARDEN
 	db 0
 
 BeedrillLearnset:
@@ -362,10 +354,10 @@ BeedrillLearnset:
 	db 13, RAGE
 	db 16, FURY_ATTACK
 	db 19, FOCUS_ENERGY
-	;db 22, POISON_JAB
+	db 22, POISON_JAB
 	db 25, AGILITY
 	db 28, PIN_MISSILE
-	;db 31, OUTRAGE
+	db 31, OUTRAGE
 	db 0
 
 PidgeyLearnset:
@@ -375,10 +367,10 @@ PidgeyLearnset:
 	db 09, QUICK_ATTACK
 	db 11, MIRROR_MOVE
 	db 15, WING_ATTACK
-	;db 17, ROOST
+	db 17, ROOST
 	db 21, WHIRLWIND
 	db 23, AGILITY
-	;db 27, AIR_SLASH
+	db 27, AIR_SLASH
 	db 29, RAZOR_WIND
 	db 0
 
@@ -389,26 +381,26 @@ PidgeottoLearnset:
 	db 09, QUICK_ATTACK
 	db 11, MIRROR_MOVE
 	db 15, WING_ATTACK
-	;db 17, ROOST
+	db 17, ROOST
 	db 25, WHIRLWIND
 	db 31, AGILITY
-	;db 39, AIR_SLASH
+	db 39, AIR_SLASH
 	db 45, RAZOR_WIND
 	db 0
 
 PidgeotLearnset:
 	db 01, SKY_ATTACK
-	;db 01, HEAT_WAVE
+	db 01, HEAT_WAVE
 	db 01, TACKLE
 	db 03, SAND_ATTACK
 	db 05, GUST
 	db 09, QUICK_ATTACK
 	db 11, MIRROR_MOVE
 	db 15, WING_ATTACK
-	;db 17, ROOST
+	db 17, ROOST
 	db 25, WHIRLWIND
 	db 31, AGILITY
-	;db 43, AIR_SLASH
+	db 43, AIR_SLASH
 	db 53, RAZOR_WIND
 	db 0
 
@@ -419,9 +411,9 @@ RattataLearnset:
 	db 09, FOCUS_ENERGY
 	db 12, BITE
 	db 15, SUPER_FANG
-	;db 18, CRUNCH
+	db 18, CRUNCH
 	db 21, HYPER_FANG
-	;db 24, SUCKER_PUNCH
+	db 24, SUCKERPUNCH
 	db 27, DOUBLE_EDGE
 	db 0
 
@@ -435,9 +427,9 @@ RaticateLearnset:
 	db 09, FOCUS_ENERGY
 	db 12, BITE
 	db 15, SUPER_FANG
-	;db 18, CRUNCH
+	db 18, CRUNCH
 	db 26, HYPER_FANG
-	;db 34, SUCKER_PUNCH
+	db 34, SUCKERPUNCH
 	db 42, DOUBLE_EDGE
 	db 0
 
@@ -448,14 +440,14 @@ SpearowLearnset:
 	db 11, FOCUS_ENERGY
 	db 16, FURY_ATTACK
 	db 19, MIRROR_MOVE
-	;db 24, ROOST
+	db 24, ROOST
 	db 27, AGILITY
 	db 32, DRILL_PECK
 	db 0
 
 FearowLearnset:
 	db 01, SKY_ATTACK
-	;db 01, DRILL_RUN
+	db 01, DRILL_RUN
 	db 01, QUICK_ATTACK
 	db 01, PECK
 	db 03, GROWL
@@ -463,7 +455,7 @@ FearowLearnset:
 	db 11, FOCUS_ENERGY
 	db 16, FURY_ATTACK
 	db 19, MIRROR_MOVE
-	;db 29, ROOST
+	db 29, ROOST
 	db 37, AGILITY
 	db 47, DRILL_PECK
 	db 0
@@ -476,16 +468,16 @@ EkansLearnset:
 	db 12, BITE
 	db 16, HAZE
 	db 20, GLARE
-	;db 24, POISON_JAB
+	db 24, POISON_JAB
 	db 28, SLAM
 	db 32, SCREECH
 	db 36, TOXIC
 	db 0
 
 ArbokLearnset:
-	;db $FF, CRUNCH
-	;db 01, CRUNCH
-	;db 01, SUCKER_PUNCH
+	db $FF, CRUNCH
+	db 01, CRUNCH
+	db 01, SUCKERPUNCH
 	db 01, WRAP
 	db 01, POISON_STING
 	db 04, LEER
@@ -493,7 +485,7 @@ ArbokLearnset:
 	db 12, BITE
 	db 16, HAZE
 	db 20, GLARE
-	;db 28, POISON_JAB
+	db 28, POISON_JAB
 	db 36, SLAM
 	db 44, SCREECH
 	db 52, TOXIC
@@ -570,7 +562,7 @@ NidoranFLearnset:
 	;db 15, HELPING_HAND
 	db 18, TOXIC
 	db 21, FURY_SWIPES
-	;db 24, CRUNCH
+	db 24, CRUNCH
 	db 27, SUPER_FANG
 	db 0
 
@@ -584,7 +576,7 @@ NidorinaLearnset:
 	;db 15, HELPING_HAND
 	db 23, TOXIC
 	db 31, FURY_SWIPES
-	;db 39, CRUNCH
+	db 39, CRUNCH
 	db 47, SUPER_FANG
 	db 0
 
@@ -597,7 +589,7 @@ NidoqueenLearnset:
 	db 01, SCRATCH
 	db 01, TAIL_WHIP
 	db 01, POISON_STING
-	;db 55, SUPERPOWER
+	db 55, SUPERPOWER
 	db 0
 
 NidoranMLearnset:
@@ -610,7 +602,7 @@ NidoranMLearnset:
 	;db 15, HELPING_HAND
 	db 18, TOXIC
 	db 21, FURY_ATTACK
-	;db 24, POISON_JAB
+	db 24, POISON_JAB
 	db 27, HORN_DRILL
 	db 0
 
@@ -624,7 +616,7 @@ NidorinoLearnset:
 	;db 15, HELPING_HAND
 	db 23, TOXIC
 	db 31, FURY_ATTACK
-	;db 39, POISON_JAB
+	db 39, POISON_JAB
 	db 47, HORN_DRILL
 	db 0
 
@@ -637,7 +629,7 @@ NidokingLearnset:
 	db 01, PECK
 	db 01, FOCUS_ENERGY
 	db 01, POISON_STING
-	;db 55, MEGAHORN
+	db 55, MEGAHORN
 	db 0
 
 CleffaLearnset:
@@ -660,7 +652,7 @@ ClefairyLearnset:
 	db 18, METRONOME
 	;db 22, ENCORE
 	db 24, BODY_SLAM
-	;db 28, MOONBLAST
+	db 28, MOONBLAST
 	db 0
 
 ClefableLearnset:
@@ -733,12 +725,12 @@ ZubatLearnset:
 	db 20, HAZE
 	db 25, LEECH_LIFE
 	db 28, TOXIC
-	;db 33, AIR_SLASH
+	db 33, AIR_SLASH
 	db 0
 
 GolbatLearnset:
-	;db $FF, CRUNCH
-	;db 01, CRUNCH
+	db $FF, CRUNCH
+	db 01, CRUNCH
 	db 01, WHIRLWIND
 	db 01, QUICK_ATTACK
 	db 01, ABSORB
@@ -750,12 +742,11 @@ GolbatLearnset:
 	db 20, HAZE
 	db 31, LEECH_LIFE
 	db 40, TOXIC
-	;db 51, AIR_SLASH
+	db 51, AIR_SLASH
 	db 0
 
 CrobatLearnset:
-	;db $FF, CROSS_POISON
-	;db 1, CRUNCH
+	db 1, CRUNCH
 	db 1, SCREECH
 	db 1, WHIRLWIND
 	db 1, QUICK_ATTACK
@@ -766,7 +757,7 @@ CrobatLearnset:
 	db 20, HAZE
 	db 31, LEECH_LIFE
 	db 40, TOXIC
-	;db 51, AIR_SLASH
+	db 51, AIR_SLASH
 	db 0
 
 OddishLearnset:
@@ -779,7 +770,7 @@ OddishLearnset:
 	db 18, RAZOR_LEAF
 	db 22, MEGA_DRAIN
 	db 26, TOXIC
-	;db 30, MOONBLAST
+	db 30, MOONBLAST
 	db 0
 
 GloomLearnset:
@@ -792,7 +783,7 @@ GloomLearnset:
 	db 18, RAZOR_LEAF
 	db 27, MEGA_DRAIN
 	db 36, TOXIC
-	;db 45, MOONBLAST
+	db 45, MOONBLAST
 	db 0
 
 VileplumeLearnset:
@@ -824,7 +815,7 @@ ParasLearnset:
 	db 19, SLASH
 	db 23, LEECH_LIFE
 	db 27, SPORE
-	;db 31, X_SCISSOR
+	db 31, X_SCISSOR
 	db 0
 
 ParasectLearnset:
@@ -840,7 +831,7 @@ ParasectLearnset:
 	db 19, SLASH
 	db 23, LEECH_LIFE
 	db 33, SPORE
-	;db 43, X_SCISSOR
+	db 43, X_SCISSOR
 	db 0
 
 VenonatLearnset:
@@ -871,7 +862,7 @@ VenomothLearnset:
 	db 24, SLEEP_POWDER
 	db 28, LEECH_LIFE
 	db 37, PSYCHIC_M
-	;db 46, BUG_BUZZ
+	db 46, BUG_BUZZ
 	;db 55, QUIVER_DANCE
 	db 0
 
@@ -883,7 +874,7 @@ DiglettLearnset:
 	db 15, FURY_SWIPES
 	db 18, DIG
 	db 21, SLASH
-	;db 25, SUCKER_PUNCH
+	db 25, SUCKERPUNCH
 	db 29, EARTHQUAKE
 	db 33, FISSURE
 	db 0
@@ -899,7 +890,7 @@ DugtrioLearnset:
 	db 15, FURY_SWIPES
 	db 18, DIG
 	db 21, SLASH
-	;db 25, SUCKER_PUNCH
+	db 25, SUCKERPUNCH
 	db 35, EARTHQUAKE
 	db 45, FISSURE
 	db 0
@@ -908,14 +899,14 @@ MeowthLearnset:
 	db 01, SCRATCH
 	db 01, GROWL
 	db 01, BITE
-	;db 01, FAKE_OUT
+	db 01, FAKE_OUT
 	db 12, PAY_DAY
-	;db 15, FEINT
+	db 15, FEINT
 	db 19, FURY_SWIPES
 	db 23, SCREECH
 	db 27, SLASH
 	;db 31, NASTY_PLOT
-	;db 35, PLAY_ROUGH
+	db 35, PLAY_ROUGH
 	db 0
 
 PersianLearnset:
@@ -926,14 +917,14 @@ PersianLearnset:
 	db 01, SCRATCH
 	db 01, GROWL
 	db 01, BITE
-	;db 01, FAKE_OUT
+	db 01, FAKE_OUT
 	db 12, PAY_DAY
-	;db 15, FEINT
+	db 15, FEINT
 	db 19, FURY_SWIPES
 	db 23, SCREECH
 	db 27, SLASH
 	;db 37, NASTY_PLOT
-	;db 47, PLAY_ROUGH
+	db 47, PLAY_ROUGH
 	db 0
 
 PsyduckLearnset:
@@ -951,7 +942,7 @@ PsyduckLearnset:
 	db 0
 
 GolduckLearnset:
-	;db 01, YAWN
+	db 01, YAWN
 	;db 01, ENCORE
 	db 01, SCRATCH
 	db 05, TAIL_WHIP
@@ -975,10 +966,10 @@ MankeyLearnset:
 	db 16, FURY_SWIPES
 	db 21, LOW_KICK
 	db 24, SEISMIC_TOSS
-	;db 28, U_TURN
+	db 28, U_TURN
 	db 32, SCREECH
 	db 37, THRASH
-	;db 40, OUTRAGE
+	db 40, OUTRAGE
 	db 0
 
 PrimeapeLearnset:
@@ -994,10 +985,10 @@ PrimeapeLearnset:
 	db 16, FURY_SWIPES
 	db 21, LOW_KICK
 	db 24, SEISMIC_TOSS
-	;db 33, U_TURN
+	db 33, U_TURN
 	db 40, SCREECH
 	db 49, THRASH
-	;db 56, OUTRAGE
+	db 56, OUTRAGE
 	db 0
 
 GrowlitheLearnset:
@@ -1009,11 +1000,11 @@ GrowlitheLearnset:
 	db 14, TAKE_DOWN
 	db 17, FLAMETHROWER
 	db 21, AGILITY
-	;db 24, HEAT_WAVE
-	;db 28, CRUNCH
-	;db 31, OUTRAGE
-	;db 35, PLAY_ROUGH
-	;db 38, FLARE_BLITZ
+	db 24, HEAT_WAVE
+	db 28, CRUNCH
+	db 31, OUTRAGE
+	db 35, PLAY_ROUGH
+	db 38, FLARE_BLITZ
 	db 0
 
 ArcanineLearnset:
@@ -1119,10 +1110,10 @@ MachopLearnset:
 	db 08, BIDE
 	db 12, SEISMIC_TOSS
 	db 16, KARATE_CHOP
-	;db 21, BRICK_BREAK
+	db 21, BRICK_BREAK
 	db 26, SUBMISSION
 	;db 31, BULK_UP
-	;db 36, SUPERPOWER
+	db 36, SUPERPOWER
 	db 0
 
 MachokeLearnset:
@@ -1132,10 +1123,10 @@ MachokeLearnset:
 	db 08, BIDE
 	db 12, SEISMIC_TOSS
 	db 16, KARATE_CHOP
-	;db 21, BRICK_BREAK
+	db 21, BRICK_BREAK
 	db 26, SUBMISSION
 	;db 37, BULK_UP
-	;db 48, SUPERPOWER
+	db 48, SUPERPOWER
 	db 0
 
 MachampLearnset:
@@ -1149,10 +1140,10 @@ MachampLearnset:
 	db 08, BIDE
 	db 12, SEISMIC_TOSS
 	db 16, KARATE_CHOP
-	;db 21, BRICK_BREAK
+	db 21, BRICK_BREAK
 	db 26, SUBMISSION
 	;db 37, BULK_UP
-	;db 48, SUPERPOWER
+	db 48, SUPERPOWER
 	db 0
 
 BellsproutLearnset:
@@ -1164,7 +1155,7 @@ BellsproutLearnset:
 	db 17, POISONPOWDER
 	db 18, STUN_SPORE
 	db 22, RAZOR_LEAF
-	;db 26, POISON_JAB
+	db 26, POISON_JAB
 	db 30, SLAM
 	db 0
 
@@ -1177,21 +1168,21 @@ WeepinbellLearnset:
 	db 17, POISONPOWDER
 	db 18, STUN_SPORE
 	db 27, RAZOR_LEAF
-	;db 36, POISON_JAB
+	db 36, POISON_JAB
 	db 45, SLAM
 	db 0
 
 VictreebelLearnset:
-	;db 01, POWER_WHIP
-	;db 01, CLEAR_SMOG
+	db 01, POWER_WHIP
+	db 01, CLEAR_SMOG
 	db 01, LEECH_LIFE
 	db 01, SWORDS_DANCE
-	;db 01, SUCKER_PUNCH
+	db 01, SUCKERPUNCH
 	db 01, VINE_WHIP
 	db 01, GROWTH
 	db 01, WRAP
 	db 01, ACID
-	;db 54, POWER_WHIP
+	db 54, POWER_WHIP
 	db 0
 
 TentacoolLearnset:
@@ -1203,7 +1194,7 @@ TentacoolLearnset:
 	db 22, WRAP
 	db 27, SURF
 	db 31, BARRIER
-	;db 36, POISON_JAB
+	db 36, POISON_JAB
 	db 40, SCREECH
 	db 45, HYDRO_PUMP
 	db 0
@@ -1219,7 +1210,7 @@ TentacruelLearnset:
 	db 22, WRAP
 	db 27, SURF
 	db 36, BARRIER
-	;db 46, POISON_JAB
+	db 46, POISON_JAB
 	db 55, SCREECH
 	db 65, HYDRO_PUMP
 	db 0
@@ -1233,7 +1224,7 @@ GeodudeLearnset:
 	;db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
-	;db 23, ROCK_SLIDE
+	db 23, ROCK_SLIDE
 	db 27, EARTHQUAKE
 	db 31, DOUBLE_EDGE
 	db 35, EXPLOSION
@@ -1248,7 +1239,7 @@ GravelerLearnset:
 	;db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
-	;db 23, ROCK_SLIDE
+	db 23, ROCK_SLIDE
 	db 31, EARTHQUAKE
 	db 39, DOUBLE_EDGE
 	db 47, EXPLOSION
@@ -1264,7 +1255,7 @@ GolemLearnset:
 	;db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
-	;db 23, ROCK_SLIDE
+	db 23, ROCK_SLIDE
 	db 31, EARTHQUAKE
 	db 39, DOUBLE_EDGE
 	db 47, EXPLOSION
@@ -1282,7 +1273,7 @@ PonytaLearnset:
 	db 32, AGILITY
 	db 38, FIRE_BLAST
 	db 44, TAKE_DOWN
-	;db 51, FLARE_BLITZ
+	db 51, FLARE_BLITZ
 	db 0
 
 RapidashLearnset:
@@ -1290,8 +1281,8 @@ RapidashLearnset:
 	db 01, FURY_ATTACK
 	db 01, HORN_DRILL
 	db 01, HYPNOSIS
-	;db 01, POISON_JAB
-	;db 01, MEGAHORN
+	db 01, POISON_JAB
+	db 01, MEGAHORN
 	db 01, GROWL
 	db 01, TACKLE
 	db 01, TAIL_WHIP
@@ -1303,11 +1294,11 @@ RapidashLearnset:
 	db 32, AGILITY
 	db 38, FIRE_BLAST
 	db 51, TAKE_DOWN
-	;db 65, FLARE_BLITZ
+	db 65, FLARE_BLITZ
 	db 0
 
 SlowpokeLearnset:
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 06, GROWL
 	db 12, WATER_GUN
@@ -1323,7 +1314,7 @@ SlowbroLearnset:
 	db $FF, WITHDRAW
 	db 01, WITHDRAW
 	db 01, STOMP
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 06, GROWL
 	db 12, WATER_GUN
@@ -1337,7 +1328,7 @@ SlowbroLearnset:
 
 SlowkingLearnset:
 	db 01, STOMP
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 06, GROWL
 	db 12, WATER_GUN
@@ -1358,7 +1349,7 @@ MagnemiteLearnset:
 	db 20, LIGHT_SCREEN
 	db 26, THUNDERBOLT
 	db 32, SCREECH
-	;db 38, FLASH_CANNON
+	db 38, FLASH_CANNON
 	db 44, THUNDER
 	db 0
 
@@ -1373,7 +1364,7 @@ MagnetonLearnset:
 	db 20, LIGHT_SCREEN
 	db 26, THUNDERBOLT
 	db 36, SCREECH
-	;db 46, FLASH_CANNON
+	db 46, FLASH_CANNON
 	db 56, THUNDER
 	db 0
 
@@ -1387,25 +1378,25 @@ MagnezoneLearnset:
 	db 20, LIGHT_SCREEN
 	db 26, THUNDERBOLT
 	db 36, SCREECH
-	;db 46, FLASH_CANNON
+	db 46, FLASH_CANNON
 	db 56, THUNDER
 	db 0
 
 FarfetchdLearnset:
 	db 01, MIRROR_MOVE
 	db 01, QUICK_ATTACK
-	;db 01, POISON_JAB
+	db 01, POISON_JAB
 	db 01, PECK
 	db 01, SAND_ATTACK
 	db 01, LEER
-	;db 01, FEINT
+	db 01, FEINT
 	db 04, FOCUS_ENERGY
 	db 09, CUT
 	db 13, RAZOR_LEAF
 	db 18, FURY_ATTACK
 	db 22, AGILITY
 	db 27, SLASH
-	;db 31, AIR_SLASH
+	db 31, AIR_SLASH
 	db 36, SWORDS_DANCE
 	db 40, SKY_ATTACK
 	db 0
@@ -1444,8 +1435,8 @@ SeelLearnset:
 	db 01, HEADBUTT
 	db 04, GROWL
 	;db 08, ENCORE
-	;db 12, AQUA_JET
-	;db 16, ICE_SHARD
+	db 12, AQUA_JET
+	db 16, ICE_SHARD
 	db 20, REST
 	db 26, AURORA_BEAM
 	db 32, WATERFALL
@@ -1455,13 +1446,13 @@ SeelLearnset:
 	db 0
 
 DewgongLearnset:
-	;db 01, FAKE_OUT
+	db 01, FAKE_OUT
 	db 01, HORN_DRILL
 	db 01, HEADBUTT
 	db 04, GROWL
 	;db 08, ENCORE
-	;db 12, AQUA_JET
-	;db 16, ICE_SHARD
+	db 12, AQUA_JET
+	db 16, ICE_SHARD
 	db 20, REST
 	db 26, AURORA_BEAM
 	db 32, WATERFALL
@@ -1480,12 +1471,12 @@ GrimerLearnset:
 	db 30, SCREECH
 	db 36, TOXIC
 	db 42, ACID_ARMOR
-	;db 48, SLUDGE_BOMB
+	db 48, SLUDGE_BOMB
 	db 0
 
 MukLearnset:
 	db 01, HAZE
-	;db 01, MOONBLAST
+	db 01, MOONBLAST
 	db 01, POUND
 	db 01, POISON_GAS
 	db 06, HARDEN
@@ -1495,7 +1486,7 @@ MukLearnset:
 	db 30, SCREECH
 	db 36, TOXIC
 	db 48, ACID_ARMOR
-	;db 60, SLUDGE_BOMB
+	db 60, SLUDGE_BOMB
 	db 0
 
 ShellderLearnset:
@@ -1503,7 +1494,7 @@ ShellderLearnset:
 	db 01, WATER_GUN
 	db 04, WITHDRAW
 	db 09, LEER
-	;db 13, ICE_SHARD
+	db 13, ICE_SHARD
 	db 18, SUPERSONIC
 	db 22, CLAMP
 	db 27, AURORA_BEAM
@@ -1532,10 +1523,10 @@ GastlyLearnset:
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
 	;db 14, WILL_O_WISP
-	;db 19, SUCKER_PUNCH
+	db 19, SUCKERPUNCH
 	db 21, TOXIC
-	;db 26, SHADOW_BALL
-	;db 28, DARK_PULSE
+	db 26, SHADOW_BALL
+	db 28, DARK_PULSE
 	db 33, DREAM_EATER
 	db 0
 
@@ -1547,10 +1538,10 @@ HaunterLearnset:
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
 	;db 14, WILL_O_WISP
-	;db 19, SUCKER_PUNCH
+	db 19, SUCKERPUNCH
 	db 21, TOXIC
-	;db 30, SHADOW_BALL
-	;db 36, DARK_PULSE
+	db 30, SHADOW_BALL
+	db 36, DARK_PULSE
 	db 45, DREAM_EATER
 	db 0
 
@@ -1564,10 +1555,10 @@ GengarLearnset:
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
 	;db 14, WILL_O_WISP
-	;db 19, SUCKER_PUNCH
+	db 19, SUCKERPUNCH
 	db 21, TOXIC
-	;db 30, SHADOW_BALL
-	;db 36, DARK_PULSE
+	db 30, SHADOW_BALL
+	db 36, DARK_PULSE
 	db 45, DREAM_EATER
 	db 0
 
@@ -1581,9 +1572,9 @@ OnixLearnset:
 	db 15, SCREECH
 	db 20, DIG
 	db 25, SLAM
-	;db 30, ROCK_SLIDE
+	db 30, ROCK_SLIDE
 	db 35, EARTHQUAKE
-	;db 40, IRON_TAIL
+	db 40, IRON_TAIL
 	db 45, DOUBLE_EDGE
 	db 0
 
@@ -1597,9 +1588,9 @@ SteelixLearnset:
 	db 15, SCREECH
 	db 20, DIG
 	db 25, SLAM
-	;db 30, ROCK_SLIDE
+	db 30, ROCK_SLIDE
 	db 35, EARTHQUAKE
-	;db 40, IRON_TAIL
+	db 40, IRON_TAIL
 	db 45, DOUBLE_EDGE
 	db 0
 
@@ -1702,8 +1693,8 @@ ExeggcuteLearnset:
 ExeggutorLearnset:
 	db $FF, STOMP
 	db 01, STOMP
-	;db 01, POWER_WHIP
-	;db 01, EGG_BOMB
+	db 01, POWER_WHIP
+	db 01, EGG_BOMB
 	db 01, BARRAGE
 	db 01, HYPNOSIS
 	db 01, CONFUSION
@@ -1742,7 +1733,7 @@ MarowakLearnset:
 TyrogueLearnset:
 	db 01, TACKLE
 	;db 01, HELPING_HAND
-	;db 01, FAKE_OUT
+	db 01, FAKE_OUT
 	db 10, STRENGTH
 	db 0
 
@@ -1751,9 +1742,9 @@ HitmonleeLearnset:
 	db 01, ROLLING_KICK
 	db 05, MEDITATE
 	db 10, DOUBLE_KICK
-	;db 15, FEINT
-	;db 20, BRICK_BREAK
-	;db 25, FACADE
+	db 15, FEINT
+	db 20, BRICK_BREAK
+	db 25, FACADE
 	db 30, JUMP_KICK
 	db 35, FOCUS_ENERGY
 	db 40, MEGA_KICK
@@ -1765,9 +1756,9 @@ HitmonchanLearnset:
 	db 01, COMET_PUNCH
 	db 05, LEER
 	db 10, AGILITY
-	;db 15, FEINT
-	;db 20, SWIFT
-	;db 25, DIZZY_PUNCH
+	db 15, FEINT
+	db 20, SWIFT
+	db 25, DIZZY_PUNCH
 	db 30, THUNDERPUNCH
 	db 30, ICE_PUNCH
 	db 30, FIRE_PUNCH
@@ -1781,8 +1772,8 @@ HitmontopLearnset:
 	db 01, ROLLING_KICK
 	db 05, QUICK_ATTACK
 	db 10, DOUBLE_KICK
-	;db 15, FEINT
-	;db 20, SWIFT
+	db 15, FEINT
+	db 20, SWIFT
 	db 25, AGILITY
 	db 30, COUNTER
 	db 35, FOCUS_ENERGY
@@ -1800,7 +1791,7 @@ LickitungLearnset:
 	db 30, SLAM
 	db 35, SCREECH
 	db 40, THRASH
-	;db 45, POWER_WHIP
+	db 45, POWER_WHIP
 	db 0
 
 LickilickyLearnset:
@@ -1813,19 +1804,19 @@ LickilickyLearnset:
 	db 30, SLAM
 	db 35, SCREECH
 	db 45, THRASH
-	;db 55, POWER_WHIP
+	db 55, POWER_WHIP
 	db 0
 
 KoffingLearnset:
 	db 01, POISON_GAS
 	db 01, TACKLE
 	db 06, SMOG
-	;db 12, CLEAR_SMOG
+	db 12, CLEAR_SMOG
 	db 18, SLUDGE
 	db 24, SELFDESTRUCT
 	db 30, TOXIC
 	db 36, HAZE
-	;db 42, SLUDGE_BOMB
+	db 42, SLUDGE_BOMB
 	db 48, EXPLOSION
 	db 0
 
@@ -1835,12 +1826,12 @@ WeezingLearnset:
 	db 01, POISON_GAS
 	db 01, TACKLE
 	db 06, SMOG
-	;db 12, CLEAR_SMOG
+	db 12, CLEAR_SMOG
 	db 18, SLUDGE
 	db 24, SELFDESTRUCT
 	db 30, TOXIC
 	db 40, HAZE
-	;db 50, SLUDGE_BOMB
+	db 50, SLUDGE_BOMB
 	db 60, EXPLOSION
 	db 0
 
@@ -1851,46 +1842,44 @@ RhyhornLearnset:
 	db 01, FURY_ATTACK
 	db 12, STOMP
 	db 19, ROCK_THROW
-	;db 24, DRILL_RUN
+	db 24, DRILL_RUN
 	db 31, TAKE_DOWN
-	;db 36, MEGAHORN
-	;db 43, ROCK_SLIDE
+	db 36, MEGAHORN
+	db 43, ROCK_SLIDE
 	db 48, EARTHQUAKE
 	db 55, HORN_DRILL	
 	db 0
 
 RhydonLearnset:
 	db 01, COUNTER
-	;db 01, CRUNCH
+	db 01, CRUNCH
 	db 01, HORN_ATTACK
 	db 01, TAIL_WHIP
 	db 01, SAND_ATTACK
 	db 01, FURY_ATTACK
 	db 12, STOMP
 	db 19, ROCK_THROW
-	;db 24, DRILL_RUN
+	db 24, DRILL_RUN
 	db 31, TAKE_DOWN
-	;db 36, MEGAHORN
-	;db 48, ROCK_SLIDE
+	db 36, MEGAHORN
+	db 48, ROCK_SLIDE
 	db 54, EARTHQUAKE
 	db 67, HORN_DRILL	
 	db 0
 
 RhyperiorLearnset:
-	;db $FF, ROCK_WRECKER
-	;db 01, ROCK_WRECKER
 	db 01, COUNTER
-	;db 01, CRUNCH
+	db 01, CRUNCH
 	db 01, HORN_ATTACK
 	db 01, TAIL_WHIP
 	db 01, SAND_ATTACK
 	db 01, FURY_ATTACK
 	db 12, STOMP
 	db 19, ROCK_THROW
-	;db 24, DRILL_RUN
+	db 24, DRILL_RUN
 	db 31, TAKE_DOWN
-	;db 36, MEGAHORN
-	;db 48, ROCK_SLIDE
+	db 36, MEGAHORN
+	db 48, ROCK_SLIDE
 	db 54, EARTHQUAKE
 	db 67, HORN_DRILL	
 	db 0
@@ -1946,7 +1935,7 @@ TangelaLearnset:
 	db 39, LEECH_SEED
 	db 44, SLAM
 	db 49, AMNESIA
-	;db 54, POWER_WHIP
+	db 54, POWER_WHIP
 	db 0
 
 TangrowthLearnset:
@@ -1963,21 +1952,21 @@ TangrowthLearnset:
 	db 39, LEECH_SEED
 	db 44, SLAM
 	db 49, AMNESIA
-	;db 54, POWER_WHIP
+	db 54, POWER_WHIP
 	db 0
 
 KangaskhanLearnset:
 	db 01, COMET_PUNCH
 	db 01, LEER
-	;db 06, FAKE_OUT
+	db 06, FAKE_OUT
 	db 11, TAIL_WHIP
 	db 17, BITE
 	db 22, RAGE
 	db 28, MEGA_PUNCH
-	;db 33, DIZZY_PUNCH
-	;db 39, CRUNCH
-	;db 44, OUTRAGE
-	;db 50, SUCKER_PUNCH
+	db 33, DIZZY_PUNCH
+	db 39, CRUNCH
+	db 44, OUTRAGE
+	db 50, SUCKERPUNCH
 	db 0
 
 HorseaLearnset:
@@ -1989,13 +1978,13 @@ HorseaLearnset:
 	db 24, FOCUS_ENERGY
 	db 27, WATERFALL
 	db 33, AGILITY
-	;db 36, DRAGON_PULSE
+	db 36, DRAGON_PULSE
 	db 42, HYDRO_PUMP
 	db 0
 
 SeadraLearnset:
 	db 01, DISABLE
-	;db 01, CLEAR_SMOG
+	db 01, CLEAR_SMOG
 	db 01, BUBBLE
 	db 06, SMOKESCREEN
 	db 09, WATER_GUN
@@ -2004,15 +1993,13 @@ SeadraLearnset:
 	db 24, FOCUS_ENERGY
 	db 27, WATERFALL
 	db 36, AGILITY
-	;db 42, DRAGON_PULSE
+	db 42, DRAGON_PULSE
 	db 51, HYDRO_PUMP
 	db 0
 
 KingdraLearnset:
-	;db $FF, DRAGON_PULSE
-	;db 01, DRAGON_PULSE
 	db 01, DISABLE
-	;db 01, CLEAR_SMOG
+	db 01, CLEAR_SMOG
 	db 01, BUBBLE
 	db 06, SMOKESCREEN
 	db 09, WATER_GUN
@@ -2021,7 +2008,7 @@ KingdraLearnset:
 	db 24, FOCUS_ENERGY
 	db 27, WATERFALL
 	db 36, AGILITY
-	;db 42, DRAGON_PULSE
+	db 42, DRAGON_PULSE
 	db 51, HYDRO_PUMP
 	db 0
 
@@ -2035,7 +2022,7 @@ GoldeenLearnset:
 	db 24, WATERFALL
 	db 30, AGILITY
 	db 34, HORN_DRILL
-	;db 40, MEGAHORN
+	db 40, MEGAHORN
 	db 0
 
 SeakingLearnset:
@@ -2050,7 +2037,7 @@ SeakingLearnset:
 	db 24, WATERFALL
 	db 30, AGILITY
 	db 39, HORN_DRILL
-	;db 50, MEGAHORN
+	db 50, MEGAHORN
 	db 0
 
 StaryuLearnset:
@@ -2105,14 +2092,14 @@ ScytherLearnset:
 	db 01, LEER
 	db 04, FOCUS_ENERGY
 	db 08, DOUBLE_TEAM
-	;db 12, FEINT
+	db 12, FEINT
 	db 16, WING_ATTACK
 	db 20, AGILITY
 	db 26, SLASH
 	db 32, RAZOR_WIND
-	;db 38, AIR_SLASH
+	db 38, AIR_SLASH
 	db 44, SWORDS_DANCE
-	;db 50, X_SCISSOR
+	db 50, X_SCISSOR
 	db 0
 
 ScizorLearnset:
@@ -2120,14 +2107,14 @@ ScizorLearnset:
 	db 01, LEER
 	db 04, FOCUS_ENERGY
 	db 08, DOUBLE_TEAM
-	;db 12, FEINT
+	db 12, FEINT
 	db 16, WING_ATTACK
 	db 20, AGILITY
 	db 26, SLASH
 	db 32, RAZOR_WIND
-	;db 38, AIR_SLASH
+	db 38, AIR_SLASH
 	db 44, SWORDS_DANCE
-	;db 50, X_SCISSOR
+	db 50, X_SCISSOR
 	db 0
 
 SmoochumLearnset:
@@ -2196,7 +2183,7 @@ MagmarLearnset:
 	db 01, LEER
 	db 06, SMOG
 	db 11, SMOKESCREEN
-	;db 17, CLEAR_SMOG
+	db 17, CLEAR_SMOG
 	db 22, LOW_KICK
 	db 28, FIRE_SPIN
 	db 33, FIRE_PUNCH
@@ -2210,7 +2197,7 @@ MagmortarLearnset:
 	db 01, LEER
 	db 06, SMOG
 	db 11, SMOKESCREEN
-	;db 17, CLEAR_SMOG
+	db 17, CLEAR_SMOG
 	db 22, LOW_KICK
 	db 28, FIRE_SPIN
 	db 33, FIRE_PUNCH
@@ -2225,12 +2212,12 @@ PinsirLearnset:
 	db 04, BIND
 	db 08, SEISMIC_TOSS
 	db 12, HARDEN
-	;db 16, BRICK_BREAK
-	;db 20, X_SCISSOR
+	db 16, BRICK_BREAK
+	db 20, X_SCISSOR
 	db 26, SUBMISSION
 	db 32, SWORDS_DANCE
 	db 38, THRASH
-	;db 44, SUPERPOWER
+	db 44, SUPERPOWER
 	db 50, GUILLOTINE
 	db 0
 
@@ -2245,7 +2232,7 @@ TaurosLearnset:
 	db 38, FOCUS_ENERGY
 	db 42, THRASH
 	db 46, DOUBLE_EDGE
-	;db 50, OUTRAGE
+	db 50, OUTRAGE
 	db 0
 
 MiltankLearnset:
@@ -2275,10 +2262,10 @@ GyaradosLearnset:
 	db 01, DRAGON_RAGE
 	db 01, BIND
 	db 21, RAGE
-	;db 26, DRAGON_TAIL
+	db 26, DRAGON_TAIL
 	db 31, WATERFALL
-	;db 36, CRUNCH
-	;db 41, OUTRAGE
+	db 36, CRUNCH
+	db 41, OUTRAGE
 	db 46, HYDRO_PUMP
 	db 51, HYPER_BEAM
 	db 0
@@ -2288,14 +2275,18 @@ LaprasLearnset:
 	db 01, WATER_GUN
 	db 06, GROWL
 	db 13, MIST
-	;db 19, ICE_SHARD
+	db 19, ICE_SHARD
 	db 26, CONFUSE_RAY
 	db 32, BODY_SLAM
 	db 39, ICE_BEAM
 	db 45, SURF
-	;db 52, DRAGON_PULSE
+	db 52, DRAGON_PULSE
 	db 58, BLIZZARD
 	db 65, HYDRO_PUMP
+	db 0
+
+DittoLearnset:
+	db 01, TRANSFORM
 	db 0
 
 EeveeLearnset:
@@ -2361,7 +2352,7 @@ FlareonLearnset:
 	db 21, SMOG
 	db 24, FOCUS_ENERGY
 	;db 28, HELPING_HAND
-	;db 31, FLARE_BLITZ
+	db 31, FLARE_BLITZ
 	db 0
 
 EspeonLearnset:
@@ -2382,8 +2373,8 @@ EspeonLearnset:
 	db 0
 
 UmbreonLearnset:
-	;db $FF, CRUNCH
-	;db 01, CRUNCH
+	db $FF, CRUNCH
+	db 01, CRUNCH
 	;db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
@@ -2391,11 +2382,11 @@ UmbreonLearnset:
 	db 06, QUICK_ATTACK
 	db 10, DOUBLE_KICK
 	db 14, SAND_ATTACK
-	;db 17, DARK_PULSE
+	db 17, DARK_PULSE
 	db 21, SCREECH
 	;db 24, TAUNT
 	;db 28, HELPING_HAND
-	;db 31, FOUL_PLAY
+	db 31, FOUL_PLAY
 	db 0
 
 LeafeonLearnset:
@@ -2425,11 +2416,11 @@ GlaceonLearnset:
 	db 06, QUICK_ATTACK
 	db 10, DOUBLE_KICK
 	db 14, SAND_ATTACK
-	;db 17, ICE_SHARD
+	db 17, ICE_SHARD
 	db 21, BARRIER
 	;db 24, MIRROR_COAT
 	;db 28, HELPING_HAND
-	;db 31, BLIZZARD
+	db 31, BLIZZARD
 	db 0
 
 SylveonLearnset:
@@ -2446,7 +2437,7 @@ SylveonLearnset:
 	db 21, LIGHT_SCREEN
 	db 24, REST
 	;db 28, HELPING_HAND
-	;db 31, MOONBLAST
+	db 31, MOONBLAST
 	db 0
 
 PorygonLearnset:
@@ -2494,7 +2485,7 @@ OmanyteLearnset:
 	db 22, BITE
 	db 26, ROCK_THROW
 	;db 33, PROTECT
-	;db 37, ROCK_SLIDE
+	db 37, ROCK_SLIDE
 	db 44, HYDRO_PUMP
 	;db 48, SHELL_SMASH
 	db 0
@@ -2511,7 +2502,7 @@ OmastarLearnset:
 	db 22, BITE
 	db 26, ROCK_THROW
 	;db 33, PROTECT
-	;db 37, ROCK_SLIDE
+	db 37, ROCK_SLIDE
 	db 50, HYDRO_PUMP
 	;db 60, SHELL_SMASH
 	db 0
@@ -2521,10 +2512,10 @@ KabutoLearnset:
 	db 06, HARDEN
 	db 12, LEER
 	db 18, ABSORB
-	;db 24, AQUA_JET
+	db 24, AQUA_JET
 	db 30, ROCK_THROW
 	db 36, SAND_ATTACK
-	;db 42, ROCK_SLIDE
+	db 42, ROCK_SLIDE
 	db 48, LEECH_LIFE
 	db 0
 
@@ -2533,15 +2524,15 @@ KabutopsLearnset:
 	db 01, SLASH
 	db 01, SCREECH
 	db 01, CONFUSE_RAY
-	;db 01, FEINT
+	db 01, FEINT
 	db 01, SCRATCH
 	db 06, HARDEN
 	db 12, LEER
 	db 18, ABSORB
-	;db 24, AQUA_JET
+	db 24, AQUA_JET
 	db 30, ROCK_THROW
 	db 36, SAND_ATTACK
-	;db 45, ROCK_SLIDE
+	db 45, ROCK_SLIDE
 	db 54, LEECH_LIFE
 	db 63, SWORDS_DANCE
 	db 0
@@ -2553,8 +2544,8 @@ AerodactylLearnset:
 	db 14, SUPERSONIC
 	db 21, ROCK_THROW
 	db 28, AGILITY
-	;db 35, CRUNCH
-	;db 42, ROCK_SLIDE
+	db 35, CRUNCH
+	db 42, ROCK_SLIDE
 	db 49, FLY
 	db 56, TAKE_DOWN
 	db 63, HYPER_BEAM
@@ -2568,27 +2559,27 @@ MunchlaxLearnset:
 SnorlaxLearnset:
 	db 01, TACKLE
 	db 06, DEFENSE_CURL
-	;db 13, YAWN
+	db 13, YAWN
 	db 19, LICK
 	db 26, HEADBUTT
 	db 32, REST
 	db 39, SCREECH
 	db 45, AMNESIA
 	db 52, BODY_SLAM
-	;db 58, CRUNCH
-	;db 65, SUPERPOWER
+	db 58, CRUNCH
+	db 65, SUPERPOWER
 	db 0
 
 ArticunoLearnset:
 	db 01, GUST
-	;db 01, ICE_SHARD
+	db 01, ICE_SHARD
 	db 08, MIST
 	db 16, LEER
 	;db 24, MIRROR_COAT
 	db 32, ICE_BEAM
 	db 40, AGILITY
 	db 48, REFLECT
-	;db 56, ROOST
+	db 56, ROOST
 	db 64, BLIZZARD
 	db 72, SKY_ATTACK
 	db 0
@@ -2602,7 +2593,7 @@ ZapdosLearnset:
 	db 32, THUNDERBOLT
 	db 40, AGILITY
 	db 48, LIGHT_SCREEN
-	;db 56, ROOST
+	db 56, ROOST
 	db 64, THUNDER
 	db 72, SKY_ATTACK
 	db 0
@@ -2612,11 +2603,11 @@ MoltresLearnset:
 	db 01, EMBER
 	db 08, FIRE_SPIN
 	db 16, LEER
-	;db 24, AIR_SLASH
+	db 24, AIR_SLASH
 	db 32, FLAMETHROWER
 	db 40, AGILITY
-	;db 48, HEAT_WAVE
-	;db 56, ROOST
+	db 48, HEAT_WAVE
+	db 56, ROOST
 	db 64, SOLARBEAM
 	db 72, SKY_ATTACK
 	db 0
@@ -2627,9 +2618,9 @@ DratiniLearnset:
 	db 07, THUNDER_WAVE
 	db 14, DRAGON_RAGE
 	db 21, AGILITY
-	;db 28, DRAGON_TAIL
+	db 28, DRAGON_TAIL
 	db 35, SLAM
-	;db 42, OUTRAGE
+	db 42, OUTRAGE
 	db 49, HYPER_BEAM
 	db 0
 
@@ -2639,9 +2630,9 @@ DragonairLearnset:
 	db 07, THUNDER_WAVE
 	db 14, DRAGON_RAGE
 	db 21, AGILITY
-	;db 28, DRAGON_TAIL
+	db 28, DRAGON_TAIL
 	db 40, SLAM
-	;db 52, OUTRAGE
+	db 52, OUTRAGE
 	db 64, HYPER_BEAM
 	db 0
 
@@ -2649,7 +2640,7 @@ DragoniteLearnset:
 	db $FF, WING_ATTACK
 	db 01, WING_ATTACK
 	db 01, MIST
-	;db 01, AQUA_JET
+	db 01, AQUA_JET
 	db 01, FIRE_PUNCH
 	db 01, THUNDERPUNCH
 	db 01, WRAP
@@ -2657,11 +2648,11 @@ DragoniteLearnset:
 	db 07, THUNDER_WAVE
 	db 14, DRAGON_RAGE
 	db 21, AGILITY
-	;db 28, DRAGON_TAIL
+	db 28, DRAGON_TAIL
 	db 40, SLAM
-	;db 52, OUTRAGE
+	db 52, OUTRAGE
 	db 70, HYPER_BEAM
-	;db 88, ROOST
+	db 88, ROOST
 	db 0
 
 MewtwoLearnset:
@@ -2703,7 +2694,7 @@ MeltanLearnset:
 	db 18, THUNDER_WAVE
 	db 27, THUNDERSHOCK
 	db 36, ACID_ARMOR
-	;db 45, FLASH_CANNON
+	db 45, FLASH_CANNON
 	db 0
 
 MelmetalLearnset:
@@ -2715,10 +2706,10 @@ MelmetalLearnset:
 	db 18, THUNDER_WAVE
 	db 27, THUNDERSHOCK
 	db 36, ACID_ARMOR
-	;db 45, FLASH_CANNON
+	db 45, FLASH_CANNON
 	db 54, MEGA_PUNCH
 	;db 63, PROTECT
-	;db 72, DUO_IRONBASH
-	;db 81, SUPERPOWER
+	db 72, IRON_BASH
+	db 81, SUPERPOWER
 	db 90, HYPER_BEAM
 	db 0

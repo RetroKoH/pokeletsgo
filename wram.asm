@@ -13,19 +13,34 @@ box_struct: MACRO
 \1Type::
 \1Type1::      db
 \1Type2::      db
-\1CatchRate::  db
+\1Friendship::
+\1CatchRate::  db ; These share the same byte
 \1Moves::      ds NUM_MOVES
 \1OTID::       dw
 \1Exp::        ds 3
+
 \1HPExp::      dw
 \1AttackExp::  dw
 \1DefenseExp:: dw
 \1SpeedExp::   dw
 \1SpecialExp:: dw
+;\1HPEV::      db
+;\1AttackEV::  db
+;\1DefenseEV:: db
+;\1SpeedEV::   db
+;\1SpecAtkEV::  db
+;				ds 5
+;\1SpecDefEV::  db ; 4 bytes remaining
+;\1Gender::
+;\1Nature::
+;\1Size::
+;\1Shiny::
+
 \1DVs::        ds 2
 \1PP::         ds NUM_MOVES
 ENDM
 
+party_struct_length EQU box_struct_length + 11
 party_struct: MACRO
 	box_struct \1
 \1Level::      db
@@ -46,6 +61,7 @@ battle_struct: MACRO
 \1Type::
 \1Type1::      db
 \1Type2::      db
+\1Friendship::
 \1CatchRate::  db
 \1Moves::      ds NUM_MOVES
 \1DVs::        ds 2
@@ -1328,7 +1344,10 @@ wHPBarDelta:: ; ceef
 wHPBarTempHP:: ; cef0
 	ds 2
 
-	ds 11
+	ds 10
+
+wTempWhichPokemon:: ; cefc - Used for Friendship
+	ds 1
 
 wHPBarHPDifference:: ; cefd
 	ds 1
@@ -2103,7 +2122,10 @@ wSavedTilesetType:: ; d0d4
 wDamage:: ; d0d7
 	ds 2
 
-	ds 2
+	ds 1
+
+wFriendshipStepCount:: ; d0da
+	ds 1
 
 wRepelRemainingSteps:: ; d0db
 	ds 1
