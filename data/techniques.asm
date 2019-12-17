@@ -26,7 +26,7 @@ TechniquesPointerTable:
 	dw NoTechniques			; EKANS
 	dw TechniquePush		; ARBOK
 	dw NoTechniques			; PICHU
-	dw RaichuTechniques;TechniqueGlow		; PIKACHU
+	dw TechniqueGlow		; PIKACHU
 	dw RaichuTechniques
 	dw TechniqueChop		; SANDSHREW
 	dw RaticateTechniques	; SANDSLASH
@@ -248,7 +248,6 @@ RaticateTechniques:
 RaichuTechniques:
 	db PUSH_T
 	db GLOW
-	db HEAL
 	db 0
 
 ClefairyTechniques:
