@@ -29,9 +29,9 @@ ItemUsePtrTable:
 	dw PokeBallEffect		; FRIEND_BALL
 	dw PokeBallEffect		; MOON_BALL
 	dw PokeBallEffect		; SNAG_BALL
-	dw RestoreHPEffect	; POTION
-	dw RestoreHPEffect	; SUPER_POTION
-	dw RestoreHPEffect	; HYPER_POTION
+	dw RestoreHPEffect		; POTION
+	dw RestoreHPEffect		; SUPER_POTION
+	dw RestoreHPEffect		; HYPER_POTION
 	dw RestoreHPEffect		; MAX_POTION
 	dw StatusHealingEffect	; ANTIDOTE
 	dw StatusHealingEffect	; BURN_HEAL
@@ -40,14 +40,14 @@ ItemUsePtrTable:
 	dw StatusHealingEffect	; PARLYZ_HEAL
 	dw StatusHealingEffect	; FULL_HEAL
 	dw RestoreHPEffect		; FULL_RESTORE
-	dw ReviveEffect   ; REVIVE
-	dw ReviveEffect   ; MAX_REVIVE
-	dw RestoreHPEffect   ; FRESH_WATER
-	dw RestoreHPEffect   ; SODA_POP
-	dw RestoreHPEffect   ; LEMONADE
-	dw RestoreHPEffect   ; MOOMOOMILK
-	dw EffectPPUp       ; PP_UP
-	dw EffectPPUp       ; PP_MAX
+	dw ReviveEffect			; REVIVE
+	dw ReviveEffect			; MAX_REVIVE
+	dw RestoreHPEffect		; FRESH_WATER
+	dw RestoreHPEffect		; SODA_POP
+	dw RestoreHPEffect		; LEMONADE
+	dw RestoreHPEffect		; MOOMOOMILK
+	dw EffectPPUp			; PP_UP
+	dw EffectPPUp			; PP_MAX
 	dw ItemUsePPRestore  ; ETHER
 	dw ItemUsePPRestore  ; MAX_ETHER
 	dw ItemUsePPRestore  ; ELIXER
@@ -725,14 +725,22 @@ RestoreHPEffect:
 	ld [wPartyMenuTypeOrMessageID], a
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
-	jr .notEmptyParty
+	ld a, [wPseudoItemID]
+	and a ; using Softboiled?
+	jr z, .notUsingSoftboiled
+; if using softboiled
+	call GoBackToPartyMenu
+	jr .getPartyMonDataAddress
+
 .emptyParty
 	ld hl, EmptyPartyText
 	xor a
 	ld [wActionResultOrTookBattleTurn], a ; item use failed
 	jp PrintText
-.notEmptyParty
+
+.notUsingSoftboiled
 	call DisplayPartyMenu
+.getPartyMonDataAddress
 	jp c, .canceledItemUse
 	ld hl, wPartyMons
 	ld bc, wPartyMon2 - wPartyMon1
@@ -748,7 +756,15 @@ RestoreHPEffect:
 	ld [wcf91], a
 	pop af
 	ld [wWhichPokemon], a
-;.healHP
+	ld a, [wPseudoItemID]
+	and a ; using Softboiled?
+	jr z, .healHP
+; if using softboiled
+	ld a, [wWhichPokemon]
+	cp d ; is the pokemon trying to use softboiled on itself?
+	jr z, RestoreHPEffect ; if so, force another choice
+
+.healHP
 	inc hl ; hl = address of current HP
 	ld a, [hli]
 	ld b, a
@@ -799,7 +815,80 @@ RestoreHPEffect:
 	ld [wHPBarMaxHP+1], a
 	ld a, [hl]
 	ld [wHPBarMaxHP], a ; max HP stored at wHPBarMaxHP (2 bytes, big-endian)
-;.notUsingSoftboiled2
+	ld a, [wPseudoItemID]
+	and a ; using Softboiled?
+	jp z, .notUsingSoftboiled2
+; if using softboiled
+	ld hl, wHPBarMaxHP
+	ld a, [hli]
+	push af
+	ld a, [hli]
+	push af
+	ld a, [hli]
+	push af
+	ld a, [hl]
+	push af
+	ld hl, wPartyMon1MaxHP
+	ld a, [wWhichPokemon]
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld a, [hli]
+	ld [wHPBarMaxHP + 1], a
+	ld [H_DIVIDEND], a
+	ld a, [hl]
+	ld [wHPBarMaxHP], a
+	ld [H_DIVIDEND + 1], a
+	ld a, 5
+	ld [H_DIVISOR], a
+	ld b, 2 ; number of bytes
+	call Divide ; get 1/5 of max HP of pokemon that used Softboiled
+	ld bc, (wPartyMon1HP + 1) - (wPartyMon1MaxHP + 1)
+	add hl, bc ; hl now points to LSB of current HP of pokemon that used Softboiled
+; subtract 1/5 of max HP from current HP of pokemon that used Softboiled
+	ld a, [H_QUOTIENT + 3]
+	push af
+	ld b, a
+	ld a, [hl]
+	ld [wHPBarOldHP], a
+	sub b
+	ld [hld], a
+	ld [wHPBarNewHP], a
+	ld a, [H_QUOTIENT + 2]
+	ld b, a
+	ld a, [hl]
+	ld [wHPBarOldHP+1], a
+	sbc b
+	ld [hl], a
+	ld [wHPBarNewHP+1], a
+	coord hl, 4, 1
+	ld a, [wWhichPokemon]
+	ld bc, 2 * SCREEN_WIDTH
+	call AddNTimes ; calculate coordinates of HP bar of pokemon that used Softboiled
+	ld a, SFX_HEAL_HP
+	call PlaySoundWaitForCurrent
+	ld a, [hFlags_0xFFF6]
+	set 0, a
+	ld [hFlags_0xFFF6], a
+	ld a, $02
+	ld [wHPBarType], a
+	predef UpdateHPBar2 ; animate HP bar decrease of pokemon that used Softboiled
+	ld a, [hFlags_0xFFF6]
+	res 0, a
+	ld [hFlags_0xFFF6], a
+	pop af
+	ld b, a ; store heal amount (1/5 of max HP)
+	ld hl, wHPBarOldHP + 1
+	pop af
+	ld [hld], a
+	pop af
+	ld [hld], a
+	pop af
+	ld [hld], a
+	pop af
+	ld [hl], a
+	jr .addHealAmount
+
+.notUsingSoftboiled2
 	ld a, [wcf91]
 
 	ld b, 20 ; Potion heal amount
@@ -948,10 +1037,14 @@ RestoreHPEffect:
 	predef DoubleOrHalveSelectedStats
 
 .doneHealing
+	ld a, [wPseudoItemID]
+	and a ; using Softboiled?
+	jr nz, .skipRemovingItem ; no item to remove if using Softboiled
 	push hl
 	call RemoveUsedItem
 	pop hl
 
+.skipRemovingItem
 	ld a, [hFlags_0xFFF6]
 	set 0, a
 	ld [hFlags_0xFFF6], a
@@ -995,6 +1088,9 @@ RestoreHPEffect:
 	pop af
 	pop af
 .done
+	ld a, [wPseudoItemID]
+	and a ; using Softboiled?
+	ret nz ; if so, return
 	call GBPalWhiteOut
 	call z, RunDefaultPaletteCommand
 	ld a, [wIsInBattle]

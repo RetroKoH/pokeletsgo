@@ -126,7 +126,10 @@ StartMenu_Pokemon:
 	dw .glow
 	dw .dig
 	dw .warp
+	dw .glow ; LURE Currently not available
+	dw .glow ; LULL Currently not available
 	dw .softboiled
+	dw .dash ; SOAR Currently not available
 .dash
 	call CheckIfInOutsideMap
 	jr z, .canSkyDash

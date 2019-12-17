@@ -685,17 +685,17 @@ DisplayFieldMoveMonMenu:
 	jp PlaceString
 
 FieldMoveNames:
-	db "CHOP@"
-	db "DASH@"
-	db "SWIM@"
-	db "PUSH@"
-	db "GLOW@"
-	db "DIG@"
-	db "WARP@"
-	db "LURE@"
-	db "LULL@"
-	db "HEAL@"
-	db "SOAR@"
+	db "CHOP@" ; CUT
+	db "DASH@" ; FLY
+	db "SWIM@" ; SURF
+	db "PUSH@" ; STRENGTH
+	db "GLOW@" ; FLASH
+	db "DIG@" ; DIG
+	db "WARP@" ; TELEPORT
+	db "LURE@" ; SWEET SCENT
+	db "LULL@" ; SING (NEW, BASED ON Gen 2 Lullaby)
+	db "HEAL@" ; SOFTBOILED
+	db "SOAR@" ; NEW
 
 PokemonMenuEntries:
 	db   "STATS"
