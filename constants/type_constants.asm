@@ -18,7 +18,7 @@ DRAGON   EQU $0F
 DARK     EQU $10
 FAIRY    EQU $11
 CRYSTAL  EQU $12 ; CRYSTAL ONIX ONLY
-TYPE_UNK EQU $13 ; Typeless (Struggle)
+SOUND	 EQU $13
 
 ; These are for the Physical Special split
 PHYSICAL  EQU $00
