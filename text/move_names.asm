@@ -171,7 +171,7 @@ MoveNames::
 	db "MEGAHORN@"
 	db "IRON TAIL@"
 	db "CRUNCH@"
-	;db "MIRROR COAT@"
+	db "MIRROR COAT@"
 	db "SHADOW BALL@"
 	db "FAKE OUT@"
 	db "HEAT WAVE@"

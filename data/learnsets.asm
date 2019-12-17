@@ -1201,7 +1201,7 @@ TentacoolLearnset:
 
 TentacruelLearnset:
 	db 01, HAZE
-	;db 01, MIRROR_COAT
+	db 01, MIRROR_COAT
 	db 01, POISON_STING
 	db 04, CONSTRICT
 	db 09, SUPERSONIC
@@ -1660,7 +1660,7 @@ VoltorbLearnset:
 	db 19, SELFDESTRUCT
 	db 24, SCREECH
 	db 31, THUNDERBOLT
-	;db 38, MIRROR_COAT
+	db 38, MIRROR_COAT
 	db 45, EXPLOSION
 	db 0
 
@@ -1673,7 +1673,7 @@ ElectrodeLearnset:
 	db 19, SELFDESTRUCT
 	db 24, SCREECH
 	db 36, THUNDERBOLT
-	;db 48, MIRROR_COAT
+	db 48, MIRROR_COAT
 	db 60, EXPLOSION
 	db 0
 
@@ -2307,7 +2307,7 @@ EeveeLearnset:
 VaporeonLearnset:
 	db $FF, WATER_GUN
 	db 01, WATER_GUN
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2324,7 +2324,7 @@ VaporeonLearnset:
 JolteonLearnset:
 	db $FF, THUNDERSHOCK
 	db 01, THUNDERSHOCK
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2341,7 +2341,7 @@ JolteonLearnset:
 FlareonLearnset:
 	db $FF, EMBER
 	db 01, EMBER
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2358,7 +2358,7 @@ FlareonLearnset:
 EspeonLearnset:
 	db $FF, CONFUSION
 	db 01, CONFUSION
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2375,7 +2375,7 @@ EspeonLearnset:
 UmbreonLearnset:
 	db $FF, CRUNCH
 	db 01, CRUNCH
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2392,7 +2392,7 @@ UmbreonLearnset:
 LeafeonLearnset:
 	db $FF, RAZOR_LEAF
 	db 01, RAZOR_LEAF
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2409,7 +2409,7 @@ LeafeonLearnset:
 GlaceonLearnset:
 	;db $FF, ICY_WIND
 	;db 01, ICY_WIND
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2418,7 +2418,7 @@ GlaceonLearnset:
 	db 14, SAND_ATTACK
 	db 17, ICE_SHARD
 	db 21, BARRIER
-	;db 24, MIRROR_COAT
+	db 24, MIRROR_COAT
 	;db 28, HELPING_HAND
 	db 31, BLIZZARD
 	db 0
@@ -2426,7 +2426,7 @@ GlaceonLearnset:
 SylveonLearnset:
 	;db $FF, FAIRY_WIND
 	;db 01, FAIRY_WIND
-	;db 01, YAWN
+	db 01, YAWN
 	db 01, TACKLE
 	db 01, GROWL
 	db 03, TAIL_WHIP
@@ -2575,7 +2575,7 @@ ArticunoLearnset:
 	db 01, ICE_SHARD
 	db 08, MIST
 	db 16, LEER
-	;db 24, MIRROR_COAT
+	db 24, MIRROR_COAT
 	db 32, ICE_BEAM
 	db 40, AGILITY
 	db 48, REFLECT

@@ -187,7 +187,7 @@ const_value = 1
 	const MEGAHORN     ; a9
 	const IRON_TAIL    ; aa
 	const CRUNCH       ; ab
-	;const MIRROR_COAT  ; ac
+	const MIRROR_COAT  ; ac
 	const SHADOW_BALL  ; ad
 	const FAKE_OUT     ; ae
 	const HEAT_WAVE    ; af

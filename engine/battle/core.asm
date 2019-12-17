@@ -4851,14 +4851,15 @@ HandleCounterMove:
 	ld hl, wEnemySelectedMove
 	ld de, wEnemyMovePower
 	ld a, [wPlayerSelectedMove]
-	jr z, .next
+	jr z, .chkCounter
 ; enemy's turn
 	ld hl, wPlayerSelectedMove
 	ld de, wPlayerMovePower
 	ld a, [wEnemySelectedMove]
-.next
+
+.chkCounter
 	cp COUNTER
-	ret nz ; return if not using Counter
+	jr nz, .chkMirrorCoat ;ret nz ; return if not using Counter
 	ld a, $01
 	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
 	ld a, [hl]
@@ -4867,22 +4868,45 @@ HandleCounterMove:
 	ld a, [de]
 	and a
 	ret z ; miss if the opponent's last selected move's Base Power is 0.
-; check if the move the target last selected was Normal or Fighting type
+; check if the move the target last selected was Physical
+	inc de
 	inc de
 	ld a, [de]
-	and a ; normal type
+	cp PHYSICAL
 	jr z, .counterableType
-	cp FIGHTING
-	jr z, .counterableType
-; if the move wasn't Normal or Fighting type, miss
+
+; if the move wasn't PHYSICAL, miss
 	xor a
 	ret
+
+.chkMirrorCoat
+	cp MIRROR_COAT
+	ret nz ; return if not using Mirror Coat
+	ld a, $01
+	ld [wMoveMissed], a ; initialize the move missed variable to true (it is set to false below if the move hits)
+	ld a, [hl]
+	cp MIRROR_COAT
+	ret z ; miss if the opponent's last selected move is Mirror Coat.
+	ld a, [de]
+	and a
+	ret z ; miss if the opponent's last selected move's Base Power is 0.
+; check if the move the target last selected was Physical
+	inc de
+	inc de
+	ld a, [de]
+	cp SPECIAL
+	jr z, .counterableType
+
+; if the move wasn't SPECIAL, miss
+	xor a
+	ret
+
 .counterableType
 	ld hl, wDamage
 	ld a, [hli]
 	or [hl]
-	ret z ; If we made it here, Counter still misses if the last move used in battle did no damage to its target.
-	      ; wDamage is shared by both players, so Counter may strike back damage dealt by the Counter user itself
+	ret z ; If we made it here, Counter/MC still misses if the last move used in battle did no damage to its target.
+	      ; wDamage is shared by both players, so Counter/MC may strike back damage dealt by the Counter /MC user itself
 	      ; if the conditions meet, even though 99% of the times damage will come from the target.
 ; if it did damage, double it
 	ld a, [hl]
