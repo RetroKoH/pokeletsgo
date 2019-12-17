@@ -84,7 +84,6 @@ StatusScreen:
 	call ClearScreen
 	call UpdateSprites
 	call LoadHpBarAndStatusTilePatterns
-
 	ld de, BattleHudTiles1  ; source
 	ld hl, vChars2 + $6d0 ; dest
 	lb bc, BANK(BattleHudTiles1), $03
@@ -108,14 +107,19 @@ StatusScreen:
 
 	coord hl, 19, 3
 	lb bc, 2, 8
+
 	call DrawLineBox ; Draws the box around name, HP and status
 	coord hl, 2, 7
 	nop
 	ld [hl], "⠄" ; . after No ("." is a different one)
 	dec hl
 	ld [hl], "№"
-
-
+	coord hl, 19, 9
+	lb bc, 8, 6
+	call DrawLineBox ; Draws the box around types, ID No. and OT
+	coord hl, 10, 9
+	ld de, Type1Text
+	call PlaceString ; "TYPE1/"
 	coord hl, 11, 3
 	predef DrawHP
 	ld hl, wStatusScreenHPBarColor
@@ -153,13 +157,24 @@ StatusScreen:
 	ld de, wd11e
 	lb bc, LEADING_ZEROES | 1, 3
 	call PrintNumber ; Pokémon no.
-
+	coord hl, 11, 10
+	predef PrintMonType
 	ld hl, NamePointers2
 	call .GetStringPointer
 	ld d, h
 	ld e, l
 	coord hl, 9, 1
 	call PlaceString ; Pokémon name
+	ld hl, OTPointers
+	call .GetStringPointer
+	ld d, h
+	ld e, l
+	coord hl, 12, 16
+	call PlaceString ; OT
+	coord hl, 12, 14
+	ld de, wLoadedMonOTID
+	lb bc, LEADING_ZEROES | 2, 5
+	call PrintNumber ; ID Number
 
 ; Shiny Symbol (For debug purposes, always draw this)
 
@@ -169,84 +184,14 @@ StatusScreen:
 	call PrintGenderStatusScreen
 
 	ld d, $0
-
-; This box will be used for all 3 status screens
-	coord hl, 0, 8
-	ld b, 8
-	ld c, 18
-	call TextBoxBorder ; Draw container
-
-; EVERYTHING BELOW IS INSIDE THE BOX ON SCREEN 1
-; Print the Pokemon's types 
-	coord hl, 1, 9
-	push hl
-	call GetMonHeader
-	pop hl
-	ld a, [wMonHType1]
-	ld b, a
-	ld a, [wMonHType2]
-	cp b
-	jr nz, .typesText
-
-	ld de, Type1Text ; "TYPE/"
-	jr .printout
-.typesText
-	ld de, TypesText ; "TYPES/"
-.printout
-	call PlaceString
-	coord hl, 2, 10
-	predef PrintMonType
-
-; draw the Original Trainer Name and ID
-	coord hl, 1, 13
-	ld de, OTText ; "ID No/"
-	call PlaceString
-	ld hl, OTPointers
-	call .GetStringPointer
-	ld d, h
-	ld e, l
-	coord hl, 2, 14
-	call PlaceString ; OT
-	coord hl, 2, 16
-	ld de, wLoadedMonOTID
-	lb bc, LEADING_ZEROES | 2, 5
-	call PrintNumber ; ID Number
-
-; draw the Exp Values
-	coord hl, 11, 13
-	ld de, StatusScreenExpText
-	call PlaceString
-	ld a, [wLoadedMonLevel]
-	push af
-	cp MAX_LEVEL
-	jr z, .Level100
-	inc a
-	ld [wLoadedMonLevel], a ; Increase temporarily if not 100
-.Level100
-	coord hl, 14, 16
-	ld [hl], $70 ; 1-tile "to"
-	inc hl
-	inc hl
-	call PrintLevel
-	pop af
-	ld [wLoadedMonLevel], a
-	ld de, wLoadedMonExp
-	coord hl, 12, 14
-	lb bc, 3, 7
-	call PrintNumber ; exp
-	call CalcExpToLevelUp
-	ld de, wLoadedMonExp
-	coord hl, 7, 16
-	lb bc, 3, 7
-	call PrintNumber ; exp needed to level up
-
+	call PrintStatsBox
 	call Delay3
 	call GBPalNormal
 	coord hl, 1, 0
 	call LoadFlippedFrontSpriteByMonIndex ; draw Pokémon picture
 	ld a, [wcf91]
 	call PlayCry ; play Pokémon cry
-	call WaitForTextScrollButtonPress ; wait for button press to go to screen #2
+	call WaitForTextScrollButtonPress ; wait for button
 	pop af
 	ld [hTilesetType], a
 	ret
@@ -279,16 +224,16 @@ NamePointers2:
 	dw wDayCareMonName
 
 Type1Text:
-	db "TYPE/@";, $4e
+	db "TYPE1/", $4e
 
-TypesText:
-	db "TYPES/@";, $4e
-
-OTText:
-	db "OT/", $4e
+Type2Text:
+	db "TYPE2/", $4e
 
 IDNoText:
-	db $73, "№/"
+	db $73, "№/", $4e
+
+OTText:
+	db   "OT/"
 	next "@"
 
 StatusText:
@@ -344,8 +289,7 @@ PrintGenderStatusScreen: ; called on status screen
 	ld [hl], a
 	ret
 
-PrintStatsBox: ; Also used in the level up sequence, hence the glitch.
-; Remove this from here and restore it to normal.
+PrintStatsBox:
 	ld a, d
 	and a ; a is 0 from the status screen
 	jr nz, .DifferentBox
@@ -381,7 +325,12 @@ PrintStatsBox: ; Also used in the level up sequence, hence the glitch.
 	ld de, wLoadedMonSpeed
 	call PrintStat
 	ld de, wLoadedMonSpecial
-	jp PrintNumber
+	;jp PrintNumber
+; Draw out Stat Exp (For Debug purposes)
+	call PrintNumber
+	call PrintEVs
+	jr PrintIVs
+	ret
 
 PrintStat:
 	push hl
@@ -392,10 +341,10 @@ PrintStat:
 	ret
 
 StatsText:
-	db   "ATTACK"
-	next "DEFENSE"
-	next "SPEED"
-	next "SPECIAL@"
+	db   "ATK:" ;"ATTACK"
+	next "DEF:";"DEFENSE"
+	next "SPD:";"SPEED"
+	next "SPC:@";"SPECIAL@"
 
 PrintEVs:
 	coord hl, 1, 10
@@ -538,16 +487,18 @@ StatusScreen2:
 	ld bc, NUM_MOVES
 	call CopyData
 	callab FormatMovesString
+	coord hl, 9, 2
+	lb bc, 5, 10
+	call ClearScreenArea ; Clear under name
 
-; Draws out the bigger hook outline for EXP text. We don't want this.
-;	call StatusScreen2Hook
-;	nop
-;	nop
+	call StatusScreen2Hook
+	nop
+	nop
 
-	coord hl, 1, 9
-	lb bc, 8, 18
-	call ClearScreenArea ; Clear out container box
-	
+	coord hl, 0, 8
+	ld b, 8
+	ld c, 18
+	call TextBoxBorder ; Draw move container
 	coord hl, 2, 9
 	ld de, wMovesString
 	call PlaceString ; Print moves
@@ -619,6 +570,32 @@ StatusScreen2:
 	cp $4
 	jr nz, .PrintPP
 .PPDone
+	coord hl, 9, 3
+	ld de, StatusScreenExpText
+	call PlaceString
+	ld a, [wLoadedMonLevel]
+	push af
+	cp MAX_LEVEL
+	jr z, .Level100
+	inc a
+	ld [wLoadedMonLevel], a ; Increase temporarily if not 100
+.Level100
+	coord hl, 14, 6
+	ld [hl], $70 ; 1-tile "to"
+	inc hl
+	inc hl
+	call PrintLevel
+	pop af
+	ld [wLoadedMonLevel], a
+	ld de, wLoadedMonExp
+	coord hl, 12, 4
+	lb bc, 3, 7
+	call PrintNumber ; exp
+	call CalcExpToLevelUp
+	ld de, wLoadedMonExp
+	coord hl, 7, 6
+	lb bc, 3, 7
+	call PrintNumber ; exp needed to level up
 	coord hl, 9, 0
 	call StatusScreen_ClearName
 	coord hl, 9, 1
@@ -634,13 +611,12 @@ StatusScreen2:
 	call WaitForTextScrollButtonPress ; wait for button
 	pop af
 	ld [hTilesetType], a
-	ret
-;	ld hl, wd72c
-;	res 1, [hl]
-;	ld a, $77
-;	ld [rNR50], a
-;	call GBPalWhiteOut
-;	jp ClearScreen
+	ld hl, wd72c
+	res 1, [hl]
+	ld a, $77
+	ld [rNR50], a
+	call GBPalWhiteOut
+	jp ClearScreen
 
 CalcExpToLevelUp:
 	ld a, [wLoadedMonLevel]
@@ -669,7 +645,7 @@ CalcExpToLevelUp:
 	ret
 
 StatusScreenExpText:
-	db   "EXP/"
+	db   "EXP POINTS"
 	next "LEVEL UP@"
 
 StatusScreen_ClearName:
@@ -685,58 +661,3 @@ StatusScreen_PrintPP:
 	dec c
 	jr nz, StatusScreen_PrintPP
 	ret
-
-StatusScreen3:
-	ld a, [hTilesetType]
-	push af
-	xor a
-	ld [hTilesetType], a
-
-	coord hl, 1, 9
-	lb bc, 8, 18
-	call ClearScreenArea ; Clear out container box
-
-	coord hl, 1, 9
-	ld de, NatureText
-	call PlaceString
-
-	coord hl, 1, 11
-	ld de, FullStatsText
-	call PlaceString
-
-	coord hl, 6, 11
-	ld bc, $0019 ; Number offset
-	ld de, wLoadedMonMaxHP
-	lb bc, 2, 3
-	call PrintStat
-	ld de, wLoadedMonAttack
-	call PrintStat
-	ld de, wLoadedMonDefense
-	call PrintNumber
-
-	coord hl, 16, 11
-	ld de, wLoadedMonSpecial
-	call PrintStat
-	ld de, wLoadedMonSpecial
-	call PrintStat
-	ld de, wLoadedMonSpeed
-	call PrintNumber
-
-	call Delay3
-	call WaitForTextScrollButtonPress ; wait for button
-	pop af
-	ld [hTilesetType], a
-	ld hl, wd72c
-	res 1, [hl]
-	ld a, $77
-	ld [rNR50], a
-	call GBPalWhiteOut
-	jp ClearScreen
-
-NatureText:
-	db "NATURE: NONE YET:)@";, $4e
-
-FullStatsText:
-	db   "HP:       SpA:"
-	next "ATK:      SpD:"
-	next "DEF:      SPE:@";"SPECIAL@"
