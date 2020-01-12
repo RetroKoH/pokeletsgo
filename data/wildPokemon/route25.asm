@@ -1,27 +1,47 @@
 Route25Mons:
 	db $0F
-	IF DEF(_RED)
-		db 8,WEEDLE
-		db 9,KAKUNA
-		db 13,PIDGEY
-		db 12,ODDISH
-		db 13,ODDISH
-		db 12,ABRA
-		db 14,ODDISH
-		db 10,ABRA
-		db 7,METAPOD
-		db 8,CATERPIE
-	ENDC
-	IF DEF(_BLUE)
-		db 8,CATERPIE
-		db 9,METAPOD
-		db 13,PIDGEY
-		db 12,BELLSPROUT
-		db 13,BELLSPROUT
-		db 12,ABRA
-		db 14,BELLSPROUT
-		db 10,ABRA
-		db 7,KAKUNA
-		db 8,WEEDLE
-	ENDC
-	db $00
+	db 12,ODDISH		; 20%
+	db 12,BELLSPROUT	; 20%
+	db 13,PIDGEY		; 10%
+	db 14,ODDISH		; 10%
+	db 14,BELLSPROUT	; 10%
+	db 11,ABRA			; 10%
+	db 12,VENONAT		; 5%
+	db 13,VENONAT		; 5%
+	db 12,ABRA			; 4%
+	db 14,PIDGEY		; 4%
+	db 11,PSYDUCK		; 1%
+	db 12,PSYDUCK		; 1%
+	db $05				; Water Mons
+	db 5,GOLDEEN
+	db 5,MAGIKARP
+	db 5,GOLDEEN
+	db 5,MAGIKARP
+	db 10,GOLDEEN
+	db 10,MAGIKARP
+	db 10,TENTACOOL
+	db 10,TENTACOOL
+	db 15,GOLDEEN
+	db 15,MAGIKARP
+	db 12,POLIWAG
+	db 12,POLIWAG
+
+; ODDISH/BELLSPROUT - 30% (60%)
+; Level 12 - 20%
+; Level 14 - 10%
+
+; PIDGEY - 14%
+; Level 13 - 10%
+; Level 14 - 4%
+
+; ABRA - 14%
+; Level 11 - 10%
+; Level 12 - 4%
+
+; VENONAT - 10%
+; Level 12 - 5%
+; Level 13 - 5%
+
+; PSYDUCK - 2%
+; Level 11 - 1%
+; Level 12 - 1%

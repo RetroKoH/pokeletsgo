@@ -1,0 +1,15 @@
+MansionMons:
+	db $0A
+	db 32,RATICATE
+	db 30,KOFFING
+	db 34,RATICATE
+	db 28,GRIMER
+	db 30,GROWLITHE
+	db 30,VULPIX
+	db 32,WEEZING
+	db 26,RATTATA
+	db 32,MAGMAR
+	db 28,RATTATA
+	db 35,MUK
+	db 30,DITTO
+	db $00

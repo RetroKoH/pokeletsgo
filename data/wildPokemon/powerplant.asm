@@ -1,19 +1,15 @@
 PowerPlantMons:
 	db $0A
-	db 21,VOLTORB
-	db 21,MAGNEMITE
-	db 20,PIKACHU
-	db 24,PIKACHU
-	db 23,MAGNEMITE
-	db 23,VOLTORB
-	db 32,MAGNETON
-	db 35,MAGNETON
-	IF DEF(_RED)
-		db 33,ELECTABUZZ
-		db 36,ELECTABUZZ
-	ENDC
-	IF DEF(_BLUE)
-		db 33,RAICHU
-		db 36,RAICHU
-	ENDC
-	db $00
+	db 30,MAGNEMITE		; 20%
+	db 25,PIKACHU		; 20%
+	db 33,MAGNEMITE		; 10%
+	db 30,KOFFING		; 10%
+	db 30,VOLTORB		; 10%
+	db 33,VOLTORB		; 10%
+	db 33,GRIMER		; 5%
+	db 30,PIKACHU		; 5%
+	db 35,MAGNETON		; 4%
+	db 33,ELECTABUZZ	; 4%
+	db 37,GRIMER		; 1%
+	db 36,ELECTABUZZ	; 1%
+	db $00				; No Sea Mons

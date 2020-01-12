@@ -1,13 +1,15 @@
-PlateauMons1:
+VictoryRoadMons1:
 	db $0F
-	db 24,MACHOP
-	db 26,GEODUDE
-	db 22,ZUBAT
-	db 36,ONIX
-	db 39,ONIX
-	db 42,ONIX
+	db 40,GOLBAT
+	db 44,MACHOKE
+	db 42,ARBOK
+	db 42,SANDSLASH
 	db 41,GRAVELER
-	db 41,GOLBAT
-	db 42,MACHOKE
-	db 43,MAROWAK
+	db 45,ONIX
+	db 45,GRAVELER
+	db 41,RHYHORN
+	db 42,RHYDON
+	db 43,RHYHORN
+	db 44,RHYDON
+	db 46,CHANSEY
 	db $00

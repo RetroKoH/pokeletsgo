@@ -1,13 +1,15 @@
-PlateauMons2:
+VictoryRoadMons2:
 	db $0A
-	db 22,MACHOP
-	db 24,GEODUDE
-	db 26,ZUBAT
-	db 36,ONIX
-	db 39,ONIX
-	db 42,ONIX
-	db 41,MACHOKE
 	db 40,GOLBAT
-	db 40,MAROWAK
-	db 43,GRAVELER
+	db 44,MACHOKE
+	db 42,ARBOK
+	db 42,SANDSLASH
+	db 41,GRAVELER
+	db 45,ONIX
+	db 45,GRAVELER
+	db 41,RHYHORN
+	db 42,RHYDON
+	db 43,RHYHORN
+	db 44,RHYDON
+	db 46,HITMONLEE
 	db $00

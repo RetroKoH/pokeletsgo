@@ -1,0 +1,15 @@
+CeruleanCaveMonsB1:
+	db $19
+	db 54,GOLBAT
+	db 55,GRAVELER
+	db 58,GOLBAT
+	db 55,MAROWAK
+	db 55,ELECTRODE
+	db 54,RHYHORN
+	db 58,RHYDON
+	db 56,CHANSEY
+	db 55,LICKITUNG
+	db 58,DITTO
+	db 60,DITTO
+	db 59,SNORLAX
+	db $00

@@ -1,0 +1,15 @@
+CeruleanCaveMons1:
+	db $0A
+	db 50,GOLBAT
+	db 48,GRAVELER
+	db 52,GOLBAT
+	db 48,HYPNO
+	db 49,DODRIO
+	db 49,VENOMOTH
+	db 52,ARBOK
+	db 52,SANDSLASH
+	db 52,PARASECT
+	db 53,DITTO
+	db 55,DITTO
+	db 55,SNORLAX
+	db $00
