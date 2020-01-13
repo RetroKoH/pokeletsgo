@@ -522,7 +522,7 @@ INCLUDE "engine/hidden_object_functions7.asm"
 
 SECTION "Battle (BANK 9)", ROMX[$7d6b], BANK[$9]
 INCLUDE "engine/battle/print_type.asm"
-INCLUDE "engine/battle/save_trainer_name.asm"
+;INCLUDE "engine/battle/save_trainer_name.asm"
 INCLUDE "engine/battle/moveEffects/focus_energy_effect.asm"
 
 
