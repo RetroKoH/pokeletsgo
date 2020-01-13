@@ -12,9 +12,9 @@ HealEffect_:
 	ld b, a
 	ld a, [de]
 	cp [hl]
-	jr nz, .fine ; fixes the 255/511 bug by not ignoring the most significant byte in comparisons
 	inc de
 	inc hl
+	jr nz, .fine ; fixes the 255/511 bug by not ignoring the most significant byte in comparisons
 	ld a, [de]
 	sbc [hl]
 	jp z, .failed ; no effect if user's HP is already at its maximum
