@@ -5790,11 +5790,15 @@ MoveHitTest:
 ; if the move is 100% accurate, don't miss
 	ld a, b
 	cp $FF
-	ret z
+	jr z, .moveHits
 ; else if the random number generated is greater than or equal to the scaled accuracy, the move misses
 	call BattleRandom
 	cp b
 	jr nc, .moveMissed
+.moveHits
+; make sure W_MOVEMISSED is 0 if it hits
+	xor a
+	ld [wMoveMissed],a
 	ret
 .moveMissed
 	xor a
@@ -7574,6 +7578,7 @@ MoveEffectPointerTable:
 	 dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	 dw SplashEffect              ; SPLASH_EFFECT
 	 dw DisableEffect             ; DISABLE_EFFECT
+	 dw GrowthEffect				; GROWTH_EFFECT
 
 SleepEffect:
 	ld de, wEnemyMonStatus
@@ -9067,6 +9072,25 @@ PlayBattleAnimationGotID:
 	pop de
 	pop hl
 	ret
+
+GrowthEffect:
+	ld a, [H_WHOSETURN]
+	and a
+	jr z, .notEnemyTurn
+; Enemy's turn
+	ld a, SPECIAL_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	call StatModifierUpEffect
+	ld a, ATTACK_UP1_EFFECT
+	ld [wEnemyMoveEffect], a
+	jp StatModifierUpEffect
+.notEnemyTurn
+	ld a, SPECIAL_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	call StatModifierUpEffect
+	ld a, ATTACK_UP1_EFFECT
+	ld [wPlayerMoveEffect], a
+	jp StatModifierUpEffect
 
 PrintEnemyMonGender: ; called during battle
 	; get gender

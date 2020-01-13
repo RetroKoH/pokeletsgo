@@ -2929,13 +2929,19 @@ wRoute18Gate1FCurScript:: ; d669
 	ds 78
 wGameProgressFlagsEnd::
 
-	ds 54
+	ds 41
+
+wCurTrainerName::
+; used to store individual trainer names
+; TODO: Same as wLinkEnemyTrainerName
+	ds 13
 
 wPlayerGender::
 ; $00 = male
 ; $01 = female
 	ds 1
 
+wExtraFlags::
 	ds 1 ; ExtraFlags
 
 wObtainedHiddenItemsFlags::

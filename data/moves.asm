@@ -96,7 +96,7 @@ MoveEnd:
 	move ABSORB,		DRAIN_HP_EFFECT,		 40,	GRASS,		SPECIAL,	100,	15,	 0 ; Power raised to 40. PP lowered to 15
 	move MEGA_DRAIN,	DRAIN_HP_EFFECT,		 75,	GRASS,		SPECIAL,	100,	10,	 0 ; Power raised to 75
 	move LEECH_SEED,	LEECH_SEED_EFFECT,		  0,	GRASS,		STATUS_M,	 90,	10,	 0
-	move GROWTH,		SPECIAL_UP1_EFFECT,		  0,	NORMAL,		STATUS_M,	100,	20,	 0 ; PP is now 20. Should raise BOTH ATK and Sp ATK 1 stage
+	move GROWTH,		GROWTH_EFFECT,			  0,	NORMAL,		STATUS_M,	100,	20,	 0 ; PP is now 20. Should raise BOTH ATK and Sp ATK 1 stage
 	move RAZOR_LEAF,	EFFECT_NORMAL_HIT,		 55,	GRASS,		PHYSICAL,	 95,	25,	 0
 	move SOLARBEAM,		CHARGE_EFFECT,			200,	GRASS,		SPECIAL,	100,	10,	 0 ; Power boosted to 200, due to lack of weather boosting
 	move POISONPOWDER,	POISON_EFFECT,			  0,	POISON,		STATUS_M,	 75,	35,	 0
