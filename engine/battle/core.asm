@@ -3271,7 +3271,7 @@ PlayerCalcMoveDamage:
 	ld hl, SetDamageEffects
 	ld de, 1
 	call IsInArray
-	jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
+	jp c, .skipCalc ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, handleIfPlayerMoveMissed
@@ -3282,11 +3282,13 @@ PlayerCalcMoveDamage:
 	ld a, [wPlayerSelectedMove]
 	cp STRUGGLE                  ; is the player's mon using Struggle?
 	jr z, .skipMoveType          ; if so, omit type effectiveness and immunities [Let's Go Edit: Struggle Fix]
+
+.skipCalc
 	call AdjustDamageForMoveType ; STAB and Type Effectiveness
 .skipMoveType
 	call RandomizeDamage
-.moveHitTest
 	call MoveHitTest
+
 handleIfPlayerMoveMissed:
 	ld a, [wMoveMissed]
 	and a
@@ -5991,7 +5993,7 @@ EnemyCalcMoveDamage:
 	ld hl, SetDamageEffects
 	ld de, $1
 	call IsInArray
-	jp c, EnemyMoveHitTest
+	jp c, .skipCalc
 	call CriticalHitTest
 	call HandleCounterMove
 	jr z, handleIfEnemyMoveMissed
@@ -6004,12 +6006,13 @@ EnemyCalcMoveDamage:
 	ld a, [wEnemySelectedMove]
 	cp STRUGGLE                  ; is the player's mon using Struggle?
 	jr z, .skipMoveType          ; if so, omit type effectiveness and immunities [Let's Go Edit: Struggle Fix]
+
+.skipCalc
 	call AdjustDamageForMoveType ; STAB and Type Effectiveness
 .skipMoveType
 	call RandomizeDamage
-
-EnemyMoveHitTest:
 	call MoveHitTest
+
 handleIfEnemyMoveMissed:
 	ld a, [wMoveMissed]
 	and a
