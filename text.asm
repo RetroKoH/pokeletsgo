@@ -2111,6 +2111,14 @@ _RoseText::
 	text " rose!"
 	prompt
 
+_WontRiseAnymoreText::
+	text "<USER>'s"
+	line "@"
+	TX_RAM wcf4b
+	text " won't"
+	cont "rise anymore!"
+	prompt
+
 _MonsStatsFellText::
 	text "<TARGET>'s"
 	line "@"
@@ -2122,6 +2130,14 @@ _GreatlyFellText::
 
 _FellText::
 	text " fell!"
+	prompt
+
+_WontFallAnymoreText::
+	text "<TARGET>'s"
+	line "@"
+	TX_RAM wcf4b
+	text " won't"
+	cont "drop anymore!"
 	prompt
 
 _RanFromBattleText::

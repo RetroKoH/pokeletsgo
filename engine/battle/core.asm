@@ -8065,7 +8065,10 @@ RestoreOriginalStatModifier:
 	dec [hl]
 
 PrintNothingHappenedText:
-	ld hl, NothingHappenedText
+	ld b, c
+	inc b
+	call PrintStatText
+	ld hl, WontRiseAnymoreText
 	jp PrintText
 
 MonsStatsRoseText:
@@ -8089,6 +8092,10 @@ GreatlyRoseText:
 ; fallthrough
 RoseText:
 	TX_FAR _RoseText
+	db "@"
+
+WontRiseAnymoreText:
+	TX_FAR _WontRiseAnymoreText
 	db "@"
 
 StatModifierDownEffect:
@@ -8261,7 +8268,10 @@ CantLowerAnymore:
 	ld a, [de]
 	cp ATTACK_DOWN_SIDE_EFFECT
 	ret nc
-	ld hl, NothingHappenedText
+	ld b, c
+	inc b
+	call PrintStatText
+	ld hl, WontFallAnymoreText
 	jp PrintText
 
 MoveMissed:
@@ -8294,6 +8304,10 @@ GreatlyFellText:
 ; fallthrough
 FellText:
 	TX_FAR _FellText
+	db "@"
+
+WontFallAnymoreText:
+	TX_FAR _WontFallAnymoreText
 	db "@"
 
 PrintStatText:
