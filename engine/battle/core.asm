@@ -913,7 +913,8 @@ FaintEnemyPokemon:
 	xor a
 	ld [wBattleResult], a
 
-	; give EXP to mons that fought
+GiveEXPToMonsThatNeedIt:: ; give EXP to mons that fought
+	xor a
 	ld [wBoostExpByExpAll], a
 	ld a, [wPartyGainExpFlags]
 	push af

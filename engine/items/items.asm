@@ -538,6 +538,13 @@ PokeBallEffect:
 
 	ld hl, PokeBallEffectText05
 	call PrintText
+	; added to gain EXP on catch
+	ld a, [wWhichPokemon]
+	push af
+	callba GiveEXPToMonsThatNeedIt
+	pop af
+	ld [wWhichPokemon], a
+	;resume old routine
 
 ; Add the caught Pokémon to the Pokédex.
 	ld a, [wd11e]
