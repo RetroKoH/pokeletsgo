@@ -5309,6 +5309,8 @@ AttackSubstitute:
 	jr z, .done				; Hyper Beam still needs to recharge if it breaks a Substitute
 	cp EXPLODE_EFFECT
 	jr z, .done				; SelfDestruct and Explosion still need to faint the user if they break a Substitute
+	cp RECOIL_EFFECT
+	jr z, .done				; Recoil damage should still occur if a Substitute is broken
 	; if it wasn't one of those, nullify the effect
 	xor a
 	ld [hl], a ; zero the effect of the attacker's move
