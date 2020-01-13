@@ -5716,14 +5716,15 @@ MoveHitTest:
 	cp SWIFT_EFFECT
 	ret z ; Swift never misses, except if DIG or FLY is used
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
-	jr z, .checkForDigOrFlyStatus
-; this code should be fixed (CheckTargetSubstitute)
-; added a push af at the start and pop af at the end, which should preserve this
+	jr z, .skipDrainChecks
+; this code should be fixed now
+	ld a, [de]
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
 	jp z, .moveMissed
 ; Move dig or fly status up a bit
+.skipDrainChecks
 	ld a, [H_WHOSETURN]
 	and a
 	jr nz, .enemyTurn
@@ -8999,7 +9000,6 @@ ParalyzedMayNotAttackText:
 	db "@"
 
 CheckTargetSubstitute:
-	push af
 	push hl
 	ld hl, wEnemyBattleStatus2
 	ld a, [H_WHOSETURN]
@@ -9009,7 +9009,6 @@ CheckTargetSubstitute:
 .next1
 	bit HAS_SUBSTITUTE_UP, [hl]
 	pop hl
-	pop af
 	ret
 
 PlayCurrentMoveAnimation2:
