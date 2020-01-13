@@ -1940,9 +1940,8 @@ DrawPlayerHUDAndHPBar:
 
 	call PlaceString ; Note: "CenterMonName" not called to be consistent with gen 2
 	
-	ld a, [wBattleMonSpecies]
-	ld [wGenderTemp], a
 	call PrintPlayerMonGender
+	call PrintPlayerMonShiny
 
 	call PrintEXPBarAt1711
 
@@ -2006,9 +2005,8 @@ DrawEnemyHUDAndHPBar:
 	call CenterMonName
 	call PlaceString
 
-	ld a, [wEnemyMonSpecies]
-	ld [wGenderTemp], a
 	call PrintEnemyMonGender
+	call PrintEnemyMonShiny
 
 	coord hl, 6, 1
 	push hl
@@ -9048,6 +9046,30 @@ PrintGenderCommon: ; used by both routines
 	ld a, "♂"
 	ret
 .noGender
+	ld a, " "
+	ret
+
+PrintEnemyMonShiny:
+	; check if mon is shiny
+	ld de, wEnemyMonDVs
+	call PrintShinyCommon
+	coord hl, 10, 1
+	ld [hl], a
+	ret
+
+PrintPlayerMonShiny: ; show shiny symbol beside gender symbol
+	; check if mon is shiny
+	ld de, wBattleMonDVs
+	call PrintShinyCommon
+	coord hl, 18, 8
+	ld [hl], a
+	ret
+
+PrintShinyCommon: ; used by both routines
+	callba IsMonShiny
+	ld a, "<SHINY>"
+	ret nz
+	; else, it's normal
 	ld a, " "
 	ret
 
