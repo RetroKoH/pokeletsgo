@@ -6908,53 +6908,6 @@ ApplyBadgeStatBoosts:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z ; return if link battle
-	ld a, [wObtainedBadges]
-	ld b, a
-	ld hl, wBattleMonAttack
-	ld c, $4
-; the boost is applied for badges whose bit position is even
-; the order of boosts matches the order they are laid out in RAM
-; Boulder (bit 0) - attack
-; Thunder (bit 2) - defense
-; Soul (bit 4) - speed
-; Volcano (bit 6) - special
-.loop
-	srl b
-	call c, .applyBoostToStat
-	inc hl
-	inc hl
-	srl b
-	dec c
-	jr nz, .loop
-	ret
-
-; multiply stat at hl by 1.125
-; cap stat at 999
-.applyBoostToStat
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-	ld a, [hld]
-	sub 999 % $100
-	ld a, [hl]
-	sbc 999 / $100
-	ret c
-	ld a, 999 / $100
-	ld [hli], a
-	ld a, 999 % $100
-	ld [hld], a
 	ret
 
 LoadHudAndHpBarAndStatusTilePatterns:
@@ -8013,8 +7966,7 @@ UpdateStatDone:
 .applyBadgeBoostsAndStatusPenalties
 	ld a, [H_WHOSETURN]
 	and a
-	call z, ApplyBadgeStatBoosts ; whenever the player uses a stat-up move, badge boosts get reapplied again to every stat,
-	                             ; even to those not affected by the stat-up move (will be boosted further)
+
 	ld hl, MonsStatsRoseText
 	call PrintText
 
@@ -8210,8 +8162,7 @@ UpdateLoweredStatDone:
 .ApplyBadgeBoostsAndStatusPenalties
 	ld a, [H_WHOSETURN]
 	and a
-	call nz, ApplyBadgeStatBoosts ; whenever the player uses a stat-down move, badge boosts get reapplied again to every stat,
-	                              ; even to those not affected by the stat-up move (will be boosted further)
+
 	ld hl, MonsStatsFellText
 	call PrintText
 
