@@ -854,9 +854,7 @@ FaintEnemyPokemon:
 	xor a
 	ld [wPlayerBideAccumulatedDamage], a ; also PlayerNumHits; Fixes above noted bug
 	ld [wPlayerBideAccumulatedDamage + 1], a
-	ld hl, wEnemyStatsToDouble ; clear enemy statuses
-	ld [hli], a
-	ld [hli], a
+	ld hl, wEnemyBattleStatus1 ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -1409,9 +1407,7 @@ EnemySendOut:
 ; don't change wPartyGainExpFlags or wPartyFoughtCurrentEnemyFlags
 EnemySendOutFirstMon:
 	xor a
-	ld hl, wEnemyStatsToDouble ; clear enemy statuses
-	ld [hli], a
-	ld [hli], a
+	ld hl, wEnemyBattleStatus1 ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -1859,9 +1855,7 @@ SendOutMon:
 	ld hl, wPlayerUsedMove
 	ld [hli], a
 	ld [hl], a
-	ld hl, wPlayerStatsToDouble
-	ld [hli], a
-	ld [hli], a
+	ld hl, wPlayerBattleStatus1
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -6664,9 +6658,7 @@ DoBattleTransitionAndInitBattleVariables:
 	ld [hWY], a
 	ld [rWY], a
 	ld [hTilesetType], a
-	ld hl, wPlayerStatsToDouble
-	ld [hli], a
-	ld [hli], a
+	ld hl, wPlayerBattleStatus1
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -6762,9 +6754,9 @@ LoadPlayerBackPic:
 	predef_jump CopyUncompressedPicToTilemap
 
 ; does nothing since no stats are ever selected (barring glitches)
-DoubleOrHalveSelectedStats:
-	callab DoubleSelectedStats
-	jpab HalveSelectedStats
+;DoubleOrHalveSelectedStats:
+;	callab DoubleSelectedStats
+;	jpab HalveSelectedStats
 
 ScrollTrainerPicAfterBattle:
 	jpab _ScrollTrainerPicAfterBattle

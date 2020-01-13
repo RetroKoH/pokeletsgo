@@ -1722,15 +1722,7 @@ wCriticalHitOrOHKO:: ; d05e
 wMoveMissed:: ; d05f
 	ds 1
 
-wPlayerStatsToDouble:: ; d060
-; always 0
-	ds 1
-
-wPlayerStatsToHalve:: ; d061
-; always 0
-	ds 1
-
-wPlayerBattleStatus1:: ; d062
+wPlayerBattleStatus1:: ; d060
 ; bit 0 - bide
 ; bit 1 - thrash / petal dance
 ; bit 2 - attacking multiple times (e.g. double kick)
@@ -1741,39 +1733,40 @@ wPlayerBattleStatus1:: ; d062
 ; bit 7 - confusion
 	ds 1
 
-wPlayerBattleStatus2:: ; d063
+wPlayerBattleStatus2:: ; d061
 ; bit 0 - X Accuracy effect
 ; bit 1 - protected by "mist"
 ; bit 2 - focus energy effect
+; bit 3 - Protect
 ; bit 4 - has a substitute
 ; bit 5 - need to recharge
 ; bit 6 - rage
 ; bit 7 - leech seeded
 	ds 1
 
-wPlayerBattleStatus3:: ; d064
+wPlayerBattleStatus3:: ; d062
 ; bit 0 - toxic
 ; bit 1 - light screen
 ; bit 2 - reflect
 ; bit 3 - transformed
+; bit 4 - Stealth Rock
+; bit 5 - Helping Hand
+; bit 6
+; bit 7
 	ds 1
 
-wEnemyStatsToDouble:: ; d065
-; always 0
+	ds 2 ; d063-64
+
+wEnemyBattleStatus1:: ; d065
+	ds 1
+wEnemyBattleStatus2:: ; d066
+	ds 1
+wEnemyBattleStatus3:: ; d067
 	ds 1
 
-wEnemyStatsToHalve:: ; d066
-; always 0
-	ds 1
+	ds 2 ; d068-69
 
-wEnemyBattleStatus1:: ; d067
-	ds 1
-wEnemyBattleStatus2:: ; d068
-	ds 1
-wEnemyBattleStatus3:: ; d069
-	ds 1
-
-wPlayerNumAttacksLeft::
+wPlayerNumAttacksLeft:: ; d06a
 ; when the player is attacking multiple times, the number of attacks left
 	ds 1
 
@@ -1788,7 +1781,7 @@ wPlayerDisabledMove:: ; d06d
 ; low nibble: disable turns left
 	ds 1
 
-;	ds 1
+	ds 1
 
 wEnemyNumAttacksLeft:: ; d06f
 ; when the enemy is attacking multiple times, the number of attacks left
@@ -1815,7 +1808,6 @@ wPlayerBideAccumulatedDamage:: ; d074
 
 wUnknownSerialCounter2:: ; d075
 ; 2 bytes
-
 	ds 4
 
 wEscapedFromBattle::

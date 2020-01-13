@@ -1029,12 +1029,6 @@ RestoreHPEffect:
 	ld hl, wPlayerBattleStatus3
 	res BADLY_POISONED, [hl] ; heal Toxic status
 	pop hl
-	ld bc,wPartyMon1Stats - wPartyMon1Status
-	add hl,bc ; hl now points to party stats
-	ld de,wBattleMonStats
-	ld bc,NUM_STATS * 2
-	call CopyData ; copy party stats to in-battle stat data
-	predef DoubleOrHalveSelectedStats
 
 .doneHealing
 	ld a, [wPseudoItemID]
@@ -1176,12 +1170,7 @@ StatusHealingEffect:
 	ld hl, wPlayerBattleStatus3
 	res BADLY_POISONED, [hl] ; heal Toxic status
 	pop hl
-	ld bc, wPartyMon1Stats - wPartyMon1Status
-	add hl, bc ; hl now points to party stats
-	ld de, wBattleMonStats
-	ld bc, NUM_STATS * 2
-	call CopyData ; copy party stats to in-battle stat data
-	predef DoubleOrHalveSelectedStats
+
 .doneHealing
 	push hl
 	call RemoveUsedItem
