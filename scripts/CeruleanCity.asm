@@ -149,6 +149,8 @@ CeruleanCityScript1:
 	ld a, $6 ; Pidgeotto/Pikachu party
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 
 	xor a
 	ld [hJoyHeld], a
@@ -161,6 +163,8 @@ CeruleanCityScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, CeruleanCityScript_1948c
+	xor a
+	ld [wIsTrainerBattle], a
 	call CeruleanCityScript_1955d
 	ld a, $f0
 	ld [wJoyIgnore], a

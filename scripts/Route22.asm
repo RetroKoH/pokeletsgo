@@ -33,6 +33,8 @@ Route22Script_SetFirstRivalTeam: ; define which team rival uses, and fight it
 	ld a, $4 ; Pidgey/Pikachu party
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 	ret
 
 Route22Script_SetLastRivalTeam: ; define which team rival uses, and fight it
@@ -58,6 +60,8 @@ Route22Script_SetLastRivalTeam: ; define which team rival uses, and fight it
 	ld a, $E ; Raichu party
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 	ret
 
 Route22MoveRivalSprite:
@@ -165,6 +169,9 @@ Route22Script2: ; After the first rival battle is finished
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route22Script_50ece
+	xor a
+	ld [wIsTrainerBattle], a
+
 	ld a, [wRivalStarter]
 	cp RAICHU                 ; did Blue pick Pikachu?
 	jr z, .asm_50fc9          ; if yes, branch
@@ -320,6 +327,9 @@ Route22Script5:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route22Script_50ece
+	xor a
+	ld [wIsTrainerBattle], a
+
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	ld a, [wcf0d]

@@ -62,6 +62,9 @@ PokemonTower2Script1:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, PokemonTower2Script_604fe
+	xor a
+	ld [wIsTrainerBattle], a
+
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_POKEMON_TOWER_RIVAL
@@ -147,24 +150,26 @@ PokemonTower2Text1:
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
-        cp JOLTEON
-        jr nz, .notJolteon
-        ld a, $3
+	cp JOLTEON
+	jr nz, .notJolteon
+	ld a, $3
 	jr .done
 .notJolteon
-        cp FLAREON
-        jr nz, .notFlareon
-        ld a, $4
+	cp FLAREON
+	jr nz, .notFlareon
+	ld a, $4
 	jr .done
 .notFlareon
-        cp VAPOREON
-        jr nz, .isPikachu
-        ld a, $5
+	cp VAPOREON
+	jr nz, .isPikachu
+	ld a, $5
 	jr .done
 .isPikachu
 	ld a, $6 ; Raichu party
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 
 	ld a, $1
 	ld [wPokemonTower2FCurScript], a

@@ -205,6 +205,8 @@ SilphCo7Script3:
 	ld a, $A ; Raichu party
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 
 	ld a, $4
 	jp SilphCo7Text_51c10
@@ -213,6 +215,9 @@ SilphCo7Script4:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, SilphCo7Text_51c0c
+	xor a
+	ld [wIsTrainerBattle], a
+
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_SILPH_CO_RIVAL

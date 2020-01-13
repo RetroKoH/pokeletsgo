@@ -40,8 +40,8 @@ ROM0
 	; $0061
 	"Home"
 
-	org $00be
-	"ColorizationHome"
+;	org $00be
+;	"ColorizationHome"
 
 	org $100
 	"Entry"
