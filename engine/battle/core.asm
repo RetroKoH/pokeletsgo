@@ -5372,19 +5372,25 @@ MirrorMoveCopyMove:
 	and a
 ; values for player turn
 	ld a, [wEnemyUsedMove]
-	ld hl, wPlayerSelectedMove
 	ld de, wPlayerMoveNum
+	ld hl, wPlayerSelectedMove
+	ld bc, wEnemySelectedMove ; Added so we can check what they actually selected
 	jr z, .next
 ; values for enemy turn
 	ld a, [wPlayerUsedMove]
 	ld de, wEnemyMoveNum
 	ld hl, wEnemySelectedMove
+	ld bc, wPlayerSelectedMove ; Added so we can check what they actually selected
 .next
-	ld [hl], a
+	;ld [hl], a - Removed so we aren't loading the wrong move
 	cp MIRROR_MOVE ; did the target Pokemon last use Mirror Move, and miss?
 	jr z, .mirrorMoveFailed
 	and a ; has the target selected any move yet?
-	jr nz, ReloadMoveData
+	jr z, .mirrorMoveFailed
+	ld a, [bc] ; Load A with whatever move they actually selected
+	ld [hl], a ; This time, a is certain to contain the correct move
+	jr ReloadMoveData
+
 .mirrorMoveFailed
 	ld hl, MirrorMoveFailedText
 	call PrintText
@@ -7630,8 +7636,12 @@ PoisonEffect:
 	ld a, [hli]
 	cp POISON ; can't poison a poison-type target
 	jr z, .noEffect
+	cp STEEL ; can't poison a steel-type target
+	jr z, .noEffect
 	ld a, [hld]
 	cp POISON ; can't poison a poison-type target
+	jr z, .noEffect
+	cp STEEL ; can't poison a steel-type target
 	jr z, .noEffect
 	ld a, [de]
 	cp POISON_SIDE_EFFECT1
