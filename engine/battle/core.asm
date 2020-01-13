@@ -5702,25 +5702,26 @@ MoveHitTest:
 .dreamEaterCheck
 	ld a, [de]
 	cp DREAM_EATER_EFFECT
-	jr nz, .swiftCheck
+	jr nz, .checkForDigOrFlyStatus
 	ld a, [bc]
 	and SLP ; is the target pokemon sleeping?
-	jp z, .moveMissed
-.swiftCheck
-	ld a, [de]
-	cp SWIFT_EFFECT
-	ret z ; Swift never misses (interestingly, Azure Heights lists this is a myth, but it appears to be true)
-	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
-	jr z, .checkForDigOrFlyStatus
-; this code is buggy. it's supposed to prevent HP draining moves from working on substitutes.
-; since $7b79 overwrites a with either $00 or $01, it never works.
-	cp DRAIN_HP_EFFECT
-	jp z, .moveMissed
-	cp DREAM_EATER_EFFECT
 	jp z, .moveMissed
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
 	jp nz, .moveMissed
+.swiftCheck
+	ld a, [de]
+	cp SWIFT_EFFECT
+	ret z ; Swift never misses, except if DIG or FLY is used
+	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
+	jr z, .checkForDigOrFlyStatus
+; this code should be fixed (CheckTargetSubstitute)
+; added a push af at the start and pop af at the end, which should preserve this
+	cp DRAIN_HP_EFFECT
+	jp z, .moveMissed
+	cp DREAM_EATER_EFFECT
+	jp z, .moveMissed
+; Move dig or fly status up a bit
 	ld a, [H_WHOSETURN]
 	and a
 	jr nz, .enemyTurn
@@ -8995,6 +8996,7 @@ ParalyzedMayNotAttackText:
 	db "@"
 
 CheckTargetSubstitute:
+	push af
 	push hl
 	ld hl, wEnemyBattleStatus2
 	ld a, [H_WHOSETURN]
@@ -9004,6 +9006,7 @@ CheckTargetSubstitute:
 .next1
 	bit HAS_SUBSTITUTE_UP, [hl]
 	pop hl
+	pop af
 	ret
 
 PlayCurrentMoveAnimation2:
