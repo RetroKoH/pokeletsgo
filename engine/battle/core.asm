@@ -458,8 +458,10 @@ MainInBattleLoop:
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-	cp METRONOME ; a MIRROR MOVE check is missing, might lead to a desync in link battles
-	             ; when combined with multi-turn moves
+	cp METRONOME	; a MIRROR MOVE check is missing, might lead to a desync in link battles
+					; when combined with multi-turn moves (FIXED)
+	jr nz, .specialMoveNotUsed
+	cp MIRROR_MOVE
 	jr nz, .specialMoveNotUsed
 	ld [wPlayerSelectedMove], a
 .specialMoveNotUsed
@@ -1410,6 +1412,9 @@ EnemySendOut:
 ; don't change wPartyGainExpFlags or wPartyFoughtCurrentEnemyFlags
 EnemySendOutFirstMon:
 	xor a
+	ld hl, wDamage
+	ld [hli], a
+	ld [hl], a
 	ld hl, wEnemyBattleStatus1 ; clear enemy statuses
 	ld [hli], a
 	ld [hli], a
@@ -1849,6 +1854,9 @@ SendOutMon:
 	predef LoadMonBackPic
 	xor a
 	ld [hStartTileID], a
+	ld hl, wDamage
+	ld [hli], a
+	ld [hl], a
 	ld hl, wBattleAndStartSavedMenuItem
 	ld [hli], a
 	ld [hl], a
@@ -2860,7 +2868,7 @@ AnyMoveToSelect:
 	or c
 	jr .handleDisabledMovePPLoop
 .allMovesChecked
-	and a ; any PP left?
+	and $3f ; any PP left? (ignore PP ups)
 	ret nz ; return if a move has PP left
 .noMovesLeft
 	ld hl, NoMovesLeftText
@@ -3584,6 +3592,7 @@ CheckPlayerStatusConditions:
 	ld hl, ConfusedNoMoreText
 	call PrintText
 	jr .TriedToUseDisabledMoveCheck
+
 .IsConfused
 	ld hl, IsConfusedText
 	call PrintText
@@ -3627,7 +3636,7 @@ CheckPlayerStatusConditions:
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
-	and $ff ^ ((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	and a, (1 << ATTACKING_MULTIPLE_TIMES) | (1 << FLINCHED) | (1 << CONFUSED)
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
 	cp FLY_EFFECT
@@ -4264,6 +4273,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Reflect, double the enemy's defense
 	sla c
 	rl b
+	call CapBCAt1023
 
 .physicalAttackCritCheck
 	ld hl, wBattleMonAttack
@@ -4309,6 +4319,7 @@ GetDamageVarsForPlayerAttack:
 ; if the enemy has used Light Screen, double the enemy's special
 	sla c
 	rl b
+	call CapBCAt1023
 
 ; reflect and light screen boosts do not cap the stat at 999, so weird things will happen during stats scaling if
 ; a Pokemon with 512 or more Defense has used Reflect, or if a Pokemon with 512 or more Special has used Light Screen
@@ -4359,7 +4370,12 @@ GetDamageVarsForPlayerAttack:
 	rr c
 	srl b
 	rr c
-; defensive stat can actually end up as 0, leading to a division by 0 freeze during damage calculation
+; DIVISION BY ZERO FIX
+	ld a, c
+	or b ; is the enemy's defensive stat 0?
+	jr nz, .next1
+	inc c ; if the enemy's defensive stat is 0, bump it up to 1
+.next1
 ; hl /= 4 (scale player's offensive stat)
 	srl h
 	rr l
@@ -4381,6 +4397,13 @@ GetDamageVarsForPlayerAttack:
 .done
 	ld a, 1
 	and a
+	ret
+
+CapBCAt1023:
+	ld a, b
+	cp 4
+	ret c
+	lb bc, 3, 255
 	ret
 
 ; sets b, c, d, and e for the CalculateDamage routine in the case of an attack by the enemy mon
@@ -4410,6 +4433,8 @@ GetDamageVarsForEnemyAttack:
 ; if the player has used Reflect, double the player's defense
 	sla c
 	rl b
+	call CapBCAt1023
+
 .physicalAttackCritCheck
 	ld hl, wEnemyMonAttack
 	ld a, [wCriticalHitOrOHKO]
@@ -4455,6 +4480,8 @@ GetDamageVarsForEnemyAttack:
 ; if the player has used Light Screen, double the player's special
 	sla c
 	rl b
+	call CapBCAt1023
+
 ; reflect and light screen boosts do not cap the stat at 999, so weird things will happen during stats scaling if
 ; a Pokemon with 512 or more Defense has used Reflect, or if a Pokemon with 512 or more Special has used Light Screen
 .specialAttackCritCheck
@@ -5084,11 +5111,11 @@ ApplyAttackToPlayerPokemon:
 	srl a
 	add b
 	ld b, a ; b = attacker's level * 1.5
-; loop until a random number in the range [0, b) is found
-; this differs from the range when the player attacks, which is [1, b)
-; it's possible for the enemy to do 0 damage with Psywave, but the player always does at least 1 damage
+; loop until a random number in the range [1, b) is found - Fix Desync Bug
 .loop
 	call BattleRandom
+	and a
+	jr z,.loop
 	cp b
 	jr nc, .loop
 	ld b, a
@@ -6130,6 +6157,7 @@ CheckEnemyStatusConditions:
 	call PrintText
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+
 .checkIfFlinched
 	ld hl, wEnemyBattleStatus1
 	bit FLINCHED, [hl] ; check if enemy mon flinched
@@ -6139,6 +6167,7 @@ CheckEnemyStatusConditions:
 	call PrintText
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+
 .checkIfMustRecharge
 	ld hl, wEnemyBattleStatus2
 	bit NEEDS_TO_RECHARGE, [hl] ; check if enemy mon has to recharge after using a move
@@ -6148,6 +6177,7 @@ CheckEnemyStatusConditions:
 	call PrintText
 	ld hl, ExecuteEnemyMoveDone ; enemy can't move this turn
 	jp .enemyReturnToHL
+
 .checkIfAnyMoveDisabled
 	ld hl, wEnemyDisabledMove
 	ld a, [hl]
@@ -6161,6 +6191,7 @@ CheckEnemyStatusConditions:
 	ld [wEnemyDisabledMoveNumber], a
 	ld hl, DisabledNoMoreText
 	call PrintText
+
 .checkIfConfused
 	ld a, [wEnemyBattleStatus1]
 	add a ; check if enemy mon is confused
@@ -6173,6 +6204,7 @@ CheckEnemyStatusConditions:
 	ld hl, ConfusedNoMoreText
 	call PrintText
 	jp .checkIfTriedToUseDisabledMove
+
 .isConfused
 	ld hl, IsConfusedText
 	call PrintText
@@ -6228,6 +6260,7 @@ CheckEnemyStatusConditions:
 	ld [H_WHOSETURN], a
 	call ApplyDamageToEnemyPokemon
 	jr .monHurtItselfOrFullyParalysed
+
 .checkIfTriedToUseDisabledMove
 ; prevents a disabled move that was selected before being disabled from being used
 	ld a, [wEnemyDisabledMoveNumber]
@@ -6239,6 +6272,7 @@ CheckEnemyStatusConditions:
 	call PrintMoveIsDisabledText
 	ld hl, ExecuteEnemyMoveDone ; if a disabled move was somehow selected, player can't move this turn
 	jp .enemyReturnToHL
+
 .checkIfParalysed
 	ld hl, wEnemyMonStatus
 	bit PAR, [hl]
@@ -6248,11 +6282,12 @@ CheckEnemyStatusConditions:
 	jr nc, .checkIfUsingBide
 	ld hl, FullyParalyzedText
 	call PrintText
+
 .monHurtItselfOrFullyParalysed
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing about, charging up, and multi-turn moves such as warp
-	and $ff ^ ((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	and (1 << ATTACKING_MULTIPLE_TIMES) | (1 << FLINCHED) | (1 << CONFUSED)
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
 	cp FLY_EFFECT
@@ -6260,6 +6295,7 @@ CheckEnemyStatusConditions:
 	cp CHARGE_EFFECT
 	jr z, .flyOrChargeEffect
 	jr .notFlyOrChargeEffect
+
 .flyOrChargeEffect
 	xor a
 	ld [wAnimationType], a
@@ -7498,11 +7534,9 @@ SleepEffect:
 
 .sleepEffect
 	ld a, [bc]
-	bit NEEDS_TO_RECHARGE, a ; does the target need to recharge? (hyper beam)
 	res NEEDS_TO_RECHARGE, a ; target no longer needs to recharge
 	ld [bc], a
-	jr nz, .setSleepCounter ; if the target had to recharge, all hit tests will be skipped
-	                        ; including the event where the target already has another status
+
 	ld a, [de]
 	ld b, a
 	and $7

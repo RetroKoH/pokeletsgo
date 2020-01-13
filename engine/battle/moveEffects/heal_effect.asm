@@ -11,13 +11,14 @@ HealEffect_:
 .healEffect
 	ld b, a
 	ld a, [de]
-	cp [hl] ; most significant bytes comparison is ignored
-	        ; causes the move to miss if max HP is 255 or 511 points higher than the current HP
+	cp [hl]
+	jr nz, .fine ; fixes the 255/511 bug by not ignoring the most significant byte in comparisons
 	inc de
 	inc hl
 	ld a, [de]
 	sbc [hl]
 	jp z, .failed ; no effect if user's HP is already at its maximum
+.fine
 	ld a, b
 	cp REST
 	jr nz, .healHP
@@ -26,15 +27,22 @@ HealEffect_:
 	push af
 	ld c, 50
 	call DelayFrames
-	ld hl, wBattleMonStatus
+	ld bc, wBattleMonStatus
+	ld de, wPlayerToxicCounter
+	ld hl, wPlayerBattleStatus3
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .restEffect
-	ld hl, wEnemyMonStatus
+	ld bc, wEnemyMonStatus
+	ld de, wEnemyToxicCounter
+	ld hl, wEnemyBattleStatus3
 .restEffect
-	ld a, [hl]
+	xor a
+	ld [de], a
+	res 0, [hl]
+	ld a, [bc]
 	and a
-	ld [hl], 2 ; clear status and set number of turns asleep to 2
+	ld [bc], 2 ; clear status and set number of turns asleep to 2 (Rest)
 	ld hl, StartedSleepingEffect ; if mon didn't have an status
 	jr z, .printRestText
 	ld hl, FellAsleepBecameHealthyText ; if mon had an status
