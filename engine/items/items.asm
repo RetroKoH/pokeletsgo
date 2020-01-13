@@ -180,7 +180,7 @@ PokeBallEffect:
 	jr nz, .notOldManBattle
 
 .oldManBattle
-	ld hl, wGrassRate
+	ld hl, wCurTrainerName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData ; save the player's name in the Wild Monster data (part of the Cinnabar Island Missingno. glitch)
