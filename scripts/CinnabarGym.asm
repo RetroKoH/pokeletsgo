@@ -161,6 +161,8 @@ CinnabarGymScript3_75857:
 	set 6, [hl]
 	ld hl, wBeatGymFlags
 	set 6, [hl]
+	ld hl, wBadgeCount
+	inc [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6

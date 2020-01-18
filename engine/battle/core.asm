@@ -3636,7 +3636,7 @@ CheckPlayerStatusConditions:
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
-	and a, (1 << ATTACKING_MULTIPLE_TIMES) | (1 << FLINCHED) | (1 << CONFUSED)
+	and $ff ^ ((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
 	cp FLY_EFFECT
@@ -6287,7 +6287,7 @@ CheckEnemyStatusConditions:
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
 	; clear bide, thrashing about, charging up, and multi-turn moves such as warp
-	and (1 << ATTACKING_MULTIPLE_TIMES) | (1 << FLINCHED) | (1 << CONFUSED)
+	and $ff ^ ((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
 	cp FLY_EFFECT
@@ -6304,6 +6304,7 @@ CheckEnemyStatusConditions:
 .notFlyOrChargeEffect
 	ld hl, ExecuteEnemyMoveDone
 	jp .enemyReturnToHL ; if using a two-turn move, enemy needs to recharge the first turn
+
 .checkIfUsingBide
 	ld hl, wEnemyBattleStatus1
 	bit STORING_ENERGY, [hl] ; is mon using bide?
@@ -8281,11 +8282,8 @@ BideEffect:
 	ld [de], a
 	ld [wPlayerMoveEffect], a
 	ld [wEnemyMoveEffect], a
-	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [bc], a ; set Bide counter to 2 or 3 at random
+	ld a, 2
+	ld [bc], a ; set Bide counter to 2 turns (not random)
 	ld a, [H_WHOSETURN]
 	add XSTATITEM_ANIM
 	jp PlayBattleAnimation2

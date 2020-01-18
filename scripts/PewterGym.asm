@@ -64,6 +64,8 @@ PewterGymScript_5c3df:
 	set 0, [hl]
 	ld hl, wBeatGymFlags
 	set 0, [hl]
+	ld hl, wBadgeCount
+	inc [hl]
 
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a

@@ -2394,6 +2394,7 @@ wOptions:: ; d355
 wObtainedBadges:: ; d356
 	flag_array 8
 
+wBadgeCount:: ; d357
 	ds 1
 
 wLetterPrintingDelayFlags:: ; d358

@@ -64,6 +64,8 @@ CeruleanGymScript_5c70d:
 	set 1, [hl]
 	ld hl, wBeatGymFlags
 	set 1, [hl]
+	ld hl, wBadgeCount
+	inc [hl]
 
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1

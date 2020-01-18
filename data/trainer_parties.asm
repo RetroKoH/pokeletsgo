@@ -505,7 +505,7 @@ GiovanniData:
 ; Silph Co. 11F
 	db $FF,37,NIDORINO,35,KANGASKHAN,37,RHYHORN,41,NIDOQUEEN,0
 ; Viridian Gym
-	db $FF,45,RHYHORN,42,DUGTRIO,44,NIDOQUEEN,45,NIDOKING,50,RHYDON,0
+	db $FF,50,PERSIAN,52,DUGTRIO,53,NIDOQUEEN,53,NIDOKING,55,RHYDON,55,MEWTWO,0
 RocketData:
 ; Mt. Moon B2F
 	db 13,RATTATA,ZUBAT,0
@@ -602,25 +602,18 @@ CooltrainerFData:
 BrunoData:
 	db $FF,53,ONIX,55,HITMONCHAN,55,HITMONLEE,56,ONIX,58,MACHAMP,0
 BrockData:
-	db $FF, 11, GEODUDE, 14, ONIX,      0 ; Default first battle
 	db $FF, 65, ONIX,    65, KABUTOPS, 65, OMASTAR, 65, AERODACTYL, 66, RHYPERIOR, 68, GOLEM, 0 ; Rematch (After Elite Four)
 MistyData:
-	db $FF, 18, STARYU,  21, STARMIE,  0 ; Default first battle
 	db $FF, 65, GOLDUCK, 65, DEWGONG, 65, VAPOREON, 65, SEAKING, 66, STARMIE, 68, GYARADOS, 0 ; Rematch (After Elite Four)
 LtSurgeData:
-	db $FF, 28, RAICHU,     0 ; Default first battle
 	db $FF, 65, ELECTRODE, 65, PIKACHU, 65, JOLTEON, 65, ELECTIVIRE, 66, MAGNEZONE, 68, RAICHU, 0 ; Rematch (After Elite Four)
 ErikaData:
-	db $FF, 30, TANGELA,   32, WEEPINBELL, 32, GLOOM,      0 ; Default first battle
 	db $FF, 65, TANGROWTH, 65, PARASECT,   65, EXEGGUTOR, 65, BELLOSSOM, 66, VICTREEBEL, 68, VILEPLUME, 0 ; Rematch (After Elite Four)
 KogaData:
-	db $FF, 44, VENONAT,    46, VENONAT, 48, VENONAT, 50, VENOMOTH,  0 ; Default first battle
 	db $FF, 65, TENTACRUEL, 65, WEEZING, 65, CROBAT,  65, ARBOK,    66, VENOMOTH, 68, MUK, 0 ; Rematch (After Elite Four)
 BlaineData:
-	db $FF, 48, NINETALES, 50, RAPIDASH,  54, ARCANINE,  0 ; Default first battle
 	db $FF, 65, MAGMORTAR, 65, NINETALES, 65, RAPIDASH, 65, CHARIZARD, 66, FLAREON, 68, ARCANINE, 0 ; Rematch (After Elite Four)
 SabrinaData:
-	db $FF, 50, ABRA, 50, KADABRA, 50, ALAKAZAM, 0 ; Default first battle
 	db $FF, 65, MR_MIME, 65, JYNX, 65, HYPNO, 65, SLOWKING, 66, SLOWBRO, 68, ALAKAZAM, 0 ; Rematch (After Elite Four)
 GentlemanData:
 ; SS Anne 1F Rooms

@@ -185,6 +185,8 @@ LearnsetsPointerTable:
 	dw MewLearnset
 	dw MeltanLearnset
 	dw MelmetalLearnset
+	dw PikachuLearnset ; Starter
+	dw EeveeLearnset ; Starter
 
 BulbasaurLearnset:
 	db 01, TACKLE

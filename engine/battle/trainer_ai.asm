@@ -336,6 +336,8 @@ INCLUDE "data/trainer_moves.asm"
 
 INCLUDE "data/trainer_parties.asm"
 
+INCLUDE "data/trainer_leaderparties.asm"
+
 TrainerAI:
 	and a
 	ld a, [wIsInBattle]

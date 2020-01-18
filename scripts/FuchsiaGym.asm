@@ -64,6 +64,8 @@ FuchsiaGymScript3_75497:
 	set 4, [hl]
 	ld hl, wBeatGymFlags
 	set 4, [hl]
+	ld hl, wBadgeCount
+	inc [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5

@@ -64,6 +64,8 @@ CeladonGymText_48963:
 	set 3, [hl]
 	ld hl, wBeatGymFlags
 	set 3, [hl]
+	ld hl, wBadgeCount
+	inc [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
