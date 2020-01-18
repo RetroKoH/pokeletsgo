@@ -2289,14 +2289,20 @@ _TransformedText::
 	prompt
 
 _LightScreenProtectedText::
-	text "<USER>'s"
-	line "protected against"
-	cont "special attacks!"
+	text "Light Screen"
+	line "reduced Special"
+	cont "attack damage!"
 	prompt
 
 _ReflectGainedArmorText::
+	text "Reflect"
+	line "reduced Physical"
+	cont "attack damage!"
+	prompt
+
+_ProtectedItselfText::
 	text "<USER>"
-	line "gained armor!"
+	line "protected itself!"
 	prompt
 
 _ShroudedInMistText::

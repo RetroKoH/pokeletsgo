@@ -181,7 +181,7 @@ const_value = 1
 	const SUBSTITUTE   ; a4
 	const STRUGGLE	   ; a5
 ;--------------------------------
-	;const PROTECT      ; a6
+	const PROTECT      ; a6
 	const SLUDGE_BOMB  ; a7
 	const OUTRAGE      ; a8
 	const MEGAHORN     ; a9

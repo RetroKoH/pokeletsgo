@@ -165,7 +165,7 @@ MoveNames::
 	db "SUBSTITUTE@"
 	db "STRUGGLE@"
 ;------------------------------------------------------------
-	;db "PROTECT@"
+	db "PROTECT@"
 	db "SLUDGE BOMB@"
 	db "OUTRAGE@"
 	db "MEGAHORN@"

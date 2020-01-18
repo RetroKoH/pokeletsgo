@@ -513,6 +513,7 @@ MainInBattleLoop:
 .enemyMovesFirst
 	ld a, $1
 	ld [H_WHOSETURN], a
+	ld [wEnemyGoesFirst], a ; for PROTECT
 	callab TrainerAI
 	jr c, .AIActionUsedEnemyFirst
 	call ExecuteEnemyMove
@@ -523,13 +524,17 @@ MainInBattleLoop:
 	and a
 	jp z, HandlePlayerMonFainted
 .AIActionUsedEnemyFirst
-	call HandlePoisonBurnLeechSeed
-	jp z, HandleEnemyMonFainted
+	call HandlePoisonBurnLeechSeed ; Handle periphery damage from statuses, if any apply
+	jp z, HandleEnemyMonFainted    ; if resulting HP is zero, branch and faint the Pokemon
 	call DrawHUDsAndHPBars
 	call ExecutePlayerMove
 	ld a, [wEscapedFromBattle]
 	and a ; was Teleport, Road, or Whirlwind used to escape from battle?
 	ret nz ; if so, return
+
+	ld hl, wEnemyBattleStatus2
+	res SUBSTATUS_PROTECT, [hl] ; mon is no longer protected
+
 	ld a, b
 	and a
 	jp z, HandleEnemyMonFainted
@@ -539,10 +544,13 @@ MainInBattleLoop:
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
 .playerMovesFirst
+	xor a
+	ld [wEnemyGoesFirst], a ; for PROTECT
 	call ExecutePlayerMove
 	ld a, [wEscapedFromBattle]
 	and a ; was Teleport, Road, or Whirlwind used to escape from battle?
 	ret nz ; if so, return
+
 	ld a, b
 	and a
 	jp z, HandleEnemyMonFainted
@@ -557,6 +565,10 @@ MainInBattleLoop:
 	ld a, [wEscapedFromBattle]
 	and a ; was Teleport, Road, or Whirlwind used to escape from battle?
 	ret nz ; if so, return
+
+	ld hl, wPlayerBattleStatus2
+	res SUBSTATUS_PROTECT, [hl] ; mon is no longer protected
+
 	ld a, b
 	and a
 	jp z, HandlePlayerMonFainted
@@ -642,6 +654,17 @@ HurtByBurnText:
 HurtByLeechSeedText:
 	TX_FAR _HurtByLeechSeedText
 	db "@"
+
+CheckOpponentWentFirst:
+; Returns a=0, z if user went first
+; Returns a=1, nz if opponent went first
+	push bc
+	ld a, [wEnemyGoesFirst] ; 0 if player went first
+	ld b, a
+	ldh a, [H_WHOSETURN] ; 0 if it's the player's turn
+	xor b ; 1 if opponent went first
+	pop bc
+	ret
 
 ; decreases the mon's current HP by 1/16 of the Max HP (multiplied by number of toxic ticks if active)
 ; note that the toxic ticks are considered even if the damage is not poison (hence the Leech Seed glitch)
@@ -5640,10 +5663,16 @@ MoveHitTest:
 .dreamEaterCheck
 	ld a, [de]
 	cp DREAM_EATER_EFFECT
-	jr nz, .checkForDigOrFlyStatus
+	jr nz, .checkProtect
 	ld a, [bc]
 	and SLP ; is the target pokemon sleeping?
 	jp z, .moveMissed
+.checkProtect
+	inc hl ; Check BattleStatus2
+	ld a, [hl]
+	dec hl ; revert back to first byte
+	bit SUBSTATUS_PROTECT, a
+	jp nz, .moveMissed ; For now, just miss. Later, it should say PROTECTED
 .checkForDigOrFlyStatus
 	bit INVULNERABLE, [hl]
 	jp nz, .moveMissed
@@ -7389,7 +7418,7 @@ _JumpMoveEffect:
 	jp hl ; jump to special effect handler
 
 MoveEffectPointerTable:
-	 dw SleepEffect               ; unused effect
+	 dw ProtectEffect             ; PROTECT_EFFECT
 	 dw PoisonEffect              ; POISON_SIDE_EFFECT1
 	 dw DrainHPEffect             ; DRAIN_HP_EFFECT
 	 dw FreezeBurnParalyzeEffect  ; BURN_SIDE_EFFECT1
@@ -8887,6 +8916,9 @@ TransformEffect:
 
 ReflectLightScreenEffect:
 	jpab ReflectLightScreenEffect_
+
+ProtectEffect:
+	jpab ProtectEffect_
 
 NothingHappenedText:
 	TX_FAR _NothingHappenedText

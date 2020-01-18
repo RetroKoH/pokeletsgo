@@ -540,6 +540,7 @@ wPredefRegisters:: ; cc4f
 wTrainerHeaderFlagBit:: ; cc55
 	ds 1
 
+wEnemyGoesFirst:: ; cc56
 	ds 1
 
 wNPCMovementScriptPointerTableNum:: ; cc57
@@ -747,7 +748,13 @@ wLowHealthAlarmDisabled:: ; ccf6
 wPlayerMonMinimized:: ; ccf7
 	ds 1
 
-	ds 13
+wPlayerProtectCount:: ; ccf8
+	ds 1
+
+wEnemyProtectCount:: ; ccf9
+	ds 1
+
+	ds 11 ; unused
 
 wLuckySlotHiddenObjectIndex:: ; cd05
 
@@ -756,8 +763,9 @@ wEnemyNumHits:: ; cd05
 
 wEnemyBideAccumulatedDamage:: ; cd05
 ; the amount of damage accumulated by the enemy while biding (2 bytes)
+	ds 2
 
-	ds 10
+	ds 8 ; unused
 
 wInGameTradeGiveMonSpecies:: ; cd0f
 

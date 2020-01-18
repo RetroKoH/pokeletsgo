@@ -1055,6 +1055,7 @@ PokemonMansionB1F_Blocks: INCBIN "maps/PokemonMansionB1F.blk"
 
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/moveEffects/paralyze_effect.asm"
+INCLUDE "engine/battle/moveEffects/protect_effect.asm"
 
 INCLUDE "engine/overworld/card_key.asm"
 
