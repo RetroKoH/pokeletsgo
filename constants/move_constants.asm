@@ -210,16 +210,17 @@ const_value = 1
 	const ICE_SHARD    ; c0
 	const FLASH_CANNON ; c1
 	const POWER_WHIP   ; c2
-	const AQUA_JET     ; c3
-	const FOUL_PLAY    ; c4
-	const CLEAR_SMOG   ; c5
-	const SCALD        ; c6
-	const DRAGON_TAIL  ; c7
-	const DRILL_RUN    ; c8
-	const PLAY_ROUGH   ; c9
-	const MOONBLAST    ; ca
-	const DAZZLEGLEAM  ; cb
-	const IRON_BASH ; cc
+	const STEALTH_ROCK ; c3
+	const AQUA_JET     ; c4
+	const FOUL_PLAY    ; c5
+	const CLEAR_SMOG   ; c6
+	const SCALD        ; c7
+	const DRAGON_TAIL  ; c8
+	const DRILL_RUN    ; c9
+	const PLAY_ROUGH   ; ca
+	const MOONBLAST    ; cb
+	const DAZZLEGLEAM  ; cc
+	const IRON_BASH    ; cd
 
 NUM_ATTACKS EQU const_value
 const_value = STRUGGLE + 1

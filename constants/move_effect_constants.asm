@@ -93,6 +93,7 @@ const_value = 0
 	const DISABLE_EFFECT             ; $56
 	const GROWTH_EFFECT				; $57
 	const TRI_ATTACK_EFFECT			; $58
+	const STEALTH_ROCK_EFFECT
 
 ; fixed damage constants
 SONICBOOM_DAMAGE   EQU 20

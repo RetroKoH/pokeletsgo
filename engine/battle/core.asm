@@ -7506,6 +7506,7 @@ MoveEffectPointerTable:
 	 dw DisableEffect             ; DISABLE_EFFECT
 	 dw GrowthEffect				; GROWTH_EFFECT
 	 dw TriAttackEffect				; TRI_ATTACK_EFFECT
+	 dw StealthRockEffect 			; STEALTHROCK_EFFECT
 
 SleepEffect:
 	ld de, wEnemyMonStatus
@@ -8919,6 +8920,9 @@ ReflectLightScreenEffect:
 
 ProtectEffect:
 	jpab ProtectEffect_
+
+StealthRockEffect:
+	jpab StealthRockEffect_
 
 NothingHappenedText:
 	TX_FAR _NothingHappenedText

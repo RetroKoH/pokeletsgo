@@ -2305,6 +2305,11 @@ _ProtectedItselfText::
 	line "protected itself!"
 	prompt
 
+_StealthRocksText::
+	text "Pointed stones"
+	line "float in the air!"
+	prompt
+
 _ShroudedInMistText::
 	text "<USER>'s"
 	line "shrouded in mist!"

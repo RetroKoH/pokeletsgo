@@ -194,6 +194,7 @@ MoveNames::
 	db "ICE SHARD@"
 	db "FLASH CANNON@"
 	db "POWER WHIP@"
+	db "STEALTH ROCK@"
 	db "AQUA JET@"
 	db "FOUL PLAY@"
 	db "CLEAR SMOG@"
