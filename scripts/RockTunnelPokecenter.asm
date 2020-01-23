@@ -7,6 +7,7 @@ RockTunnelPokecenter_TextPointers:
 	dw RockTunnelPokecenterText2
 	dw RockTunnelPokecenterText3
 	dw RockTunnelTradeNurseText
+	dw RockTunnelPokecenterText5
 
 RockTunnelHealNurseText:
 	db $ff
@@ -20,4 +21,9 @@ RockTunnelPokecenterText3:
 	db "@"
 
 RockTunnelTradeNurseText:
-	db $f6
+	TX_CABLE_CLUB_RECEPTIONIST
+
+RockTunnelPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

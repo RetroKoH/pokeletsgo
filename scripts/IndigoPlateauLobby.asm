@@ -20,6 +20,7 @@ IndigoPlateauLobby_TextPointers:
 	dw IndigoPlateauLobbyText3
 	dw IndigoCashierText
 	dw IndigoTradeNurseText
+	dw IndigoPlateauLobbyText6
 
 IndigoHealNurseText:
 	TX_POKECENTER_NURSE
@@ -34,3 +35,8 @@ IndigoPlateauLobbyText3:
 
 IndigoTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+IndigoPlateauLobbyText6:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

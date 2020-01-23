@@ -7,6 +7,7 @@ LavenderPokecenter_TextPointers:
 	dw LavenderPokecenterText2
 	dw LavenderPokecenterText3
 	dw LavenderTradeNurseText
+	dw LavenderPokecenterText5
 
 LavenderTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
@@ -21,3 +22,8 @@ LavenderPokecenterText2:
 LavenderPokecenterText3:
 	TX_FAR _LavenderPokecenterText3
 	db "@"
+
+LavenderPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

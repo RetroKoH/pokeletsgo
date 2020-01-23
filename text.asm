@@ -170,6 +170,11 @@ _OaksAideNoRoomText::
 	text "."
 	done
 
+_NurseChanseyText::
+	text "CHANSEY: Chaaan"
+	line "sey!"
+	done
+
 INCLUDE "text/maps/ViridianForest.asm"
 INCLUDE "text/maps/MtMoon1F.asm"
 INCLUDE "text/maps/MtMoonB1F.asm"

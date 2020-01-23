@@ -7,6 +7,7 @@ SaffronPokecenter_TextPointers:
 	dw SaffronPokecenterText2
 	dw SaffronPokecenterText3
 	dw SaffronTradeNurseText
+	dw SaffronPokecenterText5
 
 SaffronHealNurseText:
 	TX_POKECENTER_NURSE
@@ -21,3 +22,8 @@ SaffronPokecenterText3:
 
 SaffronTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+SaffronPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

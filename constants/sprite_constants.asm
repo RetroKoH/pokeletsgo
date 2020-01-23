@@ -75,6 +75,9 @@ const_value = 1
 	const SPRITE_BRUNO                     ; $3a
 	const SPRITE_LORELEI                   ; $3b
 	const SPRITE_SEEL                      ; $3c
+	const SPRITE_CHANSEY                   ; $...
+
+	; 4-tile sprites
 	const SPRITE_BALL                      ; $3d
 	const SPRITE_OMANYTE                   ; $3e
 	const SPRITE_BOULDER                   ; $3f

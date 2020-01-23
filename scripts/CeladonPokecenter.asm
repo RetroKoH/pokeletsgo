@@ -7,6 +7,7 @@ CeladonPokecenter_TextPointers:
 	dw CeladonPokecenterText2
 	dw CeladonPokecenterText3
 	dw CeladonTradeNurseText
+	dw CeladonPokecenterText5
 
 CeladonTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
@@ -21,3 +22,8 @@ CeladonPokecenterText2:
 CeladonPokecenterText3:
 	TX_FAR _CeladonPokecenterText3
 	db "@"
+
+CeladonPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

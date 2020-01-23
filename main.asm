@@ -19,6 +19,18 @@ SECTION "bank1", ROMX, BANK[$1]
 
 INCLUDE "data/facing.asm"
 
+PokecenterChanseyText:
+	ld hl, NurseChanseyText
+	call PrintText
+	ld a, CHANSEY
+	call PlayCry
+	call WaitForSoundToFinish
+	ret
+
+NurseChanseyText:
+	TX_FAR _NurseChanseyText
+	db "@"
+
 INCLUDE "engine/black_out.asm"
 
 INCLUDE "engine/battle/safari_zone.asm"
@@ -1990,6 +2002,7 @@ BlaineSprite:       INCBIN "gfx/sprites/blaine.2bpp"
 GiovanniSprite:     INCBIN "gfx/sprites/giovanni.2bpp"
 
 OfficerJennySprite:    INCBIN "gfx/sprites/officer_jenny.2bpp"
+ChanseySprite:         INCBIN "gfx/sprites/chansey.2bpp"
 JessieSprite:          INCBIN "gfx/sprites/jessie.2bpp"
 JamesSprite:           INCBIN "gfx/sprites/james.2bpp"
 

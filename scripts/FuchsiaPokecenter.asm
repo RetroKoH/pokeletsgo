@@ -7,6 +7,7 @@ FuchsiaPokecenter_TextPointers:
 	dw FuchsiaPokecenterText2
 	dw FuchsiaPokecenterText3
 	dw FuchsiaTradeNurseText
+	dw FuchsiaPokecenterText5
 
 FuchsiaHealNurseText:
 	TX_POKECENTER_NURSE
@@ -21,3 +22,8 @@ FuchsiaPokecenterText3:
 
 FuchsiaTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+FuchsiaPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd

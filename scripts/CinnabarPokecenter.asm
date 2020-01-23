@@ -7,6 +7,7 @@ CinnabarPokecenter_TextPointers:
 	dw CinnabarPokecenterText2
 	dw CinnabarPokecenterText3
 	dw CinnabarTradeNurseText
+	dw CinnabarPokecenterText5
 
 CinnabarHealNurseText:
 	TX_POKECENTER_NURSE
@@ -21,3 +22,8 @@ CinnabarPokecenterText3:
 
 CinnabarTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+CinnabarPokecenterText5:
+	TX_ASM
+	callab PokecenterChanseyText
+	jp TextScriptEnd
