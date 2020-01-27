@@ -57,6 +57,7 @@ LearnsetsPointerTable:
 	dw DugtrioLearnset
 	dw MeowthLearnset
 	dw PersianLearnset
+	dw PersianLearnset ; Perrserker
 	dw PsyduckLearnset
 	dw GolduckLearnset
 	dw MankeyLearnset
@@ -90,6 +91,7 @@ LearnsetsPointerTable:
 	dw MagnetonLearnset
 	dw MagnezoneLearnset
 	dw FarfetchdLearnset
+	dw FarfetchdLearnset ; Sirfetchd
 	dw DoduoLearnset
 	dw DodrioLearnset
 	dw SeelLearnset
@@ -129,6 +131,7 @@ LearnsetsPointerTable:
 	dw BlisseyLearnset
 	dw TangelaLearnset
 	dw TangrowthLearnset
+	dw NoLearnset ; Kangaskid
 	dw KangaskhanLearnset
 	dw HorseaLearnset
 	dw SeadraLearnset
@@ -187,6 +190,37 @@ LearnsetsPointerTable:
 	dw MelmetalLearnset
 	dw PikachuLearnset ; Starter
 	dw EeveeLearnset ; Starter
+	dw RattataLearnset
+	dw RaticateLearnset
+	dw RaichuALearnset
+	dw SandshrewLearnset
+	dw SandslashLearnset
+	dw VulpixLearnset
+	dw NinetalesLearnset
+	dw DiglettLearnset
+	dw DugtrioLearnset
+	dw MeowthLearnset
+	dw MeowthLearnset
+	dw PersianLearnset
+	dw GeodudeLearnset
+	dw GravelerLearnset
+	dw GolemLearnset
+	dw PonytaLearnset
+	dw RapidashLearnset
+	dw SlowpokeLearnset
+	dw SlowbroLearnset
+	dw SlowkingLearnset
+	dw FarfetchdLearnset
+	dw GrimerLearnset
+	dw MukLearnset
+	dw ExeggutorLearnset
+	dw MarowakLearnset
+	dw WeezingLearnset
+	dw MrMimeLearnset
+	dw ArticunoLearnset
+	dw ZapdosLearnset
+	dw MoltresLearnset
+	dw ArmoredMewtwoMoveset ; Singular moveset - Move to Trainer Load
 
 BulbasaurLearnset:
 	db 01, TACKLE
@@ -199,6 +233,7 @@ BulbasaurLearnset:
 	db 23, RAZOR_LEAF
 	db 27, GROWTH
 	db 32, DOUBLE_EDGE
+NoLearnset:
 	db 0
 
 IvysaurLearnset:
@@ -282,7 +317,7 @@ SquirtleLearnset:
 	db 18, WATER_GUN
 	db 23, BITE
 	db 27, BUBBLEBEAM
-	;db 32, PROTECT
+	db 32, PROTECT
 	db 36, HEADBUTT
 	db 41, HYDRO_PUMP
 	db 45, SKULL_BASH
@@ -296,7 +331,7 @@ WartortleLearnset:
 	db 20, WATER_GUN
 	db 27, BITE
 	db 33, BUBBLEBEAM
-	;db 40, PROTECT
+	db 40, PROTECT
 	db 46, HEADBUTT
 	db 53, HYDRO_PUMP
 	db 59, SKULL_BASH
@@ -313,7 +348,7 @@ BlastoiseLearnset:
 	db 20, WATER_GUN
 	db 27, BITE
 	db 33, BUBBLEBEAM
-	;db 44, PROTECT
+	db 44, PROTECT
 	db 54, HEADBUTT
 	db 65, HYDRO_PUMP
 	db 75, SKULL_BASH
@@ -533,7 +568,7 @@ SandshrewLearnset:
 	db 12, SWIFT
 	db 16, FURY_SWIPES
 	db 20, DIG
-	;db 24, PROTECT
+	db 24, PROTECT
 	db 28, SWORDS_DANCE
 	db 32, SLASH
 	db 36, EARTHQUAKE
@@ -548,7 +583,7 @@ SandslashLearnset:
 	db 12, SWIFT
 	db 16, FURY_SWIPES
 	db 20, DIG
-	;db 28, PROTECT
+	db 28, PROTECT
 	db 36, SWORDS_DANCE
 	db 44, SLASH
 	db 52, EARTHQUAKE
@@ -1223,7 +1258,7 @@ GeodudeLearnset:
 	db 03, SAND_ATTACK
 	db 06, BIDE
 	db 09, ROCK_THROW
-	;db 12, STEALTH_ROCK
+	db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
 	db 23, ROCK_SLIDE
@@ -1238,7 +1273,7 @@ GravelerLearnset:
 	db 03, SAND_ATTACK
 	db 06, BIDE
 	db 09, ROCK_THROW
-	;db 12, STEALTH_ROCK
+	db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
 	db 23, ROCK_SLIDE
@@ -1254,7 +1289,7 @@ GolemLearnset:
 	db 03, SAND_ATTACK
 	db 06, BIDE
 	db 09, ROCK_THROW
-	;db 12, STEALTH_ROCK
+	db 12, STEALTH_ROCK
 	db 15, TAKE_DOWN
 	db 19, SELFDESTRUCT
 	db 23, ROCK_SLIDE
@@ -1500,7 +1535,7 @@ ShellderLearnset:
 	db 18, SUPERSONIC
 	db 22, CLAMP
 	db 27, AURORA_BEAM
-	;db 31,PROTECT
+	db 31,PROTECT
 	db 36, ICE_BEAM
 	;db 40, SHELL_SMASH
 	db 45, HYDRO_PUMP
@@ -1569,7 +1604,7 @@ OnixLearnset:
 	db 01, HARDEN
 	db 01, BIND
 	db 01, ROCK_THROW
-	;db 05, STEALTH_ROCK
+	db 05, STEALTH_ROCK
 	db 10, RAGE
 	db 15, SCREECH
 	db 20, DIG
@@ -1585,7 +1620,7 @@ SteelixLearnset:
 	db 01, HARDEN
 	db 01, BIND
 	db 01, ROCK_THROW
-	;db 05, STEALTH_ROCK
+	db 05, STEALTH_ROCK
 	db 10, RAGE
 	db 15, SCREECH
 	db 20, DIG
@@ -1632,7 +1667,7 @@ KrabbyLearnset:
 	db 14, HARDEN
 	db 18, BUBBLEBEAM
 	db 23, STOMP
-	;db 27, PROTECT
+	db 27, PROTECT
 	db 32, SLAM
 	db 36, CRABHAMMER
 	db 41, GUILLOTINE
@@ -1647,7 +1682,7 @@ KinglerLearnset:
 	db 14, HARDEN
 	db 18, BUBBLEBEAM
 	db 23, STOMP
-	;db 27, PROTECT
+	db 27, PROTECT
 	db 37, SLAM
 	db 41, CRABHAMMER
 	db 56, GUILLOTINE
@@ -2486,7 +2521,7 @@ OmanyteLearnset:
 	db 15, WATER_GUN
 	db 22, BITE
 	db 26, ROCK_THROW
-	;db 33, PROTECT
+	db 33, PROTECT
 	db 37, ROCK_SLIDE
 	db 44, HYDRO_PUMP
 	;db 48, SHELL_SMASH
@@ -2503,7 +2538,7 @@ OmastarLearnset:
 	db 15, WATER_GUN
 	db 22, BITE
 	db 26, ROCK_THROW
-	;db 33, PROTECT
+	db 33, PROTECT
 	db 37, ROCK_SLIDE
 	db 50, HYDRO_PUMP
 	;db 60, SHELL_SMASH
@@ -2710,8 +2745,23 @@ MelmetalLearnset:
 	db 36, ACID_ARMOR
 	db 45, FLASH_CANNON
 	db 54, MEGA_PUNCH
-	;db 63, PROTECT
+	db 63, PROTECT
 	db 72, IRON_BASH
 	db 81, SUPERPOWER
 	db 90, HYPER_BEAM
 	db 0
+
+RaichuALearnset:
+	db $FF, THUNDERPUNCH
+	db 01, THUNDERPUNCH
+	db 01, THUNDERSHOCK
+	db 01, GROWL
+	db 01, TAIL_WHIP
+	db 01, QUICK_ATTACK
+	db 0
+
+ArmoredMewtwoMoveset: ; move this to a new trainer loading system.
+	db 01, PSYCHIC_M
+	db 01, IRON_TAIL
+	db 01, ROCK_SLIDE
+	db 01, EARTHQUAKE

@@ -11,11 +11,13 @@ db 164 ; base exp yield
 INCBIN "pic/mon/slowking.pic",0,1 ; 77, sprite dimensions
 dw SlowkingPicFront
 dw SlowkingPicBack
-; attacks known at lvl 0
-db CONFUSION
-db DISABLE
-db HEADBUTT
+
+; unused bytes
 db 0
+db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

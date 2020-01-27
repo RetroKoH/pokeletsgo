@@ -11,11 +11,13 @@ db 63 ; base exp yield
 INCBIN "pic/mon/vulpix.pic",0,1 ; 66, sprite dimensions
 dw VulpixPicFront
 dw VulpixPicBack
-; attacks known at lvl 0
-db EMBER
-db TAIL_WHIP
+
+; unused bytes
 db 0
 db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

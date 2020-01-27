@@ -109,6 +109,7 @@ MonGenderRatios:
 	db SAME_BOTH_GENDERS ; Dugtrio
 	db SAME_BOTH_GENDERS ; Meowth
 	db SAME_BOTH_GENDERS ; Persian
+	db SAME_BOTH_GENDERS ; Perrserker
 	db SAME_BOTH_GENDERS ; Psyduck
 	db SAME_BOTH_GENDERS ; Golduck
 	db SAME_BOTH_GENDERS ; Mankey
@@ -142,6 +143,7 @@ MonGenderRatios:
 	db NO_GENDER         ; Magneton
 	db NO_GENDER         ; Magnezone
 	db SAME_BOTH_GENDERS ; Farfetch'd
+	db SAME_BOTH_GENDERS ; Sirfetch'd
 	db SAME_BOTH_GENDERS ; Doduo
 	db SAME_BOTH_GENDERS ; Dodrio
 	db SAME_BOTH_GENDERS ; Seel

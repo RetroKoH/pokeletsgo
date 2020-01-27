@@ -58,7 +58,7 @@ MonsterPalettes:
 	db PAL_DUGTRIO
 	db PAL_MEOWTH
 	db PAL_PERSIAN
-	;db PAL_PERRSERKER
+	db PAL_PERRSERKER
 	db PAL_PSYDUCK
 	db PAL_GOLDUCK
 	db PAL_MANKEY
@@ -92,7 +92,7 @@ MonsterPalettes:
 	db PAL_MAGNETON
 	db PAL_MAGNEZONE
 	db PAL_FARFETCH_D
-	;db PAL_SIRFETCH_D
+	db PAL_SIRFETCH_D
 	db PAL_DODUO
 	db PAL_DODRIO
 	db PAL_SEEL
@@ -132,6 +132,7 @@ MonsterPalettes:
 	db PAL_BLISSEY
 	db PAL_TANGELA
 	db PAL_TANGROWTH
+	db PAL_KANGASKID
 	db PAL_KANGASKHAN
 	db PAL_HORSEA
 	db PAL_SEADRA
@@ -142,7 +143,7 @@ MonsterPalettes:
 	db PAL_STARMIE
 	db PAL_MIME_JR
 	db PAL_MR_MIME
-	;db PAL_MR_RIME
+	db PAL_MR_RIME
 	db PAL_SCYTHER
 	db PAL_SCIZOR
 	db PAL_SMOOCHUM
@@ -189,6 +190,40 @@ MonsterPalettes:
 	db PAL_MEW
 	db PAL_MELTAN
 	db PAL_MELMETAL
+
+	db PAL_PIKACHU ;
+	db PAL_EEVEE   ;
+	db PAL_GREYMON ; Alolan Rattata
+	db PAL_GREYMON ; Alolan Raticate
+	db PAL_RAICHU  ; Alolan Raichu
+	db PAL_DEWGONG ; Alolan Sandshrew
+	db PAL_DEWGONG ; Alolan Sandslash
+	db PAL_SEEL    ; Alolan Vulpix
+	db PAL_SEEL    ; Alolan Ninetales
+	db PAL_DIGLETT ; Alolan Diglett
+	db PAL_DUGTRIO ; Alolan Dugtrio
+	db PAL_GREYMON ; Alolan Meowth
+	db PAL_GREYMON ; Galarian Meowth
+	db PAL_GREYMON ; Alolan Persian
+	db PAL_ONIX ; Alolan Geodude
+	db PAL_ONIX ; Alolan Graveler
+	db PAL_ONIX ; Alolan Golem
+	db PAL_PURPLEMON ; Galarian Ponyta
+	db PAL_PURPLEMON ; Galarian Rapidash
+	db PAL_SLOWPOKE
+	db PAL_SLOWBRO
+	db PAL_SLOWKING
+	db PAL_HITMONLEE ; Galarian Farfetchd
+	db PAL_BELLSPROUT ; Alolan Grimer
+	db PAL_BELLSPROUT ; Alolan Muk
+	db PAL_EXEGGUTOR
+	db PAL_HAUNTER    ; Alolan Marowak
+	db PAL_GREENMON ; Galarian Weezing
+	db PAL_DEWGONG ; Galarian Mr. Mime
+	db PAL_ARTICUNO
+	db PAL_ZAPDOS
+	db PAL_MOLTRES
+	db PAL_MEWTWO
 
 TrainerPalettes: ; Gen II trainer sprites are given their own palettes
 	db PAL_HERO

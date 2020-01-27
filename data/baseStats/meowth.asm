@@ -11,11 +11,13 @@ db 69 ; base exp yield
 INCBIN "pic/mon/meowth.pic",0,1 ; 55, sprite dimensions
 dw MeowthPicFront
 dw MeowthPicBack
-; attacks known at lvl 0
-db SCRATCH
-db GROWL
+
+; unused bytes
 db 0
 db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

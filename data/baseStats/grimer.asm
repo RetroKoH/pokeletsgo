@@ -11,11 +11,13 @@ db 90 ; base exp yield
 INCBIN "pic/mon/grimer.pic",0,1 ; 55, sprite dimensions
 dw GrimerPicFront
 dw GrimerPicBack
-; attacks known at lvl 0
-db POUND
-db DISABLE
+
+; unused bytes
 db 0
 db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

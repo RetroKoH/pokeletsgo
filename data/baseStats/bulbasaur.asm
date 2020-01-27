@@ -1,4 +1,3 @@
-MonBaseStats:
 db BULBASAUR ; pokedex id
 db 45 ; base hp
 db 49 ; base attack
@@ -34,5 +33,3 @@ db 3 ; growth rate
 
 
 db BANK(BulbasaurPicFront)
-
-MonBaseStatsEnd:

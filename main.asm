@@ -2215,15 +2215,7 @@ StepFriendship::
 	jr nz, .loop
 	ret
 
-SECTION "Pics 4", ROMX ; BANK $0C
-
-; Removed 'mon sprites from here
-
-
-SECTION "Pics 5", ROMX ; BANK $0D
-
 INCLUDE "engine/overworld/auto_repel.asm"
-
 
 
 SECTION "bank32", ROMX
@@ -2435,8 +2427,8 @@ GoldeenPicBack:      INCBIN "pic/monback/goldeenb.pic"
 SeakingPicFront:     INCBIN "pic/mon/seaking.pic"
 SeakingPicBack:      INCBIN "pic/monback/seakingb.pic"
 PonytaPicFront:      INCBIN "pic/mon/ponyta.pic"
-RapidashPicFront:    INCBIN "pic/mon/rapidash.pic"
 PonytaPicBack:       INCBIN "pic/monback/ponytab.pic"
+RapidashPicFront:    INCBIN "pic/mon/rapidash.pic"
 RapidashPicBack:     INCBIN "pic/monback/rapidashb.pic"
 RattataPicFront:     INCBIN "pic/mon/rattata.pic"
 RattataPicBack:      INCBIN "pic/monback/rattatab.pic"
@@ -2510,7 +2502,6 @@ BellossomPicFront:   INCBIN "pic/mon/bellossom.pic"
 BellossomPicBack:    INCBIN "pic/monback/bellossomb.pic"
 PolitoedPicFront:    INCBIN "pic/mon/politoed.pic"
 PolitoedPicBack:     INCBIN "pic/monback/politoedb.pic"
-
 SlowkingPicFront::    INCBIN "pic/mon/slowking.pic"
 SlowkingPicBack::     INCBIN "pic/monback/slowkingb.pic"
 MagnezonePicFront::   INCBIN "pic/mon/magnezone.pic"
@@ -2572,3 +2563,80 @@ MeltanPicFront::      INCBIN "pic/mon/meltan.pic"
 MeltanPicBack::       INCBIN "pic/monback/meltanb.pic"
 MelmetalPicFront::    INCBIN "pic/mon/melmetal.pic"
 MelmetalPicBack::     INCBIN "pic/monback/melmetalb.pic"
+PerrserkerPicFront:   INCBIN "pic/mon/perrserker.pic"
+PerrserkerPicBack:    INCBIN "pic/monback/perrserkerb.pic"
+SirfetchdPicFront:   INCBIN "pic/mon/sirfetchd.pic"
+SirfetchdPicBack:    INCBIN "pic/monback/sirfetchdb.pic"
+
+SECTION "Pics 4", ROMX ; BANK $0C
+
+KangaskidPicFront:	INCBIN "pic/mon/kangaskid.pic"
+KangaskidPicBack:	INCBIN "pic/monback/kangaskidb.pic"
+MrRimePicFront:     INCBIN "pic/mon/mrrime.pic"
+MrRimePicBack:      INCBIN "pic/monback/mrrimeb.pic"
+RattataAPicFront:     INCBIN "pic/mon/rattata-a.pic"
+RattataAPicBack:      INCBIN "pic/monback/rattata-ab.pic"
+RaticateAPicFront:    INCBIN "pic/mon/raticate-a.pic"
+RaticateAPicBack:     INCBIN "pic/monback/raticate-ab.pic"
+RaichuAPicFront:      INCBIN "pic/mon/raichu-a.pic"
+RaichuAPicBack:       INCBIN "pic/monback/raichu-ab.pic"
+SandshrewAPicFront:   INCBIN "pic/mon/sandshrew-a.pic"
+SandshrewAPicBack:    INCBIN "pic/monback/sandshrew-ab.pic"
+SandslashAPicFront:   INCBIN "pic/mon/sandslash-a.pic"
+SandslashAPicBack:    INCBIN "pic/monback/sandslash-ab.pic"
+VulpixAPicFront:      INCBIN "pic/mon/vulpix-a.pic"
+VulpixAPicBack:       INCBIN "pic/monback/vulpix-ab.pic"
+NinetalesAPicFront:   INCBIN "pic/mon/ninetales-a.pic"
+NinetalesAPicBack:    INCBIN "pic/monback/ninetales-ab.pic"
+DiglettAPicFront:     INCBIN "pic/mon/diglett-a.pic"
+DiglettAPicBack:      INCBIN "pic/monback/diglett-ab.pic"
+DugtrioAPicFront:     INCBIN "pic/mon/dugtrio-a.pic"
+DugtrioAPicBack:      INCBIN "pic/monback/dugtrio-ab.pic"
+MeowthAPicFront:      INCBIN "pic/mon/meowth-a.pic"
+MeowthAPicBack:       INCBIN "pic/monback/meowth-ab.pic"
+MeowthGPicFront:      INCBIN "pic/mon/meowth-g.pic"
+MeowthGPicBack:       INCBIN "pic/monback/meowth-gb.pic"
+PersianAPicFront:     INCBIN "pic/mon/persian-a.pic"
+PersianAPicBack:      INCBIN "pic/monback/persian-ab.pic"
+GeodudeAPicFront:     INCBIN "pic/mon/geodude-a.pic"
+GeodudeAPicBack:      INCBIN "pic/monback/geodude-ab.pic"
+GravelerAPicFront:    INCBIN "pic/mon/graveler-a.pic"
+GravelerAPicBack:     INCBIN "pic/monback/graveler-ab.pic"
+GolemAPicFront:       INCBIN "pic/mon/golem-a.pic"
+GolemAPicBack:        INCBIN "pic/monback/golem-ab.pic"
+PonytaGPicFront:      INCBIN "pic/mon/ponyta-g.pic"
+PonytaGPicBack:       INCBIN "pic/monback/ponyta-gb.pic"
+RapidashGPicFront:    INCBIN "pic/mon/rapidash-g.pic"
+RapidashGPicBack:     INCBIN "pic/monback/rapidash-gb.pic"
+SlowpokeGPicFront:    INCBIN "pic/mon/slowpoke-g.pic"
+SlowpokeGPicBack:     INCBIN "pic/monback/slowpoke-gb.pic"
+SlowbroGPicFront:     INCBIN "pic/mon/slowbro-g.pic"
+SlowbroGPicBack:      INCBIN "pic/monback/slowbro-gb.pic"
+SlowkingGPicFront:    INCBIN "pic/mon/slowking-g.pic"
+SlowkingGPicBack:     INCBIN "pic/monback/slowking-gb.pic"
+FarfetchdGPicFront:   INCBIN "pic/mon/farfetchd-g.pic"
+FarfetchdGPicBack:    INCBIN "pic/monback/farfetchd-gb.pic"
+GrimerAPicFront:      INCBIN "pic/mon/grimer-a.pic"
+GrimerAPicBack:       INCBIN "pic/monback/grimer-ab.pic"
+MukAPicFront:        INCBIN "pic/mon/muk-a.pic"
+MukAPicBack:         INCBIN "pic/monback/muk-ab.pic"
+
+SECTION "Pics 5", ROMX ; BANK $0D
+
+
+ExeggutorAPicFront:   INCBIN "pic/mon/exeggutor-a.pic"
+ExeggutorAPicBack:    INCBIN "pic/monback/exeggutor-ab.pic"
+MarowakAPicFront:     INCBIN "pic/mon/marowak-a.pic"
+MarowakAPicBack:      INCBIN "pic/monback/marowak-ab.pic"
+WeezingGPicFront:     INCBIN "pic/mon/weezing-g.pic"
+WeezingGPicBack:      INCBIN "pic/monback/weezing-gb.pic"
+MrMimeGPicFront:      INCBIN "pic/mon/mrmime-g.pic"
+MrMimeGPicBack:       INCBIN "pic/monback/mrmime-gb.pic"
+ArticunoGPicFront:    INCBIN "pic/mon/articuno-g.pic"
+ArticunoGPicBack:     INCBIN "pic/monback/articuno-gb.pic"
+ZapdosGPicFront:      INCBIN "pic/mon/zapdos-g.pic"
+ZapdosGPicBack:       INCBIN "pic/monback/zapdos-gb.pic"
+MoltresGPicFront:     INCBIN "pic/mon/moltres-g.pic"
+MoltresGPicBack:      INCBIN "pic/monback/moltres-gb.pic"
+MewtwoAPicFront:      INCBIN "pic/mon/mewtwo-armor.pic"
+MewtwoAPicBack:       INCBIN "pic/monback/mewtwo-armorb.pic"

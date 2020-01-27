@@ -11,11 +11,13 @@ db 175 ; base exp yield
 INCBIN "pic/mon/kangaskhan.pic",0,1 ; 77, sprite dimensions
 dw KangaskhanPicFront
 dw KangaskhanPicBack
-; attacks known at lvl 0
-db COMET_PUNCH
-db RAGE
+
+; unused bytes
 db 0
 db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

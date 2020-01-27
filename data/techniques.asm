@@ -59,6 +59,7 @@ TechniquesPointerTable:
 	dw NoTechniques			; DUGTRIO
 	dw TechniqueGlow		; MEOWTH
 	dw TechniqueGlow		; PERSIAN
+	dw TechniquePush		; PERRSERKER
 	dw TechniqueGlow		; PSYDUCK
 	dw GolduckTechniques
 	dw NoTechniques			; MANKEY
@@ -92,6 +93,7 @@ TechniquesPointerTable:
 	dw AbraTechniques		; MAGNETON
 	dw AbraTechniques		; MAGNEZONE
 	dw TechniqueChop		; FARFETCHD
+	dw TechniqueChop		; SIRFETCHD
 	dw NoTechniques			; DODUO
 	dw NoTechniques			; DODRIO
 	dw NoTechniques			; SEEL
@@ -187,12 +189,43 @@ TechniquesPointerTable:
 	dw AbraTechniques		; MEW
 	dw NoTechniques 		; MELTAN
 	dw GolduckTechniques 	; MELMETAL
-
-NoTechniques:
-	db 0
+	dw NoTechniques			; Starter PIKACHU
+	dw NoTechniques			; Starter EEVEE
+	dw NoTechniques			; RATTATA
+	dw RaticateTechniques
+	dw RaichuTechniques
+	dw TechniqueChop		; SANDSHREW
+	dw RaticateTechniques	; SANDSLASH
+	dw NoTechniques			; VULPIX
+	dw NoTechniques			; NINETALES
+	dw NoTechniques			; DIGLETT
+	dw NoTechniques			; DUGTRIO
+	dw TechniqueGlow		; MEOWTH
+	dw TechniqueGlow		; MEOWTH
+	dw TechniqueGlow		; PERSIAN
+	dw NoTechniques			; GEODUDE
+	dw TechniquePush		; GRAVELER
+	dw TechniquePush		; GOLEM
+	dw NoTechniques			; PONYTA
+	dw NoTechniques			; RAPIDASH
+	dw AbraTechniques		; SLOWPOKE
+	dw SlowbroTechniques
+	dw SlowbroTechniques	; SLOWKING
+	dw TechniqueChop		; FARFETCHD
+	dw NoTechniques			; GRIMER
+	dw NoTechniques			; MUK
+	dw ExeggutorTechniques
+	dw TechniquePush 		; MAROWAK
+	dw TechniqueGlow 		; WEEZING
+	dw AbraTechniques		; MR MIME
+	dw TechniqueDash		; ARTICUNO
+	dw ZapdosTechniques
+	dw TechniqueDash		; MOLTRES
+	dw MewtwoTechniques		; ARMORED MEWTWO
 
 TechniqueChop:
 	db CHOP
+NoTechniques:
 	db 0
 
 TechniqueDash:

@@ -58,6 +58,7 @@ CryData:
 	db $0B, $2A, $10; Dugtrio
 	db $19, $77, $10; Meowth
 	db $19, $99, $FF; Persian
+	db $19, $99, $FF; Perrserker
 	db $21, $20, $60; Psyduck
 	db $21, $FF, $40; Golduck
 	db $0A, $DD, $60; Mankey
@@ -67,7 +68,7 @@ CryData:
 	db $0E, $FF, $FF; Poliwag
 	db $0E, $77, $60; Poliwhirl
 	db $0E, $00, $FF; Poliwrath
-        db $0E, $00, $FF; Politoed
+	db $0E, $00, $FF; Politoed
 	db $1C, $C0, $01; Abra
 	db $1C, $A8, $C0; Kadabra
 	db $1C, $98, $FF; Alakazam
@@ -86,11 +87,12 @@ CryData:
 	db $25, $20, $C0; Rapidash
 	db $02, $00, $80; Slowpoke
 	db $1F, $00, $80; Slowbro
-        db $1F, $00, $80; Slowking
+	db $1F, $00, $80; Slowking
 	db $1C, $80, $60; Magnemite
 	db $1C, $20, $C0; Magneton
 	db $1C, $20, $C0; Magnezone
 	db $10, $DD, $01; Farfetch'd
+	db $10, $DD, $01; Sirfetch'd
 	db $0B, $BB, $01; Doduo
 	db $0B, $99, $20; Dodrio
 	db $0C, $88, $C0; Seel

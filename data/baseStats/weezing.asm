@@ -11,11 +11,13 @@ db 173 ; base exp yield
 INCBIN "pic/mon/weezing.pic",0,1 ; 77, sprite dimensions
 dw WeezingPicFront
 dw WeezingPicBack
-; attacks known at lvl 0
-db TACKLE
-db SMOG
-db SLUDGE
+
+; unused bytes
 db 0
+db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

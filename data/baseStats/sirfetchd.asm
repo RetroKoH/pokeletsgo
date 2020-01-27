@@ -1,0 +1,30 @@
+db SIRFETCHD ; pokedex id
+db 62 ; base hp
+db 135 ; base attack
+db 95 ; base defense
+db 68 ; base speed
+db 65 ; base special
+db FIGHTING ; species type 1
+db FIGHTING ; species type 2
+db 45 ; catch rate
+db 177 ; base exp yield
+INCBIN "pic/mon/sirfetchd.pic",0,1 ; 66, sprite dimensions
+dw SirfetchdPicFront
+dw SirfetchdPicBack
+
+; unused bytes
+db 0
+db 0
+db 0
+db 0
+
+db 0 ; growth rate
+; learnset
+	tmlearn 2,3,4,6,8
+	tmlearn 9,10
+	tmlearn 20
+	tmlearn 31,32
+	tmlearn 33,34,39,40
+	tmlearn 44
+	tmlearn 50,51,52
+db BANK(SirfetchdPicFront)

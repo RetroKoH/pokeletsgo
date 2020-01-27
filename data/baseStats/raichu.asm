@@ -11,11 +11,13 @@ db 122 ; base exp yield
 INCBIN "pic/mon/raichu.pic",0,1 ; 77, sprite dimensions
 dw RaichuPicFront
 dw RaichuPicBack
-; attacks known at lvl 0
-db THUNDERSHOCK
-db GROWL
-db THUNDER_WAVE
+
+; unused bytes
 db 0
+db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

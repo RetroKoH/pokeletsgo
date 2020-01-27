@@ -57,7 +57,7 @@ PokedexEntryPointers:
 	dw DugtrioDexEntry
 	dw MeowthDexEntry
 	dw PersianDexEntry
-	;dw PerrserkerDexEntry
+	dw PerrserkerDexEntry
 	dw PsyduckDexEntry
 	dw GolduckDexEntry
 	dw MankeyDexEntry
@@ -91,7 +91,7 @@ PokedexEntryPointers:
 	dw MagnetonDexEntry
 	dw MagnezoneDexEntry
 	dw FarfetchdDexEntry
-	;dw SirfetchdDexEntry
+	dw SirfetchdDexEntry
 	dw DoduoDexEntry
 	dw DodrioDexEntry
 	dw SeelDexEntry
@@ -600,6 +600,13 @@ PersianDexEntry:
 	TX_FAR _PersianDexEntry
 	db "@"
 
+PerrserkerDexEntry:
+	db "VIKING@"
+	db 2,7
+	dw 617
+	TX_FAR _PersianDexEntry
+	db "@"
+
 PsyduckDexEntry:
 	db "DUCK@"
 	db 2,7
@@ -828,6 +835,13 @@ FarfetchdDexEntry:
 	db "WILD DUCK@"
 	db 2,7
 	dw 330
+	TX_FAR _FarfetchdDexEntry
+	db "@"
+
+SirfetchdDexEntry:
+	db "WILD DUCK@"
+	db 2,7
+	dw 2579
 	TX_FAR _FarfetchdDexEntry
 	db "@"
 

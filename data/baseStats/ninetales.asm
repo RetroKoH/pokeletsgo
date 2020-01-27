@@ -11,11 +11,13 @@ db 178 ; base exp yield
 INCBIN "pic/mon/ninetales.pic",0,1 ; 77, sprite dimensions
 dw NinetalesPicFront
 dw NinetalesPicBack
-; attacks known at lvl 0
-db EMBER
-db TAIL_WHIP
-db QUICK_ATTACK
-db ROAR
+
+; unused bytes
+db 0
+db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

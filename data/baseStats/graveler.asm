@@ -11,11 +11,13 @@ db 134 ; base exp yield
 INCBIN "pic/mon/graveler.pic",0,1 ; 66, sprite dimensions
 dw GravelerPicFront
 dw GravelerPicBack
-; attacks known at lvl 0
-db TACKLE
-db DEFENSE_CURL
+
+; unused bytes
 db 0
 db 0
+db 0
+db 0
+
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,6,8

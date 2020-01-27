@@ -11,11 +11,13 @@ db 93 ; base exp yield
 INCBIN "pic/mon/sandshrew.pic",0,1 ; 55, sprite dimensions
 dw SandshrewPicFront
 dw SandshrewPicBack
-; attacks known at lvl 0
-db SCRATCH
+
+; unused bytes
 db 0
 db 0
 db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 3,6,8

@@ -22,7 +22,7 @@ MonPartyData:
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED			;Rattata/Raticate
 	dn SPRITE_BIRD_M, SPRITE_BIRD_M					;Spearow/Fearow
 	dn SPRITE_SNAKE, SPRITE_SNAKE					;Ekans/Arbok
-	dn SPRITE_FAIRY, SPRITE_FAIRY,					;Pichu/Pikachu
+	dn SPRITE_FAIRY, SPRITE_FAIRY					;Pichu/Pikachu
 	dn SPRITE_FAIRY, SPRITE_MON						;Raichu/Sandshrew
 	dn SPRITE_MON, SPRITE_MON						;Sandslash/NidoranF
 	dn SPRITE_MON, SPRITE_MON						;Nidorina/Nidoqueen
@@ -38,7 +38,8 @@ MonPartyData:
 	dn SPRITE_BUG, SPRITE_BUG						;Paras/Parasect
 	dn SPRITE_BUG, SPRITE_BUG						;Venonat/Venomoth
 	dn SPRITE_MON, SPRITE_MON						;Diglett/Dugtrio
-	dn SPRITE_MON, SPRITE_MON						;Meowth/Persian
+	dn SPRITE_MON, SPRITE_QUADRUPED					;Meowth/Persian
+	db SPRITE_MON 									; PERRSERKER
 	dn SPRITE_MON, SPRITE_MON						;Psyduck/Golduck
 	dn SPRITE_MON, SPRITE_MON						;Mankey/Primeape
 	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED			;Growlithe/Arcanine
@@ -55,7 +56,8 @@ MonPartyData:
 	dn SPRITE_QUADRUPED, SPRITE_MON					;Slowpoke/Slowbro
 	dn SPRITE_MON, SPRITE_BALL_M					;Slowking/Magnemite
 	dn SPRITE_BALL_M, SPRITE_BALL_M					;Magneton/Magnezone
-	dn SPRITE_BIRD_M, SPRITE_BIRD_M					;Farfetch'd/Doduo
+	db SPRITE_BIRD_M 								;Farfetch'd
+	dn SPRITE_BIRD_M, SPRITE_BIRD_M					;SIRFETCHD/Doduo
 	dn SPRITE_BIRD_M, SPRITE_WATER					;Dodrio/Seel
 	dn SPRITE_WATER, SPRITE_MON						;Dewgong/Grimer
 	dn SPRITE_MON, SPRITE_HELIX						;Muk/Shellder
@@ -75,11 +77,13 @@ MonPartyData:
 	dn SPRITE_MON, SPRITE_FAIRY						;Rhyperior/Happiny
 	dn SPRITE_FAIRY, SPRITE_FAIRY					;Chansey/Blissey
 	dn SPRITE_GRASS, SPRITE_GRASS					;Tangela/Tangrowth
+	db SPRITE_MON 									; KANGASKID
 	dn SPRITE_MON, SPRITE_WATER						;Kangaskhan/Horsea
 	dn SPRITE_WATER, SPRITE_SNAKE					;Seadra/Kingdra
 	dn SPRITE_WATER, SPRITE_WATER					;Goldeen/Seaking
 	dn SPRITE_HELIX, SPRITE_HELIX					;Staryu/Starmie
 	dn SPRITE_MON, SPRITE_MON						;Mime Jr/Mr.Mime
+	db SPRITE_MON 									; MR RIME
 	dn SPRITE_BUG, SPRITE_BUG						;Scyther/Scizor
 	dn SPRITE_MON, SPRITE_MON						;Smoochum/Jynx
 	dn SPRITE_MON, SPRITE_MON						;Elekid/Electabuzz
@@ -103,3 +107,19 @@ MonPartyData:
 	dn SPRITE_SNAKE, SPRITE_SNAKE					;Dragonair/Dragonite
 	dn SPRITE_MON, SPRITE_MON						;Mewtwo/Mew
 	dn SPRITE_MON, SPRITE_MON						;Meltan/Melmetal
+	dn SPRITE_FAIRY, SPRITE_QUADRUPED				;Starters
+	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED			;Rattata/Raticate ALOLAN
+	dn SPRITE_FAIRY, SPRITE_MON						;Raichu/Sandshrew ALOLAN
+	dn SPRITE_MON, SPRITE_QUADRUPED					;Sandslash/Vulpix ALOLAN
+	dn SPRITE_QUADRUPED, SPRITE_MON					;Ninetales/Diglett ALOLAN
+	dn SPRITE_MON, SPRITE_MON						;Dugtrio/Meowth ALOLAN
+	dn SPRITE_MON, SPRITE_QUADRUPED					;GALAR Meowth/ALOLA Persian
+	dn SPRITE_MON, SPRITE_MON						;Geodude/Graveler ALOLAN
+	dn SPRITE_MON, SPRITE_QUADRUPED					;ALOLA Golem / GALAR Ponyta
+	dn SPRITE_QUADRUPED, SPRITE_QUADRUPED			;Rapidash/Slowpoke GALARIAN
+	dn SPRITE_MON, SPRITE_MON						;Slowbro/Slowking GALARIAN
+	dn SPRITE_BIRD_M, SPRITE_MON					;GALAR Farfetchd/ALOLA Grimer
+	dn SPRITE_MON, SPRITE_GRASS						;Muk/Exeggutor ALOLAN
+	dn SPRITE_MON, SPRITE_MON						;ALOLA Marowak/GALAR Weezing
+	dn SPRITE_MON, SPRITE_BIRD_M					;MrMime / Articuno GALAR
+	dn SPRITE_BIRD_M, SPRITE_BIRD_M					;Zapdos/Moltres GALAR

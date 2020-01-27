@@ -58,7 +58,7 @@ const_value = 1
 	const DUGTRIO    ; 51
 	const MEOWTH     ; 52
 	const PERSIAN    ; 53
-	;const PERRSERKER
+	const PERRSERKER
 	const PSYDUCK    ; 54
 	const GOLDUCK    ; 55
 	const MANKEY     ; 56
@@ -92,7 +92,7 @@ const_value = 1
 	const MAGNETON   ; 82
 	const MAGNEZONE
 	const FARFETCHD  ; 83
-	;const SIRFETCHD
+	const SIRFETCHD
 	const DODUO      ; 84
 	const DODRIO     ; 85
 	const SEEL       ; 86
@@ -132,6 +132,7 @@ const_value = 1
 	const BLISSEY
 	const TANGELA    ; 114
 	const TANGROWTH
+	const KANGASKID
 	const KANGASKHAN ; 115
 	const HORSEA     ; 116
 	const SEADRA     ; 117
@@ -142,7 +143,7 @@ const_value = 1
 	const STARMIE    ; 121
 	const MIME_JR
 	const MR_MIME    ; 122
-	;const MR_RIME
+	const MR_RIME
 	const SCYTHER    ; 123
 	const SCIZOR
 	const SMOOCHUM
@@ -189,9 +190,42 @@ const_value = 1
 	const MEW        ; 151
 	const MELTAN
 	const MELMETAL
+	const PIKACHU_S
+	const EEVEE_S
+	const RATTATA_A
+	const RATICATE_A
+	const RAICHU_A
+	const SANDSHREW_A
+	const SANDSLASH_A
+	const VULPIX_A
+	const NINETALES_A
+	const DIGLETT_A
+	const DUGTRIO_A
+	const MEOWTH_A
+	const MEOWTH_G
+	const PERSIAN_A
+	const GEODUDE_A
+	const GRAVELER_A
+	const GOLEM_A
+	const PONYTA_G
+	const RAPIDASH_G
+	const SLOWPOKE_G
+	const SLOWBRO_G
+	const SLOWKING_G
+	const FARFETCHD_G
+	const GRIMER_A
+	const MUK_A
+	const EXEGGUTOR_A
+	const MAROWAK_A
+	const WEEZING_G
+	const MR_MIME_G
+	const ARTICUNO_G
+	const ZAPDOS_G
+	const MOLTRES_G
+	const MEWTWO_A
 
 	const FOSSIL_KABUTOPS   ; 152
 	const FOSSIL_AERODACTYL ; 153
 	const MON_GHOST         ; 154
 
-NUM_POKEMON EQU MELMETAL ; 151, at least until we add more
+NUM_POKEMON EQU MELMETAL ; Number of register-able dex mons is up to MELMETAL

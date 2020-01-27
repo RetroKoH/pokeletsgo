@@ -130,7 +130,7 @@ const_value = 0
 	const PAL_DUGTRIO
 	const PAL_MEOWTH
 	const PAL_PERSIAN
-	;const PAL_PERRSERKER
+	const PAL_PERRSERKER
 	const PAL_PSYDUCK
 	const PAL_GOLDUCK
 	const PAL_MANKEY
@@ -164,7 +164,7 @@ const_value = 0
 	const PAL_MAGNETON
 	const PAL_MAGNEZONE
 	const PAL_FARFETCH_D
-	;const PAL_SIRFETCH_D
+	const PAL_SIRFETCH_D
 	const PAL_DODUO
 	const PAL_DODRIO
 	const PAL_SEEL
@@ -204,6 +204,7 @@ const_value = 0
 	const PAL_BLISSEY
 	const PAL_TANGELA
 	const PAL_TANGROWTH
+	const PAL_KANGASKID
 	const PAL_KANGASKHAN
 	const PAL_HORSEA
 	const PAL_SEADRA
@@ -214,7 +215,7 @@ const_value = 0
 	const PAL_STARMIE
 	const PAL_MIME_JR
 	const PAL_MR_MIME
-	;const PAL_MR_RIME
+	const PAL_MR_RIME
 	const PAL_SCYTHER
 	const PAL_SCIZOR
 	const PAL_SMOOCHUM

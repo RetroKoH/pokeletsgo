@@ -11,11 +11,13 @@ db 81 ; base exp yield
 INCBIN "pic/mon/diglett.pic",0,1 ; 55, sprite dimensions
 dw DiglettPicFront
 dw DiglettPicBack
-; attacks known at lvl 0
-db SCRATCH
+
+; unused bytes
 db 0
 db 0
 db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

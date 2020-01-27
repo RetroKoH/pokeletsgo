@@ -11,11 +11,13 @@ db 148 ; base exp yield
 INCBIN "pic/mon/persian.pic",0,1 ; 77, sprite dimensions
 dw PersianPicFront
 dw PersianPicBack
-; attacks known at lvl 0
-db SCRATCH
-db GROWL
-db BITE
-db SCREECH
+
+; unused bytes
+db 0
+db 0
+db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

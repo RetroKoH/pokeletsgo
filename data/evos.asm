@@ -4,190 +4,224 @@
 EvosPointerTable:
 	dw BulbasaurEvolutions
 	dw IvysaurEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; VENUSAUR
 	dw CharmanderEvolutions
 	dw CharmeleonEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; CHARIZARD
 	dw SquirtleEvolutions
 	dw WartortleEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; BLASTOISE
 	dw CaterpieEvolutions
 	dw MetapodEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; BUTTERFREE
 	dw WeedleEvolutions
 	dw KakunaEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; BEEDRILL
 	dw PidgeyEvolutions
 	dw PidgeottoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; PIDGEOT
 	dw RattataEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; RATICATE
 	dw SpearowEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; FEAROW
 	dw EkansEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; ARBOK
 	dw PichuEvolutions
 	dw PikachuEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; RAICHU
 	dw SandshrewEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; SANDSLASH
 	dw NidoranFEvolutions
 	dw NidorinaEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; NIDOKING
 	dw NidoranMEvolutions
 	dw NidorinoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; NIDOQUEEN
 	dw CleffaEvolutions
 	dw ClefairyEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; CLEFABLE
 	dw VulpixEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; NINETALES
 	dw IgglybuffEvolutions
 	dw JigglypuffEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; WIGGLYTUFF
 	dw ZubatEvolutions
 	dw GolbatEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; CROBAT
 	dw OddishEvolutions
 	dw GloomEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; VILEPLUME
+	dw NoEvolutions			; BELLOSSOM
 	dw ParasEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; PARASECT
 	dw VenonatEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; VENOMOTH
 	dw DiglettEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; DUGTRIO
 	dw MeowthEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; PERSIAN
+	dw NoEvolutions			; PERRSERKER
 	dw PsyduckEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; GOLDUCK
 	dw MankeyEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; PRIMEAPE
 	dw GrowlitheEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; ARCANINE
 	dw PoliwagEvolutions
 	dw PoliwhirlEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; POLIWRATH
+	dw NoEvolutions			; POLITOED
 	dw AbraEvolutions
 	dw KadabraEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; ALAKAZAM
 	dw MachopEvolutions
 	dw MachokeEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; MACHAMP
 	dw BellsproutEvolutions
 	dw WeepinbellEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; VICTREEBEL
 	dw TentacoolEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; TENTACRUEL
 	dw GeodudeEvolutions
 	dw GravelerEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; GOLEM
 	dw PonytaEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; RAPIDASH
 	dw SlowpokeEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; SLOWBRO
+	dw NoEvolutions			; SLOWKING
 	dw MagnemiteEvolutions
 	dw MagnetonEvolutions
-	dw NoEvolutions
-	dw NoEvolutions ; FARFETCHD
+	dw NoEvolutions			; MAGNEZONE
+	dw NoEvolutions			; FARFETCHD
+	dw NoEvolutions			; SIRFETCHD
 	dw DoduoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; DODRIO
 	dw SeelEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; DEWGONG
 	dw GrimerEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; MUK
 	dw ShellderEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; CLOYSTER
 	dw GastlyEvolutions
 	dw HaunterEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; GENGAR
 	dw OnixEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; STEELIX
 	dw DrowzeeEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; HYPNO
 	dw KrabbyEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; KINGLER
 	dw VoltorbEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; ELECTRODE
 	dw ExeggcuteEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; EXEGGUTOR
 	dw CuboneEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; MAROWAK
 	dw TyrogueEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; HITMONLEE
+	dw NoEvolutions			; HITMONCHAN
+	dw NoEvolutions			; HITMONTOP
 	dw LickitungEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; LICKILICKY
 	dw KoffingEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; WEEZING
 	dw RhyhornEvolutions
 	dw RhydonEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; RHYPERIOR
 	dw HappinyEvolutions
 	dw ChanseyEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; BLISSEY
 	dw TangelaEvolutions
-	dw NoEvolutions
-	dw NoEvolutions ; Kangaskhan
+	dw NoEvolutions			; TANGROWTH
+	dw KangaskidEvolutions
+	dw NoEvolutions			; KANGASKHAN
 	dw HorseaEvolutions
 	dw SeadraEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; KINGDRA
 	dw GoldeenEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; SEAKING
 	dw StaryuEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; STARMIE
 	dw MimeJrEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; MR_MIME
+	dw NoEvolutions			; MR_RIME
 	dw ScytherEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; SCIZOR
 	dw SmoochumEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; JYNX
 	dw ElekidEvolutions
 	dw ElectabuzzEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; ELECTIVIRE
 	dw MagbyEvolutions
 	dw MagmarEvolutions
-	dw NoEvolutions
-	dw NoEvolutions ; PINSIR
-	dw NoEvolutions ; TAUROS
-	dw NoEvolutions ; MILTANK
+	dw NoEvolutions			; MAGMORTAR
+	dw NoEvolutions 		; PINSIR
+	dw NoEvolutions 		; TAUROS
+	dw NoEvolutions 		; MILTANK
 	dw MagikarpEvolutions
-	dw NoEvolutions ; GYARADOS
-	dw NoEvolutions ; LAPRAS
-	dw NoEvolutions ; DITTO
+	dw NoEvolutions 		; GYARADOS
+	dw NoEvolutions 		; LAPRAS
+	dw NoEvolutions 		; DITTO
 	dw EeveeEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions
-	dw NoEvolutions ; SYLVEOB
+	dw NoEvolutions			; VAPOREON
+	dw NoEvolutions			; JOLTEON
+	dw NoEvolutions			; FLAREON
+	dw NoEvolutions			; ESPEON
+	dw NoEvolutions			; UMBREON
+	dw NoEvolutions			; LEAFEON
+	dw NoEvolutions			; GLACEON
+	dw NoEvolutions			; SYLVEON
 	dw PorygonEvolutions
 	dw Porygon2Evolutions
-	dw NoEvolutions ; PORYGONZ
+	dw NoEvolutions 		; PORYGONZ
 	dw OmanyteEvolutions
-	dw NoEvolutions ; OMASTAR
+	dw NoEvolutions 		; OMASTAR
 	dw KabutoEvolutions
-	dw NoEvolutions ; KABUTOPS
-	dw NoEvolutions ; AERODACTYL
+	dw NoEvolutions 		; KABUTOPS
+	dw NoEvolutions 		; AERODACTYL
 	dw MunchlaxEvolutions
-	dw NoEvolutions ; SNORLAX
-	dw NoEvolutions ; ARTICUNO
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions 		; SNORLAX
+	dw NoEvolutions 		; ARTICUNO
+	dw NoEvolutions 		; ZAPDOS
+	dw NoEvolutions 		; MOLTRES
 	dw DratiniEvolutions
 	dw DragonairEvolutions
-	dw NoEvolutions ; DRAGONITE
-	dw NoEvolutions
-	dw NoEvolutions
+	dw NoEvolutions			; DRAGONITE
+	dw NoEvolutions			; MEWTWO
+	dw NoEvolutions			; MEW
 	dw MeltanEvolutions
 	dw NoEvolutions			; MELMETAL
+	dw NoEvolutions			; STARTER PIKACHU
+	dw NoEvolutions			; STARTER EEVEE
+	dw RattataAEvolutions
+	dw NoEvolutions 		; ALOLAN RATICATE
+	dw NoEvolutions			; ALOLAN RAICHU
+	dw SandshrewAEvolutions
+	dw NoEvolutions			; ALOLAN SANDSLASH
+	dw DiglettAEvolutions
+	dw NoEvolutions			; ALOLAN DUGTRIO
+	dw MeowthAEvolutions
+	dw MeowthGEvolutions
+	dw NoEvolutions			; ALOLAN PERSIAN
+	dw GeodudeAEvolutions
+	dw GravelerAEvolutions
+	dw NoEvolutions			; ALOLAN GOLEM
+	dw PonytaGEvolutions
+	dw NoEvolutions			; GALARIAN RAPIDASH
+	dw SlowpokeGEvolutions
+	dw NoEvolutions			; GALARIAN SLOWBRO
+	dw NoEvolutions			; GALARIAN SLOWKING
+	dw GrimerEvolutions
+	dw NoEvolutions			; ALOLAN MUK
+	dw NoEvolutions			; ALOLAN EXEGGUTOR
+	dw NoEvolutions			; ALOLAN MAROWAK
+	dw NoEvolutions			; GALARIAN WEEZING
+	dw MrMimeGEvolutions	; GALARIAN MR_MIME
+	dw NoEvolutions 		; GALARIAN ARTICUNO
+	dw NoEvolutions 		; GALARIAN ZAPDOS
+	dw NoEvolutions 		; GALARIAN MOLTRES
+	dw NoEvolutions			; ARMORED MEWTWO
 
 NoEvolutions:
 	db 0
@@ -351,7 +385,7 @@ PoliwagEvolutions:
 
 PoliwhirlEvolutions:
 	db EV_ITEM, WATER_STONE, 1, POLIWRATH
-	db EV_ITEM, MOON_STONE, 1, POLITOED ; Supposed to be King's Rock
+	db EV_ITEM, KINGS_ROCK, 1, POLITOED
 	db 0
 
 AbraEvolutions:
@@ -359,6 +393,7 @@ AbraEvolutions:
 	db 0
 
 KadabraEvolutions:
+	db EV_TRADE, 1, ALAKAZAM
 	db EV_LEVEL, 40, ALAKAZAM
 	db 0
 
@@ -367,6 +402,7 @@ MachopEvolutions:
 	db 0
 
 MachokeEvolutions:
+	db EV_TRADE, 1, MACHAMP
 	db EV_LEVEL, 40, MACHAMP
 	db 0
 
@@ -387,6 +423,7 @@ GeodudeEvolutions:
 	db 0
 
 GravelerEvolutions:
+	db EV_TRADE, 1, GOLEM
 	db EV_LEVEL, 40, GOLEM
 	db 0
 
@@ -396,7 +433,7 @@ PonytaEvolutions:
 
 SlowpokeEvolutions:
 	db EV_LEVEL, 37, SLOWBRO
-	db EV_ITEM, MOON_STONE, 1, SLOWKING
+	db EV_ITEM, KINGS_ROCK, 1, SLOWKING
 	db 0
 
 MagnemiteEvolutions:
@@ -428,6 +465,7 @@ GastlyEvolutions:
 	db 0
 
 HaunterEvolutions:
+	db EV_TRADE, 1, GENGAR
 	db EV_LEVEL, 40, GENGAR
 	db 0
 
@@ -456,6 +494,9 @@ CuboneEvolutions:
 	db 0
 
 TyrogueEvolutions:
+	db EV_TYROGUE,20,ATK_HIGHER,HITMONLEE
+	db EV_TYROGUE,20,BOTH_EQUAL,HITMONTOP
+	db EV_TYROGUE,20,DEF_HIGHER,HITMONCHAN
 	db 0
 
 LickitungEvolutions:
@@ -486,6 +527,9 @@ TangelaEvolutions:
 	db EV_LEVEL, 30, TANGROWTH
 	db 0
 
+KangaskidEvolutions:
+	db EV_LEVEL, 15, KANGASKHAN
+
 HorseaEvolutions:
 	db EV_LEVEL, 32, SEADRA
 	db 0
@@ -503,7 +547,7 @@ StaryuEvolutions:
 	db 0
 
 MimeJrEvolutions:
-	db EV_LEVEL, 10, MR_MIME
+	db EV_MOVE, MIMIC, MR_MIME
 	db 0
 
 ScytherEvolutions:
@@ -538,6 +582,10 @@ EeveeEvolutions:
 	db EV_ITEM, FIRE_STONE, 1, FLAREON
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
 	db EV_ITEM, WATER_STONE, 1, VAPOREON
+	db EV_ITEM, SUN_STONE, 1, ESPEON
+	db EV_ITEM, MOON_STONE, 1, UMBREON
+	db EV_ITEM, LEAF_STONE, 1, LEAFEON
+	db EV_ITEM, ICE_STONE, 1, GLACEON
 	db 0
 
 PorygonEvolutions:
@@ -569,6 +617,62 @@ DragonairEvolutions:
 	db 0
 
 MeltanEvolutions:
-;Evolutions
-	db EV_LEVEL,55,MELMETAL
+	db EV_LEVEL,50,MELMETAL
 	db 0
+
+RattataAEvolutions:
+	db EV_LEVEL, 20, RATICATE_A
+	db 0
+
+SandshrewAEvolutions:
+	db EV_ITEM, ICE_STONE, 1, SANDSLASH_A
+	db 0
+
+VulpixAEvolutions:
+	db EV_ITEM, ICE_STONE, 1, NINETALES_A
+	db 0
+
+DiglettAEvolutions:
+	db EV_LEVEL, 26, DUGTRIO_A
+	db 0
+
+MeowthAEvolutions:
+	db EV_LEVEL, 28, PERSIAN_A
+	;db EV_FRIENDSHIP, 1, PERSIAN_A
+	db 0
+
+MeowthGEvolutions:
+	db EV_LEVEL, 28, PERRSERKER
+	db 0
+
+GeodudeAEvolutions:
+	db EV_LEVEL, 25, GRAVELER_A
+	db 0
+
+GravelerAEvolutions:
+	db EV_TRADE, 1, GOLEM_A
+	db EV_LEVEL, 40, GOLEM_A
+	db 0
+
+PonytaGEvolutions:
+	db EV_LEVEL, 40, RAPIDASH_G
+	db 0
+
+SlowpokeGEvolutions:
+	db EV_LEVEL, 37, SLOWBRO_G
+	db EV_ITEM, KINGS_ROCK, 1, SLOWKING_G
+	db 0
+
+FarfetchdGEvolutions:
+	db EV_LEVEL, 30, SIRFETCHD ; Change to Critical Hits
+	db 0
+
+GrimerAEvolutions:
+	db EV_LEVEL, 38, MUK_A
+	db 0
+
+MrMimeGEvolutions:
+	db EV_LEVEL, 42, MR_RIME
+	db 0
+
+; Add Togepi Line Below (Friendship, then Moon Stone)

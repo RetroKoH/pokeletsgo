@@ -12,7 +12,7 @@ INCBIN "pic/mon/pikachu.pic",0,1 ; 55, sprite dimensions
 dw PikachuPicFront
 dw PikachuPicBack
 
-; attacks known at lvl 0
+; unused bytes
 db 0
 db 0
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,39,40
 	tmlearn 44,45
 	tmlearn 50,55
-db BANK(PikachuPicFront)
+db BANK(PikachuSPicFront)
