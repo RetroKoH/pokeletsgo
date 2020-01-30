@@ -8,9 +8,9 @@ db DARK ; species type 1
 db DARK ; species type 2
 db 90 ; catch rate
 db 148 ; base exp yield
-INCBIN "pic/mon/persian.pic",0,1 ; 77, sprite dimensions
-dw PersianPicFront
-dw PersianPicBack
+INCBIN "pic/mon/persian-a.pic",0,1 ; 77, sprite dimensions
+dw PersianAPicFront
+dw PersianAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(PersianPicFront)
+db BANK(PersianAPicFront)

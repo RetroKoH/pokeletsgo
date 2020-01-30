@@ -8,9 +8,9 @@ db GRASS ; species type 1
 db DRAGON ; species type 2
 db 45 ; catch rate
 db 212 ; base exp yield
-INCBIN "pic/mon/exeggutor.pic",0,1 ; 77, sprite dimensions
-dw ExeggutorPicFront
-dw ExeggutorPicBack
+INCBIN "pic/mon/exeggutor-a.pic",0,1 ; 77, sprite dimensions
+dw ExeggutorAPicFront
+dw ExeggutorAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 5 ; growth rate
 	tmlearn 33,34,36,37
 	tmlearn 44,46,47
 	tmlearn 50,54
-db BANK(ExeggutorPicFront)
+db BANK(ExeggutorAPicFront)

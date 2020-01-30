@@ -1011,7 +1011,7 @@ PokemonPaletteTable:
 	RGB 31, 12, 00
 
 ; PAL_SANDSHREW_A (DEWGONG)
-	RGB 19, 21, 31
+	RGB 19, 21, 01
 	RGB 08, 11, 18
 
 ; PAL_SANDSLASH_A (DEWGONG)
@@ -1020,7 +1020,6 @@ PokemonPaletteTable:
 
 
 TrainerPaletteTable:
-
 ; PAL_YOUNGSTER
 	RGB 27, 20, 09
 	RGB 09, 12, 23

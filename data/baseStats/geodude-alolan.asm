@@ -8,9 +8,9 @@ db ROCK ; species type 1
 db ELECTRIC ; species type 2
 db 255 ; catch rate
 db 86 ; base exp yield
-INCBIN "pic/mon/geodude.pic",0,1 ; 55, sprite dimensions
-dw GeodudePicFront
-dw GeodudePicBack
+INCBIN "pic/mon/geodude-a.pic",0,1 ; 55, sprite dimensions
+dw GeodudeAPicFront
+dw GeodudeAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 3 ; growth rate
 	tmlearn 34,35,36,38
 	tmlearn 44,47,48
 	tmlearn 50,54
-db BANK(GeodudePicFront)
+db BANK(GeodudeAPicFront)

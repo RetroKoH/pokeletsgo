@@ -1,6 +1,6 @@
 db BEEDRILL ; pokedex id
 db 65 ; base hp
-db 80 ; base attack
+db 90 ; base attack
 db 40 ; base defense
 db 75 ; base speed
 db 45 ; base special
@@ -11,11 +11,13 @@ db 159 ; base exp yield
 INCBIN "pic/mon/beedrill.pic",0,1 ; 77, sprite dimensions
 dw BeedrillPicFront
 dw BeedrillPicBack
-; attacks known at lvl 0
-db FURY_ATTACK
+
+; unused bytes
 db 0
 db 0
 db 0
+db 0
+
 db 0 ; growth rate
 ; learnset
 	tmlearn 3,6

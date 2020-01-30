@@ -258,7 +258,7 @@ _ArbokDexEntry::
 	next "been confirmed"
 	dex
 
-_PichuDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_PichuDexEntry::
 	text "Despite its small"
 	next "size, it can zap"
 	next "even adult humans."
@@ -408,7 +408,7 @@ _NidokingDexEntry::
 	next "pierce a diamond"
 	dex
 
-_CleffaDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_CleffaDexEntry::
 	text "When numerous"
 	next "meteors illuminate"
 	next "the night sky,"
@@ -478,7 +478,7 @@ _NinetalesADexEntry::
 	next "this #MON"
 	dex
 
-_IgglybuffDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_IgglybuffDexEntry::
 	text "Instead of walking"
 	next "with its short"
 	next "legs, it moves"
@@ -528,7 +528,7 @@ _GolbatDexEntry::
 	next "and suck blood"
 	dex
 
-_CrobatDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_CrobatDexEntry::
 	text "As a result of its"
 	next "pursuit of faster,"
 	next "yet more silent"
@@ -568,7 +568,7 @@ _VileplumeDexEntry::
 	next "is very loud"
 	dex
 
-_BellossomDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_BellossomDexEntry::
 	text "When these dance"
 	next "together, their"
 	next "petals rub against"
@@ -698,6 +698,16 @@ _PersianADexEntry::
 	next "proud queen"
 	dex
 
+_PerrserkerDexEntry::
+	text "What seems to be"
+	next "an iron helmet is"
+	next "actually hardened"
+
+	page "hair. This #MON"
+	next "lives for the"
+	next "thrill of battle"
+	dex
+
 _PsyduckDexEntry::
 	text "Always tormented"
 	next "by headaches."
@@ -788,7 +798,7 @@ _PoliwrathDexEntry::
 	next "swimmers"
 	dex
 
-_PolitoedDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_PolitoedDexEntry::
 	text "When it expands"
 	next "its throat to"
 	next "croak out a tune,"
@@ -1008,7 +1018,7 @@ _SlowbroDexEntry::
 	next "SLOWPOKE again"
 	dex
 
-_SlowkingDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_SlowkingDexEntry::
 	text "Every time it ya-"
 	next "wns, SHELLDER"
 	next "injects more poi-"
@@ -1038,7 +1048,7 @@ _MagnetonDexEntry::
 	next "3,300 feet"
 	dex
 
-_MagnezoneDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_MagnezoneDexEntry::
 	text "It evolved from"
 	next "exposure to a"
 	next "sepcial magnetic"
@@ -1056,6 +1066,16 @@ _FarfetchdDexEntry::
 	page "so it's thought"
 	next "their numbers are"
 	next "decreasing"
+	dex
+
+_SirfetchdDexEntry::
+	text "FARFETCH'D that"
+	next "have seen many"
+	next "battles attain"
+
+	page "this form. It will"
+	next "retire when its"
+	next "leek withers"
 	dex
 
 _DoduoDexEntry::
@@ -1198,7 +1218,7 @@ _OnixDexEntry::
 	next "by DIGLETTs"
 	dex
 
-_SteelixDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_SteelixDexEntry::
 	text "The many small"
 	next "metal particles"
 	next "that cover this"
@@ -1328,7 +1348,7 @@ _MarowakADexEntry::
 	next "over the ages"
 	dex
 
-_TyrogueDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_TyrogueDexEntry::
 	text "To brush up on its"
 	next "fighting skills,"
 	next "it will challenge"
@@ -1358,7 +1378,7 @@ _HitmonchanDexEntry::
 	next "way as a drill"
 	dex
 
-_HitmontopDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_HitmontopDexEntry::
 	text "After doing a"
 	next "handstand to"
 	next "throw off the"
@@ -1378,7 +1398,7 @@ _LickitungDexEntry::
 	next "cause paralysis"
 	dex
 
-_LickilickyDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_LickilickyDexEntry::
 	text "It wraps things up"
 	next "in its extensible"
 	next "tongue. The drool"
@@ -1427,7 +1447,7 @@ _RhydonDexEntry::
 	next "molten lava"
 	dex
 
-_RhyperiorDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_RhyperiorDexEntry::
 	text "It can launch a"
 	next "rock held in its"
 	next "hand by tightening"
@@ -1437,7 +1457,7 @@ _RhyperiorDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "arms instantly"
 	dex
 
-_HappinyDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_HappinyDexEntry::
 	text "It loves white"
 	next "round things. It"
 	next "carries an egg-"
@@ -1457,7 +1477,7 @@ _ChanseyDexEntry::
 	next "injured #MON"
 	dex
 
-_BlisseyDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_BlisseyDexEntry::
 	text "Biting into one"
 	next "of the delicious"
 	next "eggs that BLISSEY"
@@ -1477,7 +1497,7 @@ _TangelaDexEntry::
 	next "stop growing"
 	dex
 
-_TangrowthDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_TangrowthDexEntry::
 	text "It ensnares prey"
 	next "by extending arms"
 	next "made of vines."
@@ -1485,6 +1505,16 @@ _TangrowthDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	page "Losing arms to"
 	next "predators does not"
 	next "trouble it"
+	dex
+
+_KangaskidDexEntry::
+	text "It almost never"
+	next "ventures out of"
+	next "its mother's"
+
+	page "protective pouch"
+	next "until it is 3"
+	next "years old"
 	dex
 
 _KangaskhanDexEntry::
@@ -1517,7 +1547,7 @@ _SeadraDexEntry::
 	next "while sleeping"
 	dex
 
-_KingdraDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_KingdraDexEntry::
 	text "It stores energy"
 	next "by sleeping at"
 	next "underwater depths"
@@ -1567,7 +1597,7 @@ _StarmieDexEntry::
 	next "7 colors"
 	dex
 
-_MimeJrDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_MimeJrDexEntry::
 	text "It habitually"
 	next "mimics its foes."
 	next "Once mimicked, the"
@@ -1597,7 +1627,7 @@ _ScytherDexEntry::
 	next "that of a ninja"
 	dex
 
-_ScizorDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_ScizorDexEntry::
 	text "This #MON's"
 	next "pincers, which"
 	next "contain steel, can"
@@ -1607,7 +1637,7 @@ _ScizorDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "hold of into bits"
 	dex
 
-_SmoochumDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_SmoochumDexEntry::
 	text "The sensitivity of"
 	next "its lips develops"
 	next "most quickly."
@@ -1627,7 +1657,7 @@ _JynxDexEntry::
 	next "as it walks"
 	dex
 
-_ElekidDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_ElekidDexEntry::
 	text "It loves violent"
 	next "thunder. The space"
 	next "between its horns"
@@ -1635,35 +1665,5 @@ _ElekidDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	page "flickers bluish-"
 	next "white when it is"
 	next "charging energy"
-	dex
-
-_ElectabuzzDexEntry::
-	text "If a major power"
-	next "outage occurs, it"
-	next "is certain that"
-
-	page "this #MON has"
-	next "eaten electricity"
-	next "at a power plant"
-	dex
-
-_ElectivireDexEntry:: ;[Let's Go Edit: Expanded Dex]
-	text "As its electric"
-	next "charge amplifies,"
-	next "blue sparks begin"
-
-	page "to crackle between"
-	next "its horns and the"
-	next "tips of its tails"
-	dex
-
-_MagbyDexEntry:: ;[Let's Go Edit: Expanded Dex]
-	text "It naturally spits"
-	next "an 1100-degree"
-	next "flame. It is said"
-
-	page "when many appear,"
-	next "it heralds a"
-	next "volcanic eruption"
 	dex
 ; Continued in pokedex2.asm

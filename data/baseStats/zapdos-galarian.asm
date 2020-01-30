@@ -8,9 +8,9 @@ db ELECTRIC ; species type 1
 db FLYING ; species type 2
 db 3 ; catch rate
 db 216 ; base exp yield
-INCBIN "pic/mon/zapdos.pic",0,1 ; 77, sprite dimensions
-dw ZapdosPicFront
-dw ZapdosPicBack
+INCBIN "pic/mon/zapdos-g.pic",0,1 ; 77, sprite dimensions
+dw ZapdosGPicFront
+dw ZapdosGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 5 ; growth rate
 	tmlearn 33,34,39
 	tmlearn 43,44,45
 	tmlearn 50,52,55
-db BANK(ZapdosPicFront)
+db BANK(ZapdosGPicFront)

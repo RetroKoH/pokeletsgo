@@ -8,9 +8,9 @@ db FIRE ; species type 1
 db FLYING ; species type 2
 db 3 ; catch rate
 db 217 ; base exp yield
-INCBIN "pic/mon/moltres.pic",0,1 ; 77, sprite dimensions
-dw MoltresPicFront
-dw MoltresPicBack
+INCBIN "pic/mon/moltres-g.pic",0,1 ; 77, sprite dimensions
+dw MoltresGPicFront
+dw MoltresGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 5 ; growth rate
 	tmlearn 33,34,38,39
 	tmlearn 43,44
 	tmlearn 50,52
-db BANK(MoltresPicFront)
+db BANK(MoltresGPicFront)

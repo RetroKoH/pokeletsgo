@@ -183,6 +183,7 @@ MonGenderRatios:
 	db FEMALE_ONLY       ; Blissey
 	db SAME_BOTH_GENDERS ; Tangela
 	db SAME_BOTH_GENDERS ; Tangrowth
+	db FEMALE_ONLY       ; Kangaskid
 	db FEMALE_ONLY       ; Kangaskhan
 	db SAME_BOTH_GENDERS ; Horsea
 	db SAME_BOTH_GENDERS ; Seadra
@@ -193,6 +194,7 @@ MonGenderRatios:
 	db NO_GENDER         ; Starmie
 	db SAME_BOTH_GENDERS ; Mime Jr
 	db SAME_BOTH_GENDERS ; Mr. Mime
+	db SAME_BOTH_GENDERS ; Mr. Rime
 	db SAME_BOTH_GENDERS ; Scyther
 	db SAME_BOTH_GENDERS ; Scizor
 	db FEMALE_ONLY       ; Smoochum

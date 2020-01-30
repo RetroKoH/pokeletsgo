@@ -8,9 +8,9 @@ db ICE ; species type 1
 db STEEL ; species type 2
 db 255 ; catch rate
 db 93 ; base exp yield
-INCBIN "pic/mon/sandshrew.pic",0,1 ; 55, sprite dimensions
-dw SandshrewPicFront
-dw SandshrewPicBack
+INCBIN "pic/mon/sandshrew-a.pic",0,1 ; 55, sprite dimensions
+dw SandshrewAPicFront
+dw SandshrewAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,39,40
 	tmlearn 44,48
 	tmlearn 50,51,54
-db BANK(SandshrewPicFront)
+db BANK(SandshrewAPicFront)

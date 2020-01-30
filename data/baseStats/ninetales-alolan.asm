@@ -8,9 +8,9 @@ db ICE ; species type 1
 db FAIRY ; species type 2
 db 75 ; catch rate
 db 178 ; base exp yield
-INCBIN "pic/mon/ninetales.pic",0,1 ; 77, sprite dimensions
-dw NinetalesPicFront
-dw NinetalesPicBack
+INCBIN "pic/mon/ninetales-a.pic",0,1 ; 77, sprite dimensions
+dw NinetalesAPicFront
+dw NinetalesAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,38,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(NinetalesPicFront)
+db BANK(NinetalesAPicFront)

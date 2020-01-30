@@ -8,9 +8,9 @@ db ELECTRIC ; species type 1
 db PSYCHIC ; species type 2
 db 75 ; catch rate
 db 122 ; base exp yield
-INCBIN "pic/mon/raichu.pic",0,1 ; 77, sprite dimensions
-dw RaichuPicFront
-dw RaichuPicBack
+INCBIN "pic/mon/raichu-a.pic",0,1 ; 77, sprite dimensions
+dw RaichuAPicFront
+dw RaichuAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,39,40
 	tmlearn 44,45
 	tmlearn 50,55
-db BANK(RaichuPicFront)
+db BANK(RaichuAPicFront)

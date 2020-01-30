@@ -11,11 +11,13 @@ db 184 ; base exp yield
 INCBIN "pic/mon/bellossom.pic",0,1 ; 77, sprite dimensions
 dw BellossomPicFront
 dw BellossomPicBack
-; attacks known at lvl 0
-db ABSORB
-db GROWTH
-db ACID
-db POISONPOWDER
+
+; unused bytes
+db 0
+db 0
+db 0
+db 0
+
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

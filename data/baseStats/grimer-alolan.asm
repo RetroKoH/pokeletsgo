@@ -8,9 +8,9 @@ db POISON ; species type 1
 db DARK ; species type 2
 db 190 ; catch rate
 db 90 ; base exp yield
-INCBIN "pic/mon/grimer.pic",0,1 ; 55, sprite dimensions
-dw GrimerPicFront
-dw GrimerPicBack
+INCBIN "pic/mon/grimer-a.pic",0,1 ; 55, sprite dimensions
+dw GrimerAPicFront
+dw GrimerAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,36,38
 	tmlearn 44,47
 	tmlearn 50
-db BANK(GrimerPicFront)
+db BANK(GrimerAPicFront)

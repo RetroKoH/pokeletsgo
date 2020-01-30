@@ -9,7 +9,7 @@ db NORMAL ; species type 2
 db 45 ; catch rate
 db 92 ; base exp yield
 INCBIN "pic/mon/eevee.pic",0,1 ; 55, sprite dimensions
-dw EeveeSPicFront
+dw EeveePicFront
 dw EeveePicBack
 
 ; unused bytes
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(EeveeSPicFront)
+db BANK(EeveePicFront)

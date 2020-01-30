@@ -1,3 +1,33 @@
+_ElectabuzzDexEntry::
+	text "If a major power"
+	next "outage occurs, it"
+	next "is certain that"
+
+	page "this #MON has"
+	next "eaten electricity"
+	next "at a power plant"
+	dex
+
+_ElectivireDexEntry::
+	text "As its electric"
+	next "charge amplifies,"
+	next "blue sparks begin"
+
+	page "to crackle between"
+	next "its horns and the"
+	next "tips of its tails"
+	dex
+
+_MagbyDexEntry::
+	text "It naturally spits"
+	next "an 1100-degree"
+	next "flame. It is said"
+
+	page "when many appear,"
+	next "it heralds a"
+	next "volcanic eruption"
+	dex
+
 _MagmarDexEntry::
 	text "Born in an active"
 	next "volcano. Its body"
@@ -8,7 +38,7 @@ _MagmarDexEntry::
 	next "ball of fire"
 	dex
 
-_MagmortarDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_MagmortarDexEntry::
 	text "The fireballs it"
 	next "shoots from its"
 	next "arms are over"

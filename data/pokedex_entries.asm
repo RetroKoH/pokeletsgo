@@ -131,6 +131,7 @@ PokedexEntryPointers:
 	dw BlisseyDexEntry
 	dw TangelaDexEntry
 	dw TangrowthDexEntry
+	dw KangaskidDexEntry
 	dw KangaskhanDexEntry
 	dw HorseaDexEntry
 	dw SeadraDexEntry
@@ -141,7 +142,7 @@ PokedexEntryPointers:
 	dw StarmieDexEntry
 	dw MimeJrDexEntry
 	dw MrMimeDexEntry
-	;dw MrRimeDexEntry
+	dw MrMimeDexEntry;MrRimeDexEntry
 	dw ScytherDexEntry
 	dw ScizorDexEntry
 	dw SmoochumDexEntry
@@ -604,7 +605,7 @@ PerrserkerDexEntry:
 	db "VIKING@"
 	db 2,7
 	dw 617
-	TX_FAR _PersianDexEntry
+	TX_FAR _PerrserkerDexEntry
 	db "@"
 
 PsyduckDexEntry:
@@ -842,7 +843,7 @@ SirfetchdDexEntry:
 	db "WILD DUCK@"
 	db 2,7
 	dw 2579
-	TX_FAR _FarfetchdDexEntry
+	TX_FAR _SirfetchdDexEntry
 	db "@"
 
 DoduoDexEntry:
@@ -995,7 +996,7 @@ ExeggutorDexEntry:
 CuboneDexEntry:
 	db "LONELY@"
 	db 1,4
-	dw 140
+	dw 143
 	TX_FAR _CuboneDexEntry
 	db "@"
 
@@ -1116,6 +1117,13 @@ TangrowthDexEntry:
 	db 6,7
 	dw 2835
 	TX_FAR _TangrowthDexEntry
+	db "@"
+
+KangaskidDexEntry:
+	db "CHILD@"
+	db 1,4
+	dw 143
+	TX_FAR _KangaskidDexEntry
 	db "@"
 
 KangaskhanDexEntry:

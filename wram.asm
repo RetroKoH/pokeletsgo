@@ -2122,6 +2122,7 @@ wSavedTilesetType:: ; d0d4
 wDamage:: ; d0d7
 	ds 2
 
+wMonDexNumber::  ; try this for proper dex number of alolan mons?
 	ds 1
 
 wFriendshipStepCount:: ; d0da
@@ -2364,26 +2365,27 @@ wPartyDataEnd::
 
 wMainDataStart::
 
-wPokedexOwned:: ; d2f7
-	flag_array NUM_POKEMON
+wPokedexOwned:: ; d2f8
+	flag_array NUM_POKEMON ; Bulbasaur-Melmetal (Other mons not marked here)
 wPokedexOwnedEnd::
 
-wPokedexSeen:: ; d30a
-	flag_array NUM_POKEMON
+wPokedexSeen:: ; d310
+	flag_array NUM_POKEMON  ; Bulbasaur-Melmetal (Other mons not marked here)
 wPokedexSeenEnd::
 
+; RAM space needed for noting seen alolan, galarian, and megas, using the DEX ID in base stats
 
-wNumBagItems:: ; d31d
+wNumBagItems:: ; d328
 	ds 1
-wBagItems:: ; d31e
+wBagItems:: ; d329
 ; item, quantity
 	ds BAG_ITEM_CAPACITY * 2
 	ds 1 ; end
 
-wPlayerMoney:: ; d347
+wPlayerMoney:: ; d352
 	ds 3 ; BCD
 
-wRivalName:: ; d34a
+wRivalName:: ; d355
 	ds NAME_LENGTH
 
 wOptions:: ; d355

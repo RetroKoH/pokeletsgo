@@ -5,12 +5,12 @@ db 50 ; base defense
 db 120 ; base speed
 db 70 ; base special
 db GROUND ; species type 1
-db GROUND ; species type 2
+db STEEL ; species type 2
 db 50 ; catch rate
 db 153 ; base exp yield
-INCBIN "pic/mon/dugtrio.pic",0,1 ; 77, sprite dimensions
-dw DugtrioPicFront
-dw DugtrioPicBack
+INCBIN "pic/mon/dugtrio-a.pic",0,1 ; 77, sprite dimensions
+dw DugtrioAPicFront
+dw DugtrioAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34
 	tmlearn 44,48
 	tmlearn 50
-db BANK(DugtrioPicFront)
+db BANK(DugtrioAPicFront)

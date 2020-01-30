@@ -9,9 +9,9 @@ db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 3 ; catch rate
 db 220 ; base exp yield
-INCBIN "pic/mon/mewtwo.pic",0,1 ; 77, sprite dimensions
-dw MewtwoPicFront
-dw MewtwoPicBack
+INCBIN "pic/mon/mewtwo-armor.pic",0,1 ; 77, sprite dimensions
+dw MewtwoArmorPicFront
+dw MewtwoArmorPicBack
 
 ; unused bytes
 db 0
@@ -28,4 +28,4 @@ db 5 ; growth rate
 	tmlearn 33,34,35,36,38,40
 	tmlearn 44,45,46
 	tmlearn 49,50,54,55
-db BANK(MewtwoPicFront)
+db BANK(MewtwoArmorPicFront)

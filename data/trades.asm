@@ -10,3 +10,4 @@ TradeMons:
 	db RAICHU,    ELECTRODE,1,"DORIS@@@@@@"
 	db VENONAT,   TANGELA,  2,"CRINKLES@@@"
 	db NIDORAN_M, NIDORAN_F,2,"SPOT@@@@@@@"
+; Regional Variants

@@ -8,9 +8,9 @@ db ROCK ; species type 1
 db ELECTRIC ; species type 2
 db 120 ; catch rate
 db 134 ; base exp yield
-INCBIN "pic/mon/graveler.pic",0,1 ; 66, sprite dimensions
-dw GravelerPicFront
-dw GravelerPicBack
+INCBIN "pic/mon/graveler-a.pic",0,1 ; 66, sprite dimensions
+dw GravelerAPicFront
+dw GravelerAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 3 ; growth rate
 	tmlearn 34,35,36,38
 	tmlearn 44,47,48
 	tmlearn 50,54
-db BANK(GravelerPicFront)
+db BANK(GravelerAPicFront)

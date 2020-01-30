@@ -29,7 +29,7 @@ MonsterPalettes:
 	db PAL_RAICHU
 	db PAL_SANDSHREW
 	db PAL_SANDSLASH
-	db PAL_NIDORAN_F
+	db PAL_NIDORAN_F ; 30
 	db PAL_NIDORINA
 	db PAL_NIDOQUEEN
 	db PAL_NIDORAN_M
@@ -39,7 +39,7 @@ MonsterPalettes:
 	db PAL_CLEFAIRY
 	db PAL_CLEFABLE
 	db PAL_VULPIX
-	db PAL_NINETALES
+	db PAL_NINETALES ; 40
 	db PAL_IGGLYBUFF
 	db PAL_JIGGLYPUFF
 	db PAL_WIGGLYTUFF
@@ -49,7 +49,7 @@ MonsterPalettes:
 	db PAL_ODDISH
 	db PAL_GLOOM
 	db PAL_VILEPLUME
-	db PAL_BELLOSSOM
+	db PAL_BELLOSSOM ; 50
 	db PAL_PARAS
 	db PAL_PARASECT
 	db PAL_VENONAT
@@ -58,8 +58,8 @@ MonsterPalettes:
 	db PAL_DUGTRIO
 	db PAL_MEOWTH
 	db PAL_PERSIAN
-	db PAL_PERRSERKER
-	db PAL_PSYDUCK
+	db PAL_PERRSERKER ; NEW MON
+	db PAL_PSYDUCK ; 60
 	db PAL_GOLDUCK
 	db PAL_MANKEY
 	db PAL_PRIMEAPE
@@ -69,7 +69,7 @@ MonsterPalettes:
 	db PAL_POLIWHIRL
 	db PAL_POLIWRATH
 	db PAL_POLITOED
-	db PAL_ABRA
+	db PAL_ABRA ; 70
 	db PAL_KADABRA
 	db PAL_ALAKAZAM
 	db PAL_MACHOP
@@ -79,7 +79,7 @@ MonsterPalettes:
 	db PAL_WEEPINBELL
 	db PAL_VICTREEBEL
 	db PAL_TENTACOOL
-	db PAL_TENTACRUEL
+	db PAL_TENTACRUEL ; 80
 	db PAL_GEODUDE
 	db PAL_GRAVELER
 	db PAL_GOLEM
@@ -89,17 +89,17 @@ MonsterPalettes:
 	db PAL_SLOWBRO
 	db PAL_SLOWKING
 	db PAL_MAGNEMITE
-	db PAL_MAGNETON
+	db PAL_MAGNETON ; 90
 	db PAL_MAGNEZONE
 	db PAL_FARFETCH_D
-	db PAL_SIRFETCH_D
+	db PAL_SIRFETCH_D  ; NEW MON
 	db PAL_DODUO
 	db PAL_DODRIO
 	db PAL_SEEL
 	db PAL_DEWGONG
 	db PAL_GRIMER
 	db PAL_MUK
-	db PAL_SHELLDER
+	db PAL_SHELLDER  ; 100
 	db PAL_CLOYSTER
 	db PAL_GASTLY
 	db PAL_HAUNTER
@@ -109,7 +109,7 @@ MonsterPalettes:
 	db PAL_DROWZEE
 	db PAL_HYPNO
 	db PAL_KRABBY
-	db PAL_KINGLER
+	db PAL_KINGLER ; 110
 	db PAL_VOLTORB
 	db PAL_ELECTRODE
 	db PAL_EXEGGCUTE
@@ -119,7 +119,7 @@ MonsterPalettes:
 	db PAL_TYROGUE
 	db PAL_HITMONLEE
 	db PAL_HITMONCHAN
-	db PAL_HITMONTOP
+	db PAL_HITMONTOP  ; 120
 	db PAL_LICKITUNG
 	db PAL_LICKILICKY
 	db PAL_KOFFING
@@ -129,27 +129,27 @@ MonsterPalettes:
 	db PAL_RHYPERIOR
 	db PAL_HAPPINY
 	db PAL_CHANSEY
-	db PAL_BLISSEY
+	db PAL_BLISSEY ; 130
 	db PAL_TANGELA
 	db PAL_TANGROWTH
-	db PAL_KANGASKID
+	db PAL_KANGASKID  ; NEW MON
 	db PAL_KANGASKHAN
 	db PAL_HORSEA
 	db PAL_SEADRA
 	db PAL_KINGDRA
 	db PAL_GOLDEEN
 	db PAL_SEAKING
-	db PAL_STARYU
+	db PAL_STARYU  ; 140
 	db PAL_STARMIE
 	db PAL_MIME_JR
 	db PAL_MR_MIME
-	db PAL_MR_RIME
+	db PAL_MR_RIME ; NEW MON
 	db PAL_SCYTHER
 	db PAL_SCIZOR
 	db PAL_SMOOCHUM
 	db PAL_JYNX
 	db PAL_ELEKID
-	db PAL_ELECTABUZZ
+	db PAL_ELECTABUZZ ; 150
 	db PAL_ELECTIVIRE
 	db PAL_MAGBY
 	db PAL_MAGMAR
@@ -159,7 +159,7 @@ MonsterPalettes:
 	db PAL_MILTANK
 	db PAL_MAGIKARP
 	db PAL_GYARADOS
-	db PAL_LAPRAS
+	db PAL_LAPRAS ; 160
 	db PAL_DITTO
 	db PAL_EEVEE
 	db PAL_VAPOREON
@@ -169,7 +169,7 @@ MonsterPalettes:
 	db PAL_UMBREON
 	db PAL_LEAFEON
 	db PAL_GLACEON
-	db PAL_SYLVEON
+	db PAL_SYLVEON ; 170
 	db PAL_PORYGON
 	db PAL_PORYGON2
 	db PAL_PORYGONZ
@@ -179,7 +179,7 @@ MonsterPalettes:
 	db PAL_KABUTOPS
 	db PAL_AERODACTYL
 	db PAL_MUNCHLAX
-	db PAL_SNORLAX
+	db PAL_SNORLAX ; 180
 	db PAL_ARTICUNO
 	db PAL_ZAPDOS
 	db PAL_MOLTRES
@@ -189,8 +189,7 @@ MonsterPalettes:
 	db PAL_MEWTWO
 	db PAL_MEW
 	db PAL_MELTAN
-	db PAL_MELMETAL
-
+	db PAL_MELMETAL ; 190
 	db PAL_PIKACHU ;
 	db PAL_EEVEE   ;
 	db PAL_GREYMON ; Alolan Rattata
@@ -200,7 +199,7 @@ MonsterPalettes:
 	db PAL_DEWGONG ; Alolan Sandslash
 	db PAL_SEEL    ; Alolan Vulpix
 	db PAL_SEEL    ; Alolan Ninetales
-	db PAL_DIGLETT ; Alolan Diglett
+	db PAL_DIGLETT ; Alolan Diglett ; 200
 	db PAL_DUGTRIO ; Alolan Dugtrio
 	db PAL_GREYMON ; Alolan Meowth
 	db PAL_GREYMON ; Galarian Meowth
@@ -210,7 +209,7 @@ MonsterPalettes:
 	db PAL_ONIX ; Alolan Golem
 	db PAL_PURPLEMON ; Galarian Ponyta
 	db PAL_PURPLEMON ; Galarian Rapidash
-	db PAL_SLOWPOKE
+	db PAL_SLOWPOKE ; 210
 	db PAL_SLOWBRO
 	db PAL_SLOWKING
 	db PAL_HITMONLEE ; Galarian Farfetchd
@@ -220,10 +219,10 @@ MonsterPalettes:
 	db PAL_HAUNTER    ; Alolan Marowak
 	db PAL_GREENMON ; Galarian Weezing
 	db PAL_DEWGONG ; Galarian Mr. Mime
-	db PAL_ARTICUNO
+	db PAL_ARTICUNO ; 220
 	db PAL_ZAPDOS
 	db PAL_MOLTRES
-	db PAL_MEWTWO
+	db PAL_MEWTWO ; 223
 
 TrainerPalettes: ; Gen II trainer sprites are given their own palettes
 	db PAL_HERO
@@ -232,7 +231,7 @@ TrainerPalettes: ; Gen II trainer sprites are given their own palettes
 	db PAL_LASS
 	db PAL_SAILOR
 	db PAL_JR_TRAINER_M
-	db PAL_JR_TRAINER_F
+.	db PAL_JR_TRAINER_F
 	db PAL_POKEMANIAC
 	db PAL_SUPERNERD
 	db PAL_HIKER

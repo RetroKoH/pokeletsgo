@@ -8,9 +8,9 @@ db GROUND ; species type 1
 db STEEL ; species type 2
 db 255 ; catch rate
 db 81 ; base exp yield
-INCBIN "pic/mon/diglett.pic",0,1 ; 55, sprite dimensions
-dw DiglettPicFront
-dw DiglettPicBack
+INCBIN "pic/mon/diglett-a.pic",0,1 ; 55, sprite dimensions
+dw DiglettAPicFront
+dw DiglettAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34
 	tmlearn 44,48
 	tmlearn 50
-db BANK(DiglettPicFront)
+db BANK(DiglettAPicFront)

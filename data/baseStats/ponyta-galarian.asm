@@ -8,9 +8,9 @@ db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 190 ; catch rate
 db 152 ; base exp yield
-INCBIN "pic/mon/ponyta.pic",0,1 ; 66, sprite dimensions
-dw PonytaPicFront
-dw PonytaPicBack
+INCBIN "pic/mon/ponyta-g.pic",0,1 ; 66, sprite dimensions
+dw PonytaGPicFront
+dw PonytaGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,38,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(PonytaPicFront)
+db BANK(PonytaGPicFront)

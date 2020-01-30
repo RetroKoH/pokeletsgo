@@ -39,6 +39,8 @@ EnemyHUDHAX:
 	push hl
 	ld a, [wEnemyMonSpecies2]
 	ld [wd11e], a
+	callab IndexToPokedex
+	ld a, [wd11e]
 	dec a
 	ld c, a
 	ld b, $2

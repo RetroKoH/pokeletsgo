@@ -116,7 +116,7 @@ CryData:
 	db $0D, $00, $80; Exeggutor
 	db $19, $00, $80; Cubone
 	db $08, $4F, $60; Marowak
-        db $12, $80, $C0; Tyrogue
+	db $12, $80, $C0; Tyrogue
 	db $12, $80, $C0; Hitmonlee
 	db $0C, $EE, $C0; Hitmonchan
 	db $0C, $EE, $C0; Hitmonchan
@@ -132,6 +132,7 @@ CryData:
 	db $14, $0A, $C0; Blissey
 	db $12, $00, $80; Tangela
 	db $12, $00, $80; Tangrowth
+	db $03, $00, $80; Kangaskid
 	db $03, $00, $80; Kangaskhan
 	db $19, $99, $10; Horsea
 	db $19, $3C, $01; Seadra
@@ -142,9 +143,10 @@ CryData:
 	db $1E, $00, $80; Starmie
 	db $20, $08, $40; Mime Jr.
 	db $20, $08, $40; Mr.Mime
+	db $20, $08, $40; Mr.Rime
 	db $16, $00, $80; Scyther
 	db $16, $00, $80; Scizor
-        db $0D, $FF, $FF; Smoochum
+	db $0D, $FF, $FF; Smoochum
 	db $0D, $FF, $FF; Jynx
 	db $06, $8F, $FF; Elekid
 	db $06, $8F, $FF; Electabuzz
@@ -188,3 +190,36 @@ CryData:
 	db $1E, $EE, $FF; Mew
 	db $1E, $99, $FF; Meltan
 	db $1E, $99, $FF; Melmetal
+	db $0F, $EE, $01; Pikachu ; REPLACE
+	db $1A, $88, $60; Eevee ; REPLACE
+	db $22, $00, $80; Rattata
+	db $22, $20, $FF; Raticate
+	db $09, $EE, $08; Raichu
+	db $00, $20, $40; Sandshrew
+	db $00, $FF, $FF; Sandslash
+	db $24, $4F, $10; Vulpix
+	db $24, $88, $60; Ninetales
+	db $0B, $AA, $01; Diglett
+	db $0B, $2A, $10; Dugtrio
+	db $19, $77, $10; Meowth
+	db $19, $77, $10; Meowth
+	db $19, $99, $FF; Persian
+	db $24, $F0, $10; Geodude
+	db $24, $00, $80; Graveler
+	db $12, $E0, $40; Golem
+	db $25, $00, $80; Ponyta
+	db $25, $20, $C0; Rapidash
+	db $02, $00, $80; Slowpoke
+	db $1F, $00, $80; Slowbro
+	db $1F, $00, $80; Slowking
+	db $10, $DD, $01; Farfetch'd
+	db $05, $00, $80; Grimer
+	db $07, $EF, $FF; Muk
+	db $0D, $00, $80; Exeggutor
+	db $08, $4F, $60; Marowak
+	db $12, $FF, $FF; Weezing
+	db $20, $08, $40; Mr.Mime
+	db $09, $80, $40; Articuno
+	db $18, $FF, $80; Zapdos
+	db $09, $F8, $40; Moltres
+	db $1E, $99, $FF; Mewtwo

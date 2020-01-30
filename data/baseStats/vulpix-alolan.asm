@@ -8,9 +8,9 @@ db ICE ; species type 1
 db ICE ; species type 2
 db 190 ; catch rate
 db 63 ; base exp yield
-INCBIN "pic/mon/vulpix.pic",0,1 ; 66, sprite dimensions
-dw VulpixPicFront
-dw VulpixPicBack
+INCBIN "pic/mon/vulpix-a.pic",0,1 ; 66, sprite dimensions
+dw VulpixAPicFront
+dw VulpixAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,38,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(VulpixPicFront)
+db BANK(VulpixAPicFront)

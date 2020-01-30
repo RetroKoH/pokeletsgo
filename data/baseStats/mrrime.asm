@@ -8,9 +8,9 @@ db ICE ; species type 1
 db PSYCHIC ; species type 2
 db 45 ; catch rate
 db 182 ; base exp yield
-INCBIN "pic/mon/mr.mime.pic",0,1 ; 66, sprite dimensions
-dw MrMimePicFront
-dw MrMimePicBack
+INCBIN "pic/mon/mrrime.pic",0,1 ; 66, sprite dimensions
+dw MrRimePicFront
+dw MrRimePicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,35,40
 	tmlearn 44,45,46
 	tmlearn 50,55
-db BANK(MrMimePicFront)
+db BANK(MrRimePicFront)

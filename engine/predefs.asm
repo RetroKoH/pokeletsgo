@@ -110,6 +110,7 @@ PredefPointers::
 	add_predef StatusScreen2
 	add_predef InternalClockTradeAnim
 	add_predef TrainerEngage
+	add_predef IndexToPokedex
 	add_predef DisplayPicCenteredOrUpperRight
 	add_predef UsedCut
 	add_predef ShowPokedexData

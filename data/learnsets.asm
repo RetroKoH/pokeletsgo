@@ -131,7 +131,7 @@ LearnsetsPointerTable:
 	dw BlisseyLearnset
 	dw TangelaLearnset
 	dw TangrowthLearnset
-	dw NoLearnset ; Kangaskid
+	dw KangaskidLearnset ; Kangaskid
 	dw KangaskhanLearnset
 	dw HorseaLearnset
 	dw SeadraLearnset
@@ -142,6 +142,7 @@ LearnsetsPointerTable:
 	dw StarmieLearnset
 	dw MimeJrLearnset
 	dw MrMimeLearnset
+	dw MrMimeLearnset ; MR RIME
 	dw ScytherLearnset
 	dw ScizorLearnset
 	dw SmoochumLearnset
@@ -233,7 +234,6 @@ BulbasaurLearnset:
 	db 23, RAZOR_LEAF
 	db 27, GROWTH
 	db 32, DOUBLE_EDGE
-NoLearnset:
 	db 0
 
 IvysaurLearnset:
@@ -1990,6 +1990,10 @@ TangrowthLearnset:
 	db 44, SLAM
 	db 49, AMNESIA
 	db 54, POWER_WHIP
+	db 0
+
+KangaskidLearnset:
+	db 01, STRUGGLE
 	db 0
 
 KangaskhanLearnset:

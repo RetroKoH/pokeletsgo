@@ -8,7 +8,7 @@ db DARK ; species type 1
 db NORMAL ; species type 2
 db 90 ; catch rate
 db 116 ; base exp yield
-INCBIN "pic/mon/raticate-alolan.pic",0,1 ; 66, sprite dimensions
+INCBIN "pic/mon/raticate-a.pic",0,1 ; 66, sprite dimensions
 dw RaticateAPicFront
 dw RaticateAPicBack
 

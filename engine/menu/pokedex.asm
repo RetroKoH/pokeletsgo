@@ -364,7 +364,7 @@ PokedexOwnText:
 	db "OWN@"
 
 PokedexContentsText:
-	db "CONTENTS@"
+	db "KANTO #DEX@";"CONTENTS@"
 
 PokedexMenuItemsText:
 	db   "DATA"
@@ -621,3 +621,59 @@ DrawTileLine:
 	ret
 
 INCLUDE "data/pokedex_entries.asm"
+
+
+IndexToPokedex: ; converts the indexédex number at wd11e to a Pokédex number
+	ld a, [wd11e]
+	cp PIKACHU_S
+	jr c, .end	
+
+	push bc
+	push hl
+	dec a
+	sub NUM_POKEMON
+	ld hl, PokedexIndex
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	ld [wd11e], a
+	pop hl
+	pop bc
+.end
+	ret
+
+PokedexIndex: ; Dex number for variations
+	db PIKACHU		; STARTER
+	db EEVEE		; STARTER
+	db RATTATA		; ALOLAN
+	db RATICATE		; ALOLAN
+	db RAICHU		; ALOLAN
+	db SANDSHREW	; ALOLAN
+	db SANDSLASH	; ALOLAN
+	db VULPIX		; ALOLAN
+	db NINETALES	; ALOLAN
+	db DIGLETT		; ALOLAN
+	db DUGTRIO		; ALOLAN
+	db MEOWTH		; ALOLAN
+	db MEOWTH		; GALARIAN
+	db PERSIAN		; ALOLAN
+	db GEODUDE		; ALOLAN
+	db GRAVELER		; ALOLAN
+	db GOLEM		; ALOLAN
+	db PONYTA		; GALARIAN
+	db RAPIDASH		; GALARIAN
+	db SLOWPOKE		; GALARIAN
+	db SLOWBRO		; GALARIAN
+	db SLOWKING		; GALARIAN
+	db FARFETCHD	; GALARIAN
+	db GRIMER		; ALOLAN
+	db MUK			; ALOLAN
+	db EXEGGUTOR	; ALOLAN
+	db MAROWAK		; ALOLAN
+	db WEEZING		; GALARIAN
+	db MR_MIME		; GALARIAN
+	db ARTICUNO		; GALARIAN
+	db ZAPDOS		; GALARIAN
+	db MOLTRES		; GALARIAN
+	db MEWTWO		; ARMORED

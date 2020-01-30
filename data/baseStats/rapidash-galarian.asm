@@ -8,9 +8,9 @@ db PSYCHIC ; species type 1
 db FAIRY ; species type 2
 db 60 ; catch rate
 db 192 ; base exp yield
-INCBIN "pic/mon/rapidash.pic",0,1 ; 77, sprite dimensions
-dw RapidashPicFront
-dw RapidashPicBack
+INCBIN "pic/mon/rapidash-g.pic",0,1 ; 77, sprite dimensions
+dw RapidashGPicFront
+dw RapidashGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,38,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(RapidashPicFront)
+db BANK(RapidashGPicFront)

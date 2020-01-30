@@ -334,7 +334,7 @@ LoadFrontSpriteByMonIndex::
 	ld a, [wcf91]
 	and a
 	jr z, .invalidDexNumber ; dex #0 invalid
-	cp NUM_POKEMON + 1
+	cp MEWTWO_A + 1;NUM_POKEMON + 1
 	jr c, .validDexNumber   ; dex >#151 invalid
 .invalidDexNumber
 	ld a, DITTO ; Placeholder akin to Pokemon Go
@@ -628,8 +628,7 @@ GetMonHeader::
 	ld b, $77 ; size of Aerodactyl fossil sprite
 	cp FOSSIL_AERODACTYL ; Aerodactyl fossil
 	jr z, .specialID
-	cp MEW
-	jr z, .mew
+;	predef IndexToPokedex ; for variant mons (dont use here)
 	ld a, [wd11e]
 	dec a
 	ld bc, MonBaseStatsEnd - MonBaseStats
@@ -646,13 +645,6 @@ GetMonHeader::
 	ld [hl], e ; write front sprite pointer
 	inc hl
 	ld [hl], d
-	jr .done
-.mew
-	ld hl, MewBaseStats
-	ld de, wMonHeader
-	ld bc, MonBaseStatsEnd - MonBaseStats
-	ld a, BANK(MewBaseStats)
-	call FarCopyData
 .done
 	ld a, [wd0b5]
 	ld [wMonHIndex], a

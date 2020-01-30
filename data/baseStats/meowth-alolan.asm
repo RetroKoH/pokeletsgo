@@ -8,9 +8,9 @@ db DARK ; species type 1
 db DARK ; species type 2
 db 255 ; catch rate
 db 69 ; base exp yield
-INCBIN "pic/mon/meowth.pic",0,1 ; 55, sprite dimensions
-dw MeowthPicFront
-dw MeowthPicBack
+INCBIN "pic/mon/meowth-a.pic",0,1 ; 55, sprite dimensions
+dw MeowthAPicFront
+dw MeowthAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,39,40
 	tmlearn 44
 	tmlearn 50
-db BANK(MeowthPicFront)
+db BANK(MeowthAPicFront)

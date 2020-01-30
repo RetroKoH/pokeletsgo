@@ -8,9 +8,9 @@ db FIGHTING ; species type 1
 db FIGHTING ; species type 2
 db 45 ; catch rate
 db 94 ; base exp yield
-INCBIN "pic/mon/farfetchd.pic",0,1 ; 66, sprite dimensions
-dw FarfetchdPicFront
-dw FarfetchdPicBack
+INCBIN "pic/mon/farfetchd-g.pic",0,1 ; 66, sprite dimensions
+dw FarfetchdGPicFront
+dw FarfetchdGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,39,40
 	tmlearn 44
 	tmlearn 50,51,52
-db BANK(FarfetchdPicFront)
+db BANK(FarfetchdGPicFront)

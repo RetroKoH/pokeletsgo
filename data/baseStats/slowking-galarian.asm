@@ -8,9 +8,9 @@ db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 75 ; catch rate
 db 164 ; base exp yield
-INCBIN "pic/mon/slowking.pic",0,1 ; 77, sprite dimensions
-dw SlowkingPicFront
-dw SlowkingPicBack
+INCBIN "pic/mon/slowking-g.pic",0,1 ; 77, sprite dimensions
+dw SlowkingGPicFront
+dw SlowkingGPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 33,34,38,39,40
 	tmlearn 44,45,46
 	tmlearn 49,50,53,54,55
-db BANK(SlowkingPicFront)
+db BANK(SlowkingGPicFront)

@@ -8,7 +8,7 @@ db PSYCHIC ; species type 1
 db FAIRY ; species type 2
 db 45 ; catch rate
 db 136 ; base exp yield
-INCBIN "pic/mon/mr.mime.pic",0,1 ; 66, sprite dimensions
+INCBIN "pic/mon/mrmime.pic",0,1 ; 66, sprite dimensions
 dw MrMimePicFront
 dw MrMimePicBack
 

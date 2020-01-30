@@ -8,9 +8,9 @@ db FIRE ; species type 1
 db GHOST ; species type 2
 db 75 ; catch rate
 db 124 ; base exp yield
-INCBIN "pic/mon/marowak.pic",0,1 ; 66, sprite dimensions
-dw MarowakPicFront
-dw MarowakPicBack
+INCBIN "pic/mon/marowak-a.pic",0,1 ; 66, sprite dimensions
+dw MarowakAPicFront
+dw MarowakAPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,38,40
 	tmlearn 44
 	tmlearn 50,54
-db BANK(MarowakPicFront)
+db BANK(MarowakAPicFront)

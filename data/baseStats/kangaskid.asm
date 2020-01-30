@@ -6,11 +6,11 @@ db 45 ; base speed
 db 20 ; base special
 db NORMAL ; species type 1
 db NORMAL ; species type 2
-db 45 ; catch rate
-db 175 ; base exp yield
-INCBIN "pic/mon/kangaskhan.pic",0,1 ; 77, sprite dimensions
-dw KangaskhanPicFront
-dw KangaskhanPicBack
+db 190 ; catch rate
+db 87 ; base exp yield
+INCBIN "pic/mon/kangaskid.pic",0,1 ; 77, sprite dimensions
+dw KangaskidPicFront
+dw KangaskidPicBack
 
 ; unused bytes
 db 0
@@ -27,4 +27,4 @@ db 0 ; growth rate
 	tmlearn 34,38,40
 	tmlearn 44,48
 	tmlearn 50,53,54
-db BANK(KangaskhanPicFront)
+db BANK(KangaskidPicFront)

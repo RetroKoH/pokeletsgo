@@ -190,6 +190,8 @@ INCLUDE "data/baseStats/mewtwo.asm"
 INCLUDE "data/baseStats/mew.asm"
 INCLUDE "data/baseStats/meltan.asm"
 INCLUDE "data/baseStats/melmetal.asm"
+INCLUDE "data/baseStats/starterpikachu.asm"
+INCLUDE "data/baseStats/startereevee.asm"
 
 INCLUDE "data/baseStats/rattata-alolan.asm"
 INCLUDE "data/baseStats/raticate-alolan.asm"
