@@ -191,7 +191,7 @@ const_value = 1
 	const SHADOW_BALL  ; ad
 	const FAKE_OUT     ; ae
 	const HEAT_WAVE    ; af
-	;const WILL_O_WISP   ; b0
+	const WILL_O_WISP  ; b0
 	const FACADE       ; b1
 	const SUPERPOWER   ; b2
 	const BRICK_BREAK  ; b3
@@ -207,20 +207,23 @@ const_value = 1
 	const X_SCISSOR    ; bd
 	const BUG_BUZZ     ; be
 	const DRAGON_PULSE ; bf
-	const ICE_SHARD    ; c0
-	const FLASH_CANNON ; c1
-	const POWER_WHIP   ; c2
-	const STEALTH_ROCK ; c3
-	const AQUA_JET     ; c4
-	const FOUL_PLAY    ; c5
-	const CLEAR_SMOG   ; c6
-	const SCALD        ; c7
-	const DRAGON_TAIL  ; c8
-	const DRILL_RUN    ; c9
-	const PLAY_ROUGH   ; ca
-	const MOONBLAST    ; cb
-	const DAZZLEGLEAM  ; cc
-	const IRON_BASH    ; cd
+	const NASTY_PLOT   ; c0
+	const ICE_SHARD    ; c1
+	const FLASH_CANNON ; c2
+	const POWER_WHIP   ; c3
+	const STEALTH_ROCK ; c4
+	const AQUA_JET     ; c5
+	const QUIVER_DANCE ; c6
+	const FOUL_PLAY    ; c7
+	const CLEAR_SMOG   ; c8
+	const SCALD        ; c9
+	const SHELL_SMASH  ; ca
+	const DRAGON_TAIL  ; cb
+	const DRILL_RUN    ; cc
+	const PLAY_ROUGH   ; cd
+	const MOONBLAST    ; ce
+	const DAZZLEGLEAM  ; cf
+	const IRON_BASH    ; d0
 
 NUM_ATTACKS EQU const_value
 const_value = STRUGGLE + 1

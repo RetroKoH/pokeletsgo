@@ -14,6 +14,7 @@ ResidualEffects1:
 	db LIGHT_SCREEN_EFFECT
 	db REFLECT_EFFECT
 	db POISON_EFFECT
+	db BURN_EFFECT ; WILL O WISP
 	db PARALYZE_EFFECT
 	db SUBSTITUTE_EFFECT
 	db MIMIC_EFFECT
@@ -7454,7 +7455,7 @@ MoveEffectPointerTable:
 	 dw SleepEffect               ; SLEEP_EFFECT
 	 dw PoisonEffect              ; POISON_SIDE_EFFECT2
 	 dw FreezeBurnParalyzeEffect  ; BURN_SIDE_EFFECT2
-	 dw FreezeBurnParalyzeEffect  ; unused effect
+	 dw FreezeBurnParalyzeEffect  ; BURN_EFFECT
 	 dw FreezeBurnParalyzeEffect  ; PARALYZE_SIDE_EFFECT2
 	 dw FlinchSideEffect           ; FLINCH_SIDE_EFFECT2
 	 dw OneHitKOEffect            ; OHKO_EFFECT
@@ -7734,6 +7735,8 @@ FreezeBurnParalyzeEffect:
 	ld a, b ; what type of effect is this?
 	cp BURN_SIDE_EFFECT1
 	jr z, .burn
+	cp BURN_EFFECT ; WILL O WISP
+	jr z, .burn
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze
 ; .paralyze
@@ -7785,6 +7788,8 @@ opponentAttacker:
 	ret nc
 	ld a, b
 	cp BURN_SIDE_EFFECT1
+	jr z, .burn
+	cp BURN_EFFECT ; WILL O WISP
 	jr z, .burn
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze

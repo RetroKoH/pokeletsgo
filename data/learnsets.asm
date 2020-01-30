@@ -373,7 +373,7 @@ ButterfreeLearnset:
 	db 13, SLEEP_POWDER
 	db 16, PSYBEAM
 	db 19, SUPERSONIC
-	;db 22, QUIVER_DANCE
+	db 22, QUIVER_DANCE
 	db 25, WHIRLWIND
 	db 28, AIR_SLASH
 	db 31, BUG_BUZZ
@@ -443,6 +443,7 @@ PidgeotLearnset:
 
 RattataLearnset:
 	db 01, TACKLE
+	db 02, WILL_O_WISP
 	db 03, TAIL_WHIP
 	db 06, QUICK_ATTACK
 	db 09, FOCUS_ENERGY
@@ -532,14 +533,14 @@ PichuLearnset:
 	db 03, TAIL_WHIP
 	db 06, QUICK_ATTACK
 	;db 09, SWEET_KISS
-	;db 12, NASTY_PLOT
+	db 12, NASTY_PLOT
 	db 15, THUNDER_WAVE
 	db 0
 
 PikachuLearnset:
 	db 01, THUNDERSHOCK
 	db 01, GROWL
-	db 03, STEALTH_ROCK;TAIL_WHIP
+	db 03, TAIL_WHIP
 	db 06, QUICK_ATTACK
 	db 09, DOUBLE_KICK
 	db 12, DOUBLE_TEAM
@@ -554,6 +555,8 @@ PikachuLearnset:
 RaichuLearnset:
 	db $FF, THUNDERPUNCH
 	db 01, THUNDERPUNCH
+	;db 01, ENCORE
+	db 01, FAKE_OUT
 	db 01, THUNDERSHOCK
 	db 01, GROWL
 	db 01, TAIL_WHIP
@@ -707,7 +710,7 @@ VulpixLearnset:
 	db 07, EMBER
 	db 10, QUICK_ATTACK
 	db 14, CONFUSE_RAY
-	;db 17, WILL_O_WISP
+	db 17, WILL_O_WISP
 	db 21, FIRE_SPIN
 	db 24, FLAMETHROWER
 	db 28, ROAR
@@ -716,7 +719,7 @@ VulpixLearnset:
 
 NinetalesLearnset:
 	db 01, HYPNOSIS
-	;db 01, NASTY_PLOT
+	db 01, NASTY_PLOT
 	db 01, TACKLE
 	db 01, TAIL_WHIP
 	db 01, EMBER
@@ -900,7 +903,7 @@ VenomothLearnset:
 	db 28, LEECH_LIFE
 	db 37, PSYCHIC_M
 	db 46, BUG_BUZZ
-	;db 55, QUIVER_DANCE
+	db 55, QUIVER_DANCE
 	db 0
 
 DiglettLearnset:
@@ -942,7 +945,7 @@ MeowthLearnset:
 	db 19, FURY_SWIPES
 	db 23, SCREECH
 	db 27, SLASH
-	;db 31, NASTY_PLOT
+	db 31, NASTY_PLOT
 	db 35, PLAY_ROUGH
 	db 0
 
@@ -960,7 +963,7 @@ PersianLearnset:
 	db 19, FURY_SWIPES
 	db 23, SCREECH
 	db 27, SLASH
-	;db 37, NASTY_PLOT
+	db 37, NASTY_PLOT
 	db 47, PLAY_ROUGH
 	db 0
 
@@ -1537,7 +1540,7 @@ ShellderLearnset:
 	db 27, AURORA_BEAM
 	db 31,PROTECT
 	db 36, ICE_BEAM
-	;db 40, SHELL_SMASH
+	db 40, SHELL_SMASH
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -1559,7 +1562,7 @@ GastlyLearnset:
 	db 05, CONFUSE_RAY
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
-	;db 14, WILL_O_WISP
+	db 14, WILL_O_WISP
 	db 19, SUCKERPUNCH
 	db 21, TOXIC
 	db 26, SHADOW_BALL
@@ -1574,7 +1577,7 @@ HaunterLearnset:
 	db 05, CONFUSE_RAY
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
-	;db 14, WILL_O_WISP
+	db 14, WILL_O_WISP
 	db 19, SUCKERPUNCH
 	db 21, TOXIC
 	db 30, SHADOW_BALL
@@ -1591,7 +1594,7 @@ GengarLearnset:
 	db 05, CONFUSE_RAY
 	db 07, POISON_GAS
 	db 12, NIGHT_SHADE
-	;db 14, WILL_O_WISP
+	db 14, WILL_O_WISP
 	db 19, SUCKERPUNCH
 	db 21, TOXIC
 	db 30, SHADOW_BALL
@@ -1641,7 +1644,7 @@ DrowzeeLearnset:
 	db 22, PSYBEAM
 	db 24, HEADBUTT
 	db 31, PSYCHIC_M
-	;db 36, NASTY_PLOT
+	db 36, NASTY_PLOT
 	db 40, DREAM_EATER
 	db 0
 
@@ -1656,7 +1659,7 @@ HypnoLearnset:
 	db 22, PSYBEAM
 	db 27, HEADBUTT
 	db 36, PSYCHIC_M
-	;db 46, NASTY_PLOT
+	db 46, NASTY_PLOT
 	db 55, DREAM_EATER
 	db 0
 
@@ -2506,7 +2509,7 @@ Porygon2Learnset:
 	db 0
 
 PorygonZLearnset:
-	;db 01, NASTY_PLOT
+	db 01, NASTY_PLOT
 	db 01, TACKLE
 	db 09, PSYBEAM
 	db 13, AGILITY
@@ -2528,7 +2531,7 @@ OmanyteLearnset:
 	db 33, PROTECT
 	db 37, ROCK_SLIDE
 	db 44, HYDRO_PUMP
-	;db 48, SHELL_SMASH
+	db 48, SHELL_SMASH
 	db 0
 
 OmastarLearnset:
@@ -2545,7 +2548,7 @@ OmastarLearnset:
 	db 33, PROTECT
 	db 37, ROCK_SLIDE
 	db 50, HYDRO_PUMP
-	;db 60, SHELL_SMASH
+	db 60, SHELL_SMASH
 	db 0
 
 KabutoLearnset:
@@ -2724,7 +2727,7 @@ MewLearnset:
 	db 55, MEGA_PUNCH
 	db 66, METRONOME
 	db 77, PSYCHIC_M
-	;db 88, NASTY_PLOT
+	db 88, NASTY_PLOT
 	db 99, TRANSFORM
 	db 0
 
@@ -2756,16 +2759,19 @@ MelmetalLearnset:
 	db 0
 
 RaichuALearnset:
-	db $FF, THUNDERPUNCH
-	db 01, THUNDERPUNCH
+	db $FF, PSYCHIC
+	db 01, PSYCHIC
+	;db 01, ENCORE
+	db 01, FAKE_OUT
 	db 01, THUNDERSHOCK
 	db 01, GROWL
 	db 01, TAIL_WHIP
-	db 01, QUICK_ATTACK
+	db 01, DOUBLE_TEAM
 	db 0
 
 ArmoredMewtwoMoveset: ; move this to a new trainer loading system.
+	db 01, SHELL_SMASH
 	db 01, PSYCHIC_M
-	db 01, IRON_TAIL
-	db 01, ROCK_SLIDE
 	db 01, EARTHQUAKE
+	; 4th move chosen at random
+	db 0

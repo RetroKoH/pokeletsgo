@@ -5,7 +5,7 @@
 const_value = 0
 
 	const NO_ADDITIONAL_EFFECT       ; $00
-	const PROTECT_EFFECT 			; $01
+	const PROTECT_EFFECT 			 ; $01
 	const POISON_SIDE_EFFECT1        ; $02
 	const DRAIN_HP_EFFECT            ; $03
 	const BURN_SIDE_EFFECT1          ; $04
@@ -39,7 +39,7 @@ const_value = 0
 	const SLEEP_EFFECT               ; $20
 	const POISON_SIDE_EFFECT2        ; $21
 	const BURN_SIDE_EFFECT2          ; $22
-	const UNUSED_EFFECT_23           ; $23
+	const BURN_EFFECT           	 ; $23 - WILL_O_WISP
 	const PARALYZE_SIDE_EFFECT2      ; $24
 	const FLINCH_SIDE_EFFECT2        ; $25
 	const OHKO_EFFECT                ; $26 moves like Horn Drill
