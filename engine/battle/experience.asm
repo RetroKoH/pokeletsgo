@@ -88,16 +88,10 @@ GainExperience:
 	cp b
 	ld a, 0
 	jr z, .next
+
 .tradedMon
-
-
-
-
-
 	call BoostExp ; traded mon exp boost
 	ld a, 1
-
-
 
 .next
 	ld [wGainBoostedExp], a

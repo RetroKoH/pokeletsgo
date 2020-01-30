@@ -528,7 +528,8 @@ TangelaEvolutions:
 	db 0
 
 KangaskidEvolutions:
-	db EV_LEVEL, 15, KANGASKHAN
+	db EV_LEVEL, 10, KANGASKHAN
+	db 0
 
 HorseaEvolutions:
 	db EV_LEVEL, 32, SEADRA

@@ -2,10 +2,10 @@ TEST EQU CATERPIE
 
 Route1Mons:
 	db $19
-	db 6,TEST		; 20%
-	db 6,TEST		; 20%
-	db 6,TEST		; 10%
-	db 6,TEST		; 10%
+	db 3,PIDGEY		; 20%
+	db 4,PIDGEY		; 20%
+	db 2,RATTATA	; 10%
+	db 3,RATTATA	; 10%
 	db 2,PIDGEY		; 10%
 	db 4,RATTATA	; 10%
 	db 5,PIDGEY		; 5%

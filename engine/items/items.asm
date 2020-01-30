@@ -514,9 +514,9 @@ PokeBallEffect:
 	ld a, [wcf91]
 	push af
 	ld a, [wEnemyMonSpecies2]
-	ld [wcf91], a
+	ld [wcf91], a 				; mon being captured
 	ld a, [wEnemyMonLevel]
-	ld [wCurEnemyLVL], a
+	ld [wCurEnemyLVL], a 		; mon's level
 	callab LoadEnemyMonData
 	pop af
 	ld [wcf91], a
@@ -529,10 +529,13 @@ PokeBallEffect:
 	pop af
 	ld [hl], a
 	ld a, [wEnemyMonSpecies]
-	ld [wCapturedMonSpecies], a
-	ld [wcf91], a
+	ld [wCapturedMonSpecies], a ; wCapturedMonSpecies is the captured mon
+	ld [wcf91], a				; two fields filled in with the captured species
 	ld [wd11e], a
 	ld a, [wBattleType]
+
+; We are going to change this. If the player hasn't caught one yet, the old man will
+; give him a Rattata
 	dec a ; is this the old man battle?
 	jr z, .oldManCaughtMon ; if so, don't give the player the caught Pokémon
 
@@ -544,6 +547,11 @@ PokeBallEffect:
 	callba GiveEXPToMonsThatNeedIt
 	pop af
 	ld [wWhichPokemon], a
+; Repeating these lines reloads the captured mon species,
+; fixing the bug where caught mon changed to a Pokemon that leveled up
+	ld a, [wEnemyMonSpecies]
+	ld [wcf91], a				; two fields filled in with the captured species
+	ld [wd11e], a
 	;resume old routine
 
 ; Add the caught Pokémon to the Pokédex.
