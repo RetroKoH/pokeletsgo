@@ -3,26 +3,29 @@ db 45 ; base hp
 db 75 ; base attack
 db 37 ; base defense
 db 83 ; base speed
-db 55 ; base special
+db 70 ; base special attack
+;db 55 ; base special defense
 db FIRE ; species type 1
 db FIRE ; species type 2
 db 45 ; catch rate
-db 167 ; base exp yield
+db 73 ; base exp yield
 INCBIN "pic/mon/magby.pic",0,1 ; 66, sprite dimensions
 dw MagbyPicFront
 dw MagbyPicBack
-; attacks known at lvl 0
-db EMBER
-db 0
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db BARRIER,FOCUS_ENERGY,IRON_TAIL,MEGA_PUNCH
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20
-	tmlearn 29,30,31,32
-	tmlearn 34,35,38,40
-	tmlearn 44,46
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,					TM_HELPING_HAND,				TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 								TM_WILL_O_WISP,	TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS
+	tmlearn 								TM_IRON_TAIL,													TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC,														TM_FIRE_PUNCH
+	tmlearn 																TM_FLAMETHROWER,								TM_PSYCHIC
+	tmlearn 																				TM_FIRE_BLAST
+	tmlearn 0
+;	tmlearn 0
+
 db BANK(MagbyPicFront)

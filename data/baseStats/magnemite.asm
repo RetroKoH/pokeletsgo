@@ -3,26 +3,29 @@ db 25 ; base hp
 db 35 ; base attack
 db 70 ; base defense
 db 45 ; base speed
-db 95 ; base special
+db 95 ; base special attack
+;db 55 ; base special defense
 db ELECTRIC ; species type 1
 db STEEL ; species type 2
 db 190 ; catch rate
-db 89 ; base exp yield
+db 65 ; base exp yield
 INCBIN "pic/mon/magnemite.pic",0,1 ; 55, sprite dimensions
 dw MagnemitePicFront
 dw MagnemitePicBack
-; attacks known at lvl 0
-db TACKLE
-db 0
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 6
-	tmlearn 9,10
-	tmlearn 20,24
-	tmlearn 25,30,31,32
-	tmlearn 33,34,39
-	tmlearn 44,45
-	tmlearn 50,55
+	tmlearn TM_HEADBUTT,									TM_TELEPORT,	TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,										TM_FACADE,														TM_THUNDER_WAVE
+	tmlearn 0
+	tmlearn 								TM_TOXIC
+	tmlearn 												TM_THUNDERBOLT,					TM_THUNDER
+	tmlearn 0
+	tmlearn 																				TM_FLASH_CANNON
+;	tmlearn 0
+
 db BANK(MagnemitePicFront)

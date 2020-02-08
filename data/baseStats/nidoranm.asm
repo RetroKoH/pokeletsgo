@@ -3,26 +3,29 @@ db 46 ; base hp
 db 57 ; base attack
 db 40 ; base defense
 db 50 ; base speed
-db 40 ; base special
+db 40 ; base special attack
+;db 40 ; base special defense
 db POISON ; species type 1
 db POISON ; species type 2
 db 235 ; catch rate
-db 60 ; base exp yield
+db 55 ; base exp yield
 INCBIN "pic/mon/nidoranm.pic",0,1 ; 55, sprite dimensions
 dw NidoranMPicFront
 dw NidoranMPicBack
-; attacks known at lvl 0
-db LEER
-db TACKLE
-db 0
-db 0
-db 3 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDSLOW ; growth rate
+
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,14
-	tmlearn 20,24
-	tmlearn 25,31,32
-	tmlearn 33,34,40
-	tmlearn 44
-	tmlearn 50
+	tmlearn TM_HEADBUTT,					TM_HELPING_HAND,				TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,							TM_FACADE
+	tmlearn 								TM_IRON_TAIL
+	tmlearn 				TM_POISON_JAB,	TM_TOXIC
+	tmlearn 												TM_THUNDERBOLT,					TM_THUNDER
+	tmlearn 0
+	tmlearn 								TM_BLIZZARD,	TM_SLUDGE_BOMB,									TM_ICE_BEAM
+;	tmlearn 				TM_DRILL_RUN
+
 db BANK(NidoranMPicFront)

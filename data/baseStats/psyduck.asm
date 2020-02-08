@@ -3,26 +3,29 @@ db 50 ; base hp
 db 52 ; base attack
 db 48 ; base defense
 db 55 ; base speed
-db 50 ; base special
+db 65 ; base special attack
+;db 50 ; base special defense
 db WATER ; species type 1
 db WATER ; species type 2
 db 190 ; catch rate
-db 80 ; base exp yield
+db 64 ; base exp yield
 INCBIN "pic/mon/psyduck.pic",0,1 ; 55, sprite dimensions
 dw PsyduckPicFront
 dw PsyduckPicBack
-; attacks known at lvl 0
-db SCRATCH
-db 0
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14,16
-	tmlearn 17,18,19,20
-	tmlearn 28,31,32
-	tmlearn 34,39,40
-	tmlearn 44
-	tmlearn 50,53,54
+	tmlearn TM_HEADBUTT,													TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS
+	tmlearn 								TM_IRON_TAIL
+	tmlearn TM_WATERFALL,					TM_TOXIC,						TM_SCALD
+	tmlearn TM_CALM_MIND,					TM_ICE_PUNCH,																	TM_PSYCHIC
+	tmlearn 																								TM_SURF
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM
+;	tmlearn TM_PAY_DAY
+
 db BANK(PsyduckPicFront)

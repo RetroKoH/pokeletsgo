@@ -3,28 +3,29 @@ db 95 ; base hp
 db 75 ; base attack
 db 110 ; base defense
 db 30 ; base speed
-db 80 ; base special
+db 100 ; base special attack
+;db 80 ; base special defense
 db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 75 ; catch rate
-db 164 ; base exp yield
+db 172 ; base exp yield
 INCBIN "pic/mon/slowbro-g.pic",0,1 ; 77, sprite dimensions
 dw SlowbroGPicFront
 dw SlowbroGPicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 0 ; growth rate
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14,15,16
-	tmlearn 17,18,19,20
-	tmlearn 26,27,28,29,30,31,32
-	tmlearn 33,34,38,39,40
-	tmlearn 44,45,46
-	tmlearn 49,50,53,54,55
+	tmlearn TM_HEADBUTT,									TM_TELEPORT,	TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn 								TM_IRON_TAIL,					TM_FOUL_PLAY
+	tmlearn 								TM_TOXIC,		TM_TRI_ATTACK,	TM_SCALD
+	tmlearn TM_CALM_MIND,					TM_ICE_PUNCH,					TM_FLAMETHROWER,								TM_PSYCHIC
+	tmlearn TM_EARTHQUAKE,					TM_SHADOW_BALL,									TM_FIRE_BLAST,	TM_SURF,		TM_HYPER_BEAM
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM
+;	tmlearn TM_PAY_DAY,						TM_DREAM_EATER
+
 db BANK(SlowbroGPicFront)

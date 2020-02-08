@@ -1,15 +1,16 @@
 TechnicalMachines:
+; entries correspond to *_TMNUM enums (see constants/item_constants.asm)
 	db HEADBUTT
-	db RAZOR_WIND ; Taunt
+	db MIRROR_COAT ; Taunt
 	db SWORDS_DANCE ; Helping Hand
 	db TELEPORT
 	db REST
 	db LIGHT_SCREEN
-	db HORN_DRILL ; PROTECT
+	db PROTECT
 	db SUBSTITUTE
 	db REFLECT
 	db DIG
-	db BUBBLEBEAM ; WILLOWISP
+	db WILL_O_WISP
 	db FACADE
 	db BRICK_BREAK
 	db FLY
@@ -49,11 +50,12 @@ TechnicalMachines:
 	db HYPER_BEAM
 	db SUPERPOWER
 	db ROOST
-	db BLIZZARD ;CUT HM01
-	db SLUDGE_BOMB ;FLY HM02
-	db MEGA_DRAIN ; SURF HM03
-	db FLASH_CANNON; HM04
-	db ICE_BEAM; HM05
+
+	db BLIZZARD
+	db SLUDGE_BOMB
+	db MEGA_DRAIN
+	db FLASH_CANNON
+	db ICE_BEAM
 	db ROCK_THROW
 	db PAY_DAY
 	db DRILL_RUN

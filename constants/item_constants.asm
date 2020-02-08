@@ -193,3 +193,76 @@ const_value = $C4
 	const TM_48         ; $F8
 	const TM_49         ; $F9
 	const TM_50         ; $FA
+
+; For now, I won't use the Crystal macro... maybe don't need it.
+;add_tm: MACRO
+;if !DEF(TM01)
+;TM01 EQU const_value
+;	enum_start 1
+;endc
+;	define _\@_1, "TM_\1"
+;	const _\@_1
+;	enum \1_TMNUM
+;ENDM
+const_value = 1
+
+	const TM_HEADBUTT
+	const TM_TAUNT
+	const TM_HELPING_HAND
+	const TM_TELEPORT
+	const TM_REST
+	const TM_LIGHT_SCREEN
+	const TM_PROTECT
+	const TM_SUBSTITUTE
+	const TM_REFLECT
+	const TM_DIG
+	const TM_WILL_O_WISP
+	const TM_FACADE
+	const TM_BRICK_BREAK
+	const TM_FLY
+	const TM_SEISMIC_TOSS
+	const TM_THUNDER_WAVE
+	const TM_DRAGON_TAIL
+	const TM_U_TURN
+	const TM_IRON_TAIL
+	const TM_DARK_PULSE
+	const TM_FOUL_PLAY
+	const TM_ROCK_SLIDE
+	const TM_THUNDERPUNCH
+	const TM_X_SCISSOR
+	const TM_WATERFALL
+	const TM_POISON_JAB
+	const TM_TOXIC
+	const TM_TRI_ATTACK
+	const TM_SCALD
+	const TM_BULK_UP
+	const TM_FIRE_PUNCH
+	const TM_DAZZLEGLEAM
+	const TM_CALM_MIND
+	const TM_DRAGON_PULSE
+	const TM_ICE_PUNCH
+	const TM_THUNDERBOLT
+	const TM_FLAMETHROWER
+	const TM_THUNDER
+	const TM_OUTRAGE
+	const TM_PSYCHIC
+	const TM_EARTHQUAKE
+	const TM_SELFDESTRUCT
+	const TM_SHADOW_BALL
+	const TM_PLAY_ROUGH
+	const TM_SOLARBEAM
+	const TM_FIRE_BLAST
+	const TM_SURF
+	const TM_HYPER_BEAM
+	const TM_SUPERPOWER
+	const TM_ROOST
+	const TM_BLIZZARD
+	const TM_SLUDGE_BOMB
+	const TM_MEGA_DRAIN
+	const TM_FLASH_CANNON
+	const TM_ICE_BEAM
+	const TM_STEALTH_ROCK
+	const TM_PAY_DAY
+	const TM_DRILL_RUN
+	const TM_DREAM_EATER
+	const TM_MEGAHORN

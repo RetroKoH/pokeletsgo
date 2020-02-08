@@ -3,26 +3,29 @@ db 65 ; base hp
 db 65 ; base attack
 db 65 ; base defense
 db 90 ; base speed
-db 50 ; base special
+db 50 ; base special attack
+;db 50 ; base special defense
 db WATER ; species type 1
 db WATER ; species type 2
 db 120 ; catch rate
-db 131 ; base exp yield
+db 135 ; base exp yield
 INCBIN "pic/mon/poliwhirl.pic",0,1 ; 66, sprite dimensions
 dw PoliwhirlPicFront
 dw PoliwhirlPicBack
-; attacks known at lvl 0
-db BUBBLE
-db HYPNOSIS
-db WATER_GUN
-db 0
-db 3 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDSLOW ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14
-	tmlearn 17,18,19,20
-	tmlearn 26,27,29,31,32
-	tmlearn 34,35,40
-	tmlearn 44,46
-	tmlearn 50,53,54
+	tmlearn TM_HEADBUTT,					TM_HELPING_HAND,				TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS
+	tmlearn 0
+	tmlearn TM_WATERFALL,					TM_TOXIC,						TM_SCALD
+	tmlearn 								TM_ICE_PUNCH,																	TM_PSYCHIC
+	tmlearn TM_EARTHQUAKE,																					TM_SURF
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM
+;	tmlearn 0
+
 db BANK(PoliwhirlPicFront)

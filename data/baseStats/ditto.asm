@@ -3,20 +3,21 @@ db 48 ; base hp
 db 48 ; base attack
 db 48 ; base defense
 db 48 ; base speed
-db 48 ; base special
+db 48 ; base special attack
+;db 48 ; base special defense
 db NORMAL ; species type 1
 db NORMAL ; species type 2
 db 35 ; catch rate
-db 61 ; base exp yield
+db 101 ; base exp yield
 INCBIN "pic/mon/ditto.pic",0,1 ; 55, sprite dimensions
 dw DittoPicFront
 dw DittoPicBack
-; attacks known at lvl 0
-db TRANSFORM
-db 0
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
 	tmlearn 0
 	tmlearn 0
@@ -25,4 +26,6 @@ db 0 ; growth rate
 	tmlearn 0
 	tmlearn 0
 	tmlearn 0
+;	tmlearn 0
+
 db BANK(DittoPicFront)

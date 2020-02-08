@@ -1,30 +1,31 @@
 db PIKACHU ; pokedex id
 db 35 ; base hp
 db 55 ; base attack
-db 30 ; base defense
+db 40 ; base defense
 db 90 ; base speed
-db 50 ; base special
+db 50 ; base special attack
+;db 50 ; base special defense
 db ELECTRIC ; species type 1
 db ELECTRIC ; species type 2
 db 190 ; catch rate
-db 82 ; base exp yield
+db 112 ; base exp yield
 INCBIN "pic/mon/pikachu.pic",0,1 ; 55, sprite dimensions
 dw PikachuPicFront
 dw PikachuPicBack
 
-; attacks known at lvl 0
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 0 ; growth rate
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,16
-	tmlearn 17,19,20,24
-	tmlearn 25,31,32
-	tmlearn 33,34,39,40
-	tmlearn 44,45
-	tmlearn 50,55
+	tmlearn TM_HEADBUTT,					TM_HELPING_HAND,				TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn 								TM_IRON_TAIL,													TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC
+	tmlearn TM_CALM_MIND,									TM_THUNDERBOLT,					TM_THUNDER
+	tmlearn 0
+	tmlearn 0
+;	tmlearn TM_PAY_DAY
+
 db BANK(PikachuPicFront)

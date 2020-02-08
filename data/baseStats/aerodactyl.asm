@@ -3,26 +3,29 @@ db 80 ; base hp
 db 105 ; base attack
 db 65 ; base defense
 db 130 ; base speed
-db 60 ; base special
+db 60 ; base special attack
+;db 75 ; base special defense
 db ROCK ; species type 1
 db FLYING ; species type 2
 db 45 ; catch rate
-db 202 ; base exp yield
+db 180 ; base exp yield
 INCBIN "pic/mon/aerodactyl.pic",0,1 ; 77, sprite dimensions
 dw AerodactylPicFront
 dw AerodactylPicBack
-; attacks known at lvl 0
-db WING_ATTACK
-db AGILITY
-db 0
-db 0
-db 5 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_SLOW ; growth rate
+
 ; learnset
-	tmlearn 2,4,6
-	tmlearn 9,10,15
-	tmlearn 20,23
-	tmlearn 31,32
-	tmlearn 33,34,38,39
-	tmlearn 43,44
-	tmlearn 50,52
+	tmlearn TM_HEADBUTT,	TM_TAUNT,										TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,										TM_FACADE,						TM_FLY
+	tmlearn 								TM_IRON_TAIL,									TM_ROCK_SLIDE
+	tmlearn 								TM_TOXIC
+	tmlearn 				TM_DRAGON_PULSE,								TM_FLAMETHROWER
+	tmlearn TM_EARTHQUAKE,																	TM_FIRE_BLAST,					TM_HYPER_BEAM
+	tmlearn 				TM_ROOST,																						TM_STEALTH_ROCK
+;	tmlearn 0
+
 db BANK(AerodactylPicFront)

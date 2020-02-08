@@ -3,29 +3,28 @@ db 106 ; base hp
 db 100 ; base attack
 db 159 ; base defense
 db 110 ; base speed
-db 90 ; base special
-;90
+db 90 ; base special attack
+;db 115 ; base special defense
 db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
-db 3 ; catch rate
-db 220 ; base exp yield
+db 0 ; catch rate
+db 255 ; (306) base exp yield
 INCBIN "pic/mon/mewtwo-armor.pic",0,1 ; 77, sprite dimensions
 dw MewtwoArmorPicFront
 dw MewtwoArmorPicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 5 ; growth rate
+db EXP_SLOW ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14,15,16
-	tmlearn 17,18,19,20,22,24
-	tmlearn 25,29,30,31,32
-	tmlearn 33,34,35,36,38,40
-	tmlearn 44,45,46
-	tmlearn 49,50,54,55
+	tmlearn 0
+	tmlearn 0
+	tmlearn 0
+	tmlearn 0
+	tmlearn 0
+	tmlearn 0
+	tmlearn 0
+
 db BANK(MewtwoArmorPicFront)

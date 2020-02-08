@@ -3,26 +3,29 @@ db 115 ; base hp
 db 45 ; base attack
 db 20 ; base defense
 db 20 ; base speed
-db 25 ; base special
+db 45 ; base special attack
+;db 25 ; base special defense
 db NORMAL ; species type 1
 db FAIRY ; species type 2
 db 170 ; catch rate
-db 76 ; base exp yield
+db 95 ; base exp yield
 INCBIN "pic/mon/jigglypuff.pic",0,1 ; 55, sprite dimensions
 dw JigglypuffPicFront
 dw JigglypuffPicBack
-; attacks known at lvl 0
-db SING
-db 0
-db 0
-db 0
-db 4 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_FAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14
-	tmlearn 17,18,19,20,22,24
-	tmlearn 25,29,30,31,32
-	tmlearn 33,34,38,40
-	tmlearn 44,45,46
-	tmlearn 49,50,54,55
+	tmlearn TM_HEADBUTT,					TM_HELPING_HAND,TM_TELEPORT,	TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn 																								TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC,		TM_TRI_ATTACK,									TM_FIRE_PUNCH,	TM_DAZZLEGLEAM
+	tmlearn 								TM_ICE_PUNCH,	TM_THUNDERBOLT,	TM_FLAMETHROWER,TM_THUNDER,						TM_PSYCHIC
+	tmlearn 								TM_SHADOW_BALL,	TM_PLAY_ROUGH,	TM_SOLARBEAM,	TM_FIRE_BLAST
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM,	TM_STEALTH_ROCK
+;	tmlearn 								TM_DREAM_EATER
+
 db BANK(JigglypuffPicFront)

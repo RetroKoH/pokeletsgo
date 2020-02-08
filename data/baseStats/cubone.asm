@@ -3,26 +3,29 @@ db 50 ; base hp
 db 50 ; base attack
 db 95 ; base defense
 db 35 ; base speed
-db 40 ; base special
+db 40 ; base special attack
+;db 50 ; base special defense
 db GROUND ; species type 1
 db GROUND ; species type 2
 db 190 ; catch rate
-db 87 ; base exp yield
+db 64 ; base exp yield
 INCBIN "pic/mon/cubone.pic",0,1 ; 55, sprite dimensions
 dw CubonePicFront
 dw CubonePicBack
-; attacks known at lvl 0
-db BONE_CLUB
-db GROWL
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14
-	tmlearn 17,18,19,20
-	tmlearn 26,27,28,31,32
-	tmlearn 34,38,40
-	tmlearn 44
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS
+	tmlearn 								TM_IRON_TAIL,									TM_ROCK_SLIDE,	TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC,														TM_FIRE_PUNCH
+	tmlearn 																TM_FLAMETHROWER
+	tmlearn TM_EARTHQUAKE,																	TM_FIRE_BLAST
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM,	TM_STEALTH_ROCK
+;	tmlearn 0
+
 db BANK(CubonePicFront)

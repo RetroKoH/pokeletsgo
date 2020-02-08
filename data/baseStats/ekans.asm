@@ -3,26 +3,29 @@ db 35 ; base hp
 db 60 ; base attack
 db 44 ; base defense
 db 55 ; base speed
-db 40 ; base special
+db 40 ; base special attack
+;db 54 ; base special defense
 db POISON ; species type 1
 db POISON ; species type 2
 db 255 ; catch rate
-db 62 ; base exp yield
+db 58 ; base exp yield
 INCBIN "pic/mon/ekans.pic",0,1 ; 55, sprite dimensions
 dw EkansPicFront
 dw EkansPicBack
-; attacks known at lvl 0
-db WRAP
-db LEER
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10
-	tmlearn 20,21
-	tmlearn 26,27,28,31,32
-	tmlearn 34,40
-	tmlearn 44,48
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE
+	tmlearn 								TM_IRON_TAIL,	TM_DARK_PULSE,					TM_ROCK_SLIDE
+	tmlearn 				TM_POISON_JAB,	TM_TOXIC
+	tmlearn 0
+	tmlearn TM_EARTHQUAKE
+	tmlearn 												TM_SLUDGE_BOMB,	TM_MEGA_DRAIN
+;	tmlearn 0
+
 db BANK(EkansPicFront)

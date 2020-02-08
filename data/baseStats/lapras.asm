@@ -3,26 +3,29 @@ db 130 ; base hp
 db 85 ; base attack
 db 80 ; base defense
 db 60 ; base speed
+;db 85 ; base special
 db 95 ; base special
 db WATER ; species type 1
 db ICE ; species type 2
 db 45 ; catch rate
-db 219 ; base exp yield
+db 187 ; base exp yield
 INCBIN "pic/mon/lapras.pic",0,1 ; 77, sprite dimensions
 dw LaprasPicFront
 dw LaprasPicBack
-; attacks known at lvl 0
-db WATER_GUN
-db GROWL
-db 0
-db 0
-db 5 ; growth rate
+
+; rare encounter moves
+db HYDRO_PUMP, 0, 0, 0
+
+db EXP_SLOW ; growth rate
+
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 20,22,23,24
-	tmlearn 25,29,31,32
-	tmlearn 33,34,40
-	tmlearn 44,46
-	tmlearn 50,53,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,										TM_FACADE
+	tmlearn 								TM_IRON_TAIL
+	tmlearn TM_WATERFALL,					TM_TOXIC
+	tmlearn 				TM_DRAGON_PULSE,				TM_THUNDERBOLT,					TM_THUNDER,		TM_OUTRAGE,		TM_PSYCHIC
+	tmlearn 																TM_SOLARBEAM,					TM_SURF,		TM_HYPER_BEAM
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM
+;	tmlearn 				TM_DRILL_RUN,	TM_DREAM_EATER,	TM_MEGAHORN
+
 db BANK(LaprasPicFront)

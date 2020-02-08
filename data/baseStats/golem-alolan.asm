@@ -1,30 +1,31 @@
 db GOLEM ; pokedex id
 db 80 ; base hp
-db 110 ; base attack
+db 120 ; base attack
 db 130 ; base defense
 db 45 ; base speed
-db 55 ; base special
+db 55 ; base special attack
+;db 55 ; base special defense
 db ROCK ; species type 1
 db ELECTRIC ; species type 2
 db 45 ; catch rate
-db 177 ; base exp yield
+db 223 ; base exp yield
 INCBIN "pic/mon/golem-a.pic",0,1 ; 66, sprite dimensions
 dw GolemAPicFront
 dw GolemAPicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 3 ; growth rate
+db EXP_MEDSLOW ; growth rate
+
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20
-	tmlearn 26,27,28,31,32
-	tmlearn 34,35,36,38
-	tmlearn 44,47,48
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn 																				TM_ROCK_SLIDE,	TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC,														TM_FIRE_PUNCH
+	tmlearn 												TM_THUNDERBOLT,	TM_FLAMETHROWER,TM_THUNDER
+	tmlearn TM_EARTHQUAKE,	TM_SELFDESTRUCT,												TM_FIRE_BLAST,					TM_HYPER_BEAM
+	tmlearn TM_SUPERPOWER,																									TM_STEALTH_ROCK
+;	tmlearn 0
+
 db BANK(GolemAPicFront)

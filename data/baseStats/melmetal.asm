@@ -3,26 +3,29 @@ db 135 ; base hp
 db 143 ; base attack
 db 143 ; base defense
 db 34 ; base speed
-db 65 ; base special
+db 80 ; base special attack
+;db 65 ; base special defense
 db STEEL ; species type 1
 db STEEL ; species type 2
-db 190 ; catch rate
-db 89 ; base exp yield
+db 3 ; catch rate
+db 255 ; (270) base exp yield
 INCBIN "pic/mon/melmetal.pic",0,1 ; 55, sprite dimensions
 dw MelmetalPicFront
 dw MelmetalPicBack
-; attacks known at lvl 0
-db TACKLE
-db 0
-db 0
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db DOUBLE_EDGE, 0, 0, 0
+
+db EXP_SLOW ; growth rate
+
 ; learnset
-	tmlearn 6
-	tmlearn 9,10
-	tmlearn 20,24
-	tmlearn 25,30,31,32
-	tmlearn 33,34,39
-	tmlearn 44,45
-	tmlearn 50,55
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 												TM_FACADE,		TM_BRICK_BREAK,									TM_THUNDER_WAVE
+	tmlearn 																				TM_ROCK_SLIDE,	TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC
+	tmlearn 								TM_ICE_PUNCH,	TM_THUNDERBOLT,					TM_THUNDER
+	tmlearn TM_EARTHQUAKE,	TM_SELFDESTRUCT,								TM_SOLARBEAM,									TM_HYPER_BEAM
+	tmlearn TM_SUPERPOWER,																	TM_FLASH_CANNON,TM_ICE_BEAM
+;	tmlearn 0
+
 db BANK(MelmetalPicFront)

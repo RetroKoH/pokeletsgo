@@ -3,28 +3,29 @@ db 90 ; base hp
 db 65 ; base attack
 db 65 ; base defense
 db 15 ; base speed
-db 40 ; base special
+db 40 ; base special attack
+;db 40 ; base special defense
 db WATER ; species type 1
 db PSYCHIC ; species type 2
 db 190 ; catch rate
-db 99 ; base exp yield
+db 63 ; base exp yield
 INCBIN "pic/mon/slowpoke.pic",0,1 ; 55, sprite dimensions
 dw SlowpokePicFront
 dw SlowpokePicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 0 ; growth rate
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10,11,12,13,14,16
-	tmlearn 20
-	tmlearn 26,27,28,29,30,31,32
-	tmlearn 33,34,38,39,40
-	tmlearn 44,45,46
-	tmlearn 49,50,53,54,55
+	tmlearn TM_HEADBUTT,									TM_TELEPORT,	TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,							TM_FACADE,														TM_THUNDER_WAVE
+	tmlearn 								TM_IRON_TAIL
+	tmlearn 								TM_TOXIC,		TM_TRI_ATTACK,	TM_SCALD
+	tmlearn TM_CALM_MIND,													TM_FLAMETHROWER,								TM_PSYCHIC
+	tmlearn TM_EARTHQUAKE,					TM_SHADOW_BALL,									TM_FIRE_BLAST,	TM_SURF
+	tmlearn 								TM_BLIZZARD,													TM_ICE_BEAM
+;	tmlearn TM_PAY_DAY,						TM_DREAM_EATER
+
 db BANK(SlowpokePicFront)

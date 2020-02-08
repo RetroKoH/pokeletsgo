@@ -1,30 +1,31 @@
 db RATICATE ; pokedex id
-db 55 ; base hp
-db 81 ; base attack
-db 60 ; base defense
-db 97 ; base speed
-db 50 ; base special
+db 75 ; base hp
+db 71 ; base attack
+db 70 ; base defense
+db 77 ; base speed
+db 40 ; base special attack
+;db 80 ; base special defense
 db DARK ; species type 1
 db NORMAL ; species type 2
 db 90 ; catch rate
-db 116 ; base exp yield
+db 145 ; base exp yield
 INCBIN "pic/mon/raticate-a.pic",0,1 ; 66, sprite dimensions
 dw RaticateAPicFront
 dw RaticateAPicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 0 ; growth rate
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 20,24
-	tmlearn 25,28,31,32
-	tmlearn 34,39,40
-	tmlearn 44
-	tmlearn 50
+	tmlearn TM_HEADBUTT,	TM_TAUNT,										TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,														TM_THUNDER_WAVE
+	tmlearn 				TM_U_TURN,		TM_IRON_TAIL,	TM_DARK_PULSE
+	tmlearn 								TM_TOXIC,										TM_BULK_UP
+	tmlearn 0
+	tmlearn 								TM_SHADOW_BALL,																	TM_HYPER_BEAM
+	tmlearn 								TM_BLIZZARD,	TM_SLUDGE_BOMB,									TM_ICE_BEAM
+;	tmlearn 0
+
 db BANK(RaticateAPicFront)

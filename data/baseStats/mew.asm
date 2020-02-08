@@ -3,26 +3,29 @@ db 100 ; base hp
 db 100 ; base attack
 db 100 ; base defense
 db 100 ; base speed
-db 100 ; base special
+db 100 ; base special attack
+;db 100 ; base special defense
 db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 45 ; catch rate
-db 64 ; base exp yield
+db 255 ; (270) base exp yield
 INCBIN "pic/mon/mew.pic",0,1 ; 55, sprite dimensions
 dw MewPicFront
 dw MewPicBack
-; attacks known at lvl 0
-db POUND
-db 0
-db 0
-db 0
-db 3 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDSLOW ; growth rate
+
 ; learnset
-	tmlearn 1,2,3,4,5,6,7,8
-	tmlearn 9,10,11,12,13,14,15,16
-	tmlearn 17,18,19,20,21,22,23,24
-	tmlearn 25,26,27,28,29,30,31,32
-	tmlearn 33,34,35,36,37,38,39,40
-	tmlearn 41,42,43,44,45,46,47,48
-	tmlearn 49,50,51,52,53,54,55,56
+	tmlearn TM_HEADBUTT,	TM_TAUNT,		TM_HELPING_HAND,TM_TELEPORT,	TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,		TM_DIG,			TM_WILL_O_WISP,	TM_FACADE,		TM_BRICK_BREAK,	TM_FLY,			TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn TM_DRAGON_TAIL,	TM_U_TURN,		TM_IRON_TAIL,	TM_DARK_PULSE,	TM_FOUL_PLAY,	TM_ROCK_SLIDE,	TM_THUNDERPUNCH,TM_X_SCISSOR
+	tmlearn TM_WATERFALL,	TM_POISON_JAB,	TM_TOXIC,		TM_TRI_ATTACK,	TM_SCALD,		TM_BULK_UP,		TM_FIRE_PUNCH,	TM_DAZZLEGLEAM
+	tmlearn TM_CALM_MIND,	TM_DRAGON_PULSE,TM_ICE_PUNCH,	TM_THUNDERBOLT,	TM_FLAMETHROWER,TM_THUNDER,		TM_OUTRAGE,		TM_PSYCHIC
+	tmlearn TM_EARTHQUAKE,	TM_SELFDESTRUCT,TM_SHADOW_BALL,	TM_PLAY_ROUGH,	TM_SOLARBEAM,	TM_FIRE_BLAST,	TM_SURF,		TM_HYPER_BEAM
+	tmlearn TM_SUPERPOWER,	TM_ROOST,		TM_BLIZZARD,	TM_SLUDGE_BOMB,	TM_MEGA_DRAIN,	TM_FLASH_CANNON,TM_ICE_BEAM,	TM_STEALTH_ROCK
+;	tmlearn TM_PAY_DAY,		TM_DRILL_RUN,	TM_DREAM_EATER,	TM_MEGAHORN
+
 db BANK(MewPicFront)

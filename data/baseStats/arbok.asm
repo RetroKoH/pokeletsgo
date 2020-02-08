@@ -1,28 +1,31 @@
 db ARBOK ; pokedex id
 db 60 ; base hp
-db 85 ; base attack
+db 95 ; base attack
 db 69 ; base defense
 db 80 ; base speed
-db 65 ; base special
+db 65 ; base special attack
+;db 79 ; base special defense
 db POISON ; species type 1
 db POISON ; species type 2
 db 90 ; catch rate
-db 147 ; base exp yield
+db 157 ; base exp yield
 INCBIN "pic/mon/arbok.pic",0,1 ; 77, sprite dimensions
 dw ArbokPicFront
 dw ArbokPicBack
-; attacks known at lvl 0
-db WRAP
-db LEER
-db POISON_STING
-db 0
-db 0 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_MEDFAST ; growth rate
+
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10,15
-	tmlearn 20,21
-	tmlearn 26,27,28,31,32
-	tmlearn 34,40
-	tmlearn 44,48
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE
+	tmlearn TM_DRAGON_TAIL,					TM_IRON_TAIL,	TM_DARK_PULSE,					TM_ROCK_SLIDE
+	tmlearn 				TM_POISON_JAB,	TM_TOXIC
+	tmlearn 0
+	tmlearn TM_EARTHQUAKE,																									TM_HYPER_BEAM
+	tmlearn 												TM_SLUDGE_BOMB,	TM_MEGA_DRAIN
+;	tmlearn 0
+
 db BANK(ArbokPicFront)

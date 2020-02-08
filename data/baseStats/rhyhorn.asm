@@ -3,26 +3,29 @@ db 80 ; base hp
 db 85 ; base attack
 db 95 ; base defense
 db 25 ; base speed
-db 30 ; base special
+db 30 ; base special attack
+;db 30 ; base special defense
 db GROUND ; species type 1
 db ROCK ; species type 2
 db 120 ; catch rate
-db 135 ; base exp yield
+db 69 ; base exp yield
 INCBIN "pic/mon/rhyhorn.pic",0,1 ; 77, sprite dimensions
 dw RhyhornPicFront
 dw RhyhornPicBack
-; attacks known at lvl 0
-db HORN_ATTACK
-db 0
-db 0
-db 0
-db 5 ; growth rate
+
+; rare encounter moves
+db 0, 0, 0, 0
+
+db EXP_SLOW ; growth rate
+
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10
-	tmlearn 20,24
-	tmlearn 25,26,27,28,31,32
-	tmlearn 34,38,40
-	tmlearn 44,48
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE
+	tmlearn 								TM_IRON_TAIL,									TM_ROCK_SLIDE
+	tmlearn 				TM_POISON_JAB,	TM_TOXIC
+	tmlearn 				TM_DRAGON_PULSE,				TM_THUNDERBOLT,	TM_FLAMETHROWER,TM_THUNDER
+	tmlearn TM_EARTHQUAKE,																	TM_FIRE_BLAST
+	tmlearn TM_SUPERPOWER,					TM_BLIZZARD,													TM_ICE_BEAM,	TM_STEALTH_ROCK
+;	tmlearn 				TM_DRILL_RUN,					TM_MEGAHORN
+
 db BANK(RhyhornPicFront)

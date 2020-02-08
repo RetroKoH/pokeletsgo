@@ -443,7 +443,6 @@ PidgeotLearnset:
 
 RattataLearnset:
 	db 01, TACKLE
-	db 02, WILL_O_WISP
 	db 03, TAIL_WHIP
 	db 06, QUICK_ATTACK
 	db 09, FOCUS_ENERGY

@@ -3,28 +3,29 @@ db 40 ; base hp
 db 80 ; base attack
 db 100 ; base defense
 db 20 ; base speed
-db 30 ; base special
+db 30 ; base special attack
+;db 30 ; base special defense
 db ROCK ; species type 1
 db ELECTRIC ; species type 2
 db 255 ; catch rate
-db 86 ; base exp yield
+db 60 ; base exp yield
 INCBIN "pic/mon/geodude-a.pic",0,1 ; 55, sprite dimensions
 dw GeodudeAPicFront
 dw GeodudeAPicBack
 
-; unused bytes
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 3 ; growth rate
+db EXP_MEDSLOW ; growth rate
+
 ; learnset
-	tmlearn 1,6,8
-	tmlearn 9,10
-	tmlearn 17,18,19,20
-	tmlearn 26,27,28,31,32
-	tmlearn 34,35,36,38
-	tmlearn 44,47,48
-	tmlearn 50,54
+	tmlearn TM_HEADBUTT,													TM_REST,						TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn 				TM_DIG,							TM_FACADE,		TM_BRICK_BREAK,					TM_SEISMIC_TOSS,TM_THUNDER_WAVE
+	tmlearn 																				TM_ROCK_SLIDE,	TM_THUNDERPUNCH
+	tmlearn 								TM_TOXIC,														TM_FIRE_PUNCH
+	tmlearn 												TM_THUNDERBOLT,	TM_FLAMETHROWER,TM_THUNDER
+	tmlearn TM_EARTHQUAKE,	TM_SELFDESTRUCT,												TM_FIRE_BLAST
+	tmlearn TM_SUPERPOWER,																									TM_STEALTH_ROCK
+;	tmlearn 0
+
 db BANK(GeodudeAPicFront)

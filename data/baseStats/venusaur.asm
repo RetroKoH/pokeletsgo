@@ -3,28 +3,29 @@ db 80 ; base hp
 db 82 ; base attack
 db 83 ; base defense
 db 80 ; base speed
-db 100 ; base special
+db 100 ; base special attack
+;db 100 ; base special defense
 db GRASS ; species type 1
 db POISON ; species type 2
 db 45 ; catch rate
-db 208 ; base exp yield
+db 236 ; base exp yield
 INCBIN "pic/mon/venusaur.pic",0,1 ; 77, sprite dimensions
 dw VenusaurPicFront
 dw VenusaurPicBack
 
-; attacks known at lvl 0
-db 0
-db 0
-db 0
-db 0
+; rare encounter moves
+db 0, 0, 0, 0
 
-db 3 ; growth rate
-; learnset
-	tmlearn 3,6,8
-	tmlearn 9,10,15
-	tmlearn 20,21,22
-	tmlearn 31,32
-	tmlearn 33,34
-	tmlearn 44
-	tmlearn 50,51
+db EXP_MEDSLOW ; growth rate
+
+; TM learnset
+	tmlearn TM_HEADBUTT,													TM_REST,		TM_LIGHT_SCREEN,TM_PROTECT,		TM_SUBSTITUTE
+	tmlearn TM_REFLECT,										TM_FACADE
+	tmlearn 0
+	tmlearn 								TM_TOXIC
+	tmlearn 																								TM_OUTRAGE
+	tmlearn TM_EARTHQUAKE,													TM_SOLARBEAM,									TM_HYPER_BEAM
+	tmlearn 												TM_SLUDGE_BOMB,	TM_MEGA_DRAIN
+;	tmlearn 0
+
 db BANK(VenusaurPicFront)
