@@ -1970,8 +1970,8 @@ TradingAnimationGraphics2End:
 
 RedPicBack:         INCBIN "pic/trainer/redb.pic"
 GreenPicBack:       INCBIN "pic/trainer/greenb.pic"
-OakPicBack:         INCBIN "pic/trainer/prof.oakb.pic"
 OldManPic:          INCBIN "pic/trainer/oldman.pic"
+OakPicBack:         INCBIN "pic/trainer/prof.oakb.pic"
 
 GreenFishingTilesFront:: INCBIN "gfx/green_fishing_tile_front.2bpp"
 GreenFishingTilesBack::  INCBIN "gfx/green_fishing_tile_back.2bpp"

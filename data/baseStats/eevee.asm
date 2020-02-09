@@ -14,7 +14,7 @@ dw EeveePicFront
 dw EeveePicBack
 
 ; rare encounter moves
-db DOUBLE_KICK, 0, 0, 0
+db 0, 0, 0, 0
 
 db EXP_MEDFAST ; growth rate
 

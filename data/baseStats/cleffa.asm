@@ -4,7 +4,7 @@ db 25 ; base attack
 db 28 ; base defense
 db 15 ; base speed
 db 45 ; base special attack
-db 55 ; base special defense
+;db 55 ; base special defense
 db FAIRY ; species type 1
 db FAIRY ; species type 2
 db 150 ; catch rate

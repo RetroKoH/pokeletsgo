@@ -2,53 +2,53 @@ CinnabarLabMetronomeRoom_Script:
 	jp EnableAutoTextBoxDrawing
 
 CinnabarLabMetronomeRoom_TextPointers:
-	dw Lab3Text1
-	dw Lab3Text2
+	dw Lab3_ReceiveTM02
+	dw Lab3_EeveeText
 	dw Lab3Text3
 	dw Lab3Text4
 	dw Lab3Text5
 
-Lab3Text1:
+Lab3_ReceiveTM02:
 	TX_ASM
 	CheckEvent EVENT_GOT_TM35
 	jr nz, .asm_e551a
-	ld hl, TM35PreReceiveText
+	ld hl, TM02PreReceiveText
 	call PrintText
-	lb bc, TM_35, 1
+	lb bc, TM_02, 1
 	call GiveItem
 	jr nc, .BagFull
-	ld hl, ReceivedTM35Text
+	ld hl, ReceivedTM02Text
 	call PrintText
 	SetEvent EVENT_GOT_TM35
 	jr .asm_eb896
 .BagFull
-	ld hl, TM35NoRoomText
+	ld hl, TM02NoRoomText
 	call PrintText
 	jr .asm_eb896
 .asm_e551a
-	ld hl, TM35ExplanationText
+	ld hl, TM02ExplanationText
 	call PrintText
 .asm_eb896
 	jp TextScriptEnd
 
-TM35PreReceiveText:
-	TX_FAR _TM35PreReceiveText
+TM02PreReceiveText:
+	TX_FAR _TM02PreReceiveText
 	db "@"
 
-ReceivedTM35Text:
-	TX_FAR _ReceivedTM35Text
+ReceivedTM02Text:
+	TX_FAR _ReceivedTM02Text
 	TX_SFX_ITEM_1
 	db "@"
 
-TM35ExplanationText:
-	TX_FAR _TM35ExplanationText
+TM02ExplanationText:
+	TX_FAR _TM02ExplanationText
 	db "@"
 
-TM35NoRoomText:
-	TX_FAR _TM35NoRoomText
+TM02NoRoomText:
+	TX_FAR _TM02NoRoomText
 	db "@"
 
-Lab3Text2:
+Lab3_EeveeText:
 	TX_FAR _Lab3Text2
 	db "@"
 

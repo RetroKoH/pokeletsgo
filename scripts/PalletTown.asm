@@ -13,6 +13,9 @@ PalletTown_ScriptPointers:
 	dw PalletTownScript_OakAppears
 	dw PalletTownScript_OakWalksToPlayer
 	dw PalletTownScript_OakMeetsPlayer
+	dw PalletTownScript_CatchPikachu
+	dw PalletTownScript_AfterCatchingPikachu
+	dw PalletTownScript_OakBringsYouToLab
 	dw PalletTownScript7
 	dw PalletTownScript8
 	dw PalletTownScript9
@@ -21,13 +24,12 @@ PalletTownScript_StopPlayer:
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB ; Has Professor Oak brought you to his lab for a starter?
 	ret nz                                 ; if yes, branch
 	ld a, [wYCoord]                        ; load current y-coordinate
-	cp 1                                   ; is player at the north exit?
+	cp 0;1                                 ; is player at the north exit?
 	ret nz                                 ; if not, branch
-
 ;.asm_18e40
 	xor a
 	ld [hJoyHeld], a
-	ld a, $FC
+	ld a, $FF
 	ld [wJoyIgnore], a
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a         ; set player to face up (under normal circumstances, they would be anyway)
@@ -54,6 +56,7 @@ PalletTownScript_OakAppears:
 	call DisplayTextID                      ; "OAK: Hey! Wait! Don't go out!"
 	ld a, $FF
 	ld [wJoyIgnore], a                      ; Disable all buttons again
+
 	ld a, HS_PALLET_TOWN_OAK
 	ld [wMissableObjectIndex], a
 	predef ShowObject                       ; Spawn Oak object
@@ -70,7 +73,7 @@ PalletTownScript_OakWalksToPlayer:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	call Delay3
-	ld a, 1
+	ld a, 0;1
 	ld [wYCoord], a
 	ld a, 1
 	ld [hNPCPlayerRelativePosPerspective], a
@@ -106,20 +109,79 @@ PalletTownScript_OakMeetsPlayer:
 	ld a, 1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-; set up movement script that causes the player to follow Oak to his lab
+; oak faces the horizontally adjacent patch of grass to face pikachu
 	ld a, $FF
 	ld [wJoyIgnore], a
-	ld a, 1
+	ld a, $2
+	ld [wSpriteStateData1 + 1 * $10 + 1], a
+	ld a, [wXCoord]
+	cp 10 ; is the player on the right side of the grass?
+	jr z, .facing_right ; if not, continue. Oak will face right.
+	ld a, SPRITE_FACING_LEFT  ; if yes, Oak will face left
+	jr .asm_18f01
+.facing_right
+	ld a, SPRITE_FACING_RIGHT
+.asm_18f01
+	ld [wSpriteStateData1 + 1 * $10 + 9], a
+
+	; trigger the next script
+	ld a, 4
+	ld [wPalletTownCurScript], a
+	ret
+
+PalletTownScript_CatchPikachu:
+	; start the pikachu battle
+	ld a, $FF ^ (A_BUTTON | B_BUTTON)
+	ld [wJoyIgnore], a                ; Enable A/B to advance text in the battle
+	xor a
+	ld [wListScrollOffset], a
+	ld a, BATTLE_TYPE_PIKACHU         ; set up Pikachu encounter
+	ld [wBattleType], a
+	ld a, PIKACHU                   ; spawn Pikachu
+	ld [wCurOpponent], a
+	ld a, 5                           ; Level 5 Pikachu
+	ld [wCurEnemyLVL], a
+
+	; trigger the next script
+	ld a, 5
+	ld [wPalletTownCurScript], a
+	ret
+
+PalletTownScript_AfterCatchingPikachu:
+	ld a, $2
+	ld [wcf0d], a
+	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID                ; "OAK: Whew..."
+	ld a, $2
+	ld [wSpriteStateData1 + 1 * $10 + 1], a
+	ld a, SPRITE_FACING_UP            ; Oak is facing back up after the encounter
+	ld [wSpriteStateData1 + 1 * $10 + 9], a
+	ld a, $8
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID                ; "OAK: A #MON can appear anytime in tall grass..."
+	ld a, $ff
+	ld [wJoyIgnore], a                ; Disable all buttons again
+
+	; trigger the next script
+	ld a, 6
+	ld [wPalletTownCurScript], a
+	ret
+
+PalletTownScript_OakBringsYouToLab:
+	xor a
+	ld [wPlayerMovingDirection], a
+	ld a, $1
 	ld [wSpriteIndex], a
 	xor a
 	ld [wNPCMovementScriptFunctionNum], a
-	ld a, 1
+	ld a, $1
 	ld [wNPCMovementScriptPointerTableNum], a
 	ld a, [H_LOADEDROMBANK]
 	ld [wNPCMovementScriptBank], a
 
 	; trigger the next script
-	ld a, 4
+	ld a, 7
 	ld [wPalletTownCurScript], a
 	ret
 
@@ -129,7 +191,7 @@ PalletTownScript7:
 	ret nz
 
 	; trigger the next script
-	ld a, 5
+	ld a, 8
 	ld [wPalletTownCurScript], a
 	ret
 
@@ -161,6 +223,7 @@ PalletTown_TextPointers:
 	dw PalletTownText5
 	dw PalletTownText6
 	dw PalletTownText7
+	dw PalletTownText8
 
 PalletTownText1:
 	TX_ASM
@@ -172,7 +235,13 @@ PalletTownText1:
 	ld hl, OakAppearsText
 	jr .done
 .next
+	dec a
+	jr nz, .asm_18fd3
 	ld hl, OakWalksUpText
+	jr .done
+
+.asm_18fd3
+	ld hl, OakWhewText
 .done
 	call PrintText
 	jp TextScriptEnd
@@ -182,16 +251,24 @@ OakAppearsText:
 	TX_ASM
 	ld c, 10
 	call DelayFrames
+	ld a, PLAYER_DIR_DOWN
+	ld [wPlayerMovingDirection], a
 	xor a
 	ld [wEmotionBubbleSpriteIndex], a ; player's sprite
 	ld [wWhichEmotionBubble], a ; EXCLAMATION_BUBBLE
 	predef EmotionBubble
-	ld a, PLAYER_DIR_DOWN
-	ld [wPlayerMovingDirection], a
 	jp TextScriptEnd
 
 OakWalksUpText:
 	TX_FAR _OakWalksUpText
+	db "@"
+
+OakWhewText:
+	TX_FAR _OakWhewText
+	db "@"
+
+PalletTownText8:
+	TX_FAR _OakGrassText
 	db "@"
 
 PalletTownText2: ; girl

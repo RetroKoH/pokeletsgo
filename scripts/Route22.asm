@@ -25,11 +25,11 @@ Route22Script_SetFirstRivalTeam: ; define which team rival uses, and fight it
 	ld a, OPP_SONY1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-	cp RAICHU             ; Did Blue pick Pikachu?
-	jr nz, .notPikachu    ; if not, branch
-	ld a, $3 ; Spearow/Eevee party
+	cp RAICHU           ; Did Blue pick Pikachu?
+	jr z, .isPikachu    ; if yes, branch
+	ld a, $3 			; Spearow/Eevee party
 	jr .done
-.notPikachu
+.isPikachu
 	ld a, $4 ; Pidgey/Pikachu party
 .done
 	ld [wTrainerNo], a

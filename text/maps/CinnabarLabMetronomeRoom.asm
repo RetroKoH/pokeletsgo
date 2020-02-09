@@ -1,37 +1,46 @@
-_TM35PreReceiveText::
-	text "Tch-tch-tch!"
-	line "I made a cool TM!"
+_TM02PreReceiveText::
+	text "I'm a scientist"
+	line "working without"
+	cont "any sleep or rest!"
 
-	para "It can cause all"
-	line "kinds of fun!"
-	prompt
+	para "You think that you"
+	line "stand a chance?"
 
-_ReceivedTM35Text::
+	para "Sorry to TAUNT"
+	line "you like that, I"
+	cont "haven't slept in"
+	cont "days..."
+
+	para "Here, take this."
+	line "Will you forgive"
+	cont "me?"
+
+_ReceivedTM02Text::
 	text "<PLAYER> received "
 	line "@"
 	TX_RAM wcf4b
-	text "!@@"
+	text " TAUNT!@@"
 
-_TM35ExplanationText::
-	text "Tch-tch-tch!"
-	line "That's the sound"
-	cont "of a METRONOME!"
+_TM02ExplanationText::
+	text "TAUNT forces your"
+	line "opponent to only"
+	cont "use moves that"
+	cont "deal damage."
 
-	para "It tweaks your"
-	line "#MON's brain"
-	cont "into using moves"
-	cont "it doesn't know!"
+	para "Be careful not to"
+	line "TAUNT the wrong"
+	cont "#MON though!"
 	done
 
-_TM35NoRoomText::
+_TM02NoRoomText::
 	text "Your pack is"
 	line "crammed full!"
 	done
 
 _Lab3Text2::
 	text "EEVEE can evolve"
-	line "into 1 of 3 kinds"
-	cont "of #MON."
+	line "in a variety of"
+	cont "different ways!"
 	done
 
 _Lab3Text3::

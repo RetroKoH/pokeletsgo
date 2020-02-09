@@ -138,8 +138,10 @@ PokeBallEffect:
 
 	; If this is for the old man battle, skip checking if the party & box are full.
 	ld a, [wBattleType]
-	dec a
-	jr z, .canUseBall
+	cp BATTLE_TYPE_OLD_MAN
+	jr z,.canUseBall
+	cp BATTLE_TYPE_PIKACHU
+	jr z,.canUseBall
 
 	ld a, [wPartyCount] ; is party full?
 	cp PARTY_LENGTH
@@ -176,8 +178,11 @@ PokeBallEffect:
 	jp z, .setAnimData
 
 	ld a, [wBattleType]
-	dec a
-	jr nz, .notOldManBattle
+	cp BATTLE_TYPE_OLD_MAN
+	jr z,.oldManBattle
+	cp BATTLE_TYPE_PIKACHU
+	jr z,.oldManBattle ; pikachu battle technically old man battle
+	jr .notOldManBattle
 
 .oldManBattle
 	ld hl, wCurTrainerName
@@ -535,9 +540,11 @@ PokeBallEffect:
 	ld a, [wBattleType]
 
 ; We are going to change this. If the player hasn't caught one yet, the old man will
-; give him a Rattata
-	dec a ; is this the old man battle?
-	jr z, .oldManCaughtMon ; if so, don't give the player the caught Pokémon
+; give him the Pokemon
+	cp BATTLE_TYPE_OLD_MAN ; is this the old man battle?
+	jp z,.oldManCaughtMon ; if so, don't give the player the caught Pokémon
+	cp BATTLE_TYPE_PIKACHU
+	jr z,.oldManCaughtMon ; same with Pikachu battle
 
 	ld hl, PokeBallEffectText05
 	call PrintText

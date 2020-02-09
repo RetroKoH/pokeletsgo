@@ -1,14 +1,13 @@
 ; this function temporarily makes the starters (Pikachu and Eevee) seen
 ; so that the full Pokedex information gets displayed in Oak's lab
 StarterDex:
-	ld a, %00000010;01001011 ; set starter flags
+	ld a, %00000010 ; set starter flags
 	ld [wPokedexOwned+3], a
-	ld a, %00100000
-	ld [wPokedexOwned+19], a
+	ld [wPokedexOwned+20], a
 	predef ShowPokedexData
 	xor a ; unset starter flags
 	ld [wPokedexOwned+3], a
-	ld [wPokedexOwned+19], a
+	ld [wPokedexOwned+20], a
 	ret
 
 ;11111111 11111111 11111111 00000010 32

@@ -81,6 +81,10 @@ DetermineBackSpritePaletteID:
 	ld [wd11e], a
 	and a
 	jr nz, GetMonPalette
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_PIKACHU ; Is this the Pikachu intro encounter?
+	ld a, PAL_OAK
+	ret z                  ; if yes, load Oak's palette and return
 	ld a, [wPlayerGender]
 	and a
 	jr z, .male

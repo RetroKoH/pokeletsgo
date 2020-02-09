@@ -30,11 +30,11 @@ CeladonMart2Clerk1Text::
 
 ; Celadon Dept. Store 2F (2)
 CeladonMart2Clerk2Text::
-	TX_MART TM_32, TM_33, TM_02, TM_07, TM_37, TM_01, TM_05, TM_09, TM_17
+	TX_MART TM_17, TM_18, TM_19, TM_25, TM_28, TM_30, TM_43, TM_48
 
 ; Celadon Dept. Store 4F
 CeladonMart4ClerkText::
-	TX_MART POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE
+	TX_MART POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE, ICE_STONE
 
 ; Celadon Dept. Store 5F (1)
 CeladonMart5Clerk1Text::

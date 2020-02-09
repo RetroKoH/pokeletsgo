@@ -254,10 +254,16 @@ StartBattle:
 	call DelayFrames
 	call SaveScreenTilesToBuffer1
 .checkAnyPartyAlive
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_RUN
+	jp z, .specialBattle
+	cp BATTLE_TYPE_PIKACHU
+	jp z, .specialBattle
 	call AnyPartyAlive
 	ld a, d
 	and a
 	jp z, HandlePlayerBlackOut ; jump if no mon is alive
+.specialBattle
 	call LoadScreenTilesFromBuffer1
 	ld a, [wBattleType]
 	and a ; is it a normal battle?
@@ -1645,6 +1651,8 @@ TryRunningFromBattle:
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
 	jp z, .canEscape ; jump if it's a safari battle
+	cp BATTLE_TYPE_RUN
+	jp z, .canEscape ; hurry, get away?
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jp z, .canEscape
@@ -2172,9 +2180,13 @@ DisplayBattleMenu:
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	ld a, [wBattleType]
-	dec a
-	jp nz, .handleBattleMenuInput ; handle menu input if it's not the old man tutorial
+	cp BATTLE_TYPE_OLD_MAN
+	jr z, .doSimulatedMenuInput ; simulate menu input if it's the old man or prof. oak pikachu battle
+	cp BATTLE_TYPE_PIKACHU
+	jr z, .doSimulatedMenuInput
+	jp .handleBattleMenuInput ; handle menu input if it's not the old man tutorial
 ; the following happens for the old man tutorial
+.doSimulatedMenuInput
 	ld hl, wPlayerName
 	ld de, wCurTrainerName
 	ld bc, NAME_LENGTH
@@ -2183,7 +2195,13 @@ DisplayBattleMenu:
 	               ; map with wild Pokémon. Due to an oversight, the data
 	               ; may not get overwritten (cinnabar) and the infamous
 	               ; Missingno. glitch can show up.
+	               ; this has been fixed in yellow
 	ld hl, .oldManName
+	ld a, [wBattleType]
+	dec a
+	jr z, .useOldManName
+	ld hl, .profOakName
+.useOldManName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData
@@ -2202,6 +2220,8 @@ DisplayBattleMenu:
 	jp .upperLeftMenuItemWasNotSelected
 .oldManName
 	db "OLD MAN@"
+.profOakName
+	db "PROF.OAK@"
 .handleBattleMenuInput
 	ld a, [wBattleAndStartSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -2284,6 +2304,9 @@ DisplayBattleMenu:
 .AButtonPressed
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wBattleType]
+	cp BATTLE_TYPE_RUN
+	jr z, .handleUnusedBattle
+	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
 	ld a, [wCurrentMenuItem]
 	ld [wBattleAndStartSavedMenuItem], a
@@ -2315,7 +2338,18 @@ DisplayBattleMenu:
 .throwSafariBallWasSelected
 	ld a, SAFARI_BALL
 	ld [wcf91], a
-	jr UseBagItem
+	jp UseBagItem
+.handleUnusedBattle
+	ld a, [wCurrentMenuItem]
+	cp $3
+	jp z, BattleMenu_RunWasSelected
+	ld hl, .RunAwayText
+	call PrintText
+	jp DisplayBattleMenu
+
+.RunAwayText
+	TX_FAR _RunAwayText
+	db "@"
 
 .upperLeftMenuItemWasNotSelected ; a menu item other than the upper left item was selected
 	cp $2
@@ -2352,18 +2386,22 @@ BagWasSelected:
 	call DrawHUDsAndHPBars
 .next
 	ld a, [wBattleType]
-	dec a ; is it the old man tutorial?
-	jr nz, DisplayPlayerBag ; no, it is a normal battle
-	ld hl, OldManItemList
+	cp BATTLE_TYPE_OLD_MAN ; is it the old man tutorial?
+	jr z, .simulatedInputBattle
+	cp BATTLE_TYPE_PIKACHU ; is it the prof oak battle with pikachu?
+	jr z, .simulatedInputBattle
+	jr DisplayPlayerBag ; no, it is a normal battle
+.simulatedInputBattle
+	ld hl, SimulatedInputBattleItemList
 	ld a, l
 	ld [wListPointer], a
 	ld a, h
 	ld [wListPointer + 1], a
 	jr DisplayBagMenu
 
-OldManItemList:
+SimulatedInputBattleItemList:
 	db 1 ; # items
-	db POKE_BALL, 50
+	db POKE_BALL, 1
 	db -1
 
 DisplayPlayerBag:
@@ -6675,9 +6713,13 @@ SwapPlayerAndEnemyLevels:
 ; (for use when scrolling the player sprite and enemy's silhouettes on screen)
 LoadPlayerBackPic:
 	ld a, [wBattleType]
-	dec a
 	ld de, OldManPic
-	jr z, .next
+	cp BATTLE_TYPE_OLD_MAN ; is it the old man tutorial?
+	jr z, .next            ; if yes, branch
+	ld de, OakPicBack
+	cp BATTLE_TYPE_PIKACHU ; is it the pikachu battle at the beginning of the game?
+	jr z, .next            ; if yes, branch
+
 	ld a, [wPlayerGender]
 	and a
 	jr z, .RedBack

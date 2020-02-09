@@ -634,8 +634,8 @@ OaksLabScript_BlueHasLeftAgain:
 	ld a, HS_ROUTE_22_RIVAL_1
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, $5
-	ld [wPalletTownCurScript], a
+	;ld a, $5
+	;ld [wPalletTownCurScript], a
 	xor a
 	ld [wJoyIgnore], a
 
