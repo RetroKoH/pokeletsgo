@@ -576,14 +576,13 @@ SECTION "bankE", ROMX, BANK[$E]
 INCLUDE "data/moves.asm"
 
 INCLUDE "data/cries.asm"
-;INCLUDE "engine/battle/unused_stats_functions.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 
-INCLUDE "engine/evos_moves.asm"
-INCLUDE "data/evos.asm"
-INCLUDE "data/learnsets.asm"
+;INCLUDE "engine/evos_moves.asm"
+;INCLUDE "data/evos.asm"
+;INCLUDE "data/learnsets.asm"
 
 INCLUDE "engine/battle/moveEffects/heal_effect.asm"
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
@@ -2017,6 +2016,12 @@ WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
 
+SECTION "EVO MOVES", ROMX
+
+INCLUDE "engine/evos_moves.asm"
+INCLUDE "data/evos.asm"
+INCLUDE "data/learnsets.asm"
+
 SECTION "Pics 1", ROMX ; BANK $09
 
 MoltresPicFront:    INCBIN "pic/mon/moltres.pic"
@@ -2623,7 +2628,6 @@ MukAPicBack:         INCBIN "pic/monback/muk-ab.pic"
 
 SECTION "Pics 5", ROMX ; BANK $0D
 
-
 ExeggutorAPicFront:   INCBIN "pic/mon/exeggutor-a.pic"
 ExeggutorAPicBack:    INCBIN "pic/monback/exeggutor-ab.pic"
 MarowakAPicFront:     INCBIN "pic/mon/marowak-a.pic"
@@ -2640,3 +2644,5 @@ MoltresGPicFront:     INCBIN "pic/mon/moltres-g.pic"
 MoltresGPicBack:      INCBIN "pic/monback/moltres-gb.pic"
 MewtwoArmorPicFront:  INCBIN "pic/mon/mewtwo-armor.pic"
 MewtwoArmorPicBack:   INCBIN "pic/monback/mewtwo-armorb.pic"
+
+; New Menu Sprites to be added later

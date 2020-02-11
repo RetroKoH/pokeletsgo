@@ -239,18 +239,23 @@ INCLUDE "text/maps/SeafoamIslandsB4F.asm"
 
 _AIBattleWithdrawText::
 	TX_RAM wTrainerName
-	text " with-"
-	line "drew @"
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
+	line "withdrew"
+	cont "@"
 	TX_RAM wEnemyMonNick
 	text "!"
 	prompt
 
 _AIBattleUseItemText::
 	TX_RAM wTrainerName
-	text ""
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
 	line "used @"
 	TX_RAM wcd6d
-	text ""
+	db 0
 	cont "on @"
 	TX_RAM wEnemyMonNick
 	text "!"
@@ -1099,10 +1104,11 @@ _MoneyForWinningText::
 	prompt
 
 _TrainerDefeatedText::
-	text "<PLAYER> defeated"
-	line "@"
 	TX_RAM wTrainerName
-	text "!"
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
+	line "was defeated!"
 	prompt
 
 _PlayerMonFaintedText::
@@ -1137,9 +1143,11 @@ _LinkBattleLostText::
 
 _TrainerAboutToUseText::
 	TX_RAM wTrainerName
-	text " is"
-	line "about to use"
-	cont"@"
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
+	line "is about to use"
+	cont "@"
 	TX_RAM wEnemyMonNick
 	text "!"
 
@@ -1149,8 +1157,11 @@ _TrainerAboutToUseText::
 
 _TrainerSentOutText::
 	TX_RAM wTrainerName
-	text " sent"
-	line "out @"
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
+	line "sent out"
+	cont "@"
 	TX_RAM wEnemyMonNick
 	text "!"
 	done
@@ -1440,6 +1451,11 @@ _WildMonAppearedText::
 	line "appeared!"
 	prompt
 
+_WildMonIsShiny::
+	text "Oh, it appears"
+	line "to be shiny!"
+	prompt
+
 _HookedMonAttackedText::
 	text "The hooked"
 	line "@"
@@ -1456,8 +1472,10 @@ _EnemyAppearedText::
 
 _TrainerWantsToFightText::
 	TX_RAM wTrainerName
-	text " wants"
-	line "to fight!"
+	text " @"
+	TX_RAM wCurTrainerName
+	db 0
+	line "wants to fight!"
 	prompt
 
 _UnveiledGhostText::

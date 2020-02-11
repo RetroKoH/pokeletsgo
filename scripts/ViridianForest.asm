@@ -14,9 +14,12 @@ ViridianForest_ScriptPointers:
 
 ViridianForest_TextPointers:
 	dw ViridianForestText1
-	dw ViridianForestText2
-	dw ViridianForestText3
-	dw ViridianForestText4
+	dw ViridianForestText2 ; Bug Catcher Rick
+	dw ViridianForestText3 ; Bug Catcher Doug
+	dw ViridianForestText4 ; Bug Catcher Antony
+	dw ViridianForestText5 ; Bug Catcher Charly
+	dw ViridianForestText6 ; Lass Brittany
+	dw ViridianForestText7 ; Bug Catcher Sammy
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
@@ -55,6 +58,33 @@ ViridianForestTrainerHeader2:
 	dw ViridianForestEndBattleText3 ; TextEndBattle
 	dw ViridianForestEndBattleText3 ; TextEndBattle
 
+ViridianForestTrainerHeader3:
+	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3
+	db ($2 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3
+	dw ViridianForestBattleText4 ; TextBeforeBattle
+	dw ViridianForestAfterBattleText4 ; TextAfterBattle
+	dw ViridianForestEndBattleText4 ; TextEndBattle
+	dw ViridianForestEndBattleText4 ; TextEndBattle
+
+ViridianForestTrainerHeader4:
+	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_4
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_4
+	dw ViridianForestBattleTextPikaGirl ; TextBeforeBattle
+	dw ViridianForestAfterBattleTextPikaGirl ; TextAfterBattle
+	dw ViridianForestEndBattleTextPikaGirl ; TextEndBattle
+	dw ViridianForestEndBattleTextPikaGirl ; TextEndBattle
+
+ViridianForestTrainerHeader5:
+	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_5
+	db ($1 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_5
+	dw ViridianForestBattleText5 ; TextBeforeBattle
+	dw ViridianForestAfterBattleText5 ; TextAfterBattle
+	dw ViridianForestEndBattleText5 ; TextEndBattle
+	dw ViridianForestEndBattleText5 ; TextEndBattle
+
 	db $ff
 
 ViridianForestText1:
@@ -79,6 +109,24 @@ ViridianForestText4:
 	call TalkToTrainer
 	jp TextScriptEnd
 
+ViridianForestText5:
+	TX_ASM
+	ld hl, ViridianForestTrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+ViridianForestText6:
+	TX_ASM
+	ld hl, ViridianForestTrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+ViridianForestText7:
+	TX_ASM
+	ld hl, ViridianForestTrainerHeader5
+	call TalkToTrainer
+	jp TextScriptEnd
+
 ViridianForestBattleText1:
 	TX_FAR _ViridianForestBattleText1
 	db "@"
@@ -88,7 +136,7 @@ ViridianForestEndBattleText1:
 	db "@"
 
 ViridianForestAfterBattleText1:
-	TX_FAR _ViridianFrstAfterBattleText1
+	TX_FAR _ViridianForestAfterBattleText1
 	db "@"
 
 ViridianForestBattleText2:
@@ -100,7 +148,7 @@ ViridianForestEndBattleText2:
 	db "@"
 
 ViridianForestAfterBattleText2:
-	TX_FAR _ViridianFrstAfterBattleText2
+	TX_FAR _ViridianForestAfterBattleText2
 	db "@"
 
 ViridianForestBattleText3:
@@ -112,7 +160,43 @@ ViridianForestEndBattleText3:
 	db "@"
 
 ViridianForestAfterBattleText3:
-	TX_FAR _ViridianFrstAfterBattleText3
+	TX_FAR _ViridianForestAfterBattleText3
+	db "@"
+
+ViridianForestBattleText4:
+	TX_FAR _ViridianForestBattleText4
+	db "@"
+
+ViridianForestEndBattleText4:
+	TX_FAR _ViridianForestEndBattleText4
+	db "@"
+
+ViridianForestAfterBattleText4:
+	TX_FAR _ViridianForestAfterBattleText4
+	db "@"
+
+ViridianForestBattleText5:
+	TX_FAR _ViridianForestBattleText5
+	db "@"
+
+ViridianForestEndBattleText5:
+	TX_FAR _ViridianForestEndBattleText5
+	db "@"
+
+ViridianForestAfterBattleText5:
+	TX_FAR _ViridianForestAfterBattleText5
+	db "@"
+
+ViridianForestBattleTextPikaGirl:
+	TX_FAR _ViridianForestBattleTextPikaGirl
+	db "@"
+
+ViridianForestEndBattleTextPikaGirl:
+	TX_FAR _ViridianForestEndBattleTextPikaGirl
+	db "@"
+
+ViridianForestAfterBattleTextPikaGirl:
+	TX_FAR _ViridianForestAfterBattleTextPikaGirl
 	db "@"
 
 ViridianForestText8:

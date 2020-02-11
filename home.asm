@@ -2629,7 +2629,7 @@ GetSavedEndBattleTextPointer::
 	ret
 
 TrainerEndBattleText::
-	TX_FAR _TrainerNameText
+	;TX_FAR _TrainerNameText
 	TX_ASM
 	call GetSavedEndBattleTextPointer
 	call TextCommandProcessor
@@ -4778,6 +4778,18 @@ const_value = 1
 	add_tx_pre ElevatorText                         ; 41
 	add_tx_pre PokemonStuffText                     ; 42
 
+
+SetCustomName: ; Thank you Red++
+; INPUTS: hl = pointer to name
+; OUTPUTS: trainer name stored in wCurTrainerName, hl points to byte immediately after name
+	ld de, wCurTrainerName
+.loop
+	ld a, [hli]
+	ld [de],a
+	inc de
+	cp "@"
+	ret z
+	jr .loop
 
 ; Note: this saves rSVBK before calling an interrupt. It would also make sense to save
 ; rVBK. However, doing that would break the code that fixes the ss anne's palettes on

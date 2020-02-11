@@ -1,5 +1,3 @@
-TEST EQU CATERPIE
-
 Route1Mons:
 	db $19
 	db 3,PIDGEY		; 20%

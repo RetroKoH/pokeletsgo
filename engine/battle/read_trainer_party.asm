@@ -133,6 +133,7 @@ ReadTrainer: ; don't change any moves in a link battle
 ; - if [wLoneAttackNo] != 0, one pokemon on the team has a special move
 ; else the first byte is the level of every pokemon on the team
 .iterateTrainer
+	call SetCustomName
 	ld a, [hli]
 	cp $FF ; is the trainer special?
 	jr z, .specialTrainer ; if so, check for special moves
