@@ -189,6 +189,38 @@ PokedexEntryPointers:
 	dw MewDexEntry
 	dw MeltanDexEntry
 	dw MelmetalDexEntry
+	dw PikachuSDexEntry   ; Starter Changes
+	dw EeveeSDexEntry     ; Starter Changes
+	dw RattataADexEntry
+	dw RaticateADexEntry
+	dw RaichuADexEntry
+	dw RaichuADexEntry
+	dw SandshrewADexEntry
+	dw SandslashADexEntry
+	dw DiglettADexEntry
+	dw DugtrioADexEntry
+	dw MeowthADexEntry
+	dw MeowthGDexEntry
+	dw PersianADexEntry
+	dw GeodudeADexEntry
+	dw GravelerADexEntry
+	dw GolemADexEntry
+	dw PonytaGDexEntry
+	dw RapidashGDexEntry
+	dw SlowpokeDexEntry
+	dw SlowbroDexEntry
+	dw SlowkingDexEntry
+	dw FarfetchdGDexEntry
+	dw GrimerADexEntry
+	dw MukADexEntry
+	dw ExeggutorADexEntry
+	dw MarowakADexEntry
+	dw WeezingGDexEntry
+	dw MrMimeGDexEntry
+	dw ArticunoDexEntry
+	dw ZapdosDexEntry
+	dw MoltresDexEntry
+	dw MewtwoDexEntry
 
 ; string: species name
 ; height in feet, inches
@@ -779,21 +811,21 @@ GolemDexEntry:
 PonytaDexEntry:
 	db "FIRE HORSE@"
 	db 3,3
-	dw 660
+	dw 661
 	TX_FAR _PonytaDexEntry
 	db "@"
 
 RapidashDexEntry:
 	db "FIRE HORSE@"
 	db 5,7
-	dw 2090
+	dw 2094
 	TX_FAR _RapidashDexEntry
 	db "@"
 
 SlowpokeDexEntry:
 	db "DOPEY@"
 	db 3,11
-	dw 790
+	dw 794
 	TX_FAR _SlowpokeDexEntry
 	db "@"
 
@@ -835,7 +867,7 @@ MagnezoneDexEntry:
 FarfetchdDexEntry:
 	db "WILD DUCK@"
 	db 2,7
-	dw 330
+	dw 331
 	TX_FAR _FarfetchdDexEntry
 	db "@"
 
@@ -877,14 +909,14 @@ DewgongDexEntry:
 GrimerDexEntry:
 	db "SLUDGE@"
 	db 2,11
-	dw 660
+	dw 661
 	TX_FAR _GrimerDexEntry
 	db "@"
 
 MukDexEntry:
 	db "SLUDGE@"
 	db 3,11
-	dw 660
+	dw 661
 	TX_FAR _MukDexEntry
 	db "@"
 
@@ -989,7 +1021,7 @@ ExeggcuteDexEntry:
 ExeggutorDexEntry:
 	db "COCONUT@"
 	db 6,7
-	dw 2650
+	dw 2646
 	TX_FAR _ExeggutorDexEntry
 	db "@"
 
@@ -1003,7 +1035,7 @@ CuboneDexEntry:
 MarowakDexEntry:
 	db "BONEKEEPER@"
 	db 3,3
-	dw 990
+	dw 992
 	TX_FAR _MarowakDexEntry
 	db "@"
 
@@ -1059,7 +1091,7 @@ KoffingDexEntry:
 WeezingDexEntry:
 	db "POISON GAS@"
 	db 3,11
-	dw 210
+	dw 209
 	TX_FAR _WeezingDexEntry
 	db "@"
 
@@ -1192,7 +1224,7 @@ MimeJrDexEntry:
 MrMimeDexEntry:
 	db "BARRIER@"
 	db 4,3
-	dw 1200
+	dw 1201
 	TX_FAR _MrMimeDexEntry
 	db "@"
 
@@ -1498,7 +1530,7 @@ MewtwoDexEntry:
 	db "@"
 
 MewDexEntry:
-	db "NEW SPECIE@"
+	db "NEWSPECIES@"
 	db 1,4
 	dw 90
 	TX_FAR _MewDexEntry
@@ -1516,6 +1548,188 @@ MelmetalDexEntry:
 	db 8,2
 	dw 17637
 	TX_FAR _MelmetalDexEntry
+	db "@"
+
+PikachuSDexEntry:
+	db "MOUSE@"
+	db 1,4
+	dw 132
+	TX_FAR _PikachuSDexEntry
+	db "@"
+
+EeveeSDexEntry:
+	db "EVOLUTION@"
+	db 1,0
+	dw 140
+	TX_FAR _EeveeSDexEntry
+	db "@"
+
+RattataADexEntry:
+	db "RAT@"
+	db 1,0
+	dw 77
+	TX_FAR _RattataADexEntry
+	db "@"
+
+RaticateADexEntry:
+	db "RAT@"
+	db 2,4
+	dw 408
+	TX_FAR _RaticateADexEntry
+	db "@"
+
+RaichuADexEntry:
+	db "MOUSE@"
+	db 2,7
+	dw 661
+	TX_FAR _RaichuADexEntry
+	db "@"
+
+SandshrewADexEntry:
+	db "MOUSE@"
+	db 2,0
+	dw 265
+	TX_FAR _SandshrewADexEntry
+	db "@"
+
+SandslashADexEntry:
+	db "MOUSE@"
+	db 3,3
+	dw 650
+	TX_FAR _SandslashADexEntry
+	db "@"
+
+VulpixADexEntry:
+	db "FOX@"
+	db 2,0
+	dw 218
+	TX_FAR _VulpixADexEntry
+	db "@"
+
+NinetalesADexEntry:
+	db "FOX@"
+	db 3,7
+	dw 439
+	TX_FAR _NinetalesADexEntry
+	db "@"
+
+DiglettADexEntry:
+	db "MOLE@"
+	db 0,8
+	dw 22
+	TX_FAR _DiglettADexEntry
+	db "@"
+
+DugtrioADexEntry:
+	db "MOLE@"
+	db 2,4
+	dw 1468
+	TX_FAR _DugtrioADexEntry
+	db "@"
+
+MeowthADexEntry:
+	db "SCRATCHCAT@"
+	db 1,4
+	dw 165
+	TX_FAR _MeowthADexEntry
+	db "@"
+
+MeowthGDexEntry:
+	db "SCRATCHCAT@"
+	db 1,4
+	dw 93
+	TX_FAR _MeowthGDexEntry
+	db "@"
+
+PersianADexEntry:
+	db "CLASSY CAT@"
+	db 3,7
+	dw 728
+	TX_FAR _PersianADexEntry
+	db "@"
+
+GeodudeADexEntry:
+	db "ROCK@"
+	db 1,4
+	dw 448
+	TX_FAR _GeodudeADexEntry
+	db "@"
+
+GravelerADexEntry:
+	db "ROCK@"
+	db 3,3
+	dw 2425
+	TX_FAR _GravelerADexEntry
+	db "@"
+
+GolemADexEntry:
+	db "MEGATON@"
+	db 5,7
+	dw 6967
+	TX_FAR _GolemADexEntry
+	db "@"
+
+PonytaGDexEntry:
+	db "UNIQUEHORN@"
+	db 2,7
+	dw 529
+	TX_FAR _PonytaGDexEntry
+	db "@"
+
+RapidashGDexEntry:
+	db "UNIQUEHORN@"
+	db 5,7
+	dw 1764
+	TX_FAR _RapidashGDexEntry
+	db "@"
+
+FarfetchdGDexEntry:
+	db "WILD DUCK@"
+	db 2,7
+	dw 926
+	TX_FAR _FarfetchdGDexEntry
+	db "@"
+
+GrimerADexEntry:
+	db "SLUDGE@"
+	db 2,4
+	dw 926
+	TX_FAR _GrimerADexEntry
+	db "@"
+
+MukADexEntry:
+	db "SLUDGE@"
+	db 3,3
+	dw 1146
+	TX_FAR _MukADexEntry
+	db "@"
+
+ExeggutorADexEntry:
+	db "COCONUT@"
+	db 35,9
+	dw 9162
+	TX_FAR _ExeggutorADexEntry
+	db "@"
+
+MarowakADexEntry:
+	db "BONEKEEPER@"
+	db 3,3
+	dw 750
+	TX_FAR _MarowakADexEntry
+	db "@"
+
+WeezingGDexEntry:
+	db "POISON GAS@"
+	db 9,10
+	dw 353
+	TX_FAR _WeezingGDexEntry
+	db "@"
+
+MrMimeGDexEntry:
+	db "DANCING@"
+	db 4,7
+	dw 1252
+	TX_FAR _MrMimeGDexEntry
 	db "@"
 
 MissingNoDexEntry: ; NULL

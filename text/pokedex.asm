@@ -285,7 +285,7 @@ _PikachuSDexEntry::
 
 	page "It seems to have"
 	next "quite the stubborn"
-	next "personality."
+	next "personality"
 	dex
 
 _RaichuDexEntry::
@@ -299,13 +299,13 @@ _RaichuDexEntry::
 	dex
 
 _RaichuADexEntry::
-	text "When electricity"
-	next "builds up inside"
-	next "its body, it"
+	text "It loves pancakes"
+	next "made with a secret"
+	next "Alolan recipe."
 
-	page "becomes feisty."
-	next "It also glows in"
-	next "the dark"
+	page "Some think that's"
+	next "what leads to this"
+	next "unique evolution"
 	dex
 
 _SandshrewDexEntry::
@@ -319,13 +319,13 @@ _SandshrewDexEntry::
 	dex
 
 _SandshrewADexEntry::
-	text "Its body is dry."
-	next "When it gets cold"
-	next "at night, its"
+	text "Its icy body lets"
+	next "it slide across"
+	next "the ground with"
 
-	page "hide is said to"
-	next "become coated with"
-	next "a fine dew"
+	page "great speed, send-"
+	next "ing enemies flying"
+	next "when it hits them"
 	dex
 
 _SandslashDexEntry::
@@ -339,13 +339,13 @@ _SandslashDexEntry::
 	dex
 
 _SandslashADexEntry::
-	text "It is skilled at"
-	next "slashing enemies"
-	next "with its claws."
+	text "SANDSLASH's form"
+	next "after adapting to"
+	next "a frigid climate."
 
-	page "If broken, they"
-	next "start to grow back"
-	next "in a day"
+	page "The cold air from"
+	next "its body sharpens"
+	next "its icy spikes"
 	dex
 
 _NidoranFDexEntry::
@@ -449,13 +449,13 @@ _VulpixDexEntry::
 	dex
 
 _VulpixADexEntry::
-	text "Both its fur and"
-	next "its tails are"
-	next "beautiful. As it"
+	text "It looks like snow"
+	next "come to life, and"
+	next "the breath it"
 
-	page "grows, the tails"
-	next "split and form"
-	next "more tails"
+	page "exhales is -58F"
+	next "degrees. It's also"
+	next "called Keokeo"
 	dex
 
 _NinetalesDexEntry::
@@ -469,13 +469,13 @@ _NinetalesDexEntry::
 	dex
 
 _NinetalesADexEntry::
-	text "According to an"
-	next "enduring legend,"
-	next "9 noble saints"
+	text "Lives on mountains"
+	next "covered in snow,"
+	next "and is revered as"
 
-	page "were united and"
-	next "reincarnated as"
-	next "this #MON"
+	page "a deity incarnate."
+	next "It appears draped"
+	next "in a blizzard"
 	dex
 
 _IgglybuffDexEntry::
@@ -629,13 +629,13 @@ _DiglettDexEntry::
 	dex
 
 _DiglettADexEntry::
-	text "It prefers dark"
-	next "places. It spends"
-	next "most of its time"
+	text "After living in"
+	next "iron-rich soil for"
+	next "some time, three"
 
-	page "underground,"
-	next "though it may pop"
-	next "up in caves"
+	page "steel whiskers"
+	next "sprouted from the"
+	next "top of its head"
 	dex
 
 _DugtrioDexEntry::
@@ -649,13 +649,13 @@ _DugtrioDexEntry::
 	dex
 
 _DugtrioADexEntry::
-	text "A team of triplets"
-	next "that can burrow"
-	next "over 60 MPH."
+	text "Referred to as"
+	next "triplets, they're"
+	next "not identical."
 
-	page "Due to this, some"
-	next "people think it's"
-	next "an earthquake"
+	page "The metallic"
+	next "elements in their"
+	next "bodies differ"
 	dex
 
 _MeowthDexEntry::
@@ -669,13 +669,23 @@ _MeowthDexEntry::
 	dex
 
 _MeowthADexEntry::
-	text "Appears to be more"
-	next "active at night."
-	next "It loves round"
+	text "Intelligent and"
+	next "prideful, it's"
+	next "quite difficult to"
 
-	page "and shiny things."
-	next "It can't stop from"
-	next "picking them up"
+	page "handle. This is"
+	next "oddly a reason for"
+	next "its popularity"
+	dex
+
+_MeowthGDexEntry::
+	text "Living with savage"
+	next "seafarers has made"
+	next "this #MON's"
+
+	page "body so tough that"
+	next "some parts have"
+	next "turned to iron"
 	dex
 
 _PersianDexEntry::
@@ -689,13 +699,13 @@ _PersianDexEntry::
 	dex
 
 _PersianADexEntry::
-	text "The gem in its"
-	next "forehead glows on"
-	next "its own! It walks"
+	text "Has the classiest"
+	next "coat. The rippling"
+	next "of its fur in the"
 
-	page "with all the grace"
-	next "and elegance of a"
-	next "proud queen"
+	page "heat of battle has"
+	next "a distinct beauty"
+	next "all its own"
 	dex
 
 _PerrserkerDexEntry::
@@ -929,13 +939,13 @@ _GeodudeDexEntry::
 	dex
 
 _GeodudeADexEntry::
-	text "Commonly found"
-	next "near mountain"
-	next "trails, etc."
+	text "Its stone head is"
+	next "magnetic. If you"
+	next "carelessly step on"
 
-	page "If you step on"
-	next "one by accident,"
-	next "it gets angry"
+	page "one, you will be"
+	next "in for quite a"
+	next "painful shock"
 	dex
 
 _GravelerDexEntry::
@@ -949,13 +959,13 @@ _GravelerDexEntry::
 	dex
 
 _GravelerADexEntry::
-	text "Often seen rolling"
-	next "down mountain"
-	next "trails. Obstacles"
+	text "When it comes"
+	next "rolling down a"
+	next "mountain, anything"
 
-	page "are just things to"
-	next "roll straight"
-	next "over, not avoid"
+	page "in its way gets"
+	next "zapped and sent"
+	next "flying"
 	dex
 
 _GolemDexEntry::
@@ -969,13 +979,13 @@ _GolemDexEntry::
 	dex
 
 _GolemADexEntry::
-	text "Once it sheds its"
-	next "skin, its body"
-	next "turns tender and"
+	text "Uses magnetism to"
+	next "fire rocks tinged"
+	next "with electricity,"
 
-	page "whitish. Its hide"
-	next "hardens when it's"
-	next "exposed to air"
+	page "which does the job"
+	next "even if they don't"
+	next "hit directly"
 	dex
 
 _PonytaDexEntry::
@@ -988,6 +998,16 @@ _PonytaDexEntry::
 	next "hard landing"
 	dex
 
+_PonytaGDexEntry::
+	text "Its horn hides" 
+	next "a healing power."
+	next "A few rubs from"
+
+	page "this horn will"
+	next "heal any slight"
+	next "wound you have"
+	dex
+
 _RapidashDexEntry::
 	text "Just loves to run."
 	next "If it sees some-"
@@ -996,6 +1016,16 @@ _RapidashDexEntry::
 	page "itself, it will"
 	next "give chase at top"
 	next "speed"
+	dex
+
+_RapidashGDexEntry::
+	text "It dashes airily"
+	next "through forests,"
+	next "its steps aided by"
+
+	page "the psychic power"
+	next "stored in the fur"
+	next "on its fetlocks"
 	dex
 
 _SlowpokeDexEntry::
@@ -1008,6 +1038,16 @@ _SlowpokeDexEntry::
 	next "about the time"
 	dex
 
+_SlowpokeGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "SLOWPOKE. Your"
+	next "#DEX will be"
+	next "updated soon"
+	dex
+
 _SlowbroDexEntry::
 	text "Lives lazily by"
 	next "the sea. If the"
@@ -1018,6 +1058,16 @@ _SlowbroDexEntry::
 	next "SLOWPOKE again"
 	dex
 
+_SlowbroGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "SLOWBRO. Your"
+	next "#DEX will be"
+	next "updated soon"
+	dex
+
 _SlowkingDexEntry::
 	text "Every time it ya-"
 	next "wns, SHELLDER"
@@ -1026,6 +1076,16 @@ _SlowkingDexEntry::
 	page "son into it. The"
 	next "poison makes it"
 	next "more intelligent"
+	dex
+
+_SlowkingGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "SLOWKING. Your"
+	next "#DEX will be"
+	next "updated soon"
 	dex
 
 _MagnemiteDexEntry::
@@ -1066,6 +1126,16 @@ _FarfetchdDexEntry::
 	page "so it's thought"
 	next "their numbers are"
 	next "decreasing"
+	dex
+
+_FarfetchdGDexEntry::
+	text "FARFETCH'D of the"
+	next "Galar region are"
+	next "brave warriors."
+
+	page "They wield thick,"
+	next "tough leeks into"
+	next "battle"
 	dex
 
 _SirfetchdDexEntry::
@@ -1119,23 +1189,23 @@ _DewgongDexEntry::
 	dex
 
 _GrimerDexEntry::
-	text "Made of hardened"
-	next "sludge. It smells"
+	text "Made of congealed"
+	next "sludge, it smells"
 	next "too putrid to"
 
-	page "touch."
-	next "Even weeds won't"
-	next "grow in its path"
+	page "touch. Even weeds"
+	next "won't grow in"
+	next "its path"
 	dex
 
 _GrimerADexEntry::
-	text "Made of hardened"
-	next "sludge. It smells"
-	next "too putrid to"
+	text "It has a passion"
+	next "for trash above"
+	next "all else, quickly"
 
-	page "touch."
-	next "Even weeds won't"
-	next "grow in its path"
+	page "digesting it and"
+	next "making crystals of"
+	next "sparkling poison"
 	dex
 
 _MukDexEntry::
@@ -1149,13 +1219,13 @@ _MukDexEntry::
 	dex
 
 _MukADexEntry::
-	text "Smells so awful,"
-	next "it can cause"
-	next "fainting. Through"
+	text "MUK's coloration"
+	next "becomes increasing-"
+	next "ly vivid the more"
 
-	page "degeneration, it"
-	next "lost its sense of"
-	next "smell"
+	page "it feasts on its"
+	next "favorite dish:"
+	next "trash"
 	dex
 
 _ShellderDexEntry::
@@ -1309,13 +1379,13 @@ _ExeggutorDexEntry::
 	dex
 
 _ExeggutorADexEntry::
-	text "Its cries are very"
-	next "noisy. This is"
-	next "because each of"
+	text "The sunlight of"
+	next "the Alolan region"
+	next "has awakened the"
 
-	page "the 3 heads thinks"
-	next "about whatever it"
-	next "likes"
+	page "power hidden in"
+	next "EXEGGCUTE. This"
+	next "is the result"
 	dex
 
 _CuboneDexEntry::
@@ -1339,13 +1409,13 @@ _MarowakDexEntry::
 	dex
 
 _MarowakADexEntry::
-	text "Small and weak,"
-	next "this #MON is"
-	next "adept with its"
+	text "It's transformed"
+	next "the spirit of its"
+	next "departed mother"
 
-	page "bone club. It has"
-	next "grown more vicious"
-	next "over the ages"
+	page "into flames. It"
+	next "dances in mourning"
+	next "of other MAROWAK"
 	dex
 
 _TyrogueDexEntry::
@@ -1427,10 +1497,20 @@ _WeezingDexEntry::
 	next "waste and garbage"
 	dex
 
+_WeezingGDexEntry::
+	text "Long ago, in times"
+	next "when factories"
+	next "polluted the skies"
+
+	page "of Galar, WEEZING"
+	next "took on this form"
+	next "for some reason"
+	dex
+
 _RhyhornDexEntry::
 	text "A #MON with a"
 	next "one-track mind."
-	next "Once it charges, "
+	next "Once it charges,"
 
 	page "it won't stop"
 	next "running until it"
@@ -1464,7 +1544,7 @@ _HappinyDexEntry::
 
 	page "shaped rock in"
 	next "imitation of"
-	next "Chansey"
+	next "CHANSEY"
 	dex
 
 _ChanseyDexEntry::
@@ -1575,95 +1655,5 @@ _SeakingDexEntry::
 	page "out boulders in a"
 	next "stream using the"
 	next "horn on its head"
-	dex
-
-_StaryuDexEntry::
-	text "As long as the"
-	next "center section is"
-	next "unharmed, it can"
-
-	page "grow back fully"
-	next "even if it is"
-	next "chopped to bits"
-	dex
-
-_StarmieDexEntry::
-	text "The center section"
-	next "is named the core."
-	next "People think it"
-
-	page "is communicating"
-	next "when it glows in"
-	next "7 colors"
-	dex
-
-_MimeJrDexEntry::
-	text "It habitually"
-	next "mimics its foes."
-	next "Once mimicked, the"
-
-	page "foe cannot take"
-	next "its eyes off this"
-	next "#mon"
-	dex
-
-_MrMimeDexEntry::
-	text "Always practices"
-	next "its pantomime act."
-	next "It makes enemies"
-
-	page "believe something"
-	next "exists that"
-	next "really doesn't"
-	dex
-
-_ScytherDexEntry::
-	text "Leaps out of tall"
-	next "grass and slices"
-	next "prey with its"
-
-	page "scythes. The move-"
-	next "ment looks like"
-	next "that of a ninja"
-	dex
-
-_ScizorDexEntry::
-	text "This #MON's"
-	next "pincers, which"
-	next "contain steel, can"
-
-	page "crush any hard"
-	next "object it gets a"
-	next "hold of into bits"
-	dex
-
-_SmoochumDexEntry::
-	text "The sensitivity of"
-	next "its lips develops"
-	next "most quickly."
-
-	page "It uses them to"
-	next "try to identify"
-	next "unknown objects"
-	dex
-
-_JynxDexEntry::
-	text "Appears to move"
-	next "to a rhythm of"
-	next "its own, as if it"
-
-	page "were dancing. It"
-	next "wiggles its hips"
-	next "as it walks"
-	dex
-
-_ElekidDexEntry::
-	text "It loves violent"
-	next "thunder. The space"
-	next "between its horns"
-
-	page "flickers bluish-"
-	next "white when it is"
-	next "charging energy"
 	dex
 ; Continued in pokedex2.asm

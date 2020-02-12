@@ -1,3 +1,113 @@
+_StaryuDexEntry::
+	text "As long as the"
+	next "center section is"
+	next "unharmed, it can"
+
+	page "grow back fully"
+	next "even if it is"
+	next "chopped to bits"
+	dex
+
+_StarmieDexEntry::
+	text "The center section"
+	next "is named the core."
+	next "People think it"
+
+	page "is communicating"
+	next "when it glows in"
+	next "7 colors"
+	dex
+
+_MimeJrDexEntry::
+	text "It habitually"
+	next "mimics its foes."
+	next "Once mimicked, the"
+
+	page "foe cannot take"
+	next "its eyes off this"
+	next "#MON"
+	dex
+
+_MrMimeDexEntry::
+	text "Always practices"
+	next "its pantomime act."
+	next "It makes enemies"
+
+	page "believe something"
+	next "exists that"
+	next "really doesn't"
+	dex
+
+_MrMimeGDexEntry::
+	text "It can radiate"
+	next "chilliness from"
+	next "its feet. It will"
+
+	page "spend the whole"
+	next "day tap-dancing on"
+	next "a frozen floor"
+	dex
+
+_MrRimeDexEntry::
+	text "Highly skilled at"
+	next "tap-dancing. It"
+	next "waves its cane of"
+
+	page "ice in time with"
+	next "its graceful"
+	next "movements"
+	dex
+
+_ScytherDexEntry::
+	text "Leaps out of tall"
+	next "grass and slices"
+	next "prey with its"
+
+	page "scythes. The move-"
+	next "ment looks like"
+	next "that of a ninja"
+	dex
+
+_ScizorDexEntry::
+	text "This #MON's"
+	next "pincers, which"
+	next "contain steel, can"
+
+	page "crush any hard"
+	next "object it gets a"
+	next "hold of into bits"
+	dex
+
+_SmoochumDexEntry::
+	text "The sensitivity of"
+	next "its lips develops"
+	next "most quickly."
+
+	page "It uses them to"
+	next "try to identify"
+	next "unknown objects"
+	dex
+
+_JynxDexEntry::
+	text "Appears to move"
+	next "to a rhythm of"
+	next "its own, as if it"
+
+	page "were dancing. It"
+	next "wiggles its hips"
+	next "as it walks"
+	dex
+
+_ElekidDexEntry::
+	text "It loves violent"
+	next "thunder. The space"
+	next "between its horns"
+
+	page "flickers bluish-"
+	next "white when it is"
+	next "charging energy"
+	dex
+
 _ElectabuzzDexEntry::
 	text "If a major power"
 	next "outage occurs, it"
@@ -68,7 +178,7 @@ _TaurosDexEntry::
 	next "something"
 	dex
 
-_MiltankDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_MiltankDexEntry::
 	text "In order to milk a"
 	next "MILTANK, one must"
 	next "have a knack for"
@@ -128,9 +238,9 @@ _EeveeDexEntry::
 	next "few alive"
 	dex
 
-_EeveeSDexEntry:: ;[Let's Go Edit: Starter Changes]
+_EeveeSDexEntry::
 	text "This EEVEE is one"
-	next "of Professor Oak's"
+	next "of PROF. OAK's"
 	next "last #MON."
 
 	page "It's believed that"
@@ -168,7 +278,7 @@ _FlareonDexEntry::
 	next "3,000F degrees"
 	dex
 
-_EspeonDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_EspeonDexEntry::
 	text "The tip of its"
 	next "forked tail"
 	next "quivers when it's"
@@ -178,7 +288,7 @@ _EspeonDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "move"
 	dex
 
-_UmbreonDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_UmbreonDexEntry::
 	text "On the night of a"
 	next "full moon, or when"
 	next "it gets excited,"
@@ -188,7 +298,7 @@ _UmbreonDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "yellow"
 	dex
 
-_LeafeonDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_LeafeonDexEntry::
 	text "Just like a plant,"
 	next "it uses photosyn-"
 	next "thesis. As a"
@@ -198,7 +308,7 @@ _LeafeonDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "in clear air"
 	dex
 
-_GlaceonDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_GlaceonDexEntry::
 	text "It causes small"
 	next "ice crystals to"
 	next "form by lowering"
@@ -208,7 +318,7 @@ _GlaceonDexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "atmosphere"
 	dex
 
-_SylveonDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_SylveonDexEntry::
 	text "The soothing aura"
 	next "that emanates from"
 	next "its ribbonlike"
@@ -228,7 +338,7 @@ _PorygonDexEntry::
 	next "yet, however"
 	dex
 
-_Porygon2DexEntry:: ;[Let's Go Edit: Expanded Dex]
+_Porygon2DexEntry::
 	text "This manmade"
 	next "#MON evolved"
 	next "from the latest"
@@ -238,7 +348,7 @@ _Porygon2DexEntry:: ;[Let's Go Edit: Expanded Dex]
 	next "rammed reactions"
 	dex
 
-_PorygonZDexEntry:: ;[Let's Go Edit: Expanded Dex]
+_PorygonZDexEntry::
 	text "Additional code"
 	next "was patched in to"
 	next "make it a better"
@@ -328,6 +438,16 @@ _ArticunoDexEntry::
 	next "makes it snow"
 	dex
 
+_ArticunoGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "ARTICUNO. Your"
+	next "#DEX will be"
+	next "updated soon"
+	dex
+
 _ZapdosDexEntry::
 	text "This legendary"
 	next "bird #MON is"
@@ -338,6 +458,16 @@ _ZapdosDexEntry::
 	next "showers down"
 	dex
 
+_ZapdosGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "ZAPDOS. Your"
+	next "#DEX will be"
+	next "updated soon"
+	dex
+
 _MoltresDexEntry::
 	text "A legendary bird"
 	next "#MON. As it"
@@ -346,6 +476,16 @@ _MoltresDexEntry::
 	page "wings, even the"
 	next "night sky will"
 	next "turn red"
+	dex
+
+_MoltresGDexEntry::
+	text "Information is not"
+	next "yet known about"
+	next "this variant of"
+
+	page "MOLTRES. Your"
+	next "#DEX will be"
+	next "updated soon"
 	dex
 
 _DratiniDexEntry::
@@ -386,6 +526,16 @@ _MewtwoDexEntry::
 	page "and disposition"
 	next "are vastly dif-"
 	next "ferent"
+	dex
+
+_MewtwoADexEntry::
+	text "Under the command"
+	next "of GIOVANNI, this"
+	next "#MON has its"
+
+	page "power suppressed"
+	next "by its mechanical"
+	next "armor"
 	dex
 
 _MewDexEntry::
