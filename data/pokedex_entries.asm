@@ -194,9 +194,10 @@ PokedexEntryPointers:
 	dw RattataADexEntry
 	dw RaticateADexEntry
 	dw RaichuADexEntry
-	dw RaichuADexEntry
 	dw SandshrewADexEntry
 	dw SandslashADexEntry
+	dw VulpixADexEntry
+	dw NinetalesADexEntry
 	dw DiglettADexEntry
 	dw DugtrioADexEntry
 	dw MeowthADexEntry

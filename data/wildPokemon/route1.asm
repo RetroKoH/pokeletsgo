@@ -1,11 +1,11 @@
 Route1Mons:
 	db $19
-	db 3,PIDGEY		; 20%
-	db 4,PIDGEY		; 20%
-	db 2,RATTATA	; 10%
-	db 3,RATTATA	; 10%
-	db 2,PIDGEY		; 10%
-	db 4,RATTATA	; 10%
+	db 3,VULPIX_A		; 20% ; PIDG
+	db 4,DIGLETT_A		; 20% ; PIDG
+	db 2,RATTATA_A	; 10% ; RAT
+	db 3,SANDSHREW_A	; 10% ; RAT
+	db 2,RAICHU_A		; 10% ; PIDG
+	db 4,GEODUDE_A	; 10% ; RAT
 	db 5,PIDGEY		; 5%
 	db 5,RATTATA	; 5%
 	db 6,PIDGEY		; 4%

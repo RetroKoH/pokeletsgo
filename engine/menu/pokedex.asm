@@ -471,6 +471,7 @@ ShowPokedexDataInternal:
 	push de
 	ld a, [wd11e]
 	push af
+	call IndexToPokedex
 
 	coord hl, 2, 8
 	ld a, "№"
@@ -481,10 +482,13 @@ ShowPokedexDataInternal:
 	lb bc, LEADING_ZEROES | 1, 3
 	call PrintNumber ; print pokedex number
 
-	ld hl, wPokedexOwned
-	call IsPokemonBitSet
+; Changing the order of these instructions seems to fix the Dex for variant mons
+;	ld hl, wPokedexOwned
+;	call IsPokemonBitSet
 	pop af
 	ld [wd11e], a
+	ld hl, wPokedexOwned
+	call IsPokemonBitSet
 	ld a, [wcf91]
 	ld [wd0b5], a
 	pop de
@@ -623,7 +627,7 @@ DrawTileLine:
 INCLUDE "data/pokedex_entries.asm"
 
 
-IndexToPokedex: ; converts the indexédex number at wd11e to a Pokédex number
+IndexToPokedex: ; converts the index number at wd11e to a Pokédex number
 	ld a, [wd11e]
 	cp PIKACHU_S
 	jr c, .end	

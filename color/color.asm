@@ -276,7 +276,7 @@ SetPal_TownMap:
 ; Status screen
 SetPal_StatusScreen:
 	ld a, [wcf91]
-	cp NUM_POKEMON + 1 ;cp VICTREEBEL + 1
+	cp MEWTWO_A + 1;NUM_POKEMON + 1
 	jr c, .pokemon
 	ld a, $1 ; not pokemon
 .pokemon

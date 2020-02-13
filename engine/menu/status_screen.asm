@@ -146,9 +146,11 @@ StatusScreen:
 
 	coord hl, 14, 2
 	call PrintLevel ; Pokémon level
+
 	ld a, [wMonHIndex]
 	ld [wd11e], a
 	ld [wd0b5], a
+	predef IndexToPokedex
 	coord hl, 3, 7
 	ld de, wd11e
 	lb bc, LEADING_ZEROES | 1, 3
@@ -244,6 +246,7 @@ StatusScreen:
 	call GBPalNormal
 	coord hl, 1, 0
 	call LoadFlippedFrontSpriteByMonIndex ; draw Pokémon picture
+
 	ld a, [wcf91]
 	call PlayCry ; play Pokémon cry
 	call WaitForTextScrollButtonPress ; wait for button press to go to screen #2
