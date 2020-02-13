@@ -25,7 +25,7 @@ TrainerDataPointers:
 	dw BlackbeltData
 	dw Green1Data
 	dw ProfOakData
-	dw ChiefData
+	dw JessieJamesData
 	dw ScientistData
 	dw GiovanniData
 	dw RocketData
@@ -507,8 +507,12 @@ ProfOakData:
 ; Unused
 	db "OAK@",		$FF,65,TAUROS,66,CLEFABLE,67,VENUSAUR,68,CHARIZARD,69,BLASTOISE,70,GYARADOS,0
 
-ChiefData:
-; none
+JessieJamesData:
+	db "@",		14,EKANS,MEOWTH,KOFFING,0	; Mt. Moon
+	db "@",		25,KOFFING,MEOWTH,EKANS,0	; Rocket Game Corner
+	db "@",		27,MEOWTH,ARBOK,WEEZING,0	; Lavender Tower
+	db "@",		31,WEEZING,ARBOK,MEOWTH,0	; Silph Co
+
 ScientistData:
 ; Unused
 	db "unk@",		34,KOFFING,VOLTORB,0

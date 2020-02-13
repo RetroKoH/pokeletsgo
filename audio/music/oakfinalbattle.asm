@@ -1,4 +1,4 @@
-Music_YellowUnusedSong_Ch1::
+Music_OakFinalBattle_Ch1::
 	tempo 140
 	volume 7, 7
 	duty 3
@@ -25,7 +25,7 @@ Music_YellowUnusedSong_Ch1::
 	G_ 6
 	A_ 12
 
-Music_YellowUnusedSong_branch_82fde::
+Music_OakFinalBattle_branch_82fde::
 	A_ 6
 	A_ 2
 	A_ 2
@@ -72,10 +72,10 @@ Music_YellowUnusedSong_branch_82fde::
 	A_ 6
 	G_ 6
 	A_ 12
-	loopchannel 0, Music_YellowUnusedSong_branch_82fde
+	loopchannel 0, Music_OakFinalBattle_branch_82fde
 
 
-Music_YellowUnusedSong_Ch2::
+Music_OakFinalBattle_Ch2::
 	duty 2
 	notetype 8, 12, 2
 	octave 4
@@ -101,7 +101,7 @@ Music_YellowUnusedSong_Ch2::
 	A# 6
 	A_ 12
 
-Music_YellowUnusedSong_branch_8302a::
+Music_OakFinalBattle_branch_8302a::
 	D_ 6
 	D_ 2
 	D_ 2
@@ -158,10 +158,10 @@ Music_YellowUnusedSong_branch_8302a::
 	D_ 6
 	A# 6
 	A_ 12
-	loopchannel 0, Music_YellowUnusedSong_branch_8302a
+	loopchannel 0, Music_OakFinalBattle_branch_8302a
 
 
-Music_YellowUnusedSong_Ch3::
+Music_OakFinalBattle_Ch3::
 	notetype 12, 1, 0
 	vibrato 2, 1, 5
 	rest 16
@@ -173,7 +173,7 @@ Music_YellowUnusedSong_Ch3::
 	G_ 8
 	A# 8
 
-Music_YellowUnusedSong_branch_83075::
+Music_OakFinalBattle_branch_83075::
 	A_ 8
 	A# 8
 	G_ 8
@@ -199,10 +199,10 @@ Music_YellowUnusedSong_branch_83075::
 	D# 8
 	G_ 8
 	A# 8
-	loopchannel 0, Music_YellowUnusedSong_branch_83075
+	loopchannel 0, Music_OakFinalBattle_branch_83075
 
 
-Music_YellowUnusedSong_Ch4::
+Music_OakFinalBattle_Ch4::
 	dspeed 12
 	snare3 4
 	dspeed 8
@@ -231,7 +231,7 @@ Music_YellowUnusedSong_Ch4::
 	snare3 4
 	snare3 4
 
-Music_YellowUnusedSong_branch_830c3::
+Music_OakFinalBattle_branch_830c3::
 	snare3 4
 	dspeed 8
 	snare3 2
@@ -323,4 +323,4 @@ Music_YellowUnusedSong_branch_830c3::
 	snare3 2
 	snare3 4
 	snare3 4
-	loopchannel 0, Music_YellowUnusedSong_branch_830c3
+	loopchannel 0, Music_OakFinalBattle_branch_830c3

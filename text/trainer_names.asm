@@ -25,7 +25,7 @@ TrainerNames:
 	db "BLACK BELT@"
 	db "RIVAL@"
 	db "PROF.@"
-	db "CHIEF@"
+	db "JESSIE & JAMES@"
 	db "SCIENTIST@"
 	db "BOSS@"
 	db "ROCKET@"

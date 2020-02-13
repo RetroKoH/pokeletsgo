@@ -292,7 +292,7 @@ const_value = 0
 	const PAL_BLACKBELT
 	const PAL_GARY1
 	const PAL_OAK
-	const PAL_CHIEF     ; maybe unused?
+	const PAL_JESSIEJAMES
 	const PAL_SCIENTIST
 	const PAL_GIOVANNI
 	const PAL_ROCKET

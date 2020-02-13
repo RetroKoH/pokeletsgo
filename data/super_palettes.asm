@@ -1124,11 +1124,11 @@ TrainerPaletteTable:
 	RGB 24, 19, 11
 	RGB 13, 16, 00
 
-; PAL_CHIEF
-	RGB 24, 19, 11
-	RGB 10, 13, 17
+; PAL_JESSIEJAMES
+	RGB 29, 17, 15
+	RGB 20, 08, 05
 
-; PAL_SCIENTIST ; Identical to the Chief, they even use the same sprite
+; PAL_SCIENTIST
 	RGB 24, 19, 11
 	RGB 10, 13, 17
 

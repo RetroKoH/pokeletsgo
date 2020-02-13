@@ -20,6 +20,8 @@ INCLUDE "audio/headers/musicheaders2.asm"
 SECTION "Music Headers 3", ROMX ; BANK $1f
 INCLUDE "audio/headers/musicheaders3.asm"
 
+SECTION "Music Headers 4", ROMX ; BANK $1f
+INCLUDE "audio/headers/musicheaders4.asm"
 
 SECTION "Sound Effects 1", ROMX ; BANK $02
 
@@ -665,3 +667,9 @@ INCLUDE "audio/music/jigglypuffsong.asm"
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/credits.asm"
 
+SECTION "Music 4", ROMX
+
+INCLUDE "audio/music/surfingpikachu.asm"
+INCLUDE "audio/music/oakfinalbattle.asm"
+INCLUDE "audio/music/meetjessiejames.asm"
+INCLUDE "audio/music/printer.asm"
